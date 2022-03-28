@@ -8,11 +8,18 @@ body{
     padding-left: 30;
     height: 270mm;
     border: 2px solid black;
-    margin: 20;
+    margin: 20px;
     
 }
 
 #ejemplarNombre{
     font-family: Arial;
     font-size: 24;
+    margin-bottom: 10px;
+    
+}
+#descriptEjemplar{
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+    font-size: 10px;
 }

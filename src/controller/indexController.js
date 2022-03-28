@@ -2,8 +2,8 @@
 ////let path = require ('path');
 //let productListPath = path.join(__dirname, '../dataBase/productList.json');
 //let datos = fs.readFileSync (productListPath, 'utf-8');
-//let db = require("../dataBase/models");
-//let Op = db.Sequelize.Op;
+let db = require("../database/models");
+let Op = db.Sequelize.Op;
 const fs = require('fs')
 const path = require('path')
 const utils = require('util')
@@ -15,12 +15,18 @@ const readFile = utils.promisify(fs.readFile)
 
 let indexController = {
     index: function(req,res){
+        db.ejemplares.findByPk(118)
+        .then(function(ejemplar){
+            res.render("index" , {ejemplar})
+        })
 
-     res.render("index")
         
     },
     pdfCreator: function(req,res){
-
+         db.ejemplares.findByPk(118)
+         .then(function(ejemplar){
+             const unEjemplar = ejemplar.dataValues
+         
         async function getTemplateHtml() {
             console.log("Loading template file in memory")
             try {
@@ -32,7 +38,7 @@ let indexController = {
             }
             }
             async function generatePdf() {
-            let data = {};
+            let data = {unEjemplar};
             getTemplateHtml().then(async (res) => {
             // Now we have the html code of our template in res object
             // you can check by logging it on console
@@ -40,7 +46,7 @@ let indexController = {
             console.log("Compiing the template with handlebars")
             const template = hb.compile(res, { strict: true });
             // we have compile our code with handlebars
-            const result = template(data);
+            const result = template(data.unEjemplar);
             // We can use this to add dyamic data to our handlebas template at run time from database or API as per need. you can read the official doc to learn more https://handlebarsjs.com/
             const html = result;
             // we are using headless mode
@@ -56,14 +62,15 @@ let indexController = {
                 // format: 'A4' 
             })
             await browser.close();
-            console.log("PDF Generated")
+            //console.log("PDF Generated")
+            console.log(unEjemplar)
             }).catch(err => {
             console.error(err)
             });
             }
             generatePdf();
         //res.render("index");
-        
+    })
     },
     error: function(req,res) {
         res.send('error');
