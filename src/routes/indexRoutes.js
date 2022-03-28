@@ -5,6 +5,8 @@ const indexController = require('../controller/indexController');
 
 router.get('/' , indexController.index);
 
+router.get('/pdf' , indexController.pdfCreator)
+
 
 router.get('/error', indexController.error);
 

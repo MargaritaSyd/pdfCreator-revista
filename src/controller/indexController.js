@@ -16,6 +16,11 @@ const readFile = utils.promisify(fs.readFile)
 let indexController = {
     index: function(req,res){
 
+     res.render("index")
+        
+    },
+    pdfCreator: function(req,res){
+
         async function getTemplateHtml() {
             console.log("Loading template file in memory")
             try {
@@ -44,7 +49,12 @@ let indexController = {
             // We set the page content as the generated html by handlebars
             await page.setContent(html)
             // We use pdf function to generate the pdf in the same folder as this file.
-            await page.pdf({ path: 'invoice.pdf', format: 'A4' })
+            await page.pdf({ 
+                path: 'invoice.pdf', 
+                width: "190mm",
+                height: "270mm",
+                // format: 'A4' 
+            })
             await browser.close();
             console.log("PDF Generated")
             }).catch(err => {

@@ -1,0 +1,18 @@
+body{
+    width: 190mm;
+    height: 270mm;
+}
+#mainPdf{
+   
+    padding-top: 15;
+    padding-left: 30;
+    height: 270mm;
+    border: 2px solid black;
+    margin: 20;
+    
+}
+
+#ejemplarNombre{
+    font-family: Arial;
+    font-size: 24;
+}
