@@ -3,9 +3,9 @@ const router = express.Router();
 const indexController = require('../controller/indexController');
 
 
-router.get('/' , indexController.index);
+router.get('/:id' , indexController.index);
 
-router.get('/pdf' , indexController.pdfCreator)
+router.get('/pdf/:id' , indexController.pdfCreator)
 
 
 router.get('/error', indexController.error);

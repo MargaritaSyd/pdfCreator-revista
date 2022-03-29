@@ -4,7 +4,7 @@ module.exports = {
   "development": {
     "username": "root",
     "password": "darioj8121",
-    "database": "pdfdb",
+    "database": "palermo",
     "host": "mysql.revistapalermo.com.ar",
     "dialect": "mysql",
     "port": 3306
@@ -12,7 +12,7 @@ module.exports = {
   "test": {
     "username": "root",
     "password": "darioj8121",
-    "database": "pdfdb",
+    "database": "palermo",
     "host": "mysql.revistapalermo.com.ar",
     "dialect": "mysql",
     "port": 3306
@@ -20,7 +20,7 @@ module.exports = {
   "production": {
     "username": "root",
     "password": "darioj8121",
-    "database": "pdfdb",
+    "database": "palermo",
     "host": "mysql.revistapalermo.com.ar",
     "dialect": "mysql",
     "port": 3306

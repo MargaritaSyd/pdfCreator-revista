@@ -8,7 +8,7 @@ module.exports = function(sequelize, dataTypes)
              autoIncrement: true,
              allowNull: false
          },
-         propietarios: {
+         propietario: {
             type: dataTypes.STRING,
             allowNull: false
         }, 
@@ -16,7 +16,7 @@ module.exports = function(sequelize, dataTypes)
             type: dataTypes.STRING,
             allowNull: false
         },
-        banners: {
+        banner: {
             type: dataTypes.STRING,
             allowNull: false
         }, 

@@ -15,15 +15,51 @@ const readFile = utils.promisify(fs.readFile)
 
 let indexController = {
     index: function(req,res){
-        db.ejemplares.findByPk(118)
+        /*
+        db.ejemplares.findByPk(req.params.id)
         .then(function(ejemplar){
             res.render("index" , {ejemplar})
         })
+        */
+/*
+            let unEjemplar = db.ejemplares.findByPk(req.params.id)
+         //   let elCriador = unEjemplar.dataValues.criador_id
+            let criador = db.criadores.findByPk(elCriador)
+            Promise.all([unEjemplar , criador])
+            .then(function([unEjemplar , criador]){
+                console.log(criador)
+                //res.render("index" , {unEjemplar , criadores})
+            })
+            .catch(function(err){
+                console.log(err)
+            })
 
+
+       */
+
+            db.ejemplares.findByPk(req.params.id)
+            .then(function(ejemplar){
+                let elCriador = ejemplar.dataValues.criador_id  
+
+                db.criadores.findByPk(elCriador)
+            
+            .then(function(criador){
+                let criadorX = criador.dataValues
+                let ejemplarX = ejemplar.dataValues
+                res.render("htmlToPdf" , {criadorX , ejemplarX})
+           })
+        })
+                //console.log(criador)
+            
+            .catch(function(err){
+                console.log(err)
+            })
+       
         
     },
     pdfCreator: function(req,res){
-         db.ejemplares.findByPk(118)
+        
+         db.ejemplares.findByPk(req.params.id)
          .then(function(ejemplar){
              const unEjemplar = ejemplar.dataValues
          
