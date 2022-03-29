@@ -1,7 +1,10 @@
 window.addEventListener("load" , function(){
-  //  this.alert("ok")
-  let ejemplarNombre = document.getElementById("ejemplarNombre").innerHTML
-let ejemplarInline = document.getElementById("ejemplarInline")
-
-ejemplarInline.innerHTML = ejemplarNombre
-})
+    // let ejemplarSexo = document.getElementById("ejemplarSexo")
+    // if(ejemplarSexo.innerHTML == H){
+    // ejemplarSexo = "Hembra"
+    // }else{
+    //   ejemplarSexo = "Macho"
+    // }
+    
+this.alert("ok")
+  })

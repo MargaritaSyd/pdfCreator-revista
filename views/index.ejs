@@ -6,22 +6,85 @@
     <link rel="stylesheet" href="css/stylesheet.css">
     <title>Document</title>
 </head>
-<body>
+<body 
+style="width: 190mm;
+height: 270mm;">
     <header>
 
     </header>
-    <main id="mainPdf">
+    <main id="mainPdf" 
+    style="padding-top: 15;
+    padding-left: 30;
+    height: 255mm;
+    border: 2px solid black;
+    margin: 20px;
+    ">
         <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
             <div id="contentDescriptStud" style="display: flex; flex-wrap: nowrap; flex-direction: column; width: 40%;">
-                <b id="ejemplarNombre"> {{ejemplarX.nombre}} </b>
-                <b id="descriptEjemplar"> {{ejemplarX.sexo}}, {{ejemplarX.pelo}}, nacido el {{ejemplarX.dia_nac}} de {{ejemplarX.mes_nac}} de {{ejemplarX.anio_nac}} - {{ejemplarX.familia}}</b>
+                <b class="ejemplarNombre" 
+                style="font-family: Arial;
+                font-size: 24;
+                margin-bottom: 10px;
+                " > {{ejemplarX.nombre}} </b>
+                  
+                <b class="descriptEjemplar" 
+                style="padding-bottom: 10px;
+                border-bottom: 2px solid black;
+                font-size: 10px;"> {{ejemplarX.sexo}}, {{ejemplarX.pelo}}, nacido el {{ejemplarX.dia_nac}} de {{ejemplarX.mes_nac}} de {{ejemplarX.anio_nac}} - {{ejemplarX.familia}}</b>
             </div>
-            <div>
+            <div class="detalleCarrerasCorridas" style="  border-radius: 25px;
+            border: 2px solid black;
+            padding: 20px;
+            width: 40%;
+            height: 10px;
+            display: flex;
+            flex-direction: row;
+            font-family: Arial;
+            font-size: x-small;
+            justify-content: space-between;
+          ">
+                <div class="cadaDetalleCorrida">
+                    <b> Año </b>
+                    <b> 20-21</b>
+                </div>
+                <div>
+                    <b> Edad</b>
+                    <b>3-4</b>
+                </div>
+                <div>
+                    <b>Corrio</b>
+                    <b> 11 </b>
+                </div>
+                <div>
+                    <b>1º</b>
+                    <b>4</b>
+                </div>
+                <div>
+                    <b>2º</b>
+                    <b>4</b>
+                </div>
+                <div>
+                    <b>3º</b>
+                    <b>4</b>
+                </div>
+                <div>
+                    <b>Premios</b>
+                    <b>$ 3050655</b>
+                </div>
 
             </div>
         </div>
+        <div>
+            <div class="detllesCuidador" 
+            style="display: flex;
+            flex-direction: column;
+            margin-top: 10px;">
+                <b> Caballeriza: {{criadorX.haras}} </b>
+                <b> Criador: {{criadorX.propietario}} </b>
+                <b> Cuidador: </b>
+            </div>
+        </div>
     </main>
-
-
+<script src="/javascript/ejemplares.js"></script>
 </body>
 </html>

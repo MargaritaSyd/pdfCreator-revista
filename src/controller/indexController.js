@@ -19,9 +19,9 @@ let indexController = {
 
             db.ejemplares.findByPk(req.params.id)
             .then(function(ejemplar){
-                let elCriador = ejemplar.dataValues.criador_id  
+             //   let elCriador = ejemplar.dataValues.criador_id  
                 // if (elCriador != 0) {
-                db.criadores.findByPk(elCriador)
+                db.criadores.findByPk(ejemplar.dataValues.criador_id)
                 // } 
 
             .then(function(criador){
@@ -74,6 +74,8 @@ let indexController = {
         
         .then(function(criador){
             let criadorX
+
+            //En caso de que el id del criador no exista en bd
                 if(!criador){
                     criadorX = {
                         id: 0,
@@ -84,6 +86,37 @@ let indexController = {
                 } else {
                     criadorX = criador.dataValues
                 }
+
+            //Traduccion hembra o macho de db
+                if(ejemplar.dataValues.sexo == "H"){
+                    ejemplar.dataValues.sexo = "Hembra"
+                } else {
+                    ejemplar.dataValues.sexo = "Macho"
+                }
+            //Traduccion código pelo en db    
+                if(ejemplar.dataValues.pelo == "ZC"){
+                    ejemplar.dataValues.pelo = "Zaino Colorado" 
+                }else if(ejemplar.dataValues.pelo == "A") {    
+                    ejemplar.dataValues.pelo = "Alazan"
+                } else if(ejemplar.dataValues.pelo == "AT") {    
+                    ejemplar.dataValues.pelo = "Alazan Tostado" 
+                } else if(ejemplar.dataValues.pelo == "O") {    
+                    ejemplar.dataValues.pelo = "Oscuro" 
+                } else if(ejemplar.dataValues.pelo == "M") {    
+                    ejemplar.dataValues.pelo = "Moro" 
+                } else if(ejemplar.dataValues.pelo == "R") {    
+                    ejemplar.dataValues.pelo = "Rosillo" 
+                } else if(ejemplar.dataValues.pelo == "T") {    
+                    ejemplar.dataValues.pelo = "Tordillo" 
+                } else if(ejemplar.dataValues.pelo == "Z") {    
+                    ejemplar.dataValues.pelo = "Zaino" 
+                } else if(ejemplar.dataValues.pelo == "ZD") {   
+                    ejemplar.dataValues.pelo = "Zaino Doradillo"
+                } else {    
+                    ejemplar.dataValues.pelo = "Zaino Negro" 
+                }
+//Continua el código
+
             let ejemplarX = ejemplar.dataValues
             
        async function getTemplateHtml() {

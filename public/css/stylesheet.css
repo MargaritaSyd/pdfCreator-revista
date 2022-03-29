@@ -6,7 +6,7 @@ body{
    
     padding-top: 15;
     padding-left: 30;
-    height: 270mm;
+    height: 255mm;
     border: 2px solid black;
     margin: 20px;
     
@@ -34,4 +34,9 @@ body{
   font-family: Arial;
   font-size: x-small;
   justify-content: space-between;
+}
+.detllesCuidador{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
 }

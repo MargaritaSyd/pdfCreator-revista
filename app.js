@@ -50,6 +50,7 @@ app.use('/' , indexRoutes);
 
 
 
+
 app.get("*", (req,res) => {
 	res.redirect("/error")
 })
