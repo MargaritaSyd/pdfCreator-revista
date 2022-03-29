@@ -20,23 +20,24 @@ let indexController = {
             db.ejemplares.findByPk(req.params.id)
             .then(function(ejemplar){
                 let elCriador = ejemplar.dataValues.criador_id  
-                 db.criadores.findByPk(elCriador)
-                
+                // if (elCriador != 0) {
+                db.criadores.findByPk(elCriador)
+                // } 
 
             .then(function(criador){
-                if(criador.id != 0){
-                    let criadorX = criador.dataValues
-                 
-                } else {
-                    let criadorX = {
+                let criadorX
+                if(!criador){
+                    criadorX = {
                         id: 0,
                         propietario: "N/N",
                         haras: "N/N",
                         banner: "N/N"
                     }
+                } else {
+                    criadorX = criador.dataValues
                 }
-
                 let ejemplarX = ejemplar.dataValues
+
                 res.render("htmlToPdf" , {criadorX , ejemplarX})
            })
         })
@@ -72,7 +73,17 @@ let indexController = {
             db.criadores.findByPk(elCriador)
         
         .then(function(criador){
-            let criadorX = criador.dataValues
+            let criadorX
+                if(!criador){
+                    criadorX = {
+                        id: 0,
+                        propietario: "N/N",
+                        haras: "N/N",
+                        banner: "N/N"
+                    }
+                } else {
+                    criadorX = criador.dataValues
+                }
             let ejemplarX = ejemplar.dataValues
             
        async function getTemplateHtml() {

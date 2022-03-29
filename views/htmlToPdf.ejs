@@ -10,19 +10,69 @@
     <header>
 
     </header>
-    <main id="mainPdf">
+    <main class="mainPdf">
         <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
-            <div id="contentDescriptStud" style="display: flex; flex-wrap: nowrap; flex-direction: column; width: 40%;">
-                <b id="ejemplarNombre"> <%=ejemplarX.nombre%> </b>
+            <div class="contentDescriptStud" style="display: flex; flex-wrap: nowrap; flex-direction: column; width: 40%;">
+                <b class="ejemplarNombre"> <%=ejemplarX.nombre%> </b>
                 <% if(ejemplarX.sexo == "H"){ %>
                 <%    ejemplarX.sexo = "Hembra"%>
                 <%} else {%>
                 <%      ejemplarX.sexo = "Macho" %>
 
                 <%}%>
-                <b id="descriptEjemplar"> <%=ejemplarX.sexo%>, <%=ejemplarX.pelo%>, nacido el <%=ejemplarX.dia_nac%> de <%=ejemplarX.mes_nac%> de <%=ejemplarX.anio_nac%> - <%=ejemplarX.familia%></b>
+                <% if(ejemplarX.pelo == "ZC"){ %>
+                    <% ejemplarX.pelo = "Zaino Colorado" %>
+                <%} else if(ejemplarX.pelo == "A") {%>    
+                    <% ejemplarX.pelo = "Alazan" %>
+                <%} else if(ejemplarX.pelo == "AT") {%>    
+                    <% ejemplarX.pelo = "Alazan Tostado" %>
+                <%} else if(ejemplarX.pelo == "O") {%>    
+                    <% ejemplarX.pelo = "Oscuro" %>
+                <%} else if(ejemplarX.pelo == "M") {%>    
+                    <% ejemplarX.pelo = "Moro" %>
+                <%} else if(ejemplarX.pelo == "R") {%>    
+                    <% ejemplarX.pelo = "Rosillo" %>
+                <%} else if(ejemplarX.pelo == "T") {%>    
+                    <% ejemplarX.pelo = "Tordillo" %>
+                <%} else if(ejemplarX.pelo == "Z") {%>    
+                    <% ejemplarX.pelo = "Zaino" %>
+                <%} else if(ejemplarX.pelo == "ZD") {%>    
+                    <% ejemplarX.pelo = "Zaino Doradillo" %>
+                <%} else {%>    
+                    <% ejemplarX.pelo = "Zaino Negro" %> 
+                <%}%>
+
+                <b class="descriptEjemplar"> <%=ejemplarX.sexo%>, <%=ejemplarX.pelo%>, nacido el <%=ejemplarX.dia_nac%> de <%=ejemplarX.mes_nac%> de <%=ejemplarX.anio_nac%> - <%=ejemplarX.familia%></b>
             </div>
-            <div>
+            <div class="detalleCarrerasCorridas">
+                <div class="cadaDetalleCorrida">
+                    <b> Año </b>
+                    <b> 20-21</b>
+                </div>
+                <div>
+                    <b> Edad</b>
+                    <b>3-4</b>
+                </div>
+                <div>
+                    <b>Corrio</b>
+                    <b> 11 </b>
+                </div>
+                <div>
+                    <b>1º</b>
+                    <b>4</b>
+                </div>
+                <div>
+                    <b>2º</b>
+                    <b>4</b>
+                </div>
+                <div>
+                    <b>3º</b>
+                    <b>4</b>
+                </div>
+                <div>
+                    <b>Premios</b>
+                    <b>$ 3050655</b>
+                </div>
 
             </div>
         </div>

@@ -2,7 +2,7 @@ body{
     width: 190mm;
     height: 270mm;
 }
-#mainPdf{
+.mainPdf{
    
     padding-top: 15;
     padding-left: 30;
@@ -12,14 +12,26 @@ body{
     
 }
 
-#ejemplarNombre{
+.ejemplarNombre{
     font-family: Arial;
     font-size: 24;
     margin-bottom: 10px;
     
 }
-#descriptEjemplar{
+.descriptEjemplar{
     padding-bottom: 10px;
     border-bottom: 2px solid black;
     font-size: 10px;
+}
+.detalleCarrerasCorridas{
+  border-radius: 25px;
+  border: 2px solid black;
+  padding: 20px;
+  width: 40%;
+  height: 10px;
+  display: flex;
+  flex-direction: row;
+  font-family: Arial;
+  font-size: x-small;
+  justify-content: space-between;
 }
