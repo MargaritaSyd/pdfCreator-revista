@@ -40,3 +40,27 @@ body{
     flex-direction: column;
     margin-top: 10px;
 }
+.arbolGContent{
+    display: flex;
+    position: relative;
+    border-radius: 25px;
+    border: 2px solid black;
+    margin-top: 10px;
+    left: 20px;
+    width: 100mm;
+    height: 205px;
+
+
+}
+.arbolG{
+    display: flex; 
+    flex-direction: row; 
+    height: 200px;
+    justify-content: space-between;
+    width: 95mm;
+    margin-top: 20px;
+    margin-left: 10px; 
+}
+.divArbolG{
+    height: 20px;
+}
