@@ -1,10 +1,5 @@
 window.addEventListener("load" , function(){
-    // let ejemplarSexo = document.getElementById("ejemplarSexo")
-    // if(ejemplarSexo.innerHTML == H){
-    // ejemplarSexo = "Hembra"
-    // }else{
-    //   ejemplarSexo = "Macho"
-    // }
-    
-this.alert("ok")
+  let prueba = document.getElementById("prueba")
+
+  prueba.innerHTML = "HOLA"
   })

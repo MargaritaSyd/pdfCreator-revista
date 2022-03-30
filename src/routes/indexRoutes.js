@@ -9,7 +9,6 @@ router.get('/pdf/:id' , indexController.pdfCreator)
 
 
 router.get('/error', indexController.error);
-
-
+//router.get('/api_ejemplares' , indexController.apiEjempalares)
 
 module.exports = router;

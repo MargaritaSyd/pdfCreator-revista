@@ -45,6 +45,7 @@ let funcionEjemplar = function(unId, bd){
 
 
 let indexController = {
+    
     index: function(req,res){
         db.ejemplares.findAll()
         .then(function(ejemplares){
@@ -84,6 +85,16 @@ let indexController = {
         let mAbueloP = funcionEjemplar(mAbueloPId,ejemplares);
         let pAbueloP = funcionEjemplar(pAbueloPId,ejemplares);
  
+        //Encuentra carreras:
+        db.estad_caballo.findAll({
+            where: {
+                ideje: ejemplarX.id
+            }
+        })
+        .then(resultado => {
+            let estadoCaballo = resultado
+        
+        //Encuentra el criador:
         db.criadores.findByPk(ejemplarX.criador_id)
         .then(function(criador){
             let criadorX
@@ -97,16 +108,19 @@ let indexController = {
             } else {
                 criadorX = criador.dataValues
             }
+            console.log(JSON.stringify(estadoCaballo))
                    
-            res.render("htmlToPdf" , {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP  })
+            res.render("htmlToPdf" , {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo  })
         
 
 
         //console.log(ejemplar)
         })
     })
+})
         
     },
+
 
     pdfCreator: function(req,res){
         
@@ -177,13 +191,7 @@ let indexController = {
             } else {
                 ejemplarX.sexo = "Macho"
             }
-                /*
-                if(ejemplar.dataValues.sexo == "H"){
-                    ejemplar.dataValues.sexo = "Hembra"
-                } else {
-                    ejemplar.dataValues.sexo = "Macho"
-                }
-                */
+                
             //Traduccion código pelo en db    
             if(ejemplarX.pelo == "ZC"){
                 ejemplarX.pelo = "Zaino Colorado" 
@@ -258,6 +266,52 @@ let indexController = {
     res.send("ok")
 })
    },
+   /*
+   
+   apiEjempalares: function(req,res){
+       db.ejemplares.findAll()
+       .then(ejemplar => {
+           let ejemplarArray = [];
+           for(let i=0; i<ejemplar.length; i++){
+            let unEjemplar = {
+               id: ejemplar[i].id,
+               nombre: ejemplar[i].nombre, 
+              anio_nac: ejemplar[i].anio_nac,
+              mes_nac: ejemplar[i].mes_nac,
+              dia_nac: ejemplar[i].dia_nac,
+              sexo: ejemplar[i].sexo, 
+              pelo: ejemplar[i].pelo,
+              raza: ejemplar[i].raza,
+              criador_id: ejemplar[i].criador_id,
+              padre_id: ejemplar[i].padre_id,
+              madre_id: ejemplar[i].madre_id,
+              padre: ejemplar[i].padre,
+              madre: ejemplar[i].madre,
+              foto: ejemplar[i].foto,
+              muestra: ejemplar[i].muestra,
+              muestra_ejemplar: ejemplar[i].muestra_ejemplar,
+              muestra_padres: ejemplar[i].muestra_padres,
+              familia: ejemplar[i].familia,
+              debutante: ejemplar[i].debutante,
+   
+           } 
+           ejemplarArray.push(unEjemplar);
+        }
+        return res.status(200).json({
+            count: ejemplarArray.length,
+            ejemplares: ejemplarArray,
+            status: 200
+        })
+       
+           
+       })
+       .catch(function(err){
+           console.log(err)
+       })
+       
+   },
+   */
+
    error: function(req,res) {
        res.send('error');
    }
