@@ -1,7 +1,3 @@
-//let fs = require ('fs');
-////let path = require ('path');
-//let productListPath = path.join(__dirname, '../dataBase/productList.json');
-//let datos = fs.readFileSync (productListPath, 'utf-8');
 let db = require("../database/models");
 let Op = db.Sequelize.Op;
 const fs = require('fs')
@@ -109,88 +105,54 @@ let indexController = {
         //console.log(ejemplar)
         })
     })
-    /*
-            for(let i=0; i<ejemplares.length; i++){
-                if(ejemplares[i].id == id){
-                    unEjemplar = ejemplares[i]
-                }
-            }
-            
-            //console.log(ejemplar.dataValues)
-            let ejemplar = unEjemplar.dataValues;
-            let madreStudId = ejemplar.madre_id;
-            let padreStudId = ejemplar.padre_id;
-            let madreStud
-            let padreStud
-            let abuelaMStud
-            let abueloMStud
-            let abuelaPStud
-            let abueloPstud
-
-        //Datos de la madre del ejemplar
-
-        
-
-            for(let i=0; i<ejemplares.length; i++){
-                if(ejemplares[i].id == madreStudId){
-                    madreStud = ejemplares[i]
-                }
-            }
-            let laMadre = madreStud.dataValues;
-            abuelaMId = laMadre.madre_id;
-            abueloMId = laMadre.padre_id;
-
-        //Datos del padre del ejemplar
-            for(let i=0; i<ejemplares.length; i++){
-                if(ejemplares[i].id == padreStudId){
-                    padreStud = ejemplares[i]
-                }
-            }
-            let elPadre = padreStud.dataValues;
-            abuelaPId = elPadre.madre_id;
-            abueloPId = elPadre.padre_id;
-
-        })
-        */
-        
-        /*
-
-            db.ejemplares.findByPk(req.params.id)
-            .then(function(ejemplar){
-                db.criadores.findByPk(ejemplar.dataValues.criador_id)
-           
-            .then(function(criador){
-                let criadorX
-                if(!criador){
-                    criadorX = {
-                        id: 0,
-                        propietario: "N/N",
-                        haras: "N/N",
-                        banner: "N/N"
-                    }
-                } else {
-                    criadorX = criador.dataValues
-                }
-                let ejemplarX = ejemplar.dataValues
-                
-
-                res.render("htmlToPdf" , {criadorX , ejemplarX})
-           })
-           
-        })
-            
-            .catch(function(err){
-                console.log(err)
-            })
-       */
         
     },
 
     pdfCreator: function(req,res){
+        
+          db.ejemplares.findAll()
+        .then(function(ejemplares){
+            let id = req.params.id
 
-        db.ejemplares.findByPk(req.params.id)
-        .then(function(ejemplar){
-            let elCriador = ejemplar.dataValues.criador_id  
+            let ejemplarX = funcionEjemplar(id,ejemplares); //DATOS DEL EJEMPLAR
+            let madreId = ejemplarX.madre_id;
+            let padreId = ejemplarX.padre_id;
+            let madre = funcionEjemplar(madreId, ejemplares); //DATOS DE LA MADRE DEL EJEMPLAR
+            
+            
+        let abuelaMId = madre.madre_id;
+        let abueloMId = madre.padre_id;
+        let padre = funcionEjemplar(padreId, ejemplares); //DATOS DEL PADRE DEL EJEMPLAR
+        let abuelaPId = padre.madre_id;
+        let abueloPId = padre.padre_id;
+        let abuelaM = funcionEjemplar(abuelaMId,ejemplares); //DATOS ABUELA MATERNA
+        let abueloM = funcionEjemplar(abueloMId,ejemplares); //DATOS ABUELO MATERNO
+        let abuelaP = funcionEjemplar(abuelaPId,ejemplares); //DATOS ABUELA PATERNA
+        let abueloP = funcionEjemplar(abueloPId,ejemplares); //DATOS ABUELO PATERNO
+
+        let mAbuelaMId = abuelaM.madre_id;
+        let pAbuelaMId = abuelaM.padre_id;
+        let mAbueloMId = abueloM.madre_id;
+        let pAbueloMId = abueloM.padre_id;
+        let mAbuelaPId = abuelaP.madre_id;
+        let pAbuelaPId = abuelaP.padre_id;
+        let mAbueloPId = abueloP.madre_id;
+        let pAbueloPId = abueloP.padre_id;
+
+        let mAbuelaM = funcionEjemplar(mAbuelaMId,ejemplares); // DATOS BISABUELXS
+        let pAbuelaM = funcionEjemplar(pAbuelaMId,ejemplares);
+        let mAbueloM = funcionEjemplar(mAbueloMId,ejemplares);
+        let pAbueloM = funcionEjemplar(pAbueloMId,ejemplares);
+        let mAbuelaP = funcionEjemplar(mAbuelaPId,ejemplares);
+        let pAbuelaP = funcionEjemplar(pAbuelaPId,ejemplares);
+        let mAbueloP = funcionEjemplar(mAbueloPId,ejemplares);
+        let pAbueloP = funcionEjemplar(pAbueloPId,ejemplares);
+ 
+
+//        db.ejemplares.findByPk(req.params.id)
+  //      .then(function(ejemplar){
+           // let elCriador = ejemplar.dataValues.criador_id  
+           let elCriador = ejemplarX.criador_id  
 
             db.criadores.findByPk(elCriador)
         
@@ -210,38 +172,44 @@ let indexController = {
                 }
 
             //Traduccion hembra o macho de db
+            if(ejemplarX.sexo == "H"){
+                ejemplarX.sexo = "Hembra"
+            } else {
+                ejemplarX.sexo = "Macho"
+            }
+                /*
                 if(ejemplar.dataValues.sexo == "H"){
                     ejemplar.dataValues.sexo = "Hembra"
                 } else {
                     ejemplar.dataValues.sexo = "Macho"
                 }
+                */
             //Traduccion código pelo en db    
-                if(ejemplar.dataValues.pelo == "ZC"){
-                    ejemplar.dataValues.pelo = "Zaino Colorado" 
-                }else if(ejemplar.dataValues.pelo == "A") {    
-                    ejemplar.dataValues.pelo = "Alazan"
-                } else if(ejemplar.dataValues.pelo == "AT") {    
-                    ejemplar.dataValues.pelo = "Alazan Tostado" 
-                } else if(ejemplar.dataValues.pelo == "O") {    
-                    ejemplar.dataValues.pelo = "Oscuro" 
-                } else if(ejemplar.dataValues.pelo == "M") {    
-                    ejemplar.dataValues.pelo = "Moro" 
-                } else if(ejemplar.dataValues.pelo == "R") {    
-                    ejemplar.dataValues.pelo = "Rosillo" 
-                } else if(ejemplar.dataValues.pelo == "T") {    
-                    ejemplar.dataValues.pelo = "Tordillo" 
-                } else if(ejemplar.dataValues.pelo == "Z") {    
-                    ejemplar.dataValues.pelo = "Zaino" 
-                } else if(ejemplar.dataValues.pelo == "ZD") {   
-                    ejemplar.dataValues.pelo = "Zaino Doradillo"
-                } else {    
-                    ejemplar.dataValues.pelo = "Zaino Negro" 
-                }
+            if(ejemplarX.pelo == "ZC"){
+                ejemplarX.pelo = "Zaino Colorado" 
+            }else if(ejemplarX.pelo == "A") {    
+                ejemplarX.pelo = "Alazan"
+            } else if(ejemplarX.pelo == "AT") {    
+                ejemplarX.pelo = "Alazan Tostado" 
+            } else if(ejemplarX.pelo == "O") {    
+                ejemplarX.pelo = "Oscuro" 
+            } else if(ejemplarX.pelo == "M") {    
+                ejemplarX.pelo = "Moro" 
+            } else if(ejemplarX.pelo == "R") {    
+                ejemplarX.pelo = "Rosillo" 
+            } else if(ejemplarX.pelo == "T") {    
+                ejemplarX.pelo = "Tordillo" 
+            } else if(ejemplarX.pelo == "Z") {    
+                ejemplarX.pelo = "Zaino" 
+            } else if(ejemplarX.pelo == "ZD") {   
+                ejemplarX.pelo = "Zaino Doradillo"
+            } else {    
+                ejemplarX.pelo = "Zaino Negro" 
+            }
+            
 //Continua el código
 
-            let ejemplarX = ejemplar.dataValues
-            
-       async function getTemplateHtml() {
+           async function getTemplateHtml() {
            console.log("Loading template file in memory")
            try {
            const invoicePath = path.resolve("./views/index.ejs");
@@ -252,7 +220,7 @@ let indexController = {
            }
            }
            async function generatePdf() {
-           let data = {ejemplarX , criadorX};
+           let data = {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP};
            getTemplateHtml().then(async (res) => {
            // Now we have the html code of our template in res object
            // you can check by logging it on console
