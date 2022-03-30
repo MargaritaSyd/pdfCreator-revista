@@ -44,39 +44,41 @@
 
                 <b class="descriptEjemplar"> <%=ejemplarX.sexo%>, <%=ejemplarX.pelo%>, nacido el <%=ejemplarX.dia_nac%> de <%=ejemplarX.mes_nac%> de <%=ejemplarX.anio_nac%> - <%=ejemplarX.familia%></b>
             </div>
-            <div class="detalleCarrerasCorridas">
-                <div class="cadaDetalleCorrida">
-                    <b> Año </b>
-                    <b> 20-21</b>
-                </div>
-                <div>
-                    <b> Edad</b>
-                    <b>3-4</b>
-                </div>
-                <div>
-                    <b>Corrio</b>
-                    <b> 11 </b>
-                </div>
-                <div>
-                    <b>1º</b>
-                    <b>4</b>
-                </div>
-                <div>
-                    <b>2º</b>
-                    <b>4</b>
-                </div>
-                <div>
-                    <b>3º</b>
-                    <b>4</b>
-                </div>
-                <div>
-                    <b>Premios</b>
-                    <b>$ 3050655</b>
-                </div>
+            <div class="borderContentCarreras">
+                <div class="detalleCarrerasCorridas">
+                    <div class="cadaDetalleCorrida">
+                        <b> Año </b>
+                        <b> 20-21</b>
+                    </div>
+                    <div>
+                        <b> Edad</b>
+                        <b>3-4</b>
+                    </div>
+                    <div>
+                        <b>Corrio</b>
+                        <b> 11 </b>
+                    </div>
+                    <div>
+                        <b>1º</b>
+                        <b>4</b>
+                    </div>
+                    <div>
+                        <b>2º</b>
+                        <b>4</b>
+                    </div>
+                    <div>
+                        <b>3º</b>
+                        <b>4</b>
+                    </div>
+                    <div>
+                        <b>Premios</b>
+                        <b>$ 3050655</b>
+                    </div>
 
+                </div>
             </div>
         </div>
-        <div class="contenedorCuidador+Arbol" style="display: flex; flex-direction: row;">
+        <div class="contenedorCuidadorArbol" >
             <div class="detllesCuidador">
                 <b> Caballeriza: <%=criadorX.haras%> </b>
                 <b> Criador: <%=criadorX.propietario%> </b>
@@ -84,35 +86,46 @@
             </div>
             <div class="arbolGContent">
                 <div class="arbolG">
-                    <div class="mapa">
-                        <div class="divArbolG" ;"></div>
-                        <div class="divArbolG"></div>
-                        <div class="divArbolG"></div>
+                    <div class="mapa">                        
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolGAbu"></div>
                         <div class="divArbolG"> <b><%=madre.nombre%></b></div>
-                        <div class="divArbolG"> <b>Papa</b></div>
-                        <div class="divArbolG"></div>
-                        <div class="divArbolG"></div>
-                        <div class="divArbolG"></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolG"> <b><%=padre.nombre%></b></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolGAbu"></div>
+
                     </div>
                     <div class="abue">
-                        <div class="divArbolG"></div>
-                        <div class="divArbolG"></div>
-                        <div class="divArbolG"> <b>Abuela Materna</b></div>
-                        <div class="divArbolG"> <b>Abuelo Materno</b></div>
-                        <div class="divArbolG"> <b>Abuela Paterna</b></div>
-                        <div class="divArbolG"> <b>Abuelo Paterno</b></div>
-                        <div class="divArbolG"></div>
-                        <div class="divArbolG"></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolG"> <b><%=abuelaM.nombre%></b></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolG"> <b><%=abueloM.nombre%></b></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolG"> <b><%=abuelaP.nombre%></b></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolGAbu"></div>
+                        <div class="divArbolG"> <b><%=abueloP.nombre%></b></div>
+                        <div class="divArbolGAbu"></div>
                     </div>
                     <div class="bisa">
-                        <div class="divArbolG"><b>Mama Abuela Materna</b></div>
-                        <div class="divArbolG"><b>Papa Abuela Materna</b></div>
-                        <div class="divArbolG"><b>Mama Abuelo Materno</b></div>
-                        <div class="divArbolG"><b>Papa Abuelo Materno</b></div>
-                        <div class="divArbolG"> <b>Mama Abuela Paterna</b></div>
-                        <div class="divArbolG"><b>Papa Abuela Paterna</b></div>
-                        <div class="divArbolG"><b>Mama Abuelo Paterno</b></div>
-                        <div class="divArbolG"><b>Papa Abuelo Paterno</b></div>
+                        <div class="divArbolG"><b><%=mAbuelaM.nombre%></b></div>
+                        <div class="divArbolG"><b><%=pAbuelaM.nombre%></b></div>
+                        <div class="divArbolG"><b><%=mAbueloM.nombre%></b></div>
+                        <div class="divArbolG"><b><%=pAbueloM.nombre%></b></div>
+                        <div class="divArbolG"> <b><%=mAbuelaP.nombre%></b></div>
+                        <div class="divArbolG"><b><%=pAbuelaP.nombre%></b></div>
+                        <div class="divArbolG"><b><%=mAbueloP.nombre%></b></div>
+                        <div class="divArbolG"><b><%=pAbueloP.nombre%></b></div>
                     </div>
                 </div>
             </div>

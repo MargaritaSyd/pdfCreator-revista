@@ -23,22 +23,35 @@ body{
     border-bottom: 2px solid black;
     font-size: 10px;
 }
+.borderContentCarreras{
+    border-radius: 25px;
+    border: 2px solid black;
+    width: 40%;
+ 
+    
+}
 .detalleCarrerasCorridas{
-  border-radius: 25px;
-  border: 2px solid black;
   padding: 20px;
-  width: 40%;
   height: 10px;
   display: flex;
   flex-direction: row;
   font-family: Arial;
   font-size: x-small;
   justify-content: space-between;
+  position: relative;
+  left: 10px;
+  top:-5px
 }
 .detllesCuidador{
     display: flex;
     flex-direction: column;
     margin-top: 10px;
+    width: 60mm;
+}
+.contenedorCuidadorArbol{
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-around;
 }
 .arbolGContent{
     display: flex;
@@ -46,7 +59,6 @@ body{
     border-radius: 25px;
     border: 2px solid black;
     margin-top: 10px;
-    left: 20px;
     width: 100mm;
     height: 205px;
 
@@ -58,9 +70,18 @@ body{
     height: 200px;
     justify-content: space-between;
     width: 95mm;
-    margin-top: 20px;
     margin-left: 10px; 
 }
 .divArbolG{
     height: 20px;
+    padding: 2px;
+    font-size: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.divArbolGAbu{
+    height: 10px;
+    padding: 2px;
+    font-size: 12;
 }
