@@ -4,7 +4,8 @@ const fs = require('fs')
 const path = require('path')
 const utils = require('util')
 const puppeteer = require('puppeteer')
-const hb = require('handlebars')
+const hb = require('handlebars');
+const { json } = require("express/lib/response");
 const readFile = utils.promisify(fs.readFile)
 
 let funcionEjemplar = function(unId, bd){
@@ -93,7 +94,7 @@ let indexController = {
         })
         .then(resultado => {
             let estadoCaballo = resultado
-        
+            
         //Encuentra el criador:
         db.criadores.findByPk(ejemplarX.criador_id)
         .then(function(criador){
@@ -118,6 +119,9 @@ let indexController = {
         })
     })
 })
+.catch(function(err){
+    console.log(err)
+})
         
     },
 
@@ -129,6 +133,7 @@ let indexController = {
             let id = req.params.id
 
             let ejemplarX = funcionEjemplar(id,ejemplares); //DATOS DEL EJEMPLAR
+            let anioNac = ejemplarX.anio_nac
             let madreId = ejemplarX.madre_id;
             let padreId = ejemplarX.padre_id;
             let madre = funcionEjemplar(madreId, ejemplares); //DATOS DE LA MADRE DEL EJEMPLAR
@@ -162,10 +167,23 @@ let indexController = {
         let mAbueloP = funcionEjemplar(mAbueloPId,ejemplares);
         let pAbueloP = funcionEjemplar(pAbueloPId,ejemplares);
  
+        //Encuentra carreras:
+        db.estad_caballo.findAll({
+            where: {
+                ideje: ejemplarX.id
+            }
+        })
+        .then(resultado => {
+           // let estadoCaballo = resultado
+            let firstYear = resultado[0].anio
+            let lastYear = resultado[resultado.length-1].anio
+            let ultimoAnio =  JSON.stringify(lastYear).slice(2)
+            let anio0 = JSON.stringify(firstYear).slice(2)
+            let edad0 = anio0 - anioNac
+            let ultimoEdad = ultimoAnio - anioNac
+            
+        //Encuentra el criador:
 
-//        db.ejemplares.findByPk(req.params.id)
-  //      .then(function(ejemplar){
-           // let elCriador = ejemplar.dataValues.criador_id  
            let elCriador = ejemplarX.criador_id  
 
             db.criadores.findByPk(elCriador)
@@ -228,12 +246,13 @@ let indexController = {
            }
            }
            async function generatePdf() {
-           let data = {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP};
+           let data = {criadorX ,anio0, edad0, ultimoEdad, ultimoAnio, ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP};
            getTemplateHtml().then(async (res) => {
            // Now we have the html code of our template in res object
            // you can check by logging it on console
            // console.log(res)
            console.log("Compiing the template with handlebars")
+           
            const template = hb.compile(res, { strict: true });
            // we have compile our code with handlebars
            const result = template(data);
@@ -260,7 +279,8 @@ let indexController = {
            }
            generatePdf();
        //res.render("index");
-   })
+     })
+    })
 })
 .then(function(){
     res.send("ok")
