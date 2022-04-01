@@ -96,6 +96,49 @@ let indexController = {
         })
         .then(resultado => {
              estadoCaballo = resultado
+
+             
+            let arrayLargadas = []
+            let arrayGanadas = []
+            let arraySegundos = []
+            let arrayTerceros = []
+            let arrayPremios = []
+
+            for(let i=0; i<estadoCaballo.length; i++){
+                arrayLargadas.push(estadoCaballo[i].largadas);
+                arrayLargadas.push(estadoCaballo[i].largadas_lpa);
+                arrayLargadas.push(estadoCaballo[i].largadas_pal);
+                arrayLargadas.push(estadoCaballo[i].largadas_sis);
+
+                arrayGanadas.push(estadoCaballo[i].ganadas);
+                arrayGanadas.push(estadoCaballo[i].ganadas_lpa);
+                arrayGanadas.push(estadoCaballo[i].ganadas_pal);
+                arrayGanadas.push(estadoCaballo[i].ganadas_sis);
+
+                arraySegundos.push(estadoCaballo[i].segundos);
+                arraySegundos.push(estadoCaballo[i].segundos_lpa);
+                arraySegundos.push(estadoCaballo[i].segundos_pal);
+                arraySegundos.push(estadoCaballo[i].segundos_sis);
+
+                arrayTerceros.push(estadoCaballo[i].terceros);
+                arrayTerceros.push(estadoCaballo[i].terceros_lpa);
+                arrayTerceros.push(estadoCaballo[i].terceros_pal);
+                arrayTerceros.push(estadoCaballo[i].terceros_sis);
+
+                arrayPremios.push(estadoCaballo[i].importe);
+                 arrayPremios.push(estadoCaballo[i].importe_lpa);
+                 arrayPremios.push(estadoCaballo[i].importe_pal);
+                 arrayPremios.push(estadoCaballo[i].importe_sis);
+ 
+                
+            }
+            const totalLargadas = arrayLargadas.reduce((a,b)=> a+b);
+            const totalGanadas = arrayGanadas.reduce((c,d)=> c+d);
+            const totalSegundos = arraySegundos.reduce((e,f)=> e+f);
+            const totalTerceros = arrayTerceros.reduce((g,h)=> g+h);
+            const totalPremios = arrayPremios.reduce((g,h)=> g+h);
+         
+             
    
             
         //Encuentra el criador:
@@ -114,7 +157,7 @@ let indexController = {
             }
             console.log(JSON.stringify(estadoCaballo))
                    
-            res.render("htmlToPdf" , {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo  })
+            res.render("htmlToPdf" , {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalPremios, totalSegundos, totalTerceros  })
         
 
             console.log(estadoCaballo)
@@ -195,6 +238,7 @@ let indexController = {
             let arrayGanadas = []
             let arraySegundos = []
             let arrayTerceros = []
+            let arrayPremios = []
 
             for(let i=0; i<resultado.length; i++){
                 arrayLargadas.push(resultado[i].largadas);
@@ -217,13 +261,18 @@ let indexController = {
                 arrayTerceros.push(resultado[i].terceros_pal);
                 arrayTerceros.push(resultado[i].terceros_sis);
 
-                
+                arrayPremios.push(resultado[i].importe);
+                 arrayPremios.push(resultado[i].importe_lpa);
+                 arrayPremios.push(resultado[i].importe_pal);
+                 arrayPremios.push(resultado[i].importe_sis);
+ 
                 
             }
             const totalLargadas = arrayLargadas.reduce((a,b)=> a+b);
-            const totalGanadas = arrayGanadas.reduce((a,b)=> a+b);
-            const totalSegundos = arraySegundos.reduce((a,b)=> a+b);
-            const totalTerceros = arraySegundos.reduce((a,b)=> a+b);
+            const totalGanadas = arrayGanadas.reduce((c,d)=> c+d);
+            const totalSegundos = arraySegundos.reduce((e,f)=> e+f);
+            const totalTerceros = arrayTerceros.reduce((g,h)=> g+h);
+            const totalPremios = arrayPremios.reduce((g,h)=> g+h);
             
         //Encuentra el criador:
 
@@ -289,7 +338,7 @@ let indexController = {
            }
            }
            async function generatePdf() {
-           let data = {criadorX, totalLargadas, totalGanadas, totalTerceros, totalSegundos, anio0, edad0, ultimoEdad, ultimoAnio, ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP};
+           let data = {criadorX, totalLargadas, totalGanadas, totalTerceros, totalSegundos, totalPremios, anio0, edad0, ultimoEdad, ultimoAnio, ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP};
            getTemplateHtml().then(async (res) => {
            // Now we have the html code of our template in res object
            // you can check by logging it on console
@@ -315,7 +364,7 @@ let indexController = {
            })
            await browser.close();
            //console.log("PDF Generated")
-           console.log(totalTerceros)
+           console.log(arrayTerceros)
            }).catch(err => {
            console.error(err)
            });
