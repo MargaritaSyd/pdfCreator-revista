@@ -6,6 +6,7 @@ const utils = require('util')
 const puppeteer = require('puppeteer')
 const hb = require('handlebars');
 const { json } = require("express/lib/response");
+const estad_caballo = require("../database/models/estad_caballo");
 const readFile = utils.promisify(fs.readFile)
 
 let funcionEjemplar = function(unId, bd){
@@ -87,13 +88,15 @@ let indexController = {
         let pAbueloP = funcionEjemplar(pAbueloPId,ejemplares);
  
         //Encuentra carreras:
+        let estadoCaballo
         db.estad_caballo.findAll({
             where: {
                 ideje: ejemplarX.id
             }
         })
         .then(resultado => {
-            let estadoCaballo = resultado
+             estadoCaballo = resultado
+   
             
         //Encuentra el criador:
         db.criadores.findByPk(ejemplarX.criador_id)
@@ -114,7 +117,7 @@ let indexController = {
             res.render("htmlToPdf" , {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo  })
         
 
-
+            console.log(estadoCaballo)
         //console.log(ejemplar)
         })
     })
@@ -175,12 +178,23 @@ let indexController = {
         })
         .then(resultado => {
            // let estadoCaballo = resultado
+           // carreras corridas por el caballo
+           //edad:
             let firstYear = resultado[0].anio
             let lastYear = resultado[resultado.length-1].anio
             let ultimoAnio =  JSON.stringify(lastYear).slice(2)
             let anio0 = JSON.stringify(firstYear).slice(2)
-            let edad0 = anio0 - anioNac
-            let ultimoEdad = ultimoAnio - anioNac
+            let edad0 = firstYear - anioNac
+            let ultimoEdad = lastYear - anioNac
+            //cantidad de carreras corridas:
+            //let largadas = resultado[0].largadas
+            //let largadasLPA = resultado[0].largadas_lpa
+            //let largadasPAL = resultado[0].largadas_pal
+            //let largadasSIS = resultado[0].largadas_sis
+            let arrayLargadas = []
+            for(let i=0; i<resultado.length; i++){
+                arrayLargadas.push(resultado[i].largadas)
+            }
             
         //Encuentra el criador:
 
@@ -271,8 +285,8 @@ let indexController = {
                // format: 'A4' 
            })
            await browser.close();
-           console.log("PDF Generated")
-           
+           //console.log("PDF Generated")
+           console.log(arrayLargadas)
            }).catch(err => {
            console.error(err)
            });

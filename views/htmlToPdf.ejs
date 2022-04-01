@@ -45,37 +45,39 @@
                 <b class="descriptEjemplar"> <%=ejemplarX.sexo%>, <%=ejemplarX.pelo%>, nacido el <%=ejemplarX.dia_nac%> de <%=ejemplarX.mes_nac%> de <%=ejemplarX.anio_nac%> - <%=ejemplarX.familia%></b>
             </div>
             <div class="borderContentCarreras">
+               
                 <div class="detalleCarrerasCorridas">
-                    <div style="display: flex; flex-direction: column; width: 12%;">
+                    <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
                         <b> Año </b>
                         <b> <%= JSON.stringify(estadoCaballo[0].anio).slice(2)%>-<%= JSON.stringify(estadoCaballo[estadoCaballo.length-1].anio).slice(2)%></b>
                     </div>
-                    <div style="display: flex; flex-direction: column; width: 12%;">
+                    <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
                         <b> Edad</b>
                         <b><%= estadoCaballo[0].anio - ejemplarX.anio_nac%> - <%=estadoCaballo[estadoCaballo.length-1].anio- ejemplarX.anio_nac%></b>
                     </div>
-                    <div style="display: flex; flex-direction: column; width: 12%;">
+                    <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
                         <b>Corrio</b>
                         <b> 11 </b>
                     </div>
-                    <div style="display: flex; flex-direction: column; width: 12%;">
+                    <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
                         <b>1º</b>
                         <b>4</b>
                     </div>
-                    <div style="display: flex; flex-direction: column; width: 12%;">
+                    <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
                         <b>2º</b>
                         <b>4</b>
                     </div>
-                    <div style="display: flex; flex-direction: column; width: 12%;">
+                    <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
                         <b>3º</b>
                         <b>4</b>
                     </div>
-                    <div style="display: flex; flex-direction: column; width: 28%;">
+                    <div class="premioDetalleCarreras" style="display: flex; flex-direction: column; width: 25%;">
                         <b>Premios</b>
                         <b>$ 3050655</b>
                     </div>
 
                 </div>
+               
             </div>
         </div>
         <div class="contenedorCuidadorArbol" >
