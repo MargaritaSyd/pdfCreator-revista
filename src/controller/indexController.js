@@ -192,9 +192,38 @@ let indexController = {
             //let largadasPAL = resultado[0].largadas_pal
             //let largadasSIS = resultado[0].largadas_sis
             let arrayLargadas = []
+            let arrayGanadas = []
+            let arraySegundos = []
+            let arrayTerceros = []
+
             for(let i=0; i<resultado.length; i++){
-                arrayLargadas.push(resultado[i].largadas)
+                arrayLargadas.push(resultado[i].largadas);
+                arrayLargadas.push(resultado[i].largadas_lpa);
+                arrayLargadas.push(resultado[i].largadas_pal);
+                arrayLargadas.push(resultado[i].largadas_sis);
+
+                arrayGanadas.push(resultado[i].ganadas);
+                arrayGanadas.push(resultado[i].ganadas_lpa);
+                arrayGanadas.push(resultado[i].ganadas_pal);
+                arrayGanadas.push(resultado[i].ganadas_sis);
+
+                arraySegundos.push(resultado[i].segundos);
+                arraySegundos.push(resultado[i].segundos_lpa);
+                arraySegundos.push(resultado[i].segundos_pal);
+                arraySegundos.push(resultado[i].segundos_sis);
+
+                arrayTerceros.push(resultado[i].terceros);
+                arrayTerceros.push(resultado[i].terceros_lpa);
+                arrayTerceros.push(resultado[i].terceros_pal);
+                arrayTerceros.push(resultado[i].terceros_sis);
+
+                
+                
             }
+            const totalLargadas = arrayLargadas.reduce((a,b)=> a+b);
+            const totalGanadas = arrayGanadas.reduce((a,b)=> a+b);
+            const totalSegundos = arraySegundos.reduce((a,b)=> a+b);
+            const totalTerceros = arraySegundos.reduce((a,b)=> a+b);
             
         //Encuentra el criador:
 
@@ -260,7 +289,7 @@ let indexController = {
            }
            }
            async function generatePdf() {
-           let data = {criadorX ,anio0, edad0, ultimoEdad, ultimoAnio, ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP};
+           let data = {criadorX, totalLargadas, totalGanadas, totalTerceros, totalSegundos, anio0, edad0, ultimoEdad, ultimoAnio, ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP};
            getTemplateHtml().then(async (res) => {
            // Now we have the html code of our template in res object
            // you can check by logging it on console
@@ -286,7 +315,7 @@ let indexController = {
            })
            await browser.close();
            //console.log("PDF Generated")
-           console.log(arrayLargadas)
+           console.log(totalTerceros)
            }).catch(err => {
            console.error(err)
            });
