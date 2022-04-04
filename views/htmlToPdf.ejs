@@ -85,6 +85,10 @@
                 <b> Caballeriza: <%=criadorX.haras%> </b>
                 <b> Criador: <%=criadorX.propietario%> </b>
                 <b> Cuidador: </b>
+                <div >
+                    <div style="display: flex; flex-direction: row; font-size: x-small;"><p>Por <b><%=padre.nombre%></b>(<%=padre.anio_nac%>)(<%=padre.padre%>)</p></div>
+                    <input type="text" style="width: auto; height: 100px;"> 
+                </div>
             </div>
             <div class="arbolGContent">
                 <div class="arbolG">
@@ -129,6 +133,54 @@
                         <div class="divArbolG"><b><%=mAbueloP.nombre%></b></div>
                         <div class="divArbolG"><b><%=pAbueloP.nombre%></b></div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; flex-wrap: nowrap;font-size: x-small; flex-direction: row;">
+            <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;">
+                <div>
+                    <p><b style="border-bottom: 1px solid black ;">1a. madre:</b><%=madre.nombre%> (<%= madre.anio_nac%>) (<%=madre.padre%>) ***** </p>
+                    <p> Madre de </p>
+                    <% for(let i=0; i<hijos1Madre.length; i++){%>
+                        <p><%= hijos1Madre[i].anio_nac%> - <%=hijos1Madre[i].nombre %></p>
+                    <%}%>       
+                </div>
+                <div>
+                    <p><b style="border-bottom: 1px solid black ;">2a. madre:</b><%=abuelaM.nombre%> (<%= abuelaM.anio_nac%>) (<%=abuelaM.padre%>) ***** </p>
+                    <p> Madre de </p>
+                    <% for(let i=0; i<hijos2Madre.length; i++){%>
+                        <p><%= hijos2Madre[i].anio_nac%> - <%=hijos2Madre[i].nombre %></p>
+                    <%}%>       
+                </div>
+            </div>
+            <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;">
+                <div>
+                    <p><b style="border-bottom: 1px solid black ;">3a. madre:</b><%=abuelaM.nombre%> (<%= mAbuelaM.anio_nac%>) (<%=mAbuelaM.padre%>) ***** </p>
+                    <p> Madre de </p>
+                    <% for(let i=0; i<hijos3Madre.length; i++){%>
+                        <p><%= hijos3Madre[i].anio_nac%> - <%=hijos3Madre[i].nombre %></p>
+                    <%}%>       
+                </div>
+                <div>
+                    <p><b style="border-bottom: 1px solid black ;">4a. madre:</b><%=madre4.nombre%> (<%= madre4.anio_nac%>) (<%=madre4.padre%>) ***** </p>
+                    <p> Madre de </p>
+                    <% for(let i=0; i<hijos4Madre.length; i++){%>
+                        <p><%= hijos4Madre[i].anio_nac%> - <%=hijos4Madre[i].nombre %></p>
+                    <%}%>       
+                </div>
+                <div>
+                    <p><b style="border-bottom: 1px solid black ;">5a. madre:</b><%=madre5.nombre%> (<%= madre5.anio_nac%>) (<%=madre5.padre%>) ***** </p>
+                    <p> Madre de </p>
+                    <% for(let i=0; i<hijos5Madre.length; i++){%>
+                        <p><%= hijos5Madre[i].anio_nac%> - <%=hijos5Madre[i].nombre %></p>
+                    <%}%>       
+                </div>
+                <div>
+                    <p><b style="border-bottom: 1px solid black ;">6a. madre:</b><%=madre6.nombre%> (<%= madre6.anio_nac%>) (<%=madre6.padre%>) ***** </p>
+                    <p> Madre de </p>
+                    <% for(let i=0; i<hijos6Madre.length; i++){%>
+                        <p><%= hijos6Madre[i].anio_nac%> - <%=hijos6Madre[i].nombre %></p>
+                    <%}%>       
                 </div>
             </div>
         </div>

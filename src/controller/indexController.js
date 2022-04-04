@@ -9,6 +9,16 @@ const { json } = require("express/lib/response");
 const estad_caballo = require("../database/models/estad_caballo");
 const readFile = utils.promisify(fs.readFile)
 
+let funcionEjemplareshijos = function(id , bd){
+    let hijos = [];
+    for(let i=0; i<bd.length; i++){
+        if(bd[i].madre_id == id){
+            hijos.push(bd[i].dataValues)
+        }
+    }
+return hijos
+}
+
 let funcionEjemplar = function(unId, bd){
     let result 
     if(unId == 0){
@@ -57,6 +67,8 @@ let indexController = {
         let madreId = ejemplarX.madre_id;
         let padreId = ejemplarX.padre_id;
         let madre = funcionEjemplar(madreId, ejemplares); //DATOS DE LA MADRE DEL EJEMPLAR
+        
+        let hijos1Madre = funcionEjemplareshijos(madreId , ejemplares)
 
         
         let abuelaMId = madre.madre_id;
@@ -68,6 +80,10 @@ let indexController = {
         let abueloM = funcionEjemplar(abueloMId,ejemplares); //DATOS ABUELO MATERNO
         let abuelaP = funcionEjemplar(abuelaPId,ejemplares); //DATOS ABUELA PATERNA
         let abueloP = funcionEjemplar(abueloPId,ejemplares); //DATOS ABUELO PATERNO
+        
+        let hijos2Madre = funcionEjemplareshijos(abuelaMId , ejemplares)
+
+
 
         let mAbuelaMId = abuelaM.madre_id;
         let pAbuelaMId = abuelaM.padre_id;
@@ -86,6 +102,19 @@ let indexController = {
         let pAbuelaP = funcionEjemplar(pAbuelaPId,ejemplares);
         let mAbueloP = funcionEjemplar(mAbueloPId,ejemplares);
         let pAbueloP = funcionEjemplar(pAbueloPId,ejemplares);
+        
+        let madre4Id = mAbuelaM.madre_id
+        let madre4 = funcionEjemplar(madre4Id,ejemplares); // DATOS BISABUELXS
+        let madre5Id = madre4.madre_id
+        let madre5 = funcionEjemplar(madre5Id, ejemplares);
+        let madre6Id = madre5.madre_id
+        let madre6 = funcionEjemplar(madre6Id , ejemplares);
+        
+        let hijos3Madre = funcionEjemplareshijos(mAbuelaMId , ejemplares);
+        let hijos4Madre = funcionEjemplareshijos(madre4Id, ejemplares);
+        let hijos5Madre = funcionEjemplareshijos(madre5Id , ejemplares);
+        let hijos6Madre = funcionEjemplareshijos(madre6Id, ejemplares);
+
  
         //Encuentra carreras:
         let estadoCaballo
@@ -157,10 +186,10 @@ let indexController = {
             }
             console.log(JSON.stringify(estadoCaballo))
                    
-            res.render("htmlToPdf" , {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalPremios, totalSegundos, totalTerceros  })
+            res.render("htmlToPdf" , {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalPremios, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
         
 
-            console.log(estadoCaballo)
+           // console.log()
         //console.log(ejemplar)
         })
     })
