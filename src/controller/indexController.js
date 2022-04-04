@@ -212,7 +212,7 @@ let indexController = {
             let madreId = ejemplarX.madre_id;
             let padreId = ejemplarX.padre_id;
             let madre = funcionEjemplar(madreId, ejemplares); //DATOS DE LA MADRE DEL EJEMPLAR
-            
+            let hijos1Madre = funcionEjemplareshijos(madreId , ejemplares)
             
         let abuelaMId = madre.madre_id;
         let abueloMId = madre.padre_id;
@@ -242,6 +242,20 @@ let indexController = {
         let mAbueloP = funcionEjemplar(mAbueloPId,ejemplares);
         let pAbueloP = funcionEjemplar(pAbueloPId,ejemplares);
  
+        let hijos2Madre = funcionEjemplareshijos(abuelaMId , ejemplares)
+        let madre4Id = mAbuelaM.madre_id
+        let madre4 = funcionEjemplar(madre4Id,ejemplares); // DATOS BISABUELXS
+        let madre5Id = madre4.madre_id
+        let madre5 = funcionEjemplar(madre5Id, ejemplares);
+        let madre6Id = madre5.madre_id
+        let madre6 = funcionEjemplar(madre6Id , ejemplares);
+        
+        let hijos3Madre = funcionEjemplareshijos(mAbuelaMId , ejemplares);
+        let hijos4Madre = funcionEjemplareshijos(madre4Id, ejemplares);
+        let hijos5Madre = funcionEjemplareshijos(madre5Id , ejemplares);
+        let hijos6Madre = funcionEjemplareshijos(madre6Id, ejemplares);
+
+
         //Encuentra carreras:
         db.estad_caballo.findAll({
             where: {
@@ -367,7 +381,7 @@ let indexController = {
            }
            }
            async function generatePdf() {
-           let data = {criadorX, totalLargadas, totalGanadas, totalTerceros, totalSegundos, totalPremios, anio0, edad0, ultimoEdad, ultimoAnio, ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP};
+           let data = {criadorX, totalLargadas, totalGanadas, totalTerceros, totalSegundos, totalPremios, anio0, edad0, ultimoEdad, ultimoAnio, ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6 };
            getTemplateHtml().then(async (res) => {
            // Now we have the html code of our template in res object
            // you can check by logging it on console
