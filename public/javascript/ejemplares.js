@@ -1,5 +1,4 @@
 window.addEventListener("load" , function(){
-  let prueba = document.getElementById("prueba")
-
-  prueba.innerHTML = "HOLA"
+let input = document.getElementById("413301")
+alert(input.innerHTML)
   })
