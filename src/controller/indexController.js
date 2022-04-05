@@ -324,7 +324,7 @@ let indexController = {
 
            let elCriador = ejemplarX.criador_id  
 
-            db.criadores.findByPk(elCriador)
+        db.criadores.findByPk(elCriador)
         
         .then(function(criador){
             let criadorX

@@ -292,6 +292,7 @@
                     {{# each hijos1Madre }}
                         <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}}) </p>
                     {{/ each}}       
+                    {{inputs.1madre}}
                 </div>
                 <div>
                     <p><b style="border-bottom: 1px solid black ;">2a. madre:</b>{{abuelaM.nombre}} ({{abuelaM.anio_nac}}) ({{abuelaM.padre}}) </p>
@@ -299,6 +300,7 @@
                     {{# each hijos2Madre }}
                         <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}}) </p>
                     {{/ each}}       
+                    {{inputs.2madre}}
                 </div>
 
             </div>
@@ -308,7 +310,9 @@
                     <p> Madre de </p>
                     {{# each hijos3Madre }}
                         <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}})</p>
-                    {{/ each}}       
+                        
+                    {{/ each}}
+                    {{inputs.3madre}}
                 </div>
                 <div>
                     <p><b style="border-bottom: 1px solid black ;">4a. madre:</b>{{madre4.nombre}} ({{madre4.anio_nac}}) ({{madre4.padre}}) </p>
@@ -316,20 +320,23 @@
                     {{# each hijos4Madre }}
                         <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}})</p>
                     {{/ each}}       
+                    {{inputs.4madre}}
                 </div>
                 <div>
                     <p><b style="border-bottom: 1px solid black ;">5a. madre:</b>{{madre5.nombre}} ({{madre5.anio_nac}}) ({{madre5.padre}}) </p>
                     <p> Madre de </p>
                     {{# each hijos5Madre }}
                         <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}})</p>
-                    {{/ each}}       
+                    {{/ each}}      
+                    {{inputs.5madre}} 
                 </div>
                 <div>
                     <p><b style="border-bottom: 1px solid black ;">6a. madre:</b>{{madre6.nombre}} ({{madre6.anio_nac}}) ({{madre6.padre}})</p>
                     <p> Madre de </p>
                     {{# each hijos6Madre }}
                         <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}}) </p>
-                    {{/ each}}       
+                    {{/ each}}    
+                    {{inputs.6madre}}   
                 </div>
             </div>
         </div>
