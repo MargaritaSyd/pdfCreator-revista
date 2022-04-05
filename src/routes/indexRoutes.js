@@ -9,7 +9,7 @@ router.get('/:id' , indexController.index);
 
 router.post('/pdf/:id' , indexController.pdfCreator)
 
-router.post('/pf/:id' , indexController.pfCreator)
+router.post('/pdf2/:id' , indexController.pdfCreator)
 
 
 router.get('/error', indexController.error);

@@ -43,7 +43,7 @@
                         <b> Edad</b>
                         <b>{{edad0}}-{{ultimoEdad}}</b>
                     </div>
-                    <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
+                    <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 15%;">
                         <b>Corrio</b>
                         <b> {{totalLargadas}} </b>
                     </div>
@@ -59,7 +59,7 @@
                         <b>3º</b>
                         <b>{{totalTerceros}}</b>
                     </div>
-                    <div class="premioDetalleCarreras" style="display: flex; flex-direction: column; width: 25%;">
+                    <div class="premioDetalleCarreras" style="display: flex; flex-direction: column; width: 22%;">
                         <b>Premios</b>
                         <b>$ {{totalPremios}}</b>
                     </div>
@@ -73,13 +73,12 @@
             flex-direction: column;
             margin-top: 10px;
             width: 60mm;">
-                <b> Caballeriza: {{criadorX.haras}} </b>
-                <b> Criador: {{criadorX.propietario}} </b>
-                <b> Cuidador: </b>
-                <div >
-                    <div style="display: flex; flex-direction: row; font-size: x-small;"><p>Por <b>{{padre.nombre}}</b>({{padre.anio_nac}})({{padre.padre}})</p></div>
-                    <input type="text" style="width: auto; height: 100px;"> 
-                </div>
+                <b> Caballeriza: {{criadorX.haras}} {{inputs.caballeriza}}</b>
+                <b> Criador: {{criadorX.propietario}} {{inputs.criador}} </b>
+                <b> Cuidador: {{inputs.cuidador}}</b>
+                <div style="font-size: x-small;">
+                   <p> {{inputs.infoPadrillo}} </p>
+                 </div>
             </div>
             <div class="arbolGContent" 
             style="display: flex;
@@ -285,55 +284,59 @@
             </div>
         </div>
 
-        <div style="display: flex; flex-wrap: nowrap;font-size: x-small; flex-direction: row;">
+        <div style="display: flex; flex-wrap: nowrap;font-size: xx-small; flex-direction: row;">
             <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;">
                 <div>
-                   <p>Por <b>WINNING PRIZE</b> (2009) (Pure Prize), <b>“Mejor 2 años macho”</b>, <b>“Mejor Millero”</b>, gdor. de 5 cs. en San Isidro, incl. GP Joaquín S. de Anchorena (G1), GP Gran Criterium (G1), GP Raúl y Raúl E. Chevalier (G1), Candy Ride (NG), 2º GP Dos Mil Guineas (G1). En USA gdor. de 3 cs. en Del Mar y Santa Anita, incl.. Frank E. Kilroe Mile Stakes (G1), Arcadia Stakes (G2), 2º Thunder Road S. (L), Wickerr S., 3º Citation H. (G2), 4º Shoemaker Mile S. (G1), Shadwell Turf Mile S. (G1), American S. (G3), 5º Frank E. Kilroe Mile Stakes (G1). Padre de 116 hijos en edad de correr, corrieron 48, 25 gdres, gdres clás. 1:<b> SOLO CANDOMBE</b> (L).</p>
-                </div>
-                <div>
-                    <p><b style="border-bottom: 1px solid black ;">1a. madre:</b>{{madre.nombre}} ({{madre.anio_nac}}) ({{madre.padre}}) ***** </p>
+                    <p><b style="border-bottom: 1px solid black ;">1a. madre:</b>{{madre.nombre}} ({{madre.anio_nac}}) ({{madre.padre}}) </p>
                     <p> Madre de </p>
                     {{# each hijos1Madre }}
-                        <p>{{anio_nac}} - {{nombre}}</p>
+                        <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}}) </p>
                     {{/ each}}       
+                    {{inputs.1madre}}
                 </div>
                 <div>
-                    <p><b style="border-bottom: 1px solid black ;">2a. madre:</b>{{abuelaM.nombre}} ({{abuelaM.anio_nac}}) ({{abuelaM.padre}}) ***** </p>
+                    <p><b style="border-bottom: 1px solid black ;">2a. madre:</b>{{abuelaM.nombre}} ({{abuelaM.anio_nac}}) ({{abuelaM.padre}}) </p>
                     <p> Madre de </p>
                     {{# each hijos2Madre }}
-                        <p>{{anio_nac}} - {{nombre}} </p>
+                        <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}}) </p>
                     {{/ each}}       
+                    {{inputs.2madre}}
+                </div>
+                <div>
+                    <p><b style="border-bottom: 1px solid black ;">3a. madre:</b>{{abuelaM.nombre}} ({{mAbuelaM.anio_nac}}) ({{mAbuelaM.padre}}) </p>
+                    <p> Madre de </p>
+                    {{# each hijos3Madre }}
+                        <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}})</p>
+                        
+                    {{/ each}}
+                    {{inputs.3madre}}
                 </div>
 
             </div>
             <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;">
                 <div>
-                    <p><b style="border-bottom: 1px solid black ;">3a. madre:</b>{{abuelaM.nombre}} ({{mAbuelaM.anio_nac}}) ({{mAbuelaM.padre}}) ***** </p>
-                    <p> Madre de </p>
-                    {{# each hijos3Madre }}
-                        <p>{{anio_nac}} - {{nombre}}</p>
-                    {{/ each}}       
-                </div>
-                <div>
-                    <p><b style="border-bottom: 1px solid black ;">4a. madre:</b>{{madre4.nombre}} ({{madre4.anio_nac}}) ({{madre4.padre}}) ***** </p>
+                    <p><b style="border-bottom: 1px solid black ;">4a. madre:</b>{{madre4.nombre}} ({{madre4.anio_nac}}) ({{madre4.padre}}) </p>
                     <p> Madre de </p>
                     {{# each hijos4Madre }}
-                        <p>{{anio_nac}} - {{nombre}}</p>
+                        <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}})</p>
                     {{/ each}}       
+                    {{inputs.4madre}}
                 </div>
                 <div>
-                    <p><b style="border-bottom: 1px solid black ;">5a. madre:</b>{{madre5.nombre}} ({{madre5.anio_nac}}) ({{madre5.padre}}) ***** </p>
+                    <p><b style="border-bottom: 1px solid black ;">5a. madre:</b>{{madre5.nombre}} ({{madre5.anio_nac}}) ({{madre5.padre}}) </p>
                     <p> Madre de </p>
                     {{# each hijos5Madre }}
-                        <p>{{anio_nac}} - {{nombre}}</p>
-                    {{/ each}}       
+                        <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}})</p>
+                    {{/ each}}      
+                    {{inputs.5madre}} 
                 </div>
                 <div>
-                    <p><b style="border-bottom: 1px solid black ;">6a. madre:</b>{{madre6.nombre}} ({{madre6.anio_nac}}) ({{madre6.padre}}) ***** </p>
+                    <p><b style="border-bottom: 1px solid black ;">6a. madre:</b>{{madre6.nombre}} ({{madre6.anio_nac}}) ({{madre6.padre}})</p>
                     <p> Madre de </p>
                     {{# each hijos6Madre }}
-                        <p>{{anio_nac}} - {{nombre}} </p>
-                    {{/ each}}       
+                        <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}}) </p>
+                    {{/ each}}    
+                    {{inputs.6madre}}   
                 </div>
             </div>
         </div>

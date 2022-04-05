@@ -1,9 +1,11 @@
 window.addEventListener("load" , function(){
 
-  let clickbutton = document.getElementById("clickbutton")
-let input = document.getElementById("413301").innerHTML
-clickbutton.addEventListener("click" , function(){
-  alert("input")
-})
+  let form = document.getElementById("form")
+  let pdf2 = document.getElementById("pdf2")
 
+  pdf2.addEventListener("click", function(e){
+    e.preventDefault()
+    form.action = "/pdf2/<%=ejemplarX.id%>"
+
+  })
 })

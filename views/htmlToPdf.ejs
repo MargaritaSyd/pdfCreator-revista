@@ -11,7 +11,7 @@
 
     </header>
     <main class="mainPdf">
-    <form action="/pdf/<%=ejemplarX.id%>" method="POST" >
+    <form id="form"    action="/pdf/<%=ejemplarX.id%>" method="POST" >
         <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
             <div class="contentDescriptStud" style="display: flex; flex-wrap: nowrap; flex-direction: column; width: 40%;">
                 <b class="ejemplarNombre"> <%=ejemplarX.nombre%> </b>
@@ -83,8 +83,8 @@
         </div>
         <div class="contenedorCuidadorArbol" >
             <div class="detllesCuidador">
-                <b> Caballeriza: <%=criadorX.haras%> </b>
-                <b> Criador: <%=criadorX.propietario%> </b>
+                <b> Caballeriza: <%=criadorX.haras%> </b> <input type="text" name="caballeriza">
+                <b> Criador: <%=criadorX.propietario%> </b> <input type="text" name="criador">
                 <b> Cuidador:   <input type="text" name="cuidador">    </b>
                 <div style="font-size: x-small;">     
                     <textarea name="infoPadrillo"></textarea>        
@@ -137,61 +137,64 @@
             </div>
         </div>
 
-        <div style="display: flex; flex-wrap: nowrap;font-size: x-small; flex-direction: row;">
-            <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;">
-                <div>
+        <div style="font-size: x-small; column-count: 2; margin-top: 5px;">
+            <!-- <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;"> -->
+                <!-- <div> -->
                     <p><b style="border-bottom: 1px solid black ;">1a. madre:</b><%=madre.nombre%> (<%= madre.anio_nac%>) (<%=madre.padre%>)</p>
                     <p> Madre de </p>
                     <% for(let i=0; i<hijos1Madre.length; i++){%>
                         <p><%= hijos1Madre[i].anio_nac%> - <%=hijos1Madre[i].nombre %> (<%=hijos1Madre[i].sexo%> <%=hijos1Madre[i].padre%>)</p>
                     <%}%>       
                     <textarea name="1madre" ></textarea>
-                </div>
-                <div>
+                <!-- </div>
+                <div> -->
                     <p><b style="border-bottom: 1px solid black ;">2a. madre:</b><%=abuelaM.nombre%> (<%= abuelaM.anio_nac%>) (<%=abuelaM.padre%>) </p>
                     <p> Madre de </p>
                     <% for(let i=0; i<hijos2Madre.length; i++){%>
                         <p><%= hijos2Madre[i].anio_nac%> - <%=hijos2Madre[i].nombre %> (<%=hijos2Madre[i].sexo%> <%=hijos2Madre[i].padre%>)</p>
                     <%}%>       
                     <textarea name="2madre" ></textarea>
-                </div>
-            </div>
-            <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;">
-                <div>
+                <!-- </div> -->
+            <!-- </div>
+            <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;"> -->
+                <!-- <div> -->
                     <p><b style="border-bottom: 1px solid black ;">3a. madre:</b><%=abuelaM.nombre%> (<%= mAbuelaM.anio_nac%>) (<%=mAbuelaM.padre%>) </p>
                     <p> Madre de </p>
                     <% for(let i=0; i<hijos3Madre.length; i++){%>
                         <p><%= hijos3Madre[i].anio_nac%> - <%=hijos3Madre[i].nombre %> (<%=hijos3Madre[i].sexo%> <%=hijos3Madre[i].padre%>)</p>
                     <%}%>       
                     <textarea name="3madre" ></textarea>
-                </div>
-                <div>
+                <!-- </div>
+                <div> -->
                     <p><b style="border-bottom: 1px solid black ;">4a. madre:</b><%=madre4.nombre%> (<%= madre4.anio_nac%>) (<%=madre4.padre%>) </p>
                     <p> Madre de </p>
                     <% for(let i=0; i<hijos4Madre.length; i++){%>
                         <p><%= hijos4Madre[i].anio_nac%> - <%=hijos4Madre[i].nombre %> (<%=hijos4Madre[i].sexo%> <%=hijos4Madre[i].padre%>)</p>
                     <%}%>     
                     <textarea name="4madre" ></textarea>  
-                </div>
-                <div>
+                <!-- </div>
+                <div> -->
                     <p><b style="border-bottom: 1px solid black ;">5a. madre:</b><%=madre5.nombre%> (<%= madre5.anio_nac%>) (<%=madre5.padre%>) </p>
                     <p> Madre de </p>
                     <% for(let i=0; i<hijos5Madre.length; i++){%>
                         <p><%= hijos5Madre[i].anio_nac%> - <%=hijos5Madre[i].nombre %> (<%=hijos5Madre[i].sexo%> <%=hijos5Madre[i].padre%>)</p>
                     <%}%>       
                     <textarea name="5madre" ></textarea>
-                </div>
-                <div>
+                <!-- </div> -->
+                <!-- <div> -->
                     <p><b style="border-bottom: 1px solid black ;">6a. madre:</b><%=madre6.nombre%> (<%= madre6.anio_nac%>) (<%=madre6.padre%>) </p>
                     <p> Madre de </p>
                     <% for(let i=0; i<hijos6Madre.length; i++){%>
                         <p><%= hijos6Madre[i].anio_nac%> - <%=hijos6Madre[i].nombre %> (<%=hijos6Madre[i].sexo%> <%=hijos6Madre[i].padre%>)</p>
                     <%}%>       
                     <textarea name="6madre" ></textarea>
-                </div>
-            </div>
+                <!-- </div> -->
+
+            <!-- </div> -->
         </div>
-        <button type="submit"> Crear pdf</button>
+        <button id="pdf1" type="submit"> Crear pdf-1</button>
+        <button id="pdf2"  type="submit"> Crear pdf-2</button>
+        
     </form>
     </main>
 
