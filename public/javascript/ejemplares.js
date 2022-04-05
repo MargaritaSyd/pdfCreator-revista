@@ -1,4 +1,9 @@
 window.addEventListener("load" , function(){
-let input = document.getElementById("413301")
-alert(input.innerHTML)
-  })
+
+  let clickbutton = document.getElementById("clickbutton")
+let input = document.getElementById("413301").innerHTML
+clickbutton.addEventListener("click" , function(){
+  alert("input")
+})
+
+})

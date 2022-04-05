@@ -203,6 +203,9 @@ let indexController = {
 
     pdfCreator: function(req,res){
         
+        let inputs = req.body
+        
+        
           db.ejemplares.findAll()
         .then(function(ejemplares){
             let id = req.params.id
@@ -381,7 +384,7 @@ let indexController = {
            }
            }
            async function generatePdf() {
-           let data = {criadorX, totalLargadas, totalGanadas, totalTerceros, totalSegundos, totalPremios, anio0, edad0, ultimoEdad, ultimoAnio, ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6 };
+           let data = {inputs, criadorX, totalLargadas, totalGanadas, totalTerceros, totalSegundos, totalPremios, anio0, edad0, ultimoEdad, ultimoAnio, ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6 };
            getTemplateHtml().then(async (res) => {
            // Now we have the html code of our template in res object
            // you can check by logging it on console
@@ -406,8 +409,8 @@ let indexController = {
                // format: 'A4' 
            })
            await browser.close();
-           //console.log("PDF Generated")
-           console.log(arrayTerceros)
+           console.log("PDF Generated")
+          // console.log(input)
            }).catch(err => {
            console.error(err)
            });
@@ -418,7 +421,7 @@ let indexController = {
     })
 })
 .then(function(){
-    res.send("ok")
+    res.redirect("/")
 })
    },
    /*
@@ -469,6 +472,18 @@ let indexController = {
 
    error: function(req,res) {
        res.send('error');
+   },
+   pfCreator: function(req,res){
+       let input = req.body.ejemplar1
+       if(input){
+        console.log(input)
+       } else {
+           console.log("notINput")
+       }
+       res.redirect('/')
+   },
+   ok: function(req,res) {
+       res.send("ok")
    }
 }
 

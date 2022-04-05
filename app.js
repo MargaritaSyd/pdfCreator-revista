@@ -2,7 +2,18 @@ const express = require ('express');
 const app = express();
 const path = require ('path');
 const indexRoutes = require('./src/routes/indexRoutes');
-//const methodOverride= require('method-override');
+
+
+app.listen(process.env.PORT || 3002, function(){
+    console.log('Servidor corriendo en puerto 3002');
+});
+
+
+app.use(express.urlencoded({ extended: false }));
+
+app.use(express.json());
+
+const methodOverride= require('method-override');
 //const session = require('express-session');
 
 //const session = require('cookie-session');
@@ -21,9 +32,6 @@ app.use(session({
 	saveUninitialized: false,
 }));
 */
-app.listen(process.env.PORT || 3002, function(){
-    console.log('Servidor corriendo en puerto 3002');
-});
 
 /*
 app.use(session({
@@ -32,17 +40,11 @@ app.use(session({
 	saveUninitialized: false,
 }));
 */
-//app.use(cookies());
 
-//app.use(cookieLogin);
-
-app.use(express.urlencoded({ extended: false }));
-
-app.use(express.json());
 
 app.use(express.static(path.resolve(__dirname , './public')));
 
-//app.use(methodOverride('_method'));
+app.use(methodOverride('_method'));
 
 app.set('view engine' , 'ejs');
 

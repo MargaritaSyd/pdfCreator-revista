@@ -4,13 +4,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <link rel="stylesheet" href="css/stylesheet.css">
-    <title>Document</title>
+    <title>Pedigree PDF</title>
 </head>
 <body>
     <header>
 
     </header>
     <main class="mainPdf">
+    <form action="/pdf/<%=ejemplarX.id%>" method="POST" >
         <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
             <div class="contentDescriptStud" style="display: flex; flex-wrap: nowrap; flex-direction: column; width: 40%;">
                 <b class="ejemplarNombre"> <%=ejemplarX.nombre%> </b>
@@ -84,10 +85,10 @@
             <div class="detllesCuidador">
                 <b> Caballeriza: <%=criadorX.haras%> </b>
                 <b> Criador: <%=criadorX.propietario%> </b>
-                <b> Cuidador: </b>
-                <div style="font-size: x-small;">
-                    <p>Por <b>WINNING PRIZE</b> (2009) (Pure Prize), <b>“Mejor 2 años macho”</b>, <b>“Mejor Millero”</b>, gdor. de 5 cs. en San Isidro, incl. GP Joaquín S. de Anchorena (G1), GP Gran Criterium (G1), GP Raúl y Raúl E. Chevalier (G1), Candy Ride (NG), 2º GP Dos Mil Guineas (G1). En USA gdor. de 3 cs. en Del Mar y Santa Anita, incl.. Frank E. Kilroe Mile Stakes (G1), Arcadia Stakes (G2), 2º Thunder Road S. (L), Wickerr S., 3º Citation H. (G2), 4º Shoemaker Mile S. (G1), Shadwell Turf Mile S. (G1), American S. (G3), 5º Frank E. Kilroe Mile Stakes (G1). Padre de 116 hijos en edad de correr, corrieron 48, 25 gdres, gdres clás. 1:<b> SOLO CANDOMBE</b> (L).</p>
-                 </div>
+                <b> Cuidador:   <input type="text" name="cuidador">    </b>
+                <div style="font-size: x-small;">     
+                    <textarea name="infoPadrillo"></textarea>        
+                </div>
             </div>
             <div class="arbolGContent">
                 <div class="arbolG">
@@ -135,6 +136,7 @@
                 </div>
             </div>
         </div>
+
         <div style="display: flex; flex-wrap: nowrap;font-size: x-small; flex-direction: row;">
             <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;">
                 <div>
@@ -142,9 +144,8 @@
                     <p> Madre de </p>
                     <% for(let i=0; i<hijos1Madre.length; i++){%>
                         <p><%= hijos1Madre[i].anio_nac%> - <%=hijos1Madre[i].nombre %> (<%=hijos1Madre[i].sexo%> <%=hijos1Madre[i].padre%>)</p>
-                        <input type="text" id=<%hijos1Madre[i].id%>/>
-                       
                     <%}%>       
+               
                 </div>
                 <div>
                     <p><b style="border-bottom: 1px solid black ;">2a. madre:</b><%=abuelaM.nombre%> (<%= abuelaM.anio_nac%>) (<%=abuelaM.padre%>) </p>
@@ -185,7 +186,8 @@
                 </div>
             </div>
         </div>
-            
+        <button type="submit"> Crear pdf</button>
+    </form>
     </main>
 
     <script src="/javascript/ejemplares.js"></script>
