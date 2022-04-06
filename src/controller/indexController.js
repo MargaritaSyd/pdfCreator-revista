@@ -384,7 +384,8 @@ let indexController = {
            }
            }
            async function generatePdf() {
-           let data = {inputs, criadorX, totalLargadas, totalGanadas, totalTerceros, totalSegundos, totalPremios, anio0, edad0, ultimoEdad, ultimoAnio, ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6 };
+               //inputs
+           let data = { inputs, criadorX, totalLargadas, totalGanadas, totalTerceros, totalSegundos, totalPremios, anio0, edad0, ultimoEdad, ultimoAnio, ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6 };
            getTemplateHtml().then(async (res) => {
            // Now we have the html code of our template in res object
            // you can check by logging it on console
@@ -473,15 +474,7 @@ let indexController = {
    error: function(req,res) {
        res.send('error');
    },
-   pfCreator: function(req,res){
-       let input = req.body.ejemplar1
-       if(input){
-        console.log(input)
-       } else {
-           console.log("notINput")
-       }
-       res.redirect('/')
-   },
+   
    ok: function(req,res) {
        res.send("ok")
    }

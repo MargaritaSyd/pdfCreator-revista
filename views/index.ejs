@@ -10,10 +10,7 @@
     <header>
 
     </header>
-    <main id="mainPdf" style="padding-top: 15; padding-left: 30; height: 255mm; border: 2px solid black; margin: 20px;">
-        <div style="display: flex; flex-direction: column; position: relative; left: 710;"><b>P</b><b>E</b><b>D</b><b>I</b><b>G</b><b>R</b><b>E</b><b>E</b></div>
-        <div style="display:flex; position: relative; top: -400; border: 2px solid black; margin: 15px; padding: 4px; ">
-        
+    <main id="mainPdf" style="padding-top: 15; padding-left: 30; height: 255mm; border: 2px solid black; margin: 20px;">  
         <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
             <div id="contentDescriptStud" style="display: flex; flex-wrap: nowrap; flex-direction: column; width: 40%;">
                 <b class="ejemplarNombre"style="font-family: Arial; font-size: 24; margin-bottom: 10px;" > {{ejemplarX.nombre}} </b>
@@ -76,14 +73,15 @@
             flex-direction: column;
             margin-top: 10px;
             width: 60mm;">
-                <b> Caballeriza: {{criadorX.haras}} {{inputs.caballeriza}}</b>
-                <b> Criador: {{criadorX.propietario}} {{inputs.criador}} </b>
-                <b> Cuidador: {{inputs.cuidador}}</b>
+                <b> Caballeriza: {{criadorX.haras}} </b>
+                <b> Criador: {{criadorX.propietario}}  </b>
+                <b> Cuidador: {{inputs.cuidador}} </b>
                 <div style="font-size: x-small;">
-                    <label>Detalles del padrillo:</label>
                    <p>{{inputs.infoPadrillo1}}<b>{{inputs.infoPadrilloNegrita1}}</b>{{inputs.infoPadrillo2}}<b>{{inputs.infoPadrilloNegrita2}}</b> {{inputs.infoPadrillo3}} <b>{{inputs.infoPadrilloNegrita3}}</b>{{inputs.infoPadrillo4}} <b>{{inputs.infoPadrilloNegrita4}}</b>{{inputs.infoPadrillo5}} <b>{{inputs.infoPadrilloNegrita5}}</b></p>
-                 </div>
+                </div>
+              
             </div>
+            
             <div class="arbolGContent" 
             style="display: flex;
             position: relative;
@@ -296,7 +294,7 @@
                     {{# each hijos1Madre }}
                         <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}}) </p>
                     {{/ each}}       
-                    {{inputs.1madre}}
+                    
                 <!-- </div>
                 <div> -->
                     <p><b style="border-bottom: 1px solid black ;">2a. madre:</b>{{abuelaM.nombre}} ({{abuelaM.anio_nac}}) ({{abuelaM.padre}}) </p>
@@ -304,7 +302,7 @@
                     {{# each hijos2Madre }}
                         <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}}) </p>
                     {{/ each}}       
-                    {{inputs.2madre}}
+                    
                 <!-- </div>
 
             </div> -->
@@ -316,7 +314,7 @@
                         <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}})</p>
                         
                     {{/ each}}
-                    {{inputs.3madre}}
+                   
                 <!-- </div>
                 <div> -->
                     <p><b style="border-bottom: 1px solid black ;">4a. madre:</b>{{madre4.nombre}} ({{madre4.anio_nac}}) ({{madre4.padre}}) </p>
@@ -324,7 +322,7 @@
                     {{# each hijos4Madre }}
                         <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}})</p>
                     {{/ each}}       
-                    {{inputs.4madre}}
+                   
                 <!-- </div>
                 <div> -->
                     <p><b style="border-bottom: 1px solid black ;">5a. madre:</b>{{madre5.nombre}} ({{madre5.anio_nac}}) ({{madre5.padre}}) </p>
@@ -332,7 +330,7 @@
                     {{# each hijos5Madre }}
                         <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}})</p>
                     {{/ each}}      
-                    {{inputs.5madre}} 
+                    
                 <!-- </div>
                 <div> -->
                     <p><b style="border-bottom: 1px solid black ;">6a. madre:</b>{{madre6.nombre}} ({{madre6.anio_nac}}) ({{madre6.padre}})</p>
@@ -340,11 +338,11 @@
                     {{# each hijos6Madre }}
                         <p>{{anio_nac}} - {{nombre}} ({{sexo}} {{padre}}) </p>
                     {{/ each}}    
-                    {{inputs.6madre}}   
+                     
                 <!-- </div>
             </div> -->
-        </div>
-    </div>    
+
+        </div>    
     </main>
 <script src="/javascript/ejemplares.js"></script>
 </body>

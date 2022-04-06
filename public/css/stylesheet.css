@@ -1,3 +1,7 @@
+body{
+    width: 190mm;
+    height: 270mm;
+}
 
 .mainPdf{
    
@@ -6,8 +10,7 @@
     height: 255mm;
     border: 2px solid black;
     margin: 20px;
-    width: 190mm;
-    height: 270mm;
+   
 
     
 }
