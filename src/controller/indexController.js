@@ -24,7 +24,7 @@ let funcionEjemplar = function(unId, bd){
     if(unId == 0){
         result = {
             id: 0,
-            nombre: 0, 
+            nombre: "", 
            anio_nac: 0,
            mes_nac: 0,
            dia_nac: 0,
