@@ -12,7 +12,8 @@
     </header>
     
     <main class="mainPdf">
-    <p style="display: flex; flex-direction: column; position: relative;">PEDIGREE</p>
+    <div style="display: flex; flex-direction: column; position: relative; left: 710;"><p>P</p><p>E</p><p>D</p><p>I</p><p>G</p><p>R</p><p>E</p><p>E</p></div>
+    <div style="display:flex; position: relative; top: -400; border: 2px solid black; margin: 15px; padding: 4px; ">
     <form id="form"    action="/pdf/<%=ejemplarX.id%>" method="POST" >
         <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
             <div class="contentDescriptStud" style="display: flex; flex-wrap: nowrap; flex-direction: column; width: 40%;">
@@ -195,11 +196,11 @@
             <!-- </div> -->
         </div>
         <button id="pdf1" type="submit"> Crear pdf-1</button>
-        <button id="pdf2"  type="submit"> Crear pdf-2</button>
         
     </form>
+</div>
     </main>
 
-    <script src="/javascript/ejemplares.js"></script>
+    <!-- <script src="/javascript/ejemplares.js"></script> -->
 </body>
 </html>

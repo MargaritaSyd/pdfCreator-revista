@@ -1,14 +1,14 @@
-body{
-    width: 190mm;
-    height: 270mm;
-}
+
 .mainPdf{
    
-    padding-top: 15;
-    padding-left: 30;
+    padding: 15;
+    /* padding-left: 30; */
     height: 255mm;
     border: 2px solid black;
     margin: 20px;
+    width: 190mm;
+    height: 270mm;
+
     
 }
 
