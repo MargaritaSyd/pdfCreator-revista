@@ -124,7 +124,12 @@ let indexController = {
         })
         .then(resultado => {
             resultadoCarreras = resultado
-        })
+            let arrayGanancias = []
+            for(let i=0; i<resultadoCarreras.length; i++){
+            arrayGanancias.push(resultadoCarreras[i].importe)
+        }
+        const totalGanancias = arrayGanancias.reduce((a,b)=> a+b);
+        //})
  
         //Encuentra carreras:
         let estadoCaballo
@@ -133,6 +138,7 @@ let indexController = {
                 ideje: ejemplarX.id
             }
         })
+        
         .then(resultado => {
              estadoCaballo = resultado
 
@@ -196,13 +202,14 @@ let indexController = {
             }
             console.log(JSON.stringify(estadoCaballo))
                    
-            res.render("htmlToPdf" , {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalPremios, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
+            res.render("htmlToPdf" , {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalPremios, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
         
 
-            console.log(resultadoCarreras)
+            console.log(totalGanancias)
         //console.log(ejemplar)
         })
     })
+})
 })
 .catch(function(err){
     console.log(err)
