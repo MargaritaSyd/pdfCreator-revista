@@ -115,6 +115,16 @@ let indexController = {
         let hijos5Madre = funcionEjemplareshijos(madre5Id , ejemplares);
         let hijos6Madre = funcionEjemplareshijos(madre6Id, ejemplares);
 
+        //Encuentra ganancias totales
+        let resultadoCarreras
+        db.resultados.findAll({
+            where:{
+                eje_id: ejemplarX.id
+            }
+        })
+        .then(resultado => {
+            resultadoCarreras = resultado
+        })
  
         //Encuentra carreras:
         let estadoCaballo
@@ -189,7 +199,7 @@ let indexController = {
             res.render("htmlToPdf" , {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalPremios, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
         
 
-           // console.log()
+            console.log(resultadoCarreras)
         //console.log(ejemplar)
         })
     })

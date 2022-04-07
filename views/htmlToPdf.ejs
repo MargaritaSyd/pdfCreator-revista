@@ -128,14 +128,14 @@
                     </div>
                     <div class="bisa">
 
-                        <div class="divArbolG"><div><input type="text" name="mAbuelaM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbuelaM.nombre%></b></div></div>
-                        <div class="divArbolG"><div><input type="text" name="pAbuelaM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbuelaM.nombre%></b></div></div>
-                        <div class="divArbolG"><div><input type="text" name="mAbueloM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbueloM.nombre%></b></div></div>
-                        <div class="divArbolG"><div><input type="text" name="pAbueloM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbueloM.nombre%></b></div></div>
-                        <div class="divArbolG"><div><input type="text" name="mAbuelaP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbuelaP.nombre%></b></div></div>
-                        <div class="divArbolG"><div><input type="text" name="pAbuelaP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbuelaP.nombre%></b></div></div>
-                        <div class="divArbolG"><div><input type="text" name="mAbueloP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbueloP.nombre%></b></div></div>
-                        <div class="divArbolG"><div><input type="text" name="pAbueloP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbueloP.nombre%></b></div></div>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="mAbuelaM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbuelaM.nombre%></b></div></div>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="pAbuelaM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbuelaM.nombre%></b></div></div>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="mAbueloM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbueloM.nombre%></b></div></div>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="pAbueloM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbueloM.nombre%></b></div></div>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="mAbuelaP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbuelaP.nombre%></b></div></div>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="pAbuelaP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbuelaP.nombre%></b></div></div>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="mAbueloP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbueloP.nombre%></b></div></div>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="pAbueloP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbueloP.nombre%></b></div></div>
                     
                     </div>
                 </div>
@@ -148,7 +148,9 @@
                     <p><b style="border-bottom: 1px solid black ;">1a. madre:</b><%=madre.nombre%> (<%= madre.anio_nac%>) (<%=madre.padre%>)</p>
                     <p> Madre de </p>
                     <% for(let i=0; i<hijos1Madre.length; i++){%>
+                        <% if(hijos1Madre[i].anio_nac >= 1975){%>
                         <p><%= hijos1Madre[i].anio_nac%> - <%=hijos1Madre[i].nombre %> (<%=hijos1Madre[i].sexo%> <%=hijos1Madre[i].padre%>)</p>
+                        <%}%>
                     <%}%>       
                     <textarea name="1madre" ></textarea>
                 <!-- </div>
