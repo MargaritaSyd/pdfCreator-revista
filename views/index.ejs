@@ -22,7 +22,8 @@
                     <b class="descriptEjemplar" 
                     style="padding-bottom: 10px;
                     border-bottom: 2px solid black;
-                    font-size: 10px;"> {{ejemplarX.sexo}}, {{ejemplarX.pelo}}, nacido el {{ejemplarX.dia_nac}} de {{ejemplarX.mes_nac}} de {{ejemplarX.anio_nac}} - {{ejemplarX.familia}}</b>
+                    font-size: 10px;"> {{inputs.ejemplarSexo}}, {{inputs.ejemplarPelo}}, nacido el {{inputs.ejemplarDia_nac}} de {{inputs.ejemplarMes_nac}} de {{inputs.ejemplarAnio_nac}} - {{inputs.ejemplarFamilia}}</b>
+                   
                 </div>
                 <div class="borderContentCarreras" style=
                 "border-radius: 25px;
@@ -41,11 +42,11 @@
                     top:-5px">
                         <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
                             <b> Año </b>
-                            <b>  {{ anio0}}-{{ultimoAnio}}</b>
+                            <b>  {{inputs.aniosCorrio}}</b>
                         </div>
                         <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
                             <b> Edad</b>
-                            <b>{{edad0}}-{{ultimoEdad}}</b>
+                            <b>{{inputs.edadCorrio}}</b>
                         </div>
                         <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 15%;">
                             <b>Corrio</b>

@@ -155,18 +155,23 @@ let indexController = {
 
         //})
         //Creando array de carreras jugadas por el ejemplar
-      let infoCarreras = []
+      let anioCarreras = []
         for(let i=0; i<arrayCarreras.length; i++){
 
             db.carreras.findByPk(arrayCarreras[i])
             .then(carrera => {
-                infoCarreras.push(carrera.dataValues)
+                anioCarreras.push(carrera.fecha.slice(0,-6))
+                
         })
         .catch (err  =>{
             
             console.log(err)
             })
     }
+
+    let anios = anioCarreras.sort(function(a,b){return a-b})
+
+    
     
     
             
@@ -201,11 +206,11 @@ let indexController = {
             }
             console.log(JSON.stringify(estadoCaballo))
                    
-            res.render("htmlToPdf" , {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
+            res.render("htmlToPdf" , {anios, criadorX , ejemplarX , anioCarreras, madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
         
 
            
-        console.log(infoCarreras)
+        // console.log(primerAnio)
         })
     })
 

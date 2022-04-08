@@ -46,18 +46,53 @@
                     <% ejemplarX.pelo = "Zaino Negro" %> 
                 <%}%>
 
+                <% if(ejemplarX.mes_nac == 1){ %>
+                    <% ejemplarX.mes_nac = "Enero" %>
+                <%} else if(ejemplarX.mes_nac == 2) {%>    
+                    <% ejemplarX.mes_nac = "Febrero" %>
+                <%} else if(ejemplarX.mes_nac == 3) {%>    
+                    <% ejemplarX.mes_nac = "Marzo" %>
+                <%} else if(ejemplarX.mes_nac == 4) {%>    
+                    <% ejemplarX.mes_nac = "Abril" %>
+                <%} else if(ejemplarX.mes_nac == 5) {%>    
+                    <% ejemplarX.mes_nac = "Mayo" %>
+                <%} else if(ejemplarX.mes_nac == 6) {%>    
+                    <% ejemplarX.mes_nac = "Junio" %>
+                <%} else if(ejemplarX.mes_nac == 7) {%>    
+                    <% ejemplarX.mes_nac = "Julio" %>
+                <%} else if(ejemplarX.mes_nac == 8) {%>    
+                    <% ejemplarX.mes_nac = "Agosto" %>
+                <%} else if(ejemplarX.mes_nac == 9) {%>    
+                    <% ejemplarX.mes_nac = "Septiembre" %>
+                <%} else if(ejemplarX.mes_nac == 10) {%>    
+                    <% ejemplarX.mes_nac = "Octubre" %>
+                <%} else if(ejemplarX.mes_nac == 11) {%>    
+                    <% ejemplarX.mes_nac = "Noviembre" %>  
+                <%} else {%>    
+                    <% ejemplarX.mes_nac = "Diciembre" %> 
+                <%}%>
+
                 <b class="descriptEjemplar"> <%=ejemplarX.sexo%>, <%=ejemplarX.pelo%>, nacido el <%=ejemplarX.dia_nac%> de <%=ejemplarX.mes_nac%> de <%=ejemplarX.anio_nac%> - <%=ejemplarX.familia%></b>
+                <input type="text" style="display: none;" name="ejemplarSexo" value=<%=ejemplarX.sexo%>>
+                <input type="text" style="display: none;" name="ejemplarPelo" value=<%=ejemplarX.pelo%>>
+                <input type="text" style="display: none;" name="ejemplarDia_nac" value=<%=ejemplarX.dia_nac%>>
+                <input type="text" style="display: none;" name="ejemplarMes_nac" value=<%=ejemplarX.mes_nac%>>  
+                <input type="text" style="display: none;" name="ejemplarAnio_nac" value=<%=ejemplarX.anio_nac%>>
+                <input type="text" style="display: none;" name="ejemplarFamilia" value=<%=ejemplarX.familia%>>
+                
             </div>
             <div class="borderContentCarreras">
                
                 <div class="detalleCarrerasCorridas">
                     <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
                         <b> Año </b>
-                        <b> <%= JSON.stringify(estadoCaballo[0].anio).slice(2)%>-<%= JSON.stringify(estadoCaballo[estadoCaballo.length-1].anio).slice(2)%></b>
+                        <b> <%= anios[0].slice(2)%>-<%=anios[anios.length-1].slice(2)%></b>
+                        <input type="text" style="display: none;" name="aniosCorrio" value=<%= anios[0].slice(2)%>-<%=anios[anios.length-1].slice(2)%>>
                     </div>
                     <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
                         <b> Edad</b>
-                        <b><%= estadoCaballo[0].anio - ejemplarX.anio_nac%> - <%=estadoCaballo[estadoCaballo.length-1].anio- ejemplarX.anio_nac%></b>
+                        <b><%= anios[0] - ejemplarX.anio_nac%> - <%=anios[anios.length-1]- ejemplarX.anio_nac%></b>
+                        <input type="text" style="display: none;" name="edadCorrio" value=<%= anios[0] - ejemplarX.anio_nac%> - <%=anios[anios.length-1]- ejemplarX.anio_nac%>>
                     </div>
                     <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
                         <b>Corrio</b>
