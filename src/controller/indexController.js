@@ -125,10 +125,26 @@ let indexController = {
         .then(resultado => {
             resultadoCarreras = resultado
             let arrayGanancias = []
+            let arrayGanadas = []
+            let arraySegundos = []
+            let arrayTerceros = []
+            let totalLargadas = resultadoCarreras.length
+            
+
+           // let arrayLargadas = []
             for(let i=0; i<resultadoCarreras.length; i++){
             arrayGanancias.push(resultadoCarreras[i].importe)
+            if(resultadoCarreras[i].llego_numero == 1){
+                arrayGanadas.push(resultadoCarreras[i].llego_numero)
+            } 
+            
+           // arrayGanancias.push()
         }
         const totalGanancias = arrayGanancias.reduce((a,b)=> a+b);
+        const totalSegundos = 1
+        const totalGanadas = arrayGanadas.length
+        const totalTerceros = 1
+
         //})
  
         //Encuentra carreras:
@@ -143,17 +159,17 @@ let indexController = {
              estadoCaballo = resultado
 
              
-            let arrayLargadas = []
-            let arrayGanadas = []
-            let arraySegundos = []
-            let arrayTerceros = []
-            let arrayPremios = []
-
+            //let arrayLargadas = []
+           // let arrayGanadas = []
+            //let arraySegundos = []
+           // let arrayTerceros = []
+           // let arrayPremios = []
+/*
             for(let i=0; i<estadoCaballo.length; i++){
-                arrayLargadas.push(estadoCaballo[i].largadas);
-                arrayLargadas.push(estadoCaballo[i].largadas_lpa);
-                arrayLargadas.push(estadoCaballo[i].largadas_pal);
-                arrayLargadas.push(estadoCaballo[i].largadas_sis);
+              //  arrayLargadas.push(estadoCaballo[i].largadas);
+              //  arrayLargadas.push(estadoCaballo[i].largadas_lpa);
+             //   arrayLargadas.push(estadoCaballo[i].largadas_pal);
+              //  arrayLargadas.push(estadoCaballo[i].largadas_sis);
 
                 arrayGanadas.push(estadoCaballo[i].ganadas);
                 arrayGanadas.push(estadoCaballo[i].ganadas_lpa);
@@ -177,11 +193,12 @@ let indexController = {
  
                 
             }
-            const totalLargadas = arrayLargadas.reduce((a,b)=> a+b);
-            const totalGanadas = arrayGanadas.reduce((c,d)=> c+d);
-            const totalSegundos = arraySegundos.reduce((e,f)=> e+f);
-            const totalTerceros = arrayTerceros.reduce((g,h)=> g+h);
-            const totalPremios = arrayPremios.reduce((g,h)=> g+h);
+            */
+          //  const totalLargadas = arrayLargadas.reduce((a,b)=> a+b);
+           // const totalGanadas = arrayGanadas.reduce((c,d)=> c+d);
+            //const totalSegundos = arraySegundos.reduce((e,f)=> e+f);
+            //const totalTerceros = arrayTerceros.reduce((g,h)=> g+h);
+           // const totalPremios = arrayPremios.reduce((g,h)=> g+h);
          
              
    
@@ -202,10 +219,10 @@ let indexController = {
             }
             console.log(JSON.stringify(estadoCaballo))
                    
-            res.render("htmlToPdf" , {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalPremios, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
+            res.render("htmlToPdf" , {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
         
 
-            console.log(totalGanancias)
+            console.log(totalLargadas)
         //console.log(ejemplar)
         })
     })
