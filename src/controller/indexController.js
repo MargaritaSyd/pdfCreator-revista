@@ -5,8 +5,6 @@ const path = require('path')
 const utils = require('util')
 const puppeteer = require('puppeteer')
 const hb = require('handlebars');
-const { json } = require("express/lib/response");
-const estad_caballo = require("../database/models/estad_caballo");
 const readFile = utils.promisify(fs.readFile)
 
 let funcionEjemplareshijos = function(id , bd){
@@ -119,22 +117,28 @@ let indexController = {
 
         let id_hijos = []
         for(let i=0; i<hijos1Madre.length; i++){
-            id_hijos.push(hijos1Madre.id)
+            id_hijos.push(hijos1Madre[i].id)
 
         } 
-        let resultadosCarrerasHijos = []
-        for(let i=0; i<id_hijos.length; i++){
+        
+        
+         
             db.resultados.findAll({
                 where:{
-                    eje_id: 34567
+                    llego_numero: 1
                 }
             })
             .then(resultado => {
-                if(resultado.llego_numero == 1){
-                    resultadosCarrerasHijos.push(resultado.eje_id)
+                let resultadosCarrerasHijos = []
+                for(let i=0; i<id_hijos.length; i++){
+                    for(let j=0; j<resultado.length; j++){
+                        if(resultado[j]==id_hijos[i]){
+                            console.log(true)
+                        }
+                    }
                 }
-            })
-        }
+           
+        
         
         //Encuentra ganancias totales, carreras corridas del ejemplar 
 
@@ -254,6 +258,7 @@ let indexController = {
 
 })
 })  
+})
 })
 })
 .catch(function(err){
