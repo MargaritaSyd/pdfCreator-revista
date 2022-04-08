@@ -155,18 +155,20 @@ let indexController = {
 
         //})
         //Creando array de carreras jugadas por el ejemplar
-      //let infoCarreras = []
-        //for(let i=0; i<arrayCarreras.length; i++){
+      let infoCarreras = []
+        for(let i=0; i<arrayCarreras.length; i++){
 
-            db.carreras.findByPk(195039)
+            db.carreras.findByPk(arrayCarreras[i])
             .then(carrera => {
-                console.log(carrera)
+                infoCarreras.push(carrera.dataValues)
         })
         .catch (err  =>{
             
             console.log(err)
             })
-    //} 
+    }
+    
+    
             
         
         //Encuentra carreras:
@@ -180,48 +182,6 @@ let indexController = {
         .then(resultado => {
              estadoCaballo = resultado
 
-             
-            //let arrayLargadas = []
-           // let arrayGanadas = []
-            //let arraySegundos = []
-           // let arrayTerceros = []
-           // let arrayPremios = []
-/*
-            for(let i=0; i<estadoCaballo.length; i++){
-              //  arrayLargadas.push(estadoCaballo[i].largadas);
-              //  arrayLargadas.push(estadoCaballo[i].largadas_lpa);
-             //   arrayLargadas.push(estadoCaballo[i].largadas_pal);
-              //  arrayLargadas.push(estadoCaballo[i].largadas_sis);
-
-                arrayGanadas.push(estadoCaballo[i].ganadas);
-                arrayGanadas.push(estadoCaballo[i].ganadas_lpa);
-                arrayGanadas.push(estadoCaballo[i].ganadas_pal);
-                arrayGanadas.push(estadoCaballo[i].ganadas_sis);
-
-                arraySegundos.push(estadoCaballo[i].segundos);
-                arraySegundos.push(estadoCaballo[i].segundos_lpa);
-                arraySegundos.push(estadoCaballo[i].segundos_pal);
-                arraySegundos.push(estadoCaballo[i].segundos_sis);
-
-                arrayTerceros.push(estadoCaballo[i].terceros);
-                arrayTerceros.push(estadoCaballo[i].terceros_lpa);
-                arrayTerceros.push(estadoCaballo[i].terceros_pal);
-                arrayTerceros.push(estadoCaballo[i].terceros_sis);
-
-                arrayPremios.push(estadoCaballo[i].importe);
-                 arrayPremios.push(estadoCaballo[i].importe_lpa);
-                 arrayPremios.push(estadoCaballo[i].importe_pal);
-                 arrayPremios.push(estadoCaballo[i].importe_sis);
- 
-                
-            }
-            */
-          //  const totalLargadas = arrayLargadas.reduce((a,b)=> a+b);
-           // const totalGanadas = arrayGanadas.reduce((c,d)=> c+d);
-            //const totalSegundos = arraySegundos.reduce((e,f)=> e+f);
-            //const totalTerceros = arrayTerceros.reduce((g,h)=> g+h);
-           // const totalPremios = arrayPremios.reduce((g,h)=> g+h);
-         
              
    
             
@@ -245,7 +205,7 @@ let indexController = {
         
 
            
-        //console.log(ejemplar)
+        console.log(infoCarreras)
         })
     })
 
