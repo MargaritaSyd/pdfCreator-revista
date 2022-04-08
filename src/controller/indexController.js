@@ -130,6 +130,11 @@ let indexController = {
             let arrayTerceros = []
             let totalLargadas = resultadoCarreras.length
             let arrayCarreras = []
+            let ultimaCarrera = resultadoCarreras[resultadoCarreras.length-1]
+            let cuidador_id = ultimaCarrera.cuidador
+            let caballeriza_id = ultimaCarrera.caballeriza
+
+
 
 
            // let arrayLargadas = []
@@ -156,11 +161,15 @@ let indexController = {
         //})
         //Creando array de carreras jugadas por el ejemplar
       let anioCarreras = []
+      
         for(let i=0; i<arrayCarreras.length; i++){
 
             db.carreras.findByPk(arrayCarreras[i])
             .then(carrera => {
                 anioCarreras.push(carrera.fecha.slice(0,-6))
+                
+                
+                
                 
         })
         .catch (err  =>{
@@ -170,8 +179,11 @@ let indexController = {
     }
 
     let anios = anioCarreras.sort(function(a,b){return a-b})
-
     
+    db.profesionales.findByPk(cuidador_id)
+    .then(resultado => {
+        let cuidador = resultado.descripcion
+      
     
     
             
@@ -206,15 +218,16 @@ let indexController = {
             }
             console.log(JSON.stringify(estadoCaballo))
                    
-            res.render("htmlToPdf" , {anios, criadorX , ejemplarX , anioCarreras, madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
+            res.render("htmlToPdf" , {anios, cuidador, criadorX , ejemplarX , anioCarreras, madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
         
 
            
-        // console.log(primerAnio)
+         console.log(cuidador)
         })
     })
 
 })
+})  
 
 })
 .catch(function(err){
