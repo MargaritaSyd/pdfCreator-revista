@@ -184,7 +184,10 @@ let indexController = {
     .then(resultado => {
         let cuidador = resultado.descripcion
       
-    
+        db.profesionales.findByPk(caballeriza_id)
+        .then(resultado => {
+            let caballeriza = resultado.descripcion
+        
     
             
         
@@ -218,17 +221,17 @@ let indexController = {
             }
             console.log(JSON.stringify(estadoCaballo))
                    
-            res.render("htmlToPdf" , {anios, cuidador, criadorX , ejemplarX , anioCarreras, madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
+            res.render("htmlToPdf" , {anios, caballeriza ,cuidador, criadorX , ejemplarX , anioCarreras, madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
         
 
            
-         console.log(cuidador)
+         console.log(caballeriza)
         })
     })
 
 })
 })  
-
+})
 })
 .catch(function(err){
     console.log(err)
