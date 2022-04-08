@@ -129,24 +129,46 @@ let indexController = {
             let arraySegundos = []
             let arrayTerceros = []
             let totalLargadas = resultadoCarreras.length
-            
+            let arrayCarreras = []
+
 
            // let arrayLargadas = []
             for(let i=0; i<resultadoCarreras.length; i++){
             arrayGanancias.push(resultadoCarreras[i].importe)
+            arrayCarreras.push(resultadoCarreras[i].carrera_id)
             if(resultadoCarreras[i].llego_numero == 1){
                 arrayGanadas.push(resultadoCarreras[i].llego_numero)
+            }
+            if(resultadoCarreras[i].llego_numero == 2){
+                arraySegundos.push(resultadoCarreras[i].llego_numero)
+            }
+            if(resultadoCarreras[i].llego_numero == 3){
+                arrayTerceros.push(resultadoCarreras[i].llego_numero)
             } 
             
            // arrayGanancias.push()
         }
         const totalGanancias = arrayGanancias.reduce((a,b)=> a+b);
-        const totalSegundos = 1
+        const totalSegundos = arraySegundos.length
         const totalGanadas = arrayGanadas.length
-        const totalTerceros = 1
+        const totalTerceros = arrayTerceros.length
 
         //})
- 
+        //Creando array de carreras jugadas por el ejemplar
+      //let infoCarreras = []
+        //for(let i=0; i<arrayCarreras.length; i++){
+
+            db.carreras.findByPk(195039)
+            .then(carrera => {
+                console.log(carrera)
+        })
+        .catch (err  =>{
+            
+            console.log(err)
+            })
+    //} 
+            
+        
         //Encuentra carreras:
         let estadoCaballo
         db.estad_caballo.findAll({
@@ -222,11 +244,13 @@ let indexController = {
             res.render("htmlToPdf" , {criadorX , ejemplarX , madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
         
 
-            console.log(totalLargadas)
+           
         //console.log(ejemplar)
         })
     })
+
 })
+
 })
 .catch(function(err){
     console.log(err)

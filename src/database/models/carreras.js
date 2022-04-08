@@ -184,18 +184,18 @@ module.exports = function(sequelize, dataTypes)
             type: dataTypes.STRING,
             allowNull: false
         },
-        favorita_1: {
-            type: dataTypes.INTEGER,
-            allowNull: false
-        },
-        favorita_2: {
-            type: dataTypes.INTEGER,
-            allowNull: false
-        },
-        favorita_3: {
-            type: dataTypes.INTEGER,
-            allowNull: false
-        },
+        //favorita_1: {
+         //   type: dataTypes.INTEGER,
+        //    allowNull: false
+       // },
+        //favorita_2: {
+        //    type: dataTypes.INTEGER,
+         //   allowNull: false
+       // },
+        //favorita_3: {
+        //    type: dataTypes.INTEGER,
+        //    allowNull: false
+       // },
         indice: {
             type: dataTypes.STRING,
             allowNull: false
@@ -204,10 +204,10 @@ module.exports = function(sequelize, dataTypes)
             type: dataTypes.STRING,
             allowNull: false
         },
-        favorita_4: {
-            type: dataTypes.INTEGER,
-            allowNull: false
-        },
+        //favorita_4: {
+        //    type: dataTypes.INTEGER,
+        //    allowNull: false
+       // },
         categoria: {
             type: dataTypes.STRING,
             allowNull: false
