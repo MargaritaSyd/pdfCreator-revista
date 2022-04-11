@@ -170,11 +170,13 @@ let indexController = {
             })
             .then(resultado => {
                  //  hijos de la madre que ganaron carreras:
-                //  let resultadoHijosGanadoresFunction = function(array){
+                 let resultadoHijosGanadoresFunction = function(array){
 
+                let resultadosCarreras = []
                  
-                 let resultadosCarrerasHijos1M = []
-                  id_hijos1M.forEach(e => {
+                //  let resultadosCarrerasHijos1M = []
+                //   id_hijos1M.forEach(e => {
+                   array.forEach(e => {
                      for(let j=0; j<resultado.length; j++){
                          if(resultado[j].eje_id == e){
                              let unHijo = funcionEjemplar(e,ejemplares)
@@ -187,13 +189,16 @@ let indexController = {
                             hijoGanador.fechaCarrera = unaCarrera.fecha
                             hijoGanador.grupoCarrera = unaCarrera.grupo
                             hijoGanador.hipodromo = unaCarrera.hipodromo
-                              resultadosCarrerasHijos1M.push(hijoGanador)
+                            //   resultadosCarrerasHijos1M.push(hijoGanador)
+                           resultadosCarreras.push(hijoGanador)
+                       
                          }
                      }
                    })
-                //    }
+                   return resultadosCarreras
+                }
 
-                // let resultadosCarrerasHijos1M = resultadoHijosGanadoresFunction(id_hijos1M , resultado)
+                 let resultadosCarrerasHijos1M = resultadoHijosGanadoresFunction(id_hijos1M , resultado)
                 let resultadosCarrerasHijos2M = resultadoHijosGanadoresFunction(id_hijos2M , resultado , ejemplares, carreras)
                 let resultadosCarrerasHijos3M = resultadoHijosGanadoresFunction(id_hijos3M , resultado , ejemplares, carreras)
                 let resultadosCarrerasHijos4M = resultadoHijosGanadoresFunction(id_hijos4M , resultado , ejemplares, carreras)
