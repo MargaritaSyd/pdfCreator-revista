@@ -16,17 +16,29 @@ let funcionHijosGanadores = function(array){
     return arrayNuevo
 }
 
-let resultadoHijosGanadoresFunction = function (array1 , array2){
-    let resultadoCarreras = []
-    array1.forEach(e => {
-    for(let j=0; j<array2.length; j++){
-        if(array2[j].eje_id == e){
-            resultadoCarreras.push(array2[j])
-        }
-    }
-  })
-  return resultadoCarreras
-}
+// let resultadoHijosGanadoresFunction = function (array1 , array2, array3, array4){
+//     let resultadoCarreras = []
+//     array1.forEach(e => {
+//     for(let j=0; j<array2.length; j++){
+//         if(array2[j].eje_id == e){
+//             //  resultadoCarreras.push(array2[j])
+//              let unHijo = funcionEjemplar(e,array3)
+//              let unResultado = array2[j]
+//              let unaCarrera = funcionEjemplar(unResultado.carrera_id, array4)
+//             const hijoGanador = new Object()
+//             hijoGanador.nombre = unHijo.nombre
+//             hijoGanador.nac = unHijo.anio_nac
+//             hijoGanador.padre = unHijo.padre
+//             hijoGanador.fechaCarrera = unaCarrera.fecha
+//             hijoGanador.grupoCarrera = unaCarrera.grupo
+//             hijoGanador.hipodromo = unaCarrera.hipodromo
+//               resultadoCarreras.push(hijoGanador)
+        
+//         }
+//     }
+//   })
+//   return resultadoCarreras
+// }
 
 
 let funcionEjemplareshijos = function(id , bd){
@@ -147,8 +159,9 @@ let indexController = {
         
         
         
-        
-        
+        db.carreras.findAll()
+            .then(c=> {
+                let carreras = c      
          
             db.resultados.findAll({
                 where:{
@@ -157,21 +170,35 @@ let indexController = {
             })
             .then(resultado => {
                  //  hijos de la madre que ganaron carreras:
-                // let resultadosCarrerasHijos1Madre = []
-                //  id_hijos1M.forEach(e => {
-                //     for(let j=0; j<resultado.length; j++){
-                //         if(resultado[j].eje_id == e){
-                //             resultadosCarrerasHijos1Madre.push(resultado[j])
-                //         }
-                //     }
-                //   })
+                //  let resultadoHijosGanadoresFunction = function(array){
 
-                let resultadosCarrerasHijos1M = resultadoHijosGanadoresFunction(id_hijos1M , resultado)
-                let resultadosCarrerasHijos2M = resultadoHijosGanadoresFunction(id_hijos2M , resultado)
-                let resultadosCarrerasHijos3M = resultadoHijosGanadoresFunction(id_hijos3M , resultado)
-                let resultadosCarrerasHijos4M = resultadoHijosGanadoresFunction(id_hijos4M , resultado)
-                let resultadosCarrerasHijos5M = resultadoHijosGanadoresFunction(id_hijos5M , resultado)
-                let resultadosCarrerasHijos6M = resultadoHijosGanadoresFunction(id_hijos6M , resultado)
+                 
+                 let resultadosCarrerasHijos1M = []
+                  id_hijos1M.forEach(e => {
+                     for(let j=0; j<resultado.length; j++){
+                         if(resultado[j].eje_id == e){
+                             let unHijo = funcionEjemplar(e,ejemplares)
+                             let unResultado = resultado[j]
+                             let unaCarrera = funcionEjemplar(unResultado.carrera_id, carreras)
+                            const hijoGanador = new Object()
+                            hijoGanador.nombre = unHijo.nombre
+                            hijoGanador.nac = unHijo.anio_nac
+                            hijoGanador.padre = unHijo.padre
+                            hijoGanador.fechaCarrera = unaCarrera.fecha
+                            hijoGanador.grupoCarrera = unaCarrera.grupo
+                            hijoGanador.hipodromo = unaCarrera.hipodromo
+                              resultadosCarrerasHijos1M.push(hijoGanador)
+                         }
+                     }
+                   })
+                //    }
+
+                // let resultadosCarrerasHijos1M = resultadoHijosGanadoresFunction(id_hijos1M , resultado)
+                let resultadosCarrerasHijos2M = resultadoHijosGanadoresFunction(id_hijos2M , resultado , ejemplares, carreras)
+                let resultadosCarrerasHijos3M = resultadoHijosGanadoresFunction(id_hijos3M , resultado , ejemplares, carreras)
+                let resultadosCarrerasHijos4M = resultadoHijosGanadoresFunction(id_hijos4M , resultado , ejemplares, carreras)
+                let resultadosCarrerasHijos5M = resultadoHijosGanadoresFunction(id_hijos5M , resultado , ejemplares, carreras)
+                let resultadosCarrerasHijos6M = resultadoHijosGanadoresFunction(id_hijos6M , resultado , ejemplares, carreras)
            
         
         
@@ -228,9 +255,6 @@ let indexController = {
             db.carreras.findByPk(arrayCarreras[i])
             .then(carrera => {
                 anioCarreras.push(carrera.fecha.slice(0,-6))
-                
-                
-                
                 
         })
         .catch (err  =>{
@@ -290,7 +314,7 @@ let indexController = {
           console.log(resultadosCarrerasHijos2M)
         })
     })
-
+})
 })
 })  
 })
