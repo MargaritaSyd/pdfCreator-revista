@@ -7,6 +7,28 @@ const puppeteer = require('puppeteer')
 const hb = require('handlebars');
 const readFile = utils.promisify(fs.readFile)
 
+
+let funcionHijosGanadores = function(array){
+    let arrayNuevo = []
+    for(let i=0; i<array.length; i++){
+        arrayNuevo.push(array[i].id)
+    } 
+    return arrayNuevo
+}
+
+let resultadoHijosGanadoresFunction = function (array1 , array2){
+    let resultadoCarreras = []
+    array1.forEach(e => {
+    for(let j=0; j<array2.length; j++){
+        if(array2[j].eje_id == e){
+            resultadoCarreras.push(array2[j])
+        }
+    }
+  })
+  return resultadoCarreras
+}
+
+
 let funcionEjemplareshijos = function(id , bd){
     let hijos = [];
     for(let i=0; i<bd.length; i++){
@@ -115,11 +137,16 @@ let indexController = {
 
         // Encuentra flias importantes:
 
-        let id_hijos = []
-        for(let i=0; i<hijos1Madre.length; i++){
-            id_hijos.push(hijos1Madre[i].id)
-
-        } 
+    
+        let id_hijos1M = funcionHijosGanadores(hijos1Madre)      
+        let id_hijos2M = funcionHijosGanadores(hijos2Madre)
+        let id_hijos3M = funcionHijosGanadores(hijos3Madre)
+        let id_hijos4M = funcionHijosGanadores(hijos4Madre)
+        let id_hijos5M = funcionHijosGanadores(hijos5Madre)
+        let id_hijos6M = funcionHijosGanadores(hijos6Madre)
+        
+        
+        
         
         
          
@@ -129,14 +156,22 @@ let indexController = {
                 }
             })
             .then(resultado => {
-                let resultadosCarrerasHijos = []
-                for(let i=0; i<id_hijos.length; i++){
-                    for(let j=0; j<resultado.length; j++){
-                        if(resultado[j]==id_hijos[i]){
-                            console.log(true)
-                        }
-                    }
-                }
+                 //  hijos de la madre que ganaron carreras:
+                // let resultadosCarrerasHijos1Madre = []
+                //  id_hijos1M.forEach(e => {
+                //     for(let j=0; j<resultado.length; j++){
+                //         if(resultado[j].eje_id == e){
+                //             resultadosCarrerasHijos1Madre.push(resultado[j])
+                //         }
+                //     }
+                //   })
+
+                let resultadosCarrerasHijos1M = resultadoHijosGanadoresFunction(id_hijos1M , resultado)
+                let resultadosCarrerasHijos2M = resultadoHijosGanadoresFunction(id_hijos2M , resultado)
+                let resultadosCarrerasHijos3M = resultadoHijosGanadoresFunction(id_hijos3M , resultado)
+                let resultadosCarrerasHijos4M = resultadoHijosGanadoresFunction(id_hijos4M , resultado)
+                let resultadosCarrerasHijos5M = resultadoHijosGanadoresFunction(id_hijos5M , resultado)
+                let resultadosCarrerasHijos6M = resultadoHijosGanadoresFunction(id_hijos6M , resultado)
            
         
         
@@ -252,7 +287,7 @@ let indexController = {
         
 
            
-         console.log(resultadosCarrerasHijos)
+          console.log(resultadosCarrerasHijos2M)
         })
     })
 
