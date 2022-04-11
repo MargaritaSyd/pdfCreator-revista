@@ -186,6 +186,7 @@ let indexController = {
                             hijoGanador.nombre = unHijo.nombre
                             hijoGanador.nac = unHijo.anio_nac
                             hijoGanador.padre = unHijo.padre
+                            hijoGanador.sexo = unHijo.sexo
                             hijoGanador.fechaCarrera = unaCarrera.fecha
                             hijoGanador.grupoCarrera = unaCarrera.grupo
                             hijoGanador.hipodromo = unaCarrera.hipodromo
@@ -312,7 +313,7 @@ let indexController = {
             }
             console.log(JSON.stringify(estadoCaballo))
                    
-            res.render("htmlToPdf" , {anios, caballeriza ,cuidador, criadorX , ejemplarX , anioCarreras, madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
+            res.render("htmlToPdf" , {resultadosCarrerasHijos1M, resultadosCarrerasHijos2M, resultadosCarrerasHijos3M, resultadosCarrerasHijos4M, resultadosCarrerasHijos5M, resultadosCarrerasHijos6M, anios, caballeriza ,cuidador, criadorX , ejemplarX , anioCarreras, madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
         
 
            
