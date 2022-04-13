@@ -18,7 +18,7 @@
     <form id="form"    action="/pdf/<%=ejemplarX.id%>" method="POST" >
         <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
             <div class="contentDescriptStud" style="display: flex; flex-wrap: nowrap; flex-direction: column; width: 40%;">
-                <b class="ejemplarNombre"> <%=ejemplarX.nombre%> </b>
+                <b class="ejemplarNombre" style='font-size: 12; font-family: Arial'> <%=ejemplarX.nombre%> </b><input type="text" style="display: none;" name="ejemplarNombre" value=<%=ejemplarX.nombre%>>
                 <% if(ejemplarX.sexo == "H"){ %>
                 <%    ejemplarX.sexo = "Hembra"%>
                 <%} else {%>
@@ -73,7 +73,7 @@
                     <% ejemplarX.mes_nac = "Diciembre" %> 
                 <%}%>
 
-                <b class="descriptEjemplar"> <%=ejemplarX.sexo%>, <%=ejemplarX.pelo%>, nacido el <%=ejemplarX.dia_nac%> de <%=ejemplarX.mes_nac%> de <%=ejemplarX.anio_nac%> - <%=ejemplarX.familia%></b>
+                <b class="descriptEjemplar" style='font-size: 10; font-family: Arial'> <%=ejemplarX.sexo%>, <%=ejemplarX.pelo%>, nacido el <%=ejemplarX.dia_nac%> de <%=ejemplarX.mes_nac%> de <%=ejemplarX.anio_nac%> - <%=ejemplarX.familia%></b>
                 <input type="text" style="display: none;" name="ejemplarSexo" value=<%=ejemplarX.sexo%>>
                 <input type="text" style="display: none;" name="ejemplarPelo" value=<%=ejemplarX.pelo%>>
                 <input type="text" style="display: none;" name="ejemplarDia_nac" value=<%=ejemplarX.dia_nac%>>
@@ -84,7 +84,7 @@
             </div>
             <div class="borderContentCarreras">
                
-                <div class="detalleCarrerasCorridas">
+                <div class="detalleCarrerasCorridas" style='font-size: 8; font-family: Arial'>
                     <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
                         <b> Año </b>
                         <b> <%= anios[0].slice(2)%>-<%=anios[anios.length-1].slice(2)%></b>
@@ -121,7 +121,7 @@
             </div>
         </div>
         <div class="contenedorCuidadorArbol" >
-            <div class="detllesCuidador">
+            <div class="detllesCuidador" style='font-size: 10; font-family: Arial; font-style: oblique;'>
                 <b> Caballeriza: <%=caballeriza%> </b> <input type="text" style="display: none;" name="caballeriza" value=<%=caballeriza%>>
                 <b> Criador: <%=criadorX.haras%> </b> <input type="text" style="display: none;" name='criador' value=<%=criadorX.haras%>>
                 <b> Cuidador: <%=cuidador%> </b> <input type="text" style="display: none;" name="cuidador" value=<%=cuidador%>>    
@@ -130,19 +130,19 @@
                 </div>
             </div>
             <div class="arbolGContent">
-                <div class="arbolG">
+                <div class="arbolG" style='font-size: 10; font-family: Arial'>
                     <div class="mapa">                        
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
-                        <div class="divArbolG"> <b><%=madre.nombre%></b></div>
+                        <div class="divArbolG"> <b><%=padre.nombre%></b></div><input type="text" style="display: none;" name="padre" value=<%=padre.nombre%>>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
-                        <div class="divArbolG"> <b><%=padre.nombre%></b></div>
+                        <div class="divArbolG"> <b><%=madre.nombre%></b></div><input type="text" style="display: none;" name="madre" value=<%=madre.nombre%>>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
@@ -150,38 +150,42 @@
                     </div>
                     <div class="abue">
                         <div class="divArbolGAbu"></div>
-                        <div class="divArbolG"> <b><%=abuelaM.nombre%></b></div>
+                        <div class="divArbolG"> <b><%=abueloP.nombre%></b></div><input type="text" style="display: none;" name="abueloP" value=<%=abueloM.nombre%>>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
-                        <div class="divArbolG"> <b><%=abueloM.nombre%></b></div>
+                        <div class="divArbolG"> <b><%=abuelaP.nombre%></b></div><input type="text" style="display: none;" name="abuelaP" value=<%=abuelaM.nombre%>>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
-                        <div class="divArbolG"> <b><%=abuelaP.nombre%></b></div>
+                        <div class="divArbolG"> <b><%=abueloM.nombre%></b></div><input type="text" style="display: none;" name="abueloM" value=<%=abueloM.nombre%>>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
-                        <div class="divArbolG"> <b><%=abueloP.nombre%></b></div>
+                        <div class="divArbolG"> <b><%=abuelaM.nombre%></b></div><input type="text" style="display: none;" name="abuelaM" value=<%=abuelaM.nombre%>>
                         <div class="divArbolGAbu"></div>
                     </div>
                     <div class="bisa">
 
-                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="mAbuelaM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbuelaM.nombre%></b></div></div>
-                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="pAbuelaM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbuelaM.nombre%></b></div></div>
-                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="mAbueloM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbueloM.nombre%></b></div></div>
-                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="pAbueloM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbueloM.nombre%></b></div></div>
-                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="mAbuelaP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbuelaP.nombre%></b></div></div>
-                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="pAbuelaP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbuelaP.nombre%></b></div></div>
-                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="mAbueloP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbueloP.nombre%></b></div></div>
-                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="pAbueloP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbueloP.nombre%></b></div></div>
-                    
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="pAbueloP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbueloP.nombre%></b></div></div><input type="text" style="display: none;" name="pAbueloP" value=<%=pAbueloP.nombre%>>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="mAbueloP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbueloP.nombre%></b></div></div><input type="text" style="display: none;" name="mAbueloP" value=<%=mAbueloP.nombre%>>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="pAbuelaP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbuelaP.nombre%></b></div></div><input type="text" style="display: none;" name="pAbuelaP" value=<%=pAbuelaP.nombre%>>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="mAbuelaP"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbuelaP.nombre%></b></div></div><input type="text" style="display: none;" name="mAbuelaP" value=<%=mAbuelaP.nombre%>>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="pAbueloM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbueloM.nombre%></b></div></div><input type="text" style="display: none;" name="pAbueloM" value=<%=pAbueloM.nombre%>>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="mAbueloM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbueloM.nombre%></b></div></div><input type="text" style="display: none;" name="mAbueloM" value=<%=mAbueloM.nombre%>>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="pAbuelaM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=pAbuelaM.nombre%></b></div></div><input type="text" style="display: none;" name="pAbuelaM" value=<%=pAbuelaM.nombre%>>
+                        <div class="divArbolG"><div style="opacity: 0.2;"><input type="text" name="mAbuelaM"></div><div style="display: flex; position: relative; left: -55; z-index: -1;"><b><%=mAbuelaM.nombre%></b></div></div><input type="text" style="display: none;" name="mAbuelaM" value=<%=mAbuelaM.nombre%>>
+                     
                     </div>
                 </div>
             </div>
         </div>
 
-        <div style="font-size: x-small; column-count: 2; margin-top: 5px;">
+        <div style="font-size: 8; font-family: Arial; column-count: 2; margin-top: 5px;">
             <!-- <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;"> -->
                 <!-- <div> -->
                     <p><b style="border-bottom: 1px solid black ;">1a. madre:</b><%=madre.nombre%> (<%= madre.anio_nac%>) (<%=madre.padre%>)</p>
+                    <input type="text" style="display: none;" name="madreNombre" value=<%=madre.nombre%>>
+                    <input type="text" style="display: none;" name="madreNac" value=<%=madre.anio_nac%>>
+                    <input type="text" style="display: none;" name="madrePadre" value=<%=madre.padre%>>
+
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos1M.length; i++){%>
                         
@@ -193,6 +197,9 @@
                 <!-- </div>
                 <div> -->
                     <p><b style="border-bottom: 1px solid black ;">2a. madre:</b><%=abuelaM.nombre%> (<%= abuelaM.anio_nac%>) (<%=abuelaM.padre%>) </p>
+                    <input type="text" style="display: none;" name="abuelaMNombre" value=<%=abuelaM.nombre%>>
+                    <input type="text" style="display: none;" name="abuelaMNac" value=<%=abuelaM.anio_nac%>>
+                    <input type="text" style="display: none;" name="abuelaMPadre" value=<%=abuelaM.padre%>>
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos2M.length; i++){%>
                         <p><%= resultadosCarrerasHijos2M[i].nac%> - <%=resultadosCarrerasHijos2M[i].nombre %> (<%=resultadosCarrerasHijos2M[i].sexo%> <%=resultadosCarrerasHijos2M[i].padre%>)
@@ -203,7 +210,10 @@
             <!-- </div>
             <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;"> -->
                 <!-- <div> -->
-                    <p><b style="border-bottom: 1px solid black ;">3a. madre:</b><%=abuelaM.nombre%> (<%= mAbuelaM.anio_nac%>) (<%=mAbuelaM.padre%>) </p>
+                    <p><b style="border-bottom: 1px solid black ;">3a. madre:</b><%=mAbuelaM.nombre%> (<%= mAbuelaM.anio_nac%>) (<%=mAbuelaM.padre%>) </p>
+                    <input type="text" style="display: none;" name="mAbuelaMNombre" value=<%=mAbuelaM.nombre%>>
+                    <input type="text" style="display: none;" name="mAbuelaMNac" value=<%=mAbuelaM.anio_nac%>>
+                    <input type="text" style="display: none;" name="mAbuelaMPadre" value=<%=mAbuelaM.padre%>>
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos3M.length; i++){%>
                         <p><%= resultadosCarrerasHijos3M[i].nac%> - <%=resultadosCarrerasHijos3M[i].nombre %> (<%=resultadosCarrerasHijos3M[i].sexo%> <%=resultadosCarrerasHijos3M[i].padre%>)
@@ -213,6 +223,9 @@
                 <!-- </div>
                 <div> -->
                     <p><b style="border-bottom: 1px solid black ;">4a. madre:</b><%=madre4.nombre%> (<%= madre4.anio_nac%>) (<%=madre4.padre%>) </p>
+                    <input type="text" style="display: none;" name="madre4Nombre" value=<%=madre4.nombre%>>
+                    <input type="text" style="display: none;" name="madre4Nac" value=<%=madre4.anio_nac%>>
+                    <input type="text" style="display: none;" name="madre4Padre" value=<%=madre4.padre%>>
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos4M.length; i++){%>
                         <p><%= resultadosCarrerasHijos4M[i].nac%> - <%=resultadosCarrerasHijos4M[i].nombre %> (<%=resultadosCarrerasHijos4M[i].sexo%> <%=resultadosCarrerasHijos4M[i].padre%>)
@@ -222,6 +235,9 @@
                 <!-- </div>
                 <div> -->
                     <p><b style="border-bottom: 1px solid black ;">5a. madre:</b><%=madre5.nombre%> (<%= madre5.anio_nac%>) (<%=madre5.padre%>) </p>
+                    <input type="text" style="display: none;" name="madre5Nombre" value=<%=madre5.nombre%>>
+                    <input type="text" style="display: none;" name="madre5Nac" value=<%=madre5.anio_nac%>>
+                    <input type="text" style="display: none;" name="madre5Padre" value=<%=madre5.padre%>>
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos5M.length; i++){%>
                         <p><%= resultadosCarrerasHijos5M[i].nac%> - <%=resultadosCarrerasHijos5M[i].nombre %> (<%=resultadosCarrerasHijos5M[i].sexo%> <%=resultadosCarrerasHijos5M[i].padre%>)
@@ -231,6 +247,9 @@
                 <!-- </div> -->
                 <!-- <div> -->
                     <p><b style="border-bottom: 1px solid black ;">6a. madre:</b><%=madre6.nombre%> (<%= madre6.anio_nac%>) (<%=madre6.padre%>) </p>
+                    <input type="text" style="display: none;" name="madre6Nombre" value=<%=madre6.nombre%>>
+                    <input type="text" style="display: none;" name="madre6Nac" value=<%=madre6.anio_nac%>>
+                    <input type="text" style="display: none;" name="madre6Padre" value=<%=madre6.padre%>>
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos6M.length; i++){%>
                         <p><%= resultadosCarrerasHijos6M[i].nac%> - <%=resultadosCarrerasHijos6M[i].nombre %> (<%=resultadosCarrerasHijos6M[i].sexo%> <%=resultadosCarrerasHijos6M[i].padre%>)

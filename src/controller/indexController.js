@@ -199,12 +199,12 @@ let indexController = {
                    return resultadosCarreras
                 }
 
-                 let resultadosCarrerasHijos1M = resultadoHijosGanadoresFunction(id_hijos1M , resultado)
-                let resultadosCarrerasHijos2M = resultadoHijosGanadoresFunction(id_hijos2M , resultado , ejemplares, carreras)
-                let resultadosCarrerasHijos3M = resultadoHijosGanadoresFunction(id_hijos3M , resultado , ejemplares, carreras)
-                let resultadosCarrerasHijos4M = resultadoHijosGanadoresFunction(id_hijos4M , resultado , ejemplares, carreras)
-                let resultadosCarrerasHijos5M = resultadoHijosGanadoresFunction(id_hijos5M , resultado , ejemplares, carreras)
-                let resultadosCarrerasHijos6M = resultadoHijosGanadoresFunction(id_hijos6M , resultado , ejemplares, carreras)
+                 let resultadosCarrerasHijos1M = resultadoHijosGanadoresFunction(id_hijos1M)
+                let resultadosCarrerasHijos2M = resultadoHijosGanadoresFunction(id_hijos2M)
+                let resultadosCarrerasHijos3M = resultadoHijosGanadoresFunction(id_hijos3M )
+                let resultadosCarrerasHijos4M = resultadoHijosGanadoresFunction(id_hijos4M )
+                let resultadosCarrerasHijos5M = resultadoHijosGanadoresFunction(id_hijos5M )
+                let resultadosCarrerasHijos6M = resultadoHijosGanadoresFunction(id_hijos6M )
            
         
         
@@ -338,169 +338,169 @@ let indexController = {
         let inputs = req.body;
 
 
-        db.ejemplares.findAll()
-            .then(function (ejemplares) {
-                let id = req.params.id;
+        // db.ejemplares.findAll()
+        //     .then(function (ejemplares) {
+        //         let id = req.params.id;
 
-                let ejemplarX = funcionEjemplar(id, ejemplares); //DATOS DEL EJEMPLAR
-                let anioNac = ejemplarX.anio_nac;
-                let madreId = ejemplarX.madre_id;
-                let padreId = ejemplarX.padre_id;
-                let madre = funcionEjemplar(madreId, ejemplares); //DATOS DE LA MADRE DEL EJEMPLAR
-                let hijos1Madre = funcionEjemplareshijos(madreId, ejemplares);
+                // let ejemplarX = funcionEjemplar(id, ejemplares); //DATOS DEL EJEMPLAR
+                // let anioNac = ejemplarX.anio_nac;
+                // let madreId = ejemplarX.madre_id;
+                // let padreId = ejemplarX.padre_id;
+                // let madre = funcionEjemplar(madreId, ejemplares); //DATOS DE LA MADRE DEL EJEMPLAR
+                // let hijos1Madre = funcionEjemplareshijos(madreId, ejemplares);
 
-                let abuelaMId = madre.madre_id;
-                let abueloMId = madre.padre_id;
-                let padre = funcionEjemplar(padreId, ejemplares); //DATOS DEL PADRE DEL EJEMPLAR
-                let abuelaPId = padre.madre_id;
-                let abueloPId = padre.padre_id;
-                let abuelaM = funcionEjemplar(abuelaMId, ejemplares); //DATOS ABUELA MATERNA
-                let abueloM = funcionEjemplar(abueloMId, ejemplares); //DATOS ABUELO MATERNO
-                let abuelaP = funcionEjemplar(abuelaPId, ejemplares); //DATOS ABUELA PATERNA
-                let abueloP = funcionEjemplar(abueloPId, ejemplares); //DATOS ABUELO PATERNO
+                // let abuelaMId = madre.madre_id;
+                // let abueloMId = madre.padre_id;
+                // let padre = funcionEjemplar(padreId, ejemplares); //DATOS DEL PADRE DEL EJEMPLAR
+                // let abuelaPId = padre.madre_id;
+                // let abueloPId = padre.padre_id;
+                // let abuelaM = funcionEjemplar(abuelaMId, ejemplares); //DATOS ABUELA MATERNA
+                // let abueloM = funcionEjemplar(abueloMId, ejemplares); //DATOS ABUELO MATERNO
+                // let abuelaP = funcionEjemplar(abuelaPId, ejemplares); //DATOS ABUELA PATERNA
+                // let abueloP = funcionEjemplar(abueloPId, ejemplares); //DATOS ABUELO PATERNO
 
-                let mAbuelaMId = abuelaM.madre_id;
-                let pAbuelaMId = abuelaM.padre_id;
-                let mAbueloMId = abueloM.madre_id;
-                let pAbueloMId = abueloM.padre_id;
-                let mAbuelaPId = abuelaP.madre_id;
-                let pAbuelaPId = abuelaP.padre_id;
-                let mAbueloPId = abueloP.madre_id;
-                let pAbueloPId = abueloP.padre_id;
+                // let mAbuelaMId = abuelaM.madre_id;
+                // let pAbuelaMId = abuelaM.padre_id;
+                // let mAbueloMId = abueloM.madre_id;
+                // let pAbueloMId = abueloM.padre_id;
+                // let mAbuelaPId = abuelaP.madre_id;
+                // let pAbuelaPId = abuelaP.padre_id;
+                // let mAbueloPId = abueloP.madre_id;
+                // let pAbueloPId = abueloP.padre_id;
 
-                let mAbuelaM = funcionEjemplar(mAbuelaMId, ejemplares); // DATOS BISABUELXS
-                let pAbuelaM = funcionEjemplar(pAbuelaMId, ejemplares);
-                let mAbueloM = funcionEjemplar(mAbueloMId, ejemplares);
-                let pAbueloM = funcionEjemplar(pAbueloMId, ejemplares);
-                let mAbuelaP = funcionEjemplar(mAbuelaPId, ejemplares);
-                let pAbuelaP = funcionEjemplar(pAbuelaPId, ejemplares);
-                let mAbueloP = funcionEjemplar(mAbueloPId, ejemplares);
-                let pAbueloP = funcionEjemplar(pAbueloPId, ejemplares);
+                // let mAbuelaM = funcionEjemplar(mAbuelaMId, ejemplares); // DATOS BISABUELXS
+                // let pAbuelaM = funcionEjemplar(pAbuelaMId, ejemplares);
+                // let mAbueloM = funcionEjemplar(mAbueloMId, ejemplares);
+                // let pAbueloM = funcionEjemplar(pAbueloMId, ejemplares);
+                // let mAbuelaP = funcionEjemplar(mAbuelaPId, ejemplares);
+                // let pAbuelaP = funcionEjemplar(pAbuelaPId, ejemplares);
+                // let mAbueloP = funcionEjemplar(mAbueloPId, ejemplares);
+                // let pAbueloP = funcionEjemplar(pAbueloPId, ejemplares);
 
-                let hijos2Madre = funcionEjemplareshijos(abuelaMId, ejemplares);
-                let madre4Id = mAbuelaM.madre_id;
-                let madre4 = funcionEjemplar(madre4Id, ejemplares); // DATOS BISABUELXS
-                let madre5Id = madre4.madre_id;
-                let madre5 = funcionEjemplar(madre5Id, ejemplares);
-                let madre6Id = madre5.madre_id;
-                let madre6 = funcionEjemplar(madre6Id, ejemplares);
+                // let hijos2Madre = funcionEjemplareshijos(abuelaMId, ejemplares);
+                // let madre4Id = mAbuelaM.madre_id;
+                // let madre4 = funcionEjemplar(madre4Id, ejemplares); // DATOS BISABUELXS
+                // let madre5Id = madre4.madre_id;
+                // let madre5 = funcionEjemplar(madre5Id, ejemplares);
+                // let madre6Id = madre5.madre_id;
+                // let madre6 = funcionEjemplar(madre6Id, ejemplares);
 
-                let hijos3Madre = funcionEjemplareshijos(mAbuelaMId, ejemplares);
-                let hijos4Madre = funcionEjemplareshijos(madre4Id, ejemplares);
-                let hijos5Madre = funcionEjemplareshijos(madre5Id, ejemplares);
-                let hijos6Madre = funcionEjemplareshijos(madre6Id, ejemplares);
+                // let hijos3Madre = funcionEjemplareshijos(mAbuelaMId, ejemplares);
+                // let hijos4Madre = funcionEjemplareshijos(madre4Id, ejemplares);
+                // let hijos5Madre = funcionEjemplareshijos(madre5Id, ejemplares);
+                // let hijos6Madre = funcionEjemplareshijos(madre6Id, ejemplares);
 
 
                 //Encuentra carreras:
-                db.estad_caballo.findAll({
-                    where: {
-                        ideje: ejemplarX.id
-                    }
-                })
-                    .then(resultado => {
-                        // let estadoCaballo = resultado
-                        // carreras corridas por el caballo
-                        //edad:
-                        let firstYear = resultado[0].anio;
-                        let lastYear = resultado[resultado.length - 1].anio;
-                        let ultimoAnio = JSON.stringify(lastYear).slice(2);
-                        let anio0 = JSON.stringify(firstYear).slice(2);
-                        let edad0 = firstYear - anioNac;
-                        let ultimoEdad = lastYear - anioNac;
-                        //cantidad de carreras corridas:
+                // db.estad_caballo.findAll({
+                //     where: {
+                //         ideje: ejemplarX.id
+                //     }
+                // })
+                //     // .then(resultado => {
+                    //     // let estadoCaballo = resultado
+                    //     // carreras corridas por el caballo
+                    //     //edad:
+                    //     let firstYear = resultado[0].anio;
+                    //     let lastYear = resultado[resultado.length - 1].anio;
+                    //     let ultimoAnio = JSON.stringify(lastYear).slice(2);
+                    //     let anio0 = JSON.stringify(firstYear).slice(2);
+                    //     let edad0 = firstYear - anioNac;
+                    //     let ultimoEdad = lastYear - anioNac;
+                    //     //cantidad de carreras corridas:
                         //let largadas = resultado[0].largadas
                         //let largadasLPA = resultado[0].largadas_lpa
                         //let largadasPAL = resultado[0].largadas_pal
                         //let largadasSIS = resultado[0].largadas_sis
-                        let arrayLargadas = [];
-                        let arrayGanadas = [];
-                        let arraySegundos = [];
-                        let arrayTerceros = [];
-                        let arrayPremios = [];
+                        // let arrayLargadas = [];
+                        // let arrayGanadas = [];
+                        // let arraySegundos = [];
+                        // let arrayTerceros = [];
+                        // let arrayPremios = [];
 
-                        for (let i = 0; i < resultado.length; i++) {
-                            arrayLargadas.push(resultado[i].largadas);
-                            arrayLargadas.push(resultado[i].largadas_lpa);
-                            arrayLargadas.push(resultado[i].largadas_pal);
-                            arrayLargadas.push(resultado[i].largadas_sis);
+                        // for (let i = 0; i < resultado.length; i++) {
+                        //     arrayLargadas.push(resultado[i].largadas);
+                        //     arrayLargadas.push(resultado[i].largadas_lpa);
+                        //     arrayLargadas.push(resultado[i].largadas_pal);
+                        //     arrayLargadas.push(resultado[i].largadas_sis);
 
-                            arrayGanadas.push(resultado[i].ganadas);
-                            arrayGanadas.push(resultado[i].ganadas_lpa);
-                            arrayGanadas.push(resultado[i].ganadas_pal);
-                            arrayGanadas.push(resultado[i].ganadas_sis);
+                        //     arrayGanadas.push(resultado[i].ganadas);
+                        //     arrayGanadas.push(resultado[i].ganadas_lpa);
+                        //     arrayGanadas.push(resultado[i].ganadas_pal);
+                        //     arrayGanadas.push(resultado[i].ganadas_sis);
 
-                            arraySegundos.push(resultado[i].segundos);
-                            arraySegundos.push(resultado[i].segundos_lpa);
-                            arraySegundos.push(resultado[i].segundos_pal);
-                            arraySegundos.push(resultado[i].segundos_sis);
+                        //     arraySegundos.push(resultado[i].segundos);
+                        //     arraySegundos.push(resultado[i].segundos_lpa);
+                        //     arraySegundos.push(resultado[i].segundos_pal);
+                        //     arraySegundos.push(resultado[i].segundos_sis);
 
-                            arrayTerceros.push(resultado[i].terceros);
-                            arrayTerceros.push(resultado[i].terceros_lpa);
-                            arrayTerceros.push(resultado[i].terceros_pal);
-                            arrayTerceros.push(resultado[i].terceros_sis);
+                        //     arrayTerceros.push(resultado[i].terceros);
+                        //     arrayTerceros.push(resultado[i].terceros_lpa);
+                        //     arrayTerceros.push(resultado[i].terceros_pal);
+                        //     arrayTerceros.push(resultado[i].terceros_sis);
 
-                            arrayPremios.push(resultado[i].importe);
-                            arrayPremios.push(resultado[i].importe_lpa);
-                            arrayPremios.push(resultado[i].importe_pal);
-                            arrayPremios.push(resultado[i].importe_sis);
+                        //     arrayPremios.push(resultado[i].importe);
+                        //     arrayPremios.push(resultado[i].importe_lpa);
+                        //     arrayPremios.push(resultado[i].importe_pal);
+                        //     arrayPremios.push(resultado[i].importe_sis);
 
 
-                        }
-                        const totalLargadas = arrayLargadas.reduce((a, b) => a + b);
-                        const totalGanadas = arrayGanadas.reduce((c, d) => c + d);
-                        const totalSegundos = arraySegundos.reduce((e, f) => e + f);
-                        const totalTerceros = arrayTerceros.reduce((g, h) => g + h);
-                        const totalPremios = arrayPremios.reduce((g, h) => g + h);
+                        // }
+                        // const totalLargadas = arrayLargadas.reduce((a, b) => a + b);
+                        // const totalGanadas = arrayGanadas.reduce((c, d) => c + d);
+                        // const totalSegundos = arraySegundos.reduce((e, f) => e + f);
+                        // const totalTerceros = arrayTerceros.reduce((g, h) => g + h);
+                        // const totalPremios = arrayPremios.reduce((g, h) => g + h);
 
                         //Encuentra el criador:
-                        let elCriador = ejemplarX.criador_id;
+                        // let elCriador = ejemplarX.criador_id;
 
-                        db.criadores.findByPk(elCriador)
+                        // db.criadores.findByPk(elCriador)
 
-                            .then(function (criador) {
-                                let criadorX;
+                        //     .then(function (criador) {
+                        //         let criadorX;
 
                                 //En caso de que el id del criador no exista en bd
-                                if (!criador) {
-                                    criadorX = {
-                                        id: 0,
-                                        propietario: "N/N",
-                                        haras: "N/N",
-                                        banner: "N/N"
-                                    };
-                                } else {
-                                    criadorX = criador.dataValues;
-                                }
+                                // if (!criador) {
+                                //     criadorX = {
+                                //         id: 0,
+                                //         propietario: "N/N",
+                                //         haras: "N/N",
+                                //         banner: "N/N"
+                                //     };
+                                // } else {
+                                //     criadorX = criador.dataValues;
+                                // }
 
                                 //Traduccion hembra o macho de db
-                                if (ejemplarX.sexo == "H") {
-                                    ejemplarX.sexo = "Hembra";
-                                } else {
-                                    ejemplarX.sexo = "Macho";
-                                }
+                                // if (ejemplarX.sexo == "H") {
+                                //     ejemplarX.sexo = "Hembra";
+                                // } else {
+                                //     ejemplarX.sexo = "Macho";
+                                // }
 
                                 //Traduccion código pelo en db    
-                                if (ejemplarX.pelo == "ZC") {
-                                    ejemplarX.pelo = "Zaino Colorado";
-                                } else if (ejemplarX.pelo == "A") {
-                                    ejemplarX.pelo = "Alazan";
-                                } else if (ejemplarX.pelo == "AT") {
-                                    ejemplarX.pelo = "Alazan Tostado";
-                                } else if (ejemplarX.pelo == "O") {
-                                    ejemplarX.pelo = "Oscuro";
-                                } else if (ejemplarX.pelo == "M") {
-                                    ejemplarX.pelo = "Moro";
-                                } else if (ejemplarX.pelo == "R") {
-                                    ejemplarX.pelo = "Rosillo";
-                                } else if (ejemplarX.pelo == "T") {
-                                    ejemplarX.pelo = "Tordillo";
-                                } else if (ejemplarX.pelo == "Z") {
-                                    ejemplarX.pelo = "Zaino";
-                                } else if (ejemplarX.pelo == "ZD") {
-                                    ejemplarX.pelo = "Zaino Doradillo";
-                                } else {
-                                    ejemplarX.pelo = "Zaino Negro";
-                                }
+                                // if (ejemplarX.pelo == "ZC") {
+                                //     ejemplarX.pelo = "Zaino Colorado";
+                                // } else if (ejemplarX.pelo == "A") {
+                                //     ejemplarX.pelo = "Alazan";
+                                // } else if (ejemplarX.pelo == "AT") {
+                                //     ejemplarX.pelo = "Alazan Tostado";
+                                // } else if (ejemplarX.pelo == "O") {
+                                //     ejemplarX.pelo = "Oscuro";
+                                // } else if (ejemplarX.pelo == "M") {
+                                //     ejemplarX.pelo = "Moro";
+                                // } else if (ejemplarX.pelo == "R") {
+                                //     ejemplarX.pelo = "Rosillo";
+                                // } else if (ejemplarX.pelo == "T") {
+                                //     ejemplarX.pelo = "Tordillo";
+                                // } else if (ejemplarX.pelo == "Z") {
+                                //     ejemplarX.pelo = "Zaino";
+                                // } else if (ejemplarX.pelo == "ZD") {
+                                //     ejemplarX.pelo = "Zaino Doradillo";
+                                // } else {
+                                //     ejemplarX.pelo = "Zaino Negro";
+                                // }
 
                                 //Continua el código
                                 async function getTemplateHtml() {
@@ -514,8 +514,11 @@ let indexController = {
                                     }
                                 }
                                 async function generatePdf() {
+                                    let pathId = 'pdf'+ req.params.id + '.pdf'
                                     //inputs
-                                    let data = { inputs, criadorX, totalLargadas, totalGanadas, totalTerceros, totalSegundos, totalPremios, anio0, edad0, ultimoEdad, ultimoAnio, ejemplarX, madre, padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6 };
+                                    // let data = { inputs, criadorX, totalLargadas, totalGanadas, totalTerceros, totalSegundos, totalPremios, anio0, edad0, ultimoEdad, ultimoAnio, ejemplarX, madre, padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6 };
+                                   
+                                    let data = { inputs };
                                     getTemplateHtml().then(async (res) => {
                                         // Now we have the html code of our template in res object
                                         // you can check by logging it on console
@@ -534,13 +537,14 @@ let indexController = {
                                         await page.setContent(html);
                                         // We use pdf function to generate the pdf in the same folder as this file.
                                         await page.pdf({
-                                            path: 'invoice.pdf',
+                                            // path: 'invoice.pdf',
+                                            path: pathId,
                                             width: "190mm",
                                             height: "270mm",
                                             // format: 'A4' 
                                         });
                                         await browser.close();
-                                        console.log("PDF Generated");
+                                        // console.log(pathId)
                                         // console.log(input)
                                     }).catch(err => {
                                         console.error(err);
@@ -548,13 +552,14 @@ let indexController = {
                                 }
                                 generatePdf();
                                 //res.render("index");
-                            });
-                    });
+                                console.log('ok')
+                            // });
+                    // });
 
-            })
-            .then(function () {
-                res.redirect("/");
-            });
+            // // })
+            // .then(function () {
+            //     res.redirect("/");
+            // });
     },
    /*
    
