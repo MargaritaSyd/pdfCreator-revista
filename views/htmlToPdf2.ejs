@@ -15,7 +15,7 @@
     <div style="display: flex; flex-direction: column; position: relative; left: 620; z-index: -1; width: 40px; top: -20;"><img src="/img/pedigree.png" alt=""></div>
    <!-- <div style="display: flex; flex-direction: column; position: relative; left: 640;"><b>P</b><b>E</b><b>D</b><b>I</b><b>G</b><b>R</b><b>E</b><b>E</b></div>  -->
     <div style="display:flex; position: relative; top: -320; border: 2px solid black; margin: 5px; padding: 15px; height: 250mm; left: -15px;">
-    <form id="form" action="" method="POST" >
+    <form id="form"    action="/reverso/pdf/<%=ejemplarX.id%>" method="POST" >
         <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
             <div class="contentDescriptStud" style="display: flex; flex-wrap: nowrap; flex-direction: column; width: 40%;">
                 <b class="ejemplarNombre" style='font-size: 12; font-family: Arial'> <%=ejemplarX.nombre%> </b><input type="text" style="display: none;" name="ejemplarNombre" value="<%=ejemplarX.nombre%>">
@@ -80,7 +80,6 @@
                 <input type="text" style="display: none;" name="ejemplarMes_nac" value="<%=ejemplarX.mes_nac%>">  
                 <input type="text" style="display: none;" name="ejemplarAnio_nac" value="<%=ejemplarX.anio_nac%>">
                 <input type="text" style="display: none;" name="ejemplarFamilia" value="<%=ejemplarX.familia%>">
-                <input id="id" type="text" style="display: none;" name="ejemplarId" value="<%=ejemplarX.id%>">
                 
             </div>
             <div class="borderContentCarreras">
@@ -335,13 +334,12 @@
 
             <!-- </div> -->
         </div>
-        <button id="pdf1" type="submit"> Crear pdf frente</button>
-        <button id="pdf2" type="submit"> Crear pdf reverso</button>
-
+        <button id="pdf1" type="submit"> Crear pdf-1</button>
+        
     </form>
 </div>
     </main>
 
-    <script src="/javascript/ejemplares.js"></script>
+    <!-- <script src="/javascript/ejemplares.js"></script> -->
 </body>
 </html>

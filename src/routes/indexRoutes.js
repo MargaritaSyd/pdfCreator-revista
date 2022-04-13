@@ -5,11 +5,12 @@ const indexController = require('../controller/indexController');
 
 router.get("/" , indexController.ok)
 
-router.get('/:id' , indexController.index);
+router.get('/frente/:id' , indexController.index);
+router.get('/reverso/:id' , indexController.index2);
 
-router.post('/pdf/:id' , indexController.pdfCreator)
+router.post('/frente/pdf/:id' , indexController.pdfCreator)
 
-router.post('/pdf2/:id' , indexController.pdfCreator)
+router.post('/reverso/pdf/:id' , indexController.pdfCreator2)
 
 
 router.get('/error', indexController.error);

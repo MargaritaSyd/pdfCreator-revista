@@ -331,6 +331,247 @@ let indexController = {
 })
         
     },
+    index2: function(req,res){
+        db.ejemplares.findAll()
+        .then(function(ejemplares){
+            let id = req.params.id
+            //let unEjemplar
+        let ejemplarX = funcionEjemplar(id,ejemplares); //DATOS DEL EJEMPLAR
+        let madreId = ejemplarX.madre_id;
+        let padreId = ejemplarX.padre_id;
+        let madre = funcionEjemplar(madreId, ejemplares); //DATOS DE LA MADRE DEL EJEMPLAR
+        
+        let hijos1Madre = funcionEjemplareshijos(madreId , ejemplares)
+
+        
+        let abuelaMId = madre.madre_id;
+        let abueloMId = madre.padre_id;
+        let padre = funcionEjemplar(padreId, ejemplares); //DATOS DEL PADRE DEL EJEMPLAR
+        let abuelaPId = padre.madre_id;
+        let abueloPId = padre.padre_id;
+        let abuelaM = funcionEjemplar(abuelaMId,ejemplares); //DATOS ABUELA MATERNA
+        let abueloM = funcionEjemplar(abueloMId,ejemplares); //DATOS ABUELO MATERNO
+        let abuelaP = funcionEjemplar(abuelaPId,ejemplares); //DATOS ABUELA PATERNA
+        let abueloP = funcionEjemplar(abueloPId,ejemplares); //DATOS ABUELO PATERNO
+        
+        let hijos2Madre = funcionEjemplareshijos(abuelaMId , ejemplares)
+
+
+
+        let mAbuelaMId = abuelaM.madre_id;
+        let pAbuelaMId = abuelaM.padre_id;
+        let mAbueloMId = abueloM.madre_id;
+        let pAbueloMId = abueloM.padre_id;
+        let mAbuelaPId = abuelaP.madre_id;
+        let pAbuelaPId = abuelaP.padre_id;
+        let mAbueloPId = abueloP.madre_id;
+        let pAbueloPId = abueloP.padre_id;
+
+        let mAbuelaM = funcionEjemplar(mAbuelaMId,ejemplares); // DATOS BISABUELXS
+        let pAbuelaM = funcionEjemplar(pAbuelaMId,ejemplares);
+        let mAbueloM = funcionEjemplar(mAbueloMId,ejemplares);
+        let pAbueloM = funcionEjemplar(pAbueloMId,ejemplares);
+        let mAbuelaP = funcionEjemplar(mAbuelaPId,ejemplares);
+        let pAbuelaP = funcionEjemplar(pAbuelaPId,ejemplares);
+        let mAbueloP = funcionEjemplar(mAbueloPId,ejemplares);
+        let pAbueloP = funcionEjemplar(pAbueloPId,ejemplares);
+        
+        let madre4Id = mAbuelaM.madre_id
+        let madre4 = funcionEjemplar(madre4Id,ejemplares); // DATOS BISABUELXS
+        let madre5Id = madre4.madre_id
+        let madre5 = funcionEjemplar(madre5Id, ejemplares);
+        let madre6Id = madre5.madre_id
+        let madre6 = funcionEjemplar(madre6Id , ejemplares);
+        
+        let hijos3Madre = funcionEjemplareshijos(mAbuelaMId , ejemplares);
+        let hijos4Madre = funcionEjemplareshijos(madre4Id, ejemplares);
+        let hijos5Madre = funcionEjemplareshijos(madre5Id , ejemplares);
+        let hijos6Madre = funcionEjemplareshijos(madre6Id, ejemplares);
+
+        // Encuentra flias importantes:
+
+    
+        let id_hijos1M = funcionHijosGanadores(hijos1Madre)      
+        let id_hijos2M = funcionHijosGanadores(hijos2Madre)
+        let id_hijos3M = funcionHijosGanadores(hijos3Madre)
+        let id_hijos4M = funcionHijosGanadores(hijos4Madre)
+        let id_hijos5M = funcionHijosGanadores(hijos5Madre)
+        let id_hijos6M = funcionHijosGanadores(hijos6Madre)
+        
+        
+        
+        db.carreras.findAll()
+            .then(c=> {
+                let carreras = c      
+         
+            db.resultados.findAll({
+                where:{
+                    llego_numero: 1
+                }
+            })
+            .then(resultado => {
+                 //  hijos de la madre que ganaron carreras:
+                 let resultadoHijosGanadoresFunction = function(array){
+
+                let resultadosCarreras = []
+                 
+                //  let resultadosCarrerasHijos1M = []
+                //   id_hijos1M.forEach(e => {
+                   array.forEach(e => {
+                     for(let j=0; j<resultado.length; j++){
+                         if(resultado[j].eje_id == e){
+                             let unHijo = funcionEjemplar(e,ejemplares)
+                             let unResultado = resultado[j]
+                             let unaCarrera = funcionEjemplar(unResultado.carrera_id, carreras)
+                            const hijoGanador = new Object()
+                            hijoGanador.nombre = unHijo.nombre
+                            hijoGanador.nac = unHijo.anio_nac
+                            hijoGanador.padre = unHijo.padre
+                            hijoGanador.sexo = unHijo.sexo
+                            hijoGanador.fechaCarrera = unaCarrera.fecha
+                            hijoGanador.grupoCarrera = unaCarrera.grupo
+                            hijoGanador.hipodromo = unaCarrera.hipodromo
+                            //   resultadosCarrerasHijos1M.push(hijoGanador)
+                           resultadosCarreras.push(hijoGanador)
+                       
+                         }
+                     }
+                   })
+                   return resultadosCarreras
+                }
+
+                 let resultadosCarrerasHijos1M = resultadoHijosGanadoresFunction(id_hijos1M)
+                let resultadosCarrerasHijos2M = resultadoHijosGanadoresFunction(id_hijos2M)
+                let resultadosCarrerasHijos3M = resultadoHijosGanadoresFunction(id_hijos3M )
+                let resultadosCarrerasHijos4M = resultadoHijosGanadoresFunction(id_hijos4M )
+                let resultadosCarrerasHijos5M = resultadoHijosGanadoresFunction(id_hijos5M )
+                let resultadosCarrerasHijos6M = resultadoHijosGanadoresFunction(id_hijos6M )
+           
+        
+        
+        //Encuentra ganancias totales, carreras corridas del ejemplar 
+
+        let resultadoCarreras
+        db.resultados.findAll({
+            where:{
+                eje_id: ejemplarX.id
+            }
+        })
+        .then(resultado => {
+            resultadoCarreras = resultado
+            let arrayGanancias = []
+            let arrayGanadas = []
+            let arraySegundos = []
+            let arrayTerceros = []
+            let totalLargadas = resultadoCarreras.length
+            let arrayCarreras = []
+            let ultimaCarrera = resultadoCarreras[resultadoCarreras.length-1]
+            let cuidador_id = ultimaCarrera.cuidador
+            let caballeriza_id = ultimaCarrera.caballeriza
+
+
+
+
+           // let arrayLargadas = []
+            for(let i=0; i<resultadoCarreras.length; i++){
+            arrayGanancias.push(resultadoCarreras[i].importe)
+            arrayCarreras.push(resultadoCarreras[i].carrera_id)
+            if(resultadoCarreras[i].llego_numero == 1){
+                arrayGanadas.push(resultadoCarreras[i].llego_numero)
+            }
+            if(resultadoCarreras[i].llego_numero == 2){
+                arraySegundos.push(resultadoCarreras[i].llego_numero)
+            }
+            if(resultadoCarreras[i].llego_numero == 3){
+                arrayTerceros.push(resultadoCarreras[i].llego_numero)
+            } 
+            
+           // arrayGanancias.push()
+        }
+        const totalGanancias = arrayGanancias.reduce((a,b)=> a+b);
+        const totalSegundos = arraySegundos.length
+        const totalGanadas = arrayGanadas.length
+        const totalTerceros = arrayTerceros.length
+
+        //})
+        //Creando array de carreras jugadas por el ejemplar
+      let anioCarreras = []
+      
+        for(let i=0; i<arrayCarreras.length; i++){
+
+            db.carreras.findByPk(arrayCarreras[i])
+            .then(carrera => {
+                anioCarreras.push(carrera.fecha.slice(0,-6))
+                
+        })
+        .catch (err  =>{
+            
+            console.log(err)
+            })
+    }
+
+    let anios = anioCarreras.sort(function(a,b){return a-b})
+    
+    db.profesionales.findByPk(cuidador_id)
+    .then(resultado => {
+        let cuidador = resultado.descripcion
+      
+        db.profesionales.findByPk(caballeriza_id)
+        .then(resultado => {
+            let caballeriza = resultado.descripcion
+        
+        
+        
+            
+        
+        //Encuentra carreras:
+        let estadoCaballo
+        db.estad_caballo.findAll({
+            where: {
+                ideje: ejemplarX.id
+            }
+        })
+        
+        .then(resultado => {
+             estadoCaballo = resultado
+
+             
+   
+            
+        //Encuentra el criador:
+        db.criadores.findByPk(ejemplarX.criador_id)
+        .then(function(criador){
+            let criadorX
+            if(!criador){
+                criadorX = {
+                    id: 0,
+                    propietario: "N/N",
+                    haras: "N/N",
+                    banner: "N/N"
+                }
+            } else {
+                criadorX = criador.dataValues
+            }
+            console.log(JSON.stringify(estadoCaballo))
+                   
+            res.render("htmlToPdf" , {resultadosCarrerasHijos1M, resultadosCarrerasHijos2M, resultadosCarrerasHijos3M, resultadosCarrerasHijos4M, resultadosCarrerasHijos5M, resultadosCarrerasHijos6M, anios, caballeriza ,cuidador, criadorX , ejemplarX , anioCarreras, madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
+        
+
+           
+          console.log(resultadosCarrerasHijos2M)
+        })
+    })
+})
+})
+})  
+})
+})
+})
+.catch(function(err){
+    console.log(err)
+})
+        
+    },
 
 
     pdfCreator: function (req, res) {
@@ -343,6 +584,69 @@ let indexController = {
             console.log("Loading template file in memory");
             try {
                 const invoicePath = path.resolve("./views/index.ejs");
+                return await readFile(invoicePath, 'utf8');
+            } catch (err) {
+                //return Promise.reject("Could not load html template");
+                console.log(err);
+            }
+        }
+        async function generatePdf() {
+            let pathId = 'pdf'+ req.params.id + '.pdf'
+            
+            let data = { inputs };
+            getTemplateHtml().then(async (res) => {
+                // Now we have the html code of our template in res object
+                // you can check by logging it on console
+                // console.log(res)
+                console.log("Compiing the template with handlebars");
+
+                const template = hb.compile(res, { strict: true });
+                // we have compile our code with handlebars
+                const result = template(data);
+                // We can use this to add dyamic data to our handlebas template at run time from database or API as per need. you can read the official doc to learn more https://handlebarsjs.com/
+                const html = result;
+                // we are using headless mode
+                const browser = await puppeteer.launch();
+                const page = await browser.newPage();
+                // We set the page content as the generated html by handlebars
+                await page.setContent(html);
+                // We use pdf function to generate the pdf in the same folder as this file.
+                await page.pdf({
+                    // path: 'invoice.pdf',
+                    path: pathId,
+                    width: "190mm",
+                    height: "270mm",
+                    // format: 'A4' 
+                });
+                await browser.close();
+                // console.log(pathId)
+                // console.log(input)
+            }).catch(err => {
+                console.error(err);
+            });
+        }
+        generatePdf();
+        res.send("index");
+        console.log(inputName)
+                            // });
+                    // });
+
+            // // })
+            // .then(function () {
+            //     res.redirect("/");
+            // });
+    },
+
+    pdfCreator2: function (req, res) {
+
+        let inputs = req.body;
+        let inputName = req.body.ejemplarNombre
+
+        //Continua el código
+        async function getTemplateHtml() {
+            console.log("Loading template file in memory");
+            try {
+                const invoicePath = path.resolve("./views/index2.ejs");
                 return await readFile(invoicePath, 'utf8');
             } catch (err) {
                 //return Promise.reject("Could not load html template");
