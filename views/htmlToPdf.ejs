@@ -13,12 +13,12 @@
     
     <main class="mainPdf">
     <div style="display: flex; flex-direction: column; position: relative; left: 620; z-index: -1; width: 40px; top: -20;"><img src="/img/pedigree.png" alt=""></div>
-    <!-- <div style="display: flex; flex-direction: column; position: relative; left: 640;"><b>P</b><b>E</b><b>D</b><b>I</b><b>G</b><b>R</b><b>E</b><b>E</b></div> -->
+   <!-- <div style="display: flex; flex-direction: column; position: relative; left: 640;"><b>P</b><b>E</b><b>D</b><b>I</b><b>G</b><b>R</b><b>E</b><b>E</b></div>  -->
     <div style="display:flex; position: relative; top: -320; border: 2px solid black; margin: 5px; padding: 15px; height: 250mm; left: -15px;">
     <form id="form"    action="/pdf/<%=ejemplarX.id%>" method="POST" >
         <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
             <div class="contentDescriptStud" style="display: flex; flex-wrap: nowrap; flex-direction: column; width: 40%;">
-                <b class="ejemplarNombre" style='font-size: 12; font-family: Arial'> <%=ejemplarX.nombre%> </b><input type="text" style="display: none;" name="ejemplarNombre" value=<%=ejemplarX.nombre%>>
+                <b class="ejemplarNombre" style='font-size: 12; font-family: Arial'> <%=ejemplarX.nombre%> </b><input type="text" style="display: none;" name="ejemplarNombre" value="<%=ejemplarX.nombre%>">
                 <% if(ejemplarX.sexo == "H"){ %>
                 <%    ejemplarX.sexo = "Hembra"%>
                 <%} else {%>
@@ -74,12 +74,12 @@
                 <%}%>
 
                 <b class="descriptEjemplar" style='font-size: 10; font-family: Arial'> <%=ejemplarX.sexo%>, <%=ejemplarX.pelo%>, nacido el <%=ejemplarX.dia_nac%> de <%=ejemplarX.mes_nac%> de <%=ejemplarX.anio_nac%> - <%=ejemplarX.familia%></b>
-                <input type="text" style="display: none;" name="ejemplarSexo" value=<%=ejemplarX.sexo%>>
-                <input type="text" style="display: none;" name="ejemplarPelo" value=<%=ejemplarX.pelo%>>
-                <input type="text" style="display: none;" name="ejemplarDia_nac" value=<%=ejemplarX.dia_nac%>>
-                <input type="text" style="display: none;" name="ejemplarMes_nac" value=<%=ejemplarX.mes_nac%>>  
-                <input type="text" style="display: none;" name="ejemplarAnio_nac" value=<%=ejemplarX.anio_nac%>>
-                <input type="text" style="display: none;" name="ejemplarFamilia" value=<%=ejemplarX.familia%>>
+                <input type="text" style="display: none;" name="ejemplarSexo" value="<%=ejemplarX.sexo%>">
+                <input type="text" style="display: none;" name="ejemplarPelo" value="<%=ejemplarX.pelo%>">
+                <input type="text" style="display: none;" name="ejemplarDia_nac" value="<%=ejemplarX.dia_nac%>">
+                <input type="text" style="display: none;" name="ejemplarMes_nac" value="<%=ejemplarX.mes_nac%>">  
+                <input type="text" style="display: none;" name="ejemplarAnio_nac" value="<%=ejemplarX.anio_nac%>">
+                <input type="text" style="display: none;" name="ejemplarFamilia" value="<%=ejemplarX.familia%>">
                 
             </div>
             <div class="borderContentCarreras">
@@ -122,9 +122,9 @@
         </div>
         <div class="contenedorCuidadorArbol" >
             <div class="detllesCuidador" style='font-size: 10; font-family: Arial; font-style: oblique;'>
-                <b> Caballeriza: <%=caballeriza%> </b> <input type="text" style="display: none;" name="caballeriza" value=<%=caballeriza%>>
-                <b> Criador: <%=criadorX.haras%> </b> <input type="text" style="display: none;" name='criador' value=<%=criadorX.haras%>>
-                <b> Cuidador: <%=cuidador%> </b> <input type="text" style="display: none;" name="cuidador" value=<%=cuidador%>>    
+                <b> Caballeriza: <%=caballeriza%> </b> <input type="text" style="display: none;" name="caballeriza" value="<%=caballeriza%>">
+                <b> Criador: <%=criadorX.haras%> </b> <input type="text" style="display: none;" name='criador' value="<%=criadorX.haras%>">
+                <b> Cuidador: <%=cuidador%> </b> <input type="text" style="display: none;" name="cuidador" value="<%=cuidador%>">    
                 <div style="font-size: x-small;">     
                    <input type="text" name="infoPadrillo1"><input type="text" name="infoPadrilloNegrita1" placeholder="negrita"><input type="text" name="infoPadrillo2"><input type="text" name="infoPadrilloNegrita2" placeholder="negrita"><input type="text" name="infoPadrillo3"><input type="text" name="infoPadrilloNegrita3" placeholder="negrita"><input type="text" name="infoPadrillo4"><input type="text" name="infoPadrilloNegrita4" placeholder="negrita"><input type="text" name="infoPadrillo5"><input type="text" name="infoPadrilloNegrita5" placeholder="negrita">        
                 </div>
@@ -135,14 +135,14 @@
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
-                        <div class="divArbolG"> <b><%=padre.nombre%></b></div><input type="text" style="display: none;" name="padre" value=<%=padre.nombre%>>
+                        <div class="divArbolG"> <b><%=padre.nombre%></b></div><input type="text" style="display: none;" name="padre" value="<%=padre.nombre%>">
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
-                        <div class="divArbolG"> <b><%=madre.nombre%></b></div><input type="text" style="display: none;" name="madre" value=<%=madre.nombre%>>
+                        <div class="divArbolG"> <b><%=madre.nombre%></b></div><input type="text" style="display: none;" name="madre" value="<%=madre.nombre%>">
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
@@ -150,71 +150,99 @@
                     </div>
                     <div class="abue">
                         <div class="divArbolGAbu"></div>
-                        <div class="divArbolG"> <b><%=abueloP.nombre%></b></div><input type="text" style="display: none;" name="abueloP" value=<%=abueloM.nombre%>>
+                        <!-- <div class="divArbolG"> <b><%=abueloP.nombre%></b></div><input type="text" style="display: none;" name="abueloP" value=<%=abueloM.nombre%>> -->
+                        <div class="divArbolG">
+                            <%if(abueloP.nombre != '') {%>
+                            <input type="text" name="abueloP" value="<%=abueloP.nombre%>">
+                            <% }else{ %>
+                            <input type="text" name="abueloP">
+                            <% } %>
+                        </div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
-                        <div class="divArbolG"> <b><%=abuelaP.nombre%></b></div><input type="text" style="display: none;" name="abuelaP" value=<%=abuelaM.nombre%>>
+                        <!-- <div class="divArbolG"> <b><%=abuelaP.nombre%></b></div><input type="text" style="display: none;" name="abuelaP" value=<%=abuelaM.nombre%>> -->
+                        <div class="divArbolG">
+                            <%if(abuelaP.nombre != '') {%>
+                            <input type="text" name="abuelaP" value="<%=abuelaP.nombre%>">
+                            <% }else{ %>
+                            <input type="text" name="abuelaP">
+                            <% } %>
+                        </div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
-                        <div class="divArbolG"> <b><%=abueloM.nombre%></b></div><input type="text" style="display: none;" name="abueloM" value=<%=abueloM.nombre%>>
+                        <!-- <div class="divArbolG"> <b><%=abueloM.nombre%></b></div><input type="text" style="display: none;" name="abueloM" value=<%=abueloM.nombre%>> -->
+                        <div class="divArbolG">
+                            <%if(abueloM.nombre != '') {%>
+                            <input type="text" name="abueloM" value="<%=abueloM.nombre%>">
+                            <% }else{ %>
+                            <input type="text" name="abueloM">
+                            <% } %>
+                        </div>
                         <div class="divArbolGAbu"></div>
                         <div class="divArbolGAbu"></div>
-                        <div class="divArbolG"> <b><%=abuelaM.nombre%></b></div><input type="text" style="display: none;" name="abuelaM" value=<%=abuelaM.nombre%>>
+                        <!-- <div class="divArbolG"> <b><%=abuelaM.nombre%></b></div><input type="text" style="display: none;" name="abuelaM" value=<%=abuelaM.nombre%>> -->
+                        <div class="divArbolG">
+                            <%if(abuelaM.nombre != '') {%>
+                            <input type="text" name="abuelaM" value="<%=abuelaM.nombre%>">
+                            <% }else{ %>
+                            <input type="text" name="abuelaM">
+                            <% } %>
+                        </div>
                         <div class="divArbolGAbu"></div>
                     </div>
                         <div class="bisa">
                             <div class="divArbolG">
                                 <%if(pAbueloP.nombre != '') {%>
-                                <input type="text" name="pAbueloP" value=<%=pAbueloP.nombre%>>
+                                <input type="text" name="pAbueloP" value="<%=pAbueloP.nombre%>">
                                 <% }else{ %>
                                 <input type="text" name="pAbueloP">
                                 <% } %>
                             </div>
                             <div class="divArbolG">
                                 <%if(mAbueloP.nombre != '') {%>
-                                <input type="text" name="mAbueloP" value=<%=mAbueloP.nombre%>>
+                                <input type="text" name="mAbueloP" value="<%=mAbueloP.nombre%>">
                                 <% }else{ %>
                                 <input type="text" name="mAbueloP">
                                 <% } %>
                             </div>
                             <div class="divArbolG">
                                 <%if(pAbuelaP.nombre != '') {%>
-                                <input type="text" name="pAbuelaP" value=<%=pAbuelaP.nombre%>>
+                                <input type="text" name="pAbuelaP" value="<%=pAbuelaP.nombre%>">
                                 <% }else{ %>
                                 <input type="text" name="pAbuelaP">
                                 <% } %>
                             </div> 
                             <div class="divArbolG">
                                 <%if(mAbuelaP.nombre != '') {%>
-                                <input type="text" name="mAbuelaP" value=<%=mAbuelaP.nombre%>>
+                                <input type="text" name="mAbuelaP" value="<%=mAbuelaP.nombre%>">
                                 <% }else{ %>
                                 <input type="text" name="mAbuelaP">
                                 <% } %>
                             </div> 
                             <div class="divArbolG">
                                 <%if(pAbueloM.nombre != '') {%>
-                                <input type="text" name="pAbueloM" value=<%=pAbueloM.nombre%>>
+                                <input type="text" name="pAbueloM" value="<%=pAbueloM.nombre%>">
                                 <% }else{ %>
                                 <input type="text" name="pAbueloM">
                                 <% } %>
                             </div> 
                             <div class="divArbolG">
                                 <%if(mAbueloM.nombre != '') {%>
-                                <input type="text" name="mAbueloM" value=<%=mAbueloM.nombre%>>
+                                <input type="text" name="mAbueloM" value="<%=mAbueloM.nombre%>">
                                 <% }else{ %>
                                 <input type="text" name="mAbueloM">
                                 <% } %>
                             </div>
                             <div class="divArbolG">
                                 <%if(pAbuelaM.nombre != '') {%>
-                                <input type="text" name="pAbuelaM" value=<%=pAbuelaM.nombre%>>
+                                <input type="text" name="pAbuelaM" value="<%=pAbuelaM.nombre%>">
                                 <% }else{ %>
                                 <input type="text" name="pAbuelaM">
                                 <% } %>
                             </div>
                             <div class="divArbolG">
                                 <%if(mAbuelaM.nombre != '') {%>
-                                <input type="text" name="mAbuelaM" value=<%=mAbuelaM.nombre%>>
+                                <input type="text" name="mAbuelaM" value="<%=mAbuelaM.nombre%>">
                                 <% }else{ %>
                                 <input type="text" name="mAbuelaM">
                                 <% } %>
@@ -228,9 +256,9 @@
             <!-- <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;"> -->
                 <!-- <div> -->
                     <p><b style="border-bottom: 1px solid black ;">1a. madre:</b><%=madre.nombre%> (<%= madre.anio_nac%>) (<%=madre.padre%>)</p>
-                    <input type="text" style="display: none;" name="madreNombre" value=<%=madre.nombre%>>
-                    <input type="text" style="display: none;" name="madreNac" value=<%=madre.anio_nac%>>
-                    <input type="text" style="display: none;" name="madrePadre" value=<%=madre.padre%>>
+                    <input type="text" style="display: none;" name="madreNombre" value="<%=madre.nombre%>">
+                    <input type="text" style="display: none;" name="madreNac" value="<%=madre.anio_nac%>">
+                    <input type="text" style="display: none;" name="madrePadre" value="<%=madre.padre%>">
 
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos1M.length; i++){%>
@@ -243,9 +271,9 @@
                 <!-- </div>
                 <div> -->
                     <p><b style="border-bottom: 1px solid black ;">2a. madre:</b><%=abuelaM.nombre%> (<%= abuelaM.anio_nac%>) (<%=abuelaM.padre%>) </p>
-                    <input type="text" style="display: none;" name="abuelaMNombre" value=<%=abuelaM.nombre%>>
-                    <input type="text" style="display: none;" name="abuelaMNac" value=<%=abuelaM.anio_nac%>>
-                    <input type="text" style="display: none;" name="abuelaMPadre" value=<%=abuelaM.padre%>>
+                    <input type="text" style="display: none;" name="abuelaMNombre" value="<%=abuelaM.nombre%>">
+                    <input type="text" style="display: none;" name="abuelaMNac" value="<%=abuelaM.anio_nac%>">
+                    <input type="text" style="display: none;" name="abuelaMPadre" value="<%=abuelaM.padre%>">
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos2M.length; i++){%>
                         <p><%= resultadosCarrerasHijos2M[i].nac%> - <%=resultadosCarrerasHijos2M[i].nombre %> (<%=resultadosCarrerasHijos2M[i].sexo%> <%=resultadosCarrerasHijos2M[i].padre%>)
@@ -257,9 +285,9 @@
             <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;"> -->
                 <!-- <div> -->
                     <p><b style="border-bottom: 1px solid black ;">3a. madre:</b><%=mAbuelaM.nombre%> (<%= mAbuelaM.anio_nac%>) (<%=mAbuelaM.padre%>) </p>
-                    <input type="text" style="display: none;" name="mAbuelaMNombre" value=<%=mAbuelaM.nombre%>>
-                    <input type="text" style="display: none;" name="mAbuelaMNac" value=<%=mAbuelaM.anio_nac%>>
-                    <input type="text" style="display: none;" name="mAbuelaMPadre" value=<%=mAbuelaM.padre%>>
+                    <input type="text" style="display: none;" name="mAbuelaMNombre" value="<%=mAbuelaM.nombre%>">
+                    <input type="text" style="display: none;" name="mAbuelaMNac" value="<%=mAbuelaM.anio_nac%>">
+                    <input type="text" style="display: none;" name="mAbuelaMPadre" value="<%=mAbuelaM.padre%>">
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos3M.length; i++){%>
                         <p><%= resultadosCarrerasHijos3M[i].nac%> - <%=resultadosCarrerasHijos3M[i].nombre %> (<%=resultadosCarrerasHijos3M[i].sexo%> <%=resultadosCarrerasHijos3M[i].padre%>)
@@ -269,9 +297,9 @@
                 <!-- </div>
                 <div> -->
                     <p><b style="border-bottom: 1px solid black ;">4a. madre:</b><%=madre4.nombre%> (<%= madre4.anio_nac%>) (<%=madre4.padre%>) </p>
-                    <input type="text" style="display: none;" name="madre4Nombre" value=<%=madre4.nombre%>>
-                    <input type="text" style="display: none;" name="madre4Nac" value=<%=madre4.anio_nac%>>
-                    <input type="text" style="display: none;" name="madre4Padre" value=<%=madre4.padre%>>
+                    <input type="text" style="display: none;" name="madre4Nombre" value="<%=madre4.nombre%>">
+                    <input type="text" style="display: none;" name="madre4Nac" value="<%=madre4.anio_nac%>">
+                    <input type="text" style="display: none;" name="madre4Padre" value="<%=madre4.padre%>">
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos4M.length; i++){%>
                         <p><%= resultadosCarrerasHijos4M[i].nac%> - <%=resultadosCarrerasHijos4M[i].nombre %> (<%=resultadosCarrerasHijos4M[i].sexo%> <%=resultadosCarrerasHijos4M[i].padre%>)
@@ -281,9 +309,9 @@
                 <!-- </div>
                 <div> -->
                     <p><b style="border-bottom: 1px solid black ;">5a. madre:</b><%=madre5.nombre%> (<%= madre5.anio_nac%>) (<%=madre5.padre%>) </p>
-                    <input type="text" style="display: none;" name="madre5Nombre" value=<%=madre5.nombre%>>
-                    <input type="text" style="display: none;" name="madre5Nac" value=<%=madre5.anio_nac%>>
-                    <input type="text" style="display: none;" name="madre5Padre" value=<%=madre5.padre%>>
+                    <input type="text" style="display: none;" name="madre5Nombre" value="<%=madre5.nombre%>">
+                    <input type="text" style="display: none;" name="madre5Nac" value="<%=madre5.anio_nac%>">
+                    <input type="text" style="display: none;" name="madre5Padre" value="<%=madre5.padre%>">
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos5M.length; i++){%>
                         <p><%= resultadosCarrerasHijos5M[i].nac%> - <%=resultadosCarrerasHijos5M[i].nombre %> (<%=resultadosCarrerasHijos5M[i].sexo%> <%=resultadosCarrerasHijos5M[i].padre%>)
@@ -293,9 +321,9 @@
                 <!-- </div> -->
                 <!-- <div> -->
                     <p><b style="border-bottom: 1px solid black ;">6a. madre:</b><%=madre6.nombre%> (<%= madre6.anio_nac%>) (<%=madre6.padre%>) </p>
-                    <input type="text" style="display: none;" name="madre6Nombre" value=<%=madre6.nombre%>>
-                    <input type="text" style="display: none;" name="madre6Nac" value=<%=madre6.anio_nac%>>
-                    <input type="text" style="display: none;" name="madre6Padre" value=<%=madre6.padre%>>
+                    <input type="text" style="display: none;" name="madre6Nombre" value="<%=madre6.nombre%>">
+                    <input type="text" style="display: none;" name="madre6Nac" value="<%=madre6.anio_nac%>">
+                    <input type="text" style="display: none;" name="madre6Padre" value="<%=madre6.padre%>">
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos6M.length; i++){%>
                         <p><%= resultadosCarrerasHijos6M[i].nac%> - <%=resultadosCarrerasHijos6M[i].nombre %> (<%=resultadosCarrerasHijos6M[i].sexo%> <%=resultadosCarrerasHijos6M[i].padre%>)
