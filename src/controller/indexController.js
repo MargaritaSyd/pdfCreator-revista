@@ -142,45 +142,19 @@ let indexController = {
          
             db.resultados.findAll({
                 where:{
+
                     llego_numero: 1
+                    // llego_numero: {
+                    //     [Op.lte]: 3
+                    // }
+                       
                 }
+                
             })
             .then(resultado => {
 
                 console.log('ok')
-                // Carreras que ganó el padrillo:
-                let infoCarrerasPadrillo = function(idPadrillo){
-                    let resultadoPadrillo = []
-                    for(let j=0; j<resultado.length; j++){
-                        if(resultado[j].eje_id == idPadrillo){
-                            let padrillo = funcionEjemplar(idPadrillo,ejemplares)
-                            let unResultado = resultado[j]
-                            let unaCarrera = funcionEjemplar(unResultado.carrera_id, carreras)
-                            // if(unaCarrera.grupo == 'I'){
-                            //    unaCarrera.grupo = 'G.I'
-                            // } else if(unaCarrera.grupo == 'II'){
-                            //    unaCarrera.grupo = 'G.II'
-                            // } else if(unaCarrera.grupo == 'III'){
-                            //    unaCarrera.grupo = 'G.III'
-                            // } else {
-                            //    unaCarrera.grupo = unaCarrera.grupo
-                            // }
-                           const padrilloGanador = new Object()
-                           padrilloGanador.nombre = padrillo.nombre
-                           padrilloGanador.nac = padrillo.anio_nac
-                           padrilloGanador.padre = padrillo.padre
-                           padrilloGanador.sexo = padrillo.sexo
-                           padrilloGanador.fechaCarrera = unaCarrera.fecha
-                           padrilloGanador.nombreCarrera = unaCarrera.nombre
-                           padrilloGanador.grupoCarrera = unaCarrera.grupo
-                           padrilloGanador.hipodromo = unaCarrera.hipodromo
-                            //   resultadosCarrerasHijos1M.push(hijoGanador)
-                           resultadoPadrillo.push(padrilloGanador)
-
-                        }   
-                    }
-                    return resultadoPadrillo
-                }
+               
 
                  //  hijos de la madre que ganaron carreras:
                  let resultadoHijosGanadoresFunction = function(array){
@@ -225,7 +199,6 @@ let indexController = {
                 let resultadosCarrerasHijos4M = resultadoHijosGanadoresFunction(id_hijos4M )
                 let resultadosCarrerasHijos5M = resultadoHijosGanadoresFunction(id_hijos5M )
                 let resultadosCarrerasHijos6M = resultadoHijosGanadoresFunction(id_hijos6M )
-                let resultadoPadrillo = infoCarrerasPadrillo(436834)
         
         
         //Encuentra ganancias totales, carreras corridas del ejemplar 
@@ -337,7 +310,7 @@ let indexController = {
         
 
            
-           console.log(resultadoPadrillo)
+//console.log(resultadoPadrillo)
         })
     })
 })
@@ -394,8 +367,8 @@ let indexController = {
                 await page.pdf({
                     // path: 'invoice.pdf',
                     path: pathId,
-                    width: "190mm",
-                    height: "270mm",
+                    //width: "190mm",
+                    //height: "270mm",
                     // format: 'A4' 
                 });
                 await browser.close();

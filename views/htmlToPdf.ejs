@@ -263,10 +263,13 @@
 
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos1M.length; i++){%>
-                        
-                        <p><%= resultadosCarrerasHijos1M[i].nac%> - <%=resultadosCarrerasHijos1M[i].nombre %> (<%=resultadosCarrerasHijos1M[i].sexo%> <%=resultadosCarrerasHijos1M[i].padre%>)
-                        gdr en <%= resultadosCarrerasHijos1M[i].hipodromo%> - <%=resultadosCarrerasHijos1M[i].grupoCarrera %> (<%=resultadosCarrerasHijos1M[i].fechaCarrera%>)</p>
-                     
+                        <% if(resultadosCarrerasHijos1M[i].grupoCarrera == ''){%>
+                            <p><%= resultadosCarrerasHijos1M[i].nac%> - <%=resultadosCarrerasHijos1M[i].nombre %> (<%=resultadosCarrerasHijos1M[i].sexo%> <%=resultadosCarrerasHijos1M[i].padre%>)
+                            gdr en <%= resultadosCarrerasHijos1M[i].hipodromo%></p>
+                        <% }else{%>
+                            <p> <%= resultadosCarrerasHijos1M[i].nac%> - <%=resultadosCarrerasHijos1M[i].nombre %> (<%=resultadosCarrerasHijos1M[i].sexo%> <%=resultadosCarrerasHijos1M[i].padre%>)
+                                gdr en <%= resultadosCarrerasHijos1M[i].hipodromo%>-<%= resultadosCarrerasHijos1M[i].nombreCarrera%> <%=resultadosCarrerasHijos1M[i].grupoCarrera %></p>    
+                        <%}%>
                     <%}%>       
                     <textarea name="1madre" ></textarea>
                 <!-- </div>
@@ -277,8 +280,13 @@
                     <input type="text" style="display: none;" name="abuelaMPadre" value="<%=abuelaM.padre%>">
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos2M.length; i++){%>
-                        <p><%=resultadosCarrerasHijos2M[i].nombre %> (<%=resultadosCarrerasHijos2M[i].sexo%> <%=resultadosCarrerasHijos2M[i].padre%>)
-                            gdr en <%= resultadosCarrerasHijos2M[i].hipodromo%> - <%=resultadosCarrerasHijos2M[i].grupoCarrera %></p></p>
+                        <% if(resultadosCarrerasHijos2M[i].grupoCarrera == ''){%>
+                        <p><%= resultadosCarrerasHijos2M[i].nac%> - <%=resultadosCarrerasHijos2M[i].nombre %> (<%=resultadosCarrerasHijos2M[i].sexo%> <%=resultadosCarrerasHijos2M[i].padre%>)
+                        gdr en <%= resultadosCarrerasHijos2M[i].hipodromo%></p>
+                        <%}else{%>
+                            <p> <%= resultadosCarrerasHijos2M[i].nac%> - <%=resultadosCarrerasHijos2M[i].nombre %> (<%=resultadosCarrerasHijos2M[i].sexo%> <%=resultadosCarrerasHijos2M[i].padre%>)
+                            gdr en <%= resultadosCarrerasHijos2M[i].hipodromo%>- <%= resultadosCarrerasHijos2M[i].nombreCarrera%> <%=resultadosCarrerasHijos2M[i].grupoCarrera %></p>    
+                        <%}%>
                     <%}%>       
                     <textarea name="2madre" ></textarea>
                 <!-- </div> -->
@@ -291,8 +299,13 @@
                     <input type="text" style="display: none;" name="mAbuelaMPadre" value="<%=mAbuelaM.padre%>">
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos3M.length; i++){%>
-                        <p><%=resultadosCarrerasHijos3M[i].nombre %> (<%=resultadosCarrerasHijos3M[i].sexo%> <%=resultadosCarrerasHijos3M[i].padre%>)
-                            gdr en <%= resultadosCarrerasHijos3M[i].hipodromo%> - <%=resultadosCarrerasHijos3M[i].grupoCarrera %> </p></p>
+                        <% if(resultadosCarrerasHijos3M[i].grupoCarrera == ''){%>
+                            <p><%=resultadosCarrerasHijos3M[i].nombre %> (<%=resultadosCarrerasHijos3M[i].sexo%> <%=resultadosCarrerasHijos3M[i].padre%>)
+                            gdr en <%= resultadosCarrerasHijos3M[i].hipodromo%></p>
+                        <% } else {%>
+                            <p> <%=resultadosCarrerasHijos3M[i].nombre %> (<%=resultadosCarrerasHijos3M[i].sexo%> <%=resultadosCarrerasHijos3M[i].padre%>)
+                            gdr en <%= resultadosCarrerasHijos3M[i].hipodromo%>-<%= resultadosCarrerasHijos3M[i].nombreCarrera%> <%=resultadosCarrerasHijos3M[i].grupoCarrera %></p>    
+                        <%}%>
                     <%}%>         
                     <textarea name="3madre" ></textarea>
                 <!-- </div>
@@ -303,8 +316,13 @@
                     <input type="text" style="display: none;" name="madre4Padre" value="<%=madre4.padre%>">
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos4M.length; i++){%>
-                        <p><%=resultadosCarrerasHijos4M[i].nombre %> (<%=resultadosCarrerasHijos4M[i].sexo%> <%=resultadosCarrerasHijos4M[i].padre%>)
-                            gdr en <%= resultadosCarrerasHijos4M[i].hipodromo%> - <%=resultadosCarrerasHijos4M[i].grupoCarrera %> </p></p>
+                        <% if(resultadosCarrerasHijos4M[i].grupoCarrera == ''){%>
+                            <p><%=resultadosCarrerasHijos4M[i].nombre %> (<%=resultadosCarrerasHijos4M[i].sexo%> <%=resultadosCarrerasHijos4M[i].padre%>)
+                            gdr en <%= resultadosCarrerasHijos4M[i].hipodromo%></p>
+                        <%} else {%>
+                            <p> <%=resultadosCarrerasHijos4M[i].nombre %> (<%=resultadosCarrerasHijos4M[i].sexo%> <%=resultadosCarrerasHijos4M[i].padre%>)
+                                gdr en <%= resultadosCarrerasHijos4M[i].hipodromo%> - <%= resultadosCarrerasHijos4M[i].nombreCarrera%> <%=resultadosCarrerasHijos4M[i].grupoCarrera %></p>    
+                        <%}%>
                     <%}%>       
                     <textarea name="4madre" ></textarea>  
                 <!-- </div>
@@ -315,8 +333,13 @@
                     <input type="text" style="display: none;" name="madre5Padre" value="<%=madre5.padre%>">
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos5M.length; i++){%>
-                        <p><%=resultadosCarrerasHijos5M[i].nombre %> (<%=resultadosCarrerasHijos5M[i].sexo%> <%=resultadosCarrerasHijos5M[i].padre%>)
-                            gdr en <%= resultadosCarrerasHijos5M[i].hipodromo%> - <%=resultadosCarrerasHijos5M[i].grupoCarrera %></p></p>
+                        <% if(resultadosCarrerasHijos5M[i].grupoCarrera == ''){%>
+                            <p><%=resultadosCarrerasHijos5M[i].nombre %> (<%=resultadosCarrerasHijos5M[i].sexo%> <%=resultadosCarrerasHijos5M[i].padre%>)
+                            gdr en <%= resultadosCarrerasHijos5M[i].hipodromo%> </p>
+                        <%} else {%>
+                            <p><%=resultadosCarrerasHijos5M[i].nombre %> (<%=resultadosCarrerasHijos5M[i].sexo%> <%=resultadosCarrerasHijos5M[i].padre%>)
+                            gdr en <%= resultadosCarrerasHijos5M[i].hipodromo%> - <%= resultadosCarrerasHijos5M[i].nombreCarrera%> <%=resultadosCarrerasHijos5M[i].grupoCarrera %></p>    
+                        <%}%>
                     <%}%>         
                     <textarea name="5madre" ></textarea>
                 <!-- </div> -->
@@ -327,8 +350,13 @@
                     <input type="text" style="display: none;" name="madre6Padre" value="<%=madre6.padre%>">
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos6M.length; i++){%>
-                        <p><%=resultadosCarrerasHijos6M[i].nombre %> (<%=resultadosCarrerasHijos6M[i].sexo%> <%=resultadosCarrerasHijos6M[i].padre%>)
-                            gdr en <%= resultadosCarrerasHijos6M[i].hipodromo%> - <%=resultadosCarrerasHijos6M[i].grupoCarrera %></p></p>
+                        <% if(resultadosCarrerasHijos6M[i].grupoCarrera == ''){%>
+                            <p><%=resultadosCarrerasHijos6M[i].nombre %> (<%=resultadosCarrerasHijos6M[i].sexo%> <%=resultadosCarrerasHijos6M[i].padre%>)
+                            gdr en <%= resultadosCarrerasHijos6M[i].hipodromo%></p>
+                        <%}else {%>
+                            <p><%=resultadosCarrerasHijos6M[i].nombre %> (<%=resultadosCarrerasHijos6M[i].sexo%> <%=resultadosCarrerasHijos6M[i].padre%>)
+                            gdr en <%= resultadosCarrerasHijos6M[i].hipodromo%> - <%= resultadosCarrerasHijos6M[i].nombreCarrera%> <%=resultadosCarrerasHijos6M[i].grupoCarrera %></p>    
+                        <%}%>
                     <%}%>          
                     <textarea name="6madre" ></textarea>
                 <!-- </div> -->
