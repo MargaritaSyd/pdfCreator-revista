@@ -16,30 +16,6 @@ let funcionHijosGanadores = function(array){
     return arrayNuevo
 }
 
-// let resultadoHijosGanadoresFunction = function (array1 , array2, array3, array4){
-//     let resultadoCarreras = []
-//     array1.forEach(e => {
-//     for(let j=0; j<array2.length; j++){
-//         if(array2[j].eje_id == e){
-//             //  resultadoCarreras.push(array2[j])
-//              let unHijo = funcionEjemplar(e,array3)
-//              let unResultado = array2[j]
-//              let unaCarrera = funcionEjemplar(unResultado.carrera_id, array4)
-//             const hijoGanador = new Object()
-//             hijoGanador.nombre = unHijo.nombre
-//             hijoGanador.nac = unHijo.anio_nac
-//             hijoGanador.padre = unHijo.padre
-//             hijoGanador.fechaCarrera = unaCarrera.fecha
-//             hijoGanador.grupoCarrera = unaCarrera.grupo
-//             hijoGanador.hipodromo = unaCarrera.hipodromo
-//               resultadoCarreras.push(hijoGanador)
-        
-//         }
-//     }
-//   })
-//   return resultadoCarreras
-// }
-
 
 let funcionEjemplareshijos = function(id , bd){
     let hijos = [];
@@ -173,27 +149,65 @@ let indexController = {
 
                 console.log('ok')
                 // Carreras que ganó el padrillo:
+                let infoCarrerasPadrillo = function(idPadrillo){
+                    let resultadoPadrillo = []
+                    for(let j=0; j<resultado.length; j++){
+                        if(resultado[j].eje_id == idPadrillo){
+                            let padrillo = funcionEjemplar(idPadrillo,ejemplares)
+                            let unResultado = resultado[j]
+                            let unaCarrera = funcionEjemplar(unResultado.carrera_id, carreras)
+                            // if(unaCarrera.grupo == 'I'){
+                            //    unaCarrera.grupo = 'G.I'
+                            // } else if(unaCarrera.grupo == 'II'){
+                            //    unaCarrera.grupo = 'G.II'
+                            // } else if(unaCarrera.grupo == 'III'){
+                            //    unaCarrera.grupo = 'G.III'
+                            // } else {
+                            //    unaCarrera.grupo = unaCarrera.grupo
+                            // }
+                           const padrilloGanador = new Object()
+                           padrilloGanador.nombre = padrillo.nombre
+                           padrilloGanador.nac = padrillo.anio_nac
+                           padrilloGanador.padre = padrillo.padre
+                           padrilloGanador.sexo = padrillo.sexo
+                           padrilloGanador.fechaCarrera = unaCarrera.fecha
+                           padrilloGanador.nombreCarrera = unaCarrera.nombre
+                           padrilloGanador.grupoCarrera = unaCarrera.grupo
+                           padrilloGanador.hipodromo = unaCarrera.hipodromo
+                            //   resultadosCarrerasHijos1M.push(hijoGanador)
+                           resultadoPadrillo.push(padrilloGanador)
 
+                        }   
+                    }
+                    return resultadoPadrillo
+                }
 
                  //  hijos de la madre que ganaron carreras:
                  let resultadoHijosGanadoresFunction = function(array){
 
                 let resultadosCarreras = []
-                 
-                //  let resultadosCarrerasHijos1M = []
-                //   id_hijos1M.forEach(e => {
                    array.forEach(e => {
                      for(let j=0; j<resultado.length; j++){
                          if(resultado[j].eje_id == e){
                              let unHijo = funcionEjemplar(e,ejemplares)
                              let unResultado = resultado[j]
                              let unaCarrera = funcionEjemplar(unResultado.carrera_id, carreras)
+                             if(unaCarrera.grupo == 'I'){
+                                unaCarrera.grupo = 'G.I'
+                             } else if(unaCarrera.grupo == 'II'){
+                                unaCarrera.grupo = 'G.II'
+                             } else if(unaCarrera.grupo == 'III'){
+                                unaCarrera.grupo = 'G.III'
+                             } else {
+                                unaCarrera.grupo = unaCarrera.grupo
+                             }
                             const hijoGanador = new Object()
                             hijoGanador.nombre = unHijo.nombre
                             hijoGanador.nac = unHijo.anio_nac
                             hijoGanador.padre = unHijo.padre
                             hijoGanador.sexo = unHijo.sexo
                             hijoGanador.fechaCarrera = unaCarrera.fecha
+                            hijoGanador.nombreCarrera = unaCarrera.nombre
                             hijoGanador.grupoCarrera = unaCarrera.grupo
                             hijoGanador.hipodromo = unaCarrera.hipodromo
                             //   resultadosCarrerasHijos1M.push(hijoGanador)
@@ -211,7 +225,7 @@ let indexController = {
                 let resultadosCarrerasHijos4M = resultadoHijosGanadoresFunction(id_hijos4M )
                 let resultadosCarrerasHijos5M = resultadoHijosGanadoresFunction(id_hijos5M )
                 let resultadosCarrerasHijos6M = resultadoHijosGanadoresFunction(id_hijos6M )
-                // let resultadoPadrillo = resultadoHijosGanadoresFunction(padreId)
+                let resultadoPadrillo = infoCarrerasPadrillo(436834)
         
         
         //Encuentra ganancias totales, carreras corridas del ejemplar 
@@ -323,7 +337,7 @@ let indexController = {
         
 
            
-        //   console.log(resultadoPadrillo)
+           console.log(resultadoPadrillo)
         })
     })
 })
