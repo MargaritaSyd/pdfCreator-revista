@@ -94,6 +94,7 @@ let indexController = {
         db.ejemplares.findAll()
         .then(function(ejemplares){
             let id = req.params.id
+            console.log(id)
             //let unEjemplar
         let ejemplarX = funcionEjemplar(id,ejemplares); //DATOS DEL EJEMPLAR
         let madreId = ejemplarX.madre_id;
@@ -170,6 +171,7 @@ let indexController = {
             })
             .then(resultado => {
 
+                console.log('ok')
                 // Carreras que ganó el padrillo:
 
 
@@ -209,7 +211,7 @@ let indexController = {
                 let resultadosCarrerasHijos4M = resultadoHijosGanadoresFunction(id_hijos4M )
                 let resultadosCarrerasHijos5M = resultadoHijosGanadoresFunction(id_hijos5M )
                 let resultadosCarrerasHijos6M = resultadoHijosGanadoresFunction(id_hijos6M )
-                let resultadoPadrillo = resultadoHijosGanadoresFunction(padreId)
+                // let resultadoPadrillo = resultadoHijosGanadoresFunction(padreId)
         
         
         //Encuentra ganancias totales, carreras corridas del ejemplar 
@@ -321,7 +323,7 @@ let indexController = {
         
 
            
-          console.log(resultadoPadrillo)
+        //   console.log(resultadoPadrillo)
         })
     })
 })
