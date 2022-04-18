@@ -155,6 +155,37 @@ let indexController = {
 
                 console.log('ok')
                
+                // let madre y padre carreras ganadas
+
+                let resultadoMadresGanadorasFunction = function(id){
+                    let carrerasMadres = []
+                    for(let j=0; j<resultado.length; j++){
+                        if(resultado[j].eje_id == id){
+                            let unResultado = resultado[j]
+                           let unaCarrera = funcionEjemplar(unResultado.carrera_id, carreras)
+                           if(unaCarrera.grupo == 'I'){
+                            unaCarrera.grupo = 'G.I'
+                         } else if(unaCarrera.grupo == 'II'){
+                            unaCarrera.grupo = 'G.II'
+                         } else if(unaCarrera.grupo == 'III'){
+                            unaCarrera.grupo = 'G.III'
+                         } else {
+                            unaCarrera.grupo = unaCarrera.grupo
+                         }
+                         const madreGanador = new Object()
+                         
+                         madreGanador.fechaCarrera = unaCarrera.fecha
+                         madreGanador.nombreCarrera = unaCarrera.nombre
+                         madreGanador.grupoCarrera = unaCarrera.grupo
+                         madreGanador.hipodromo = unaCarrera.hipodromo
+
+                         carrerasMadres.push(madreGanador)
+
+                        }
+                    }
+                    return carrerasMadres
+                }
+
 
                  //  hijos de la madre que ganaron carreras:
                  let resultadoHijosGanadoresFunction = function(array){
@@ -199,6 +230,10 @@ let indexController = {
                 let resultadosCarrerasHijos4M = resultadoHijosGanadoresFunction(id_hijos4M )
                 let resultadosCarrerasHijos5M = resultadoHijosGanadoresFunction(id_hijos5M )
                 let resultadosCarrerasHijos6M = resultadoHijosGanadoresFunction(id_hijos6M )
+                let resultadoCarrerasMadre = resultadoMadresGanadorasFunction(madreId)
+                let resultadoCarrerasPadre = resultadoMadresGanadorasFunction(padreId)
+              
+
         
         
         //Encuentra ganancias totales, carreras corridas del ejemplar 
@@ -306,7 +341,7 @@ let indexController = {
             }
             console.log(JSON.stringify(estadoCaballo))
                    
-            res.render("htmlToPdf" , {resultadosCarrerasHijos1M, resultadosCarrerasHijos2M, resultadosCarrerasHijos3M, resultadosCarrerasHijos4M, resultadosCarrerasHijos5M, resultadosCarrerasHijos6M, anios, caballeriza ,cuidador, criadorX , ejemplarX , anioCarreras, madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
+            res.render("htmlToPdf" , {resultadoCarrerasMadre, resultadoCarrerasPadre, resultadosCarrerasHijos1M, resultadosCarrerasHijos2M, resultadosCarrerasHijos3M, resultadosCarrerasHijos4M, resultadosCarrerasHijos5M, resultadosCarrerasHijos6M, anios, caballeriza ,cuidador, criadorX , ejemplarX , anioCarreras, madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
         
 
            
@@ -489,7 +524,7 @@ let indexController = {
             status: 200
         })
        
-           
+
        })
        .catch(function(err){
            console.log(err)

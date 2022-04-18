@@ -126,7 +126,12 @@
                 <b> Caballeriza: <%=caballeriza%> </b> <input type="text" style="display: none;" name="caballeriza" value="<%=caballeriza%>">
                 <b> Criador: <%=criadorX.haras%> </b> <input type="text" style="display: none;" name='criador' value="<%=criadorX.haras%>">
                 <b> Cuidador: <%=cuidador%> </b> <input type="text" style="display: none;" name="cuidador" value="<%=cuidador%>">    
-                <div style="font-size: x-small;">     
+                <div style="font-size: x-small;">
+                    <p>gdr en: </p>   
+                    <% for(let i=0; i<resultadoCarrerasPadre.length; i++){%>
+                        <p> <%= resultadoCarrerasPadre[i].hipodromo%>-<%= resultadoCarrerasPadre[i].nombreCarrera%> <%=resultadoCarrerasPadre[i].grupoCarrera %></p>    
+                    <%}%>    
+
                    <input type="text" name="infoPadrillo1"><input type="text" name="infoPadrilloNegrita1" placeholder="negrita"><input type="text" name="infoPadrillo2"><input type="text" name="infoPadrilloNegrita2" placeholder="negrita"><input type="text" name="infoPadrillo3"><input type="text" name="infoPadrilloNegrita3" placeholder="negrita"><input type="text" name="infoPadrillo4"><input type="text" name="infoPadrilloNegrita4" placeholder="negrita"><input type="text" name="infoPadrillo5"><input type="text" name="infoPadrilloNegrita5" placeholder="negrita">        
                 </div>
             </div>
@@ -260,6 +265,11 @@
                     <input type="text" style="display: none;" name="madreNombre" value="<%=madre.nombre%>">
                     <input type="text" style="display: none;" name="madreNac" value="<%=madre.anio_nac%>">
                     <input type="text" style="display: none;" name="madrePadre" value="<%=madre.padre%>">
+                    <p>gdra en:</p> 
+                    <% for(let i=0; i<resultadoCarrerasMadre.length; i++){%>
+                        <p><%= resultadoCarrerasMadre[i].hipodromo%>-<%= resultadoCarrerasMadre[i].nombreCarrera%> <%=resultadoCarrerasMadre[i].grupoCarrera %></p>    
+                    <%}%>    
+                    <textarea name="carrerasMadre" ></textarea>
 
                     <p> Madre de </p>
                     <% for(let i=0; i<resultadosCarrerasHijos1M.length; i++){%>
