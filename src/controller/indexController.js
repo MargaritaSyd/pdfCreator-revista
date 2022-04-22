@@ -542,6 +542,11 @@ let indexController = {
        let id = req.params.id
        res.render("ok" , {id})
    },
+   okForm: function(req,res){
+    let inputs = req.body;
+    console.log(inputs);
+    //res.send('ok')
+   },
 
       
    apiEjemplares: function(req,res){

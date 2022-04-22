@@ -3,7 +3,8 @@ const router = express.Router();
 const indexController = require('../controller/indexController');
 
 
-router.get("/:id" , indexController.ok)
+router.get("/:id" , indexController.ok);
+router.post('/ok_form' , indexController.okForm)
 
 //router.get('/:id' , indexController.index);
 
