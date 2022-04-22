@@ -7,6 +7,7 @@ const puppeteer = require('puppeteer')
 const hb = require('handlebars');
 const readFile = utils.promisify(fs.readFile)
 
+/*
 
 let funcionHijosGanadores = function(array){
     let arrayNuevo = []
@@ -62,10 +63,10 @@ let funcionEjemplar = function(unId, bd){
 }
     return result
 }
-
+*/
 
 let indexController = {
-    
+  /*  
     index: function(req,res){
         db.ejemplares.findAll()
         .then(function(ejemplares){
@@ -538,8 +539,221 @@ let indexController = {
    },
    
    ok: function(req,res) {
-       res.send("ok")
-   }
+       res.render("ok")
+   },
+
+      
+   apiEjemplares: function(req,res){
+    let ejemplaresTodos = [];
+    db.ejemplares.findAll({
+        raw: true,
+        nest: true
+        
+    })
+//     console.log('findall')
+        .then( losEjemplares => {
+          //  console.log(losEjemplares);
+
+            for(let i=0; i<losEjemplares.length; i++){
+             //   console.log('ok el for')
+                let unEJemplar = {
+                id: losEjemplares[i].id,
+                nombre: losEjemplares[i].nombre, 
+                anio_nac: losEjemplares[i].anio_nac,
+                mes_nac: losEjemplares[i].mes_nac,
+                dia_nac: losEjemplares[i].dia_nac,
+                sexo: losEjemplares[i].sexo, 
+                pelo: losEjemplares[i].pelo,
+                raza: losEjemplares[i].raza,
+                criador_id: losEjemplares[i].criador_id,
+                padre_id: losEjemplares[i].padre_id,
+                madre_id: losEjemplares[i].madre_id,
+                padre: losEjemplares[i].padre,
+                madre: losEjemplares[i].madre,
+                
+                
+            };
+                ejemplaresTodos.push(unEJemplar);
+            }
+          //  console.log(ejemplaresTodos.length);
+             console.log(ejemplaresTodos);
+        })
+        .then(function (){
+            return res.status(200).json({
+                count: ejemplaresTodos.length,
+                data: ejemplaresTodos,
+                status: 200
+            });
+        
+        }) 
+        .catch(function(err){
+             console.log(err);
+        });
+       // res.send('ok');
+},
+
+
+apiEjemplar: function(req,res){
+    let id = req.params.id;
+    db.ejemplares.findByPk(id)
+        .then( ejemplar => {
+            console.log(ejemplar);
+            let theEJemplar = {
+                id: ejemplar.id,
+                nombre: ejemplar.nombre, 
+                anio_nac: ejemplar.anio_nac,
+                mes_nac: ejemplar.mes_nac,
+                dia_nac: ejemplar.dia_nac,
+                sexo: ejemplar.sexo, 
+                pelo: ejemplar.pelo,
+                raza: ejemplar.raza,
+                criador_id: ejemplar.criador_id,
+                padre_id: ejemplar.padre_id,
+                madre_id: ejemplar.madre_id,
+                padre: ejemplar.padre,
+                madre: ejemplar.madre,
+                foto: ejemplar.foto,
+                muestra: ejemplar.muestra,
+                muestra_ejemplar: ejemplar.muestra_ejemplar,
+                muestra_padres: ejemplar.muestra_padres,
+                familia: ejemplar.familia,
+                debutante: ejemplar.debutante,
+            };
+            return res.status(200).json({
+                data: theEJemplar,
+                status: 200
+            });
+        });    
+
+   
+},
+apiCarreras: function(req,res){
+    console.log('ok');
+   
+   let arrayCarreras = [];
+   db.carreras.findAll({
+       
+           raw: true,
+           nest: true
+   })
+
+  .then( lasCarreras => {
+   console.log('okiCarreras');
+      for(let e of lasCarreras){
+        let unaCarrera = {
+               id: e.id,
+               hipodromo: e.hipodromo,
+               nombre: e.nombre,
+               grupo: e.grupo,
+               
+           };
+         arrayCarreras.push(unaCarrera);
+        
+         
+      }
+      return;
+    
+  }) 
+ .then(function() {
+     console.log(arrayCarreras);
+//  res.send('ok');
+ 
+     //  console.log(arrayResult);
+   
+       res.status(200).json({
+           count: arrayCarreras.length,
+           data: arrayCarreras,
+           status: 200
+       });
+    
+   
+})   
+
+.catch(function(e){
+   console.log(e);
+});
+
+   
+},
+apiUnaCarrera: function(req,res){
+   let id = req.params.id;
+   db.carreras.findByPk(id)
+       .then( carrera => {
+           console.log(carrera);
+            let laCarrera = {
+               id: carrera.id,
+               hipodromo: carrera.hipodromo,
+               nombre: carrera.nombre,
+               grupo: carrera.grupo,
+               
+           };
+           return res.status(200).json({
+               data: laCarrera,
+               status: 200
+           });
+       });    
+
+  
+},
+
+   
+   apiResultados: function(req,res){
+    console.log('ok');
+   
+   let arrayResult = [];
+   db.resultados.findAll({
+       where: {
+         //  eje_id: 41511,
+           llego_numero:[ 1,2,3]
+               
+           
+       },
+      
+           raw: true,
+           nest: true
+   })
+
+  .then( losResultados => {
+   console.log('okiresult');
+      for(let e of losResultados){
+        let unResultado = {
+               id: e.id,
+               carrera_id: e.carrera_id,
+               eje_id: e.eje_id,
+               llego_numero: e.llego_numero,
+               importe: e.importe,
+           };
+         arrayResult.push(unResultado);
+        
+         
+      }
+      return;
+    //  console.log(arrayResult);
+       
+ //  let resultados = JSON.parse(arrayResult);
+  }) 
+ .then(function() {
+     console.log(arrayResult);
+//  res.send('ok');
+ 
+     //  console.log(arrayResult);
+   
+       res.status(200).json({
+           count: arrayResult.length,
+           data: arrayResult,
+           status: 200
+       });
+    
+   
+})   
+
+.catch(function(e){
+   console.log(e);
+});
+
+   
+},
+
 }
 
 module.exports = indexController;

@@ -56,6 +56,7 @@ module.exports = function(sequelize, dataTypes)
             type: dataTypes.STRING,
             allowNull: false
         },
+/*
         foto: {
             type: dataTypes.STRING,
             allowNull: true
@@ -80,6 +81,7 @@ module.exports = function(sequelize, dataTypes)
             type: dataTypes.STRING,
             allowNull: false
         },
+        */
      };
      const config = {
          tableName: "ejemplares",
