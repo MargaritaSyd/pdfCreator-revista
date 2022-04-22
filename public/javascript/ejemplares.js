@@ -1,20 +1,24 @@
 
 window.addEventListener("load" , function(){
   let button = document.getElementById('boton')
-alert('ok')
-let url = 'http://localhost:3002/api_ejemplares';
+  let id = document.getElementById('id').value
+alert(id)
+let url = 'http://localhost:3002/api_ejemplar/'+ id;
 
 
 alert('ok')
-async function getUser() {
-  try {
-    const response = await axios.get(url);
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
-}
 button.addEventListener('click' , function(){
-  getUser()
-  })
+
+
+fetch(url)
+.then(function(r){
+    return r.json();
+})
+.then(function(data){
+    alert('capa mundial')
+})
+.catch(function(err){
+  console.log(err);
+});
+})
 })

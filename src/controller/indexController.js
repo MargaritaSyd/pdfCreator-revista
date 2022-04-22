@@ -539,7 +539,8 @@ let indexController = {
    },
    
    ok: function(req,res) {
-       res.render("ok")
+       let id = req.params.id
+       res.render("ok" , {id})
    },
 
       
