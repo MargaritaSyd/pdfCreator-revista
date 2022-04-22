@@ -2,6 +2,7 @@ const express = require ('express');
 const app = express();
 const path = require ('path');
 const indexRoutes = require('./src/routes/indexRoutes');
+const axios = require('axios');
 
 
 app.listen(process.env.PORT || 3002, function(){

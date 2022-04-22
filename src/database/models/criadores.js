@@ -12,7 +12,7 @@ module.exports = function(sequelize, dataTypes)
             type: dataTypes.STRING,
             allowNull: false
         }, 
-        /*
+        
         haras: {
             type: dataTypes.STRING,
             allowNull: false
@@ -21,7 +21,7 @@ module.exports = function(sequelize, dataTypes)
             type: dataTypes.STRING,
             allowNull: false
         }, 
-        */
+        
     };
      const config = {
          tableName: "criadores",

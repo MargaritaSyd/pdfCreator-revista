@@ -16,7 +16,7 @@ module.exports = function(sequelize, dataTypes)
             type: dataTypes.INTEGER,
             allowNull: false
         }, 
-        /*
+        
         largo_numero: {
             type: dataTypes.INTEGER,
             allowNull: false
@@ -29,7 +29,7 @@ module.exports = function(sequelize, dataTypes)
             type: dataTypes.INTEGER,
             allowNull: false
         }, 
-        */
+        
         llego_numero: {
             type: dataTypes.INTEGER,
             allowNull: false
@@ -39,7 +39,7 @@ module.exports = function(sequelize, dataTypes)
             type: dataTypes.INTEGER,
             allowNull: false
         }, 
-        /*
+        
         jockey: {
             type: dataTypes.INTEGER,
             allowNull: false
@@ -72,12 +72,12 @@ module.exports = function(sequelize, dataTypes)
             type: dataTypes.INTEGER,
             allowNull: false
         }, 
-     */   
+     
         importe: {
             type: dataTypes.INTEGER,
             allowNull: false
         }, 
-/*
+
         extra: {
             type: dataTypes.INTEGER,
             allowNull: false
@@ -154,10 +154,10 @@ module.exports = function(sequelize, dataTypes)
             type: dataTypes.INTEGER,
             allowNull: false
         }, 
-        // centototales: {
-        //     type: dataTypes.INTEGER,
-        //     allowNull: false
-        // }, 
+         centototales: {
+             type: dataTypes.INTEGER,
+             allowNull: false
+         }, 
         herraje: {
             type: dataTypes.STRING,
             allowNull: false
@@ -258,7 +258,7 @@ module.exports = function(sequelize, dataTypes)
             type: dataTypes.STRING,
             allowNull: false
         }, 
-        */
+        
      };
      const config = {
          tableName: "resultados",

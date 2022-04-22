@@ -544,14 +544,16 @@ let indexController = {
 
       
    apiEjemplares: function(req,res){
-    let ejemplaresTodos = [];
+  //  let ejemplaresTodos = [];
     db.ejemplares.findAll({
+        attributes: ['id','nombre','anio_nac','mes_nac','dia_nac','sexo','pelo','raza','criador_id','padre_id','madre_id','padre','madre','mes_nac','dia_nac','sexo','pelo','raza', 'criador_id', 'padre_id','madre_id','padre','madre'],
         raw: true,
         nest: true
         
     })
 //     console.log('findall')
         .then( losEjemplares => {
+            /*
           //  console.log(losEjemplares);
 
             for(let i=0; i<losEjemplares.length; i++){
@@ -579,9 +581,10 @@ let indexController = {
              console.log(ejemplaresTodos);
         })
         .then(function (){
+            */
             return res.status(200).json({
-                count: ejemplaresTodos.length,
-                data: ejemplaresTodos,
+                count: losEjemplares.length,
+                data: losEjemplares,
                 status: 200
             });
         
@@ -595,7 +598,9 @@ let indexController = {
 
 apiEjemplar: function(req,res){
     let id = req.params.id;
-    db.ejemplares.findByPk(id)
+    db.ejemplares.findByPk(id , {
+        attributes: ['id','nombre','anio_nac','mes_nac','dia_nac','sexo','pelo','raza','criador_id','padre_id','madre_id','padre','madre','mes_nac','dia_nac','sexo','pelo','raza', 'criador_id', 'padre_id','madre_id','padre','madre']      
+    })
         .then( ejemplar => {
             console.log(ejemplar);
             let theEJemplar = {
@@ -630,14 +635,15 @@ apiEjemplar: function(req,res){
 apiCarreras: function(req,res){
     console.log('ok');
    
-   let arrayCarreras = [];
+  // let arrayCarreras = [];
    db.carreras.findAll({
-       
-           raw: true,
-           nest: true
+        attributes: ['id' , 'hipodromo' , 'nombre' , 'grupo'],
+        raw: true,
+        nest: true
    })
 
   .then( lasCarreras => {
+/*
    console.log('okiCarreras');
       for(let e of lasCarreras){
         let unaCarrera = {
@@ -659,10 +665,10 @@ apiCarreras: function(req,res){
 //  res.send('ok');
  
      //  console.log(arrayResult);
-   
+   */
        res.status(200).json({
-           count: arrayCarreras.length,
-           data: arrayCarreras,
+           count: lasCarreras.length,
+           data: lasCarreras,
            status: 200
        });
     
@@ -677,7 +683,9 @@ apiCarreras: function(req,res){
 },
 apiUnaCarrera: function(req,res){
    let id = req.params.id;
-   db.carreras.findByPk(id)
+   db.carreras.findByPk(id,
+    {attributes: ['id' , 'hipodromo' , 'nombre' , 'grupo']}
+    )
        .then( carrera => {
            console.log(carrera);
             let laCarrera = {
@@ -700,47 +708,21 @@ apiUnaCarrera: function(req,res){
    apiResultados: function(req,res){
     console.log('ok');
    
-   let arrayResult = [];
+   //let arrayResult = [];
    db.resultados.findAll({
        where: {
-         //  eje_id: 41511,
            llego_numero:[ 1,2,3]
-               
-           
        },
+        attributes: ['id', 'carrera_id', 'eje_id' , 'llego_numero' , 'importe'],
       
-           raw: true,
-           nest: true
+        raw: true,
+        nest: true
    })
 
   .then( losResultados => {
-   console.log('okiresult');
-      for(let e of losResultados){
-        let unResultado = {
-               id: e.id,
-               carrera_id: e.carrera_id,
-               eje_id: e.eje_id,
-               llego_numero: e.llego_numero,
-               importe: e.importe,
-           };
-         arrayResult.push(unResultado);
-        
-         
-      }
-      return;
-    //  console.log(arrayResult);
-       
- //  let resultados = JSON.parse(arrayResult);
-  }) 
- .then(function() {
-     console.log(arrayResult);
-//  res.send('ok');
- 
-     //  console.log(arrayResult);
-   
        res.status(200).json({
-           count: arrayResult.length,
-           data: arrayResult,
+           count: losResultados.length,
+           data: losResultados,
            status: 200
        });
     

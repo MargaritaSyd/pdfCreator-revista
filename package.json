@@ -1,5 +1,5 @@
 {
-  "name": "pdfcreator-revista",
+  "name": "nodemon",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/MargaritaSyd/pdfCreator-revista#readme",
   "dependencies": {
+    "axios": "^0.26.1",
     "body": "^5.1.0",
     "body-parser": "^1.20.0",
     "ejs": "^3.1.6",
