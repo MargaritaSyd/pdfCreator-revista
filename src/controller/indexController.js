@@ -753,7 +753,63 @@ apiUnResultado: function(req,res){
 
    
 },
+//APi PARA ENCONTRAR CUIDADORES Y CRIADORES POR ID
+apiUnProfesional: function(req,res){
+    console.log('ok');
+    let id = req.params.id;
+   //let arrayResult = [];
+   db.profesionales.findByPk(id,{
+       
+        attributes: ['id', 'descripcion'],
+      
+        raw: true,
+        nest: true
+   })
 
+  .then( profesional => {
+       res.status(200).json({
+    
+           data: profesional,
+           status: 200
+       });
+    
+   
+})   
+
+.catch(function(e){
+   console.log(e);
+});
+
+   
+},
+apiUnCriador: function(req,res){
+    console.log('ok');
+    let id = req.params.id;
+   //let arrayResult = [];
+   db.criadores.findByPk(id,{
+       
+        attributes: ['id', 'haras'],
+      
+        raw: true,
+        nest: true
+   })
+
+  .then( criador => {
+       res.status(200).json({
+    
+           data: criador,
+           status: 200
+       });
+    
+   
+    })   
+
+    .catch(function(e){
+    console.log(e);
+    });
+
+   
+},
 }
 
 module.exports = indexController;

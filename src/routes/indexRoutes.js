@@ -1,3 +1,4 @@
+const { Route } = require('express');
 const express = require('express');
 const router = express.Router();
 const indexController = require('../controller/indexController');
@@ -23,5 +24,6 @@ router.get('/api_ejemplares' , indexController.apiEjemplares);
 //router.get('/api_ejemplares' , indexController.apiEjempalares)
 router.get('/api_ejemplar/:id' , indexController.apiEjemplar);
 router.get('/api_carreras' , indexController.apiCarreras);
-router.get('/api_carrera/:id' , indexController.apiUnaCarrera)
+router.get('/api_carrera/:id' , indexController.apiUnaCarrera);
+router.get('/api_profesional/:id' ,indexController.apiUnProfesional)
 module.exports = router;

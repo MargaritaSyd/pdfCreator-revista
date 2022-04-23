@@ -8,24 +8,42 @@
     </head>
     <body>
         <header>
-            <input type="text" value='<%=id%>' id="id" style="display: none;" >
     
         </header>
+        <input type="text" value='<%=id%>' id="id" style="display: none;" >
+
+        <main class="mainPdf" style="    padding: 15;
         
-        <main class="mainPdf">
+        height: 255mm;
+        border: 2px solid black;
+        margin: 20px;
+       ">
         <div style="display: flex; flex-direction: column; position: relative; left: 620; z-index: -1; width: 40px; top: -20;"><img src="/img/pedigree.png" alt=""></div>
        <!-- <div style="display: flex; flex-direction: column; position: relative; left: 640;"><b>P</b><b>E</b><b>D</b><b>I</b><b>G</b><b>R</b><b>E</b><b>E</b></div>  -->
         <div style="display:flex; position: relative; top: -320; border: 2px solid black; margin: 5px; padding: 15px; height: 250mm; left: -15px;">
         <form id="form" action="" method="POST" >
             <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
                 <div class="contentDescriptStud" style="display: flex; flex-wrap: nowrap; flex-direction: column; width: 40%;">
-                    <b class="ejemplarNombre" id="nombreDelEjemplar" style='font-size: 12; font-family: Arial'>  </b><input id="inputNombreDelEjemplar"  type="text" style="display: none;" name="ejemplarNombre">
-                    <b class="descriptEjemplar" id="descriptDelEjemplar" style='font-size: 10; font-family: Arial'></b> <input type="text" id="inputDescriptDelEjemplar" style="display:none" name="descriptEjemplar" >
+                    <b class="ejemplarNombre" id="nombreDelEjemplar" style='font-family: Arial; font-size: 24; margin-bottom: 10px;'>  </b><input id="inputNombreDelEjemplar"  type="text" style="display: none;" name="ejemplarNombre">
+                    <b class="descriptEjemplar" id="descriptDelEjemplar" style='  padding-bottom: 10px;
+                    border-bottom: 2px solid black;
+                    font-size: 10px;'></b> <input type="text" id="inputDescriptDelEjemplar" style="display:none" name="descriptEjemplar" >
                 </div>
             </div>
-            <div class="borderContentCarreras">
+            <div class="borderContentCarreras" style="  border-radius: 25px;
+            border: 2px solid black;
+            width: 60%;">
                
-                <div class="detalleCarrerasCorridas" style='font-size: 8; font-family: Arial'>
+                <div class="detalleCarrerasCorridas" style=' padding: 20px;
+                height: 10px;
+                display: flex;
+                flex-direction: row;
+                font-family: Arial;
+                font-size: x-small;
+                justify-content: space-between;
+                position: relative;
+                left: 10px;
+                top:-5px'>
                     <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
                         <b> Año </b>
                         <b id="aniosCorrio"> </b>
@@ -60,6 +78,13 @@
                 </div>
                
             </div>
+            <div class="contenedorCuidadorArbol" >
+                <div class="detllesCuidador" style='font-size: 10; font-family: Arial; font-style: oblique;'>
+                    <b> Caballeriza:  </b> <input type="text" style="display: none;" name="caballeriza" value="<%=caballeriza%>">
+                    <b> Criador: <%=criadorX.haras%> </b> <input type="text" style="display: none;" name='criador' value="<%=criadorX.haras%>">
+                    <b> Cuidador: <%=cuidador%> </b> <input type="text" style="display: none;" name="cuidador" value="<%=cuidador%>">    
+               </div>
+            </div>    
             <button id="pdf1" type="submit"> Crear pdf frente</button>
             <button id="pdf2" type="submit"> Crear pdf reverso</button>
             

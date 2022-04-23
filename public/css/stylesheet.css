@@ -2,9 +2,8 @@ body{
     width: 190mm;
     height: 270mm;
 }
-
-.mainPdf{
-   
+/*PASADO*/
+.mainPdf{   
     padding: 15;
     /* padding-left: 30; */
     height: 255mm;
@@ -14,18 +13,20 @@ body{
 
     
 }
-
+/*PASADO*/
 .ejemplarNombre{
     font-family: Arial;
     font-size: 24;
     margin-bottom: 10px;
     
 }
+/*PASADO*/
 .descriptEjemplar{
     padding-bottom: 10px;
     border-bottom: 2px solid black;
     font-size: 10px;
 }
+/*PASADO*/
 .borderContentCarreras{
     border-radius: 25px;
     border: 2px solid black;
@@ -33,6 +34,7 @@ body{
  
     
 }
+/*PASADO*/
 .detalleCarrerasCorridas{
   padding: 20px;
   height: 10px;

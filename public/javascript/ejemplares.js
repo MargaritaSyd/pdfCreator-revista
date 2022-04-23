@@ -179,7 +179,8 @@ fetch(urlUnEjemplarResultados)
   totalSegundos = arraySegundos.length
   totalPrimeros = arrayGanadas.length
   totalTerceros = arrayTerceros.length
-  alert(totalTerceros)
+  let data1 = JSON.stringify(datadata[1])
+  alert(data1)
 
   idTotalLargadas.innerHTML = totalLargadas
   inputTotalLargadas.value = totalLargadas
