@@ -76,12 +76,80 @@
                 </div>
                
             </div>
-            <div class="contenedorCuidadorArbol" >
-                <div class="detllesCuidador" style='font-size: 10; font-family: Arial; font-style: oblique;'>
+            <div class="contenedorCuidadorArbol" style=" display: flex; 
+            flex-direction: row;
+            justify-content: space-around;">
+                <div class="detllesCuidador" style='display: flex;
+                flex-direction: column;
+                margin-top: 10px;
+                width: 60mm;'>
                     <b id="caballeriza"> Caballeriza:  </b> <input type="text" style="display: none;" name="caballeriza" id="inputCaballeriza" >
                     <b id="criador"> Criador:  </b> <input type="text" style="display: none;" name='criador' id="inputCriador" >
                     <b id="cuidador"> Cuidador: </b> <input type="text" style="display: none;" name="cuidador" id="inputCuidador" >    
-               </div>
+                    <div style="font-size: x-small;">
+                        <b id="padreEjemplar"></b>
+                        <input type="text" name="infoPadrillo1"><input type="text" name="infoPadrilloNegrita1" placeholder="negrita"><input type="text" name="infoPadrillo2"><input type="text" name="infoPadrilloNegrita2" placeholder="negrita"><input type="text" name="infoPadrillo3"><input type="text" name="infoPadrilloNegrita3" placeholder="negrita"><input type="text" name="infoPadrillo4"><input type="text" name="infoPadrilloNegrita4" placeholder="negrita"><input type="text" name="infoPadrillo5"><input type="text" name="infoPadrilloNegrita5" placeholder="negrita">        
+                    </div>
+                </div>
+                <div class="arbolGContent" style=" display: flex;
+                position: relative;
+                border-radius: 25px;
+                border: 2px solid black;
+                margin-top: 10px;
+                width: 100mm;
+                height: 205px;">
+                    <div class="arbolG" style='display: flex; 
+                    flex-direction: row; 
+                    height: 200px;
+                    justify-content: space-between;
+                    width: 95mm;
+                    margin-left: 10px; '>
+                        <div class="mapa">                        
+                            <div class="divArbolGAbu" style=""></div>
+                            <div class="divArbolGAbu"></div>
+                            <div class="divArbolGAbu"></div>
+                            <div class="divArbolG" style="height: 20px;
+                            padding: 2px;
+                            font-size: 10;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;"> <b id="padreEnArbol"></b></div><input type="text" style="display: none;" name="padre" id="inputPadreEnArbol">
+                            <div class="divArbolGAbu" style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolG" style='height: 20px;
+                            padding: 2px;
+                            font-size: 10;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;'> <b id="madreEnArbol"></b></div><input type="text" style="display: none;" name="madre" id="inputMadreEnArbol">
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                        </div>
+                    </div>
+                </div>
             </div>    
             <button id="pdf1" type="submit"> Crear pdf frente</button>
             <button id="pdf2" type="submit"> Crear pdf reverso</button>

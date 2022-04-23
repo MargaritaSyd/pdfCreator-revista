@@ -47,17 +47,20 @@ body{
   left: 10px;
   top:-5px
 }
+/*PASADO*/
 .detllesCuidador{
     display: flex;
     flex-direction: column;
     margin-top: 10px;
     width: 60mm;
 }
+/*PASADO*/
 .contenedorCuidadorArbol{
     display: flex; 
     flex-direction: row;
     justify-content: space-around;
 }
+/*PASADO*/
 .arbolGContent{
     display: flex;
     position: relative;
@@ -69,6 +72,7 @@ body{
 
 
 }
+/*PASADO*/
 .arbolG{
     display: flex; 
     flex-direction: row; 

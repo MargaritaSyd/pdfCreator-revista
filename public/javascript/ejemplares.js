@@ -17,6 +17,8 @@ window.addEventListener("load" , function(){
   let inputCuidador = document.getElementById('inputCuidador');
   let caballeriza = document.getElementById('caballeriza');
   let inputCaballeriza = document.getElementById('inputCaballeriza');
+  let padreEjemplar =document.getElementById('padreEjemplar')
+  
   //capturo campos a completas con la info del resultado del ejemplar + inputs correspondientes
   let idTotalLargadas = document.getElementById('totalLargadas');
   let inputTotalLargadas = document.getElementById('inputTotalLargadas');
@@ -33,7 +35,13 @@ window.addEventListener("load" , function(){
   let inputAniosCorrio = document.getElementById('inputAniosCorrio');
   let edadCorrio = document.getElementById('edadCorrio');
   let inputEdadCorrio = document.getElementById('inputEdadCorrio')
-//alert(id)
+  //CAPTURO CAMPOS DEL ARBOL GENEALÓGICO
+  let padreEnArbol = document.getElementById('padreEnArbol');
+  let inputPadreEnArbol = document.getElementById('inputPadreEnArbol');
+  let madreEnArbol = document.getElementById('madreEnArbol');
+  let inputMadreEnArbol = document.getElementById('inputMadreEnArbol');
+
+  //alert(id)
 let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/'+ id;
 let urlResultados = 'http://localhost:3002/api_resultados';
 let urlUnEjemplarResultados = 'http://localhost:3002/api_resultado/'+ id;
@@ -46,6 +54,9 @@ pdf1.addEventListener('click' , function(){
   form.action = '/ok_form'
 })
 
+let criador_id
+let padre
+let madre
 fetch(urlUnEjemplar)
 .then(function(r){
     return r.json();
@@ -118,12 +129,19 @@ fetch(urlUnEjemplar)
     mes_nac = data.data.mes_nac;
     anio_nac = data.data.anio_nac;
     criador_id = data.data.criador_id;
+    padre = data.data.padre
+    madre = data.data.madre
 
     nombreDelEjemplar.innerHTML = nombre
     inputNombreDelEjemplar.value = nombre
     descriptDelEjemplar.innerHTML = sexo +', '+ pelo + ', nacido el '+dia_nac+ ' de ' + mes_nac + ' de ' + anio_nac
     inputDescriptDelEjemplar.value =  sexo +', '+ pelo + ', nacido el '+dia_nac+ ' de ' + mes_nac + ' de ' + anio_nac
-   // alert(criador_id + 'criaxor')
+    padreEjemplar.innerHTML = padre
+    padreEnArbol.innerHTML = padre
+    inputPadreEnArbol.value = padre
+    madreEnArbol.innerHTML = madre
+    inputMadreEnArbol.value = madre
+    // alert(criador_id + 'criaxor')
 })
 .catch(function(err){
   console.log(err);
