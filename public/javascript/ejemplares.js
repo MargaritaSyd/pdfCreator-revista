@@ -12,7 +12,11 @@ window.addEventListener("load" , function(){
   let descriptDelEjemplar = document.getElementById('descriptDelEjemplar');
   let inputDescriptDelEjemplar = document.getElementById('inputDescriptDelEjemplar');
   let criador = document.getElementById('criador');
-  let inpurCriador = document.getElementById('inputCriador')
+  let inputCriador = document.getElementById('inputCriador');
+  let cuidador = document.getElementById('cuidador');
+  let inputCuidador = document.getElementById('inputCuidador');
+  let caballeriza = document.getElementById('caballeriza');
+  let inputCaballeriza = document.getElementById('inputCaballeriza');
   //capturo campos a completas con la info del resultado del ejemplar + inputs correspondientes
   let idTotalLargadas = document.getElementById('totalLargadas');
   let inputTotalLargadas = document.getElementById('inputTotalLargadas');
@@ -36,6 +40,7 @@ let urlUnEjemplarResultados = 'http://localhost:3002/api_resultado/'+ id;
 let urlCarreras =  'http://localhost:3002/api_carreras';
 let urlUnaCarrera = 'http://localhost:3002/api_carrera/';
 let urlUnCriador = 'http://localhost:3002/api_criador/';
+let urlUnProfesional = '/api_profesional/'
 
 pdf1.addEventListener('click' , function(){
   form.action = '/ok_form'
@@ -132,12 +137,14 @@ fetch(urlUnEjemplar)
   .then(function(data){
     let elCriador = data.data.propietario
     criador.innerHTML = 'Criador: ' + elCriador
-    inpurCriador.value = elCriador
+    inputCriador.value = elCriador
   })
   .catch(function(err){
    alert(err)
   })
 })
+
+//SACO INFO DE CARRERAS CORRIDAS POR EL EJ
 let importeArray = [];
 let arrayGanadas = [];
 let arraySegundos = [];
@@ -150,7 +157,8 @@ let totalTerceros;
 let anioCarreras = [];
 let primerAnio;
 let ultimoAnio;
-
+let cuidador_id; 
+let caballeriza_id; 
 fetch(urlUnEjemplarResultados)
 .then(function(r){
   alert('ok')
@@ -161,8 +169,8 @@ fetch(urlUnEjemplarResultados)
   let datadata = data.data
   let totalLargadas = datadata.length
   let ultimaCarrera = datadata[datadata.length-1]
-  let cuidador_id = ultimaCarrera.cuidador
-  let caballeriza_id = ultimaCarrera.caballeriza
+  cuidador_id = ultimaCarrera.cuidador
+  caballeriza_id = ultimaCarrera.caballeriza
   for(let i=0; i<datadata.length; i++){
     importeArray.push(datadata[i].importe);  
     arrayCarreras.push(datadata[i].carrera_id);
@@ -194,11 +202,59 @@ fetch(urlUnEjemplarResultados)
   inputTotalGanancias.value = totalGanancias
 
   //let jsCarrera = JSON.stringify(ultimaCarrera)
-  alert(cuidador_id)
+  alert(cuidador_id +'Y'+ caballeriza_id)
 })
-.catch(function(err){
-  console.log(err);
+//NOMBRE DEL CUIDADOR
+.then(function(){
+  fetch(urlUnProfesional+cuidador_id)
+  .then(function(r){
+      return r.json();
+  })
+  .then(function(data){
+    let elCuidador = data.data.descripcion
+    cuidador.innerHTML = 'Cuidador: ' + elCuidador
+    inputCuidador.value = elCuidador
+   // alert(elCuidador)
+  })
+  .catch(function(err){
+   alert(err)
+  })
 })
+//NOMBRE DE LA CABALLERIZA
+.then(function(){
+  fetch(urlUnProfesional+caballeriza_id)
+  .then(function(r){
+      return r.json();
+  })
+  .then(function(data){
+    let laCaballeriza = data.data.descripcion
+    caballeriza.innerHTML = 'Caballeriza: ' + laCaballeriza;
+    inputCaballeriza.value = laCaballeriza
+    alert(laCaballeriza)
+  })
+  .catch(function(err){
+   alert(err)
+  })
+})
+
+
+/*
+.then(function(){
+  fetch(urlUnProfesional+10)
+  .then(function(r){
+      return r.json();
+  })
+  .then(function(data){
+    let elCuidador = data.data.descripcion
+    //criador.innerHTML = 'Criador: ' + elCriador
+    //inpurCriador.value = elCriador
+    alert(elCuidador)
+  })
+  .catch(function(err){
+   alert(err)
+  })
+})
+*/
 .then(function(){
   fetch(urlCarreras)
   .then(function(r){
@@ -215,10 +271,10 @@ fetch(urlUnEjemplarResultados)
             anioCarreras.push(e.fecha.slice(0,-6))
           }
         }
-      
+        let anios = anioCarreras.sort(function(a,b){return a-b})
     })
-    //Años que el ejemplar tomo, uso el primero y el utlimo.
-    let anios = anioCarreras.sort(function(a,b){return a-b})
+    //Años que el ejemplar corrió, uso el primero y el utlimo.
+    
     primerAnio = anioCarreras[0].slice(2);
     ultimoAnio = anioCarreras[anioCarreras.length-1].slice(2);
     edad0 = anioCarreras[0] - anio_nac;
@@ -233,7 +289,9 @@ fetch(urlUnEjemplarResultados)
   .catch(function(err){
     console.log(err);
   })
+  
 })
+
 
 
 /*
