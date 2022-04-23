@@ -1,101 +1,182 @@
 
 window.addEventListener("load" , function(){
   let pdf1 = document .getElementById('pdf1');
+  let pdf2 = document.getElementById('pdf2');
   let form = document.getElementById('form')
   
+  //recupero id para llamar a la api_ejemplar/:id
   let id = document.getElementById('id').value
-  let nombreDelEjemplar = document.getElementById('nombreDelEjemplar')
-  let inputNombreDelEjemplar = document.getElementById('inputNombreDelEjemplar')
+  //capturo campos a completas con la info del ejemplar+inputs correspondientes
+  let nombreDelEjemplar = document.getElementById('nombreDelEjemplar');
+  let inputNombreDelEjemplar = document.getElementById('inputNombreDelEjemplar');
+  let descriptDelEjemplar = document.getElementById('descriptDelEjemplar');
+  let inputDescriptDelEjemplar = document.getElementById('inputDescriptDelEjemplar')
 //alert(id)
-let url = 'http://localhost:3002/api_ejemplar/'+ id;
+let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/'+ id;
+let urlResultados = 'http://localhost:3002/api_resultados';
+let urlUnEjemplarResultados = 'http://localhost:3002/api_resultado/'+ id;
+
+let urlUnaCarrera = 'http://localhost:3002/api_carreras'
 
 pdf1.addEventListener('click' , function(){
   form.action = '/ok_form'
 })
 
-fetch(url)
+fetch(urlUnEjemplar)
 .then(function(r){
     return r.json();
 })
 .then(function(data){
-  /*
-   <%=ejemplarX.sexo%>, <%=ejemplarX.pelo%>, nacido el <%=ejemplarX.dia_nac%> de <%=ejemplarX.mes_nac%> de <%=ejemplarX.anio_nac%> - <%=ejemplarX.familia%>
-  */
+  
     //Recupero del ejemplar buscado su info con api_ejemplar/:id 
-/*
-    sexo = data.data.sexo;
-    pelo = data.data.pelo;
-    mes_nac = data.data.mes_nac;
-    if(sexo == "H"){ 
-      sexo = "Hembra"
+
+    
+   
+    if(data.data.sexo == "H"){ 
+      data.data.sexo = "Hembra"
     } else {
-        sexo = "Macho"
+      data.data.sexo = "Macho"
     }
-    if(pelo == "ZC"){
-         pelo = "Zaino Colorado"
-      } else if(pelo == "A") {
-        pelo = "Alazan"
-      } else if(pelo == "AT") {
-        pelo = "Alazan Tostado" 
-      } else if(pelo == "O") {
-        pelo = "Oscuro"
-      } else if(pelo == "M") {    
-        pelo = "Moro"
-      } else if(pelo == "R") {
-        pelo = "Rosillo" 
-      } else if(pelo == "T") {
-        pelo = "Tordillo"
-      } else if(pelo == "Z") {   
-        pelo = "Zaino" 
-      } else if(pelo == "ZD") {    
-        pelo = "Zaino Doradillo" 
+    
+    if(data.data.pelo == "ZC"){
+      data.data.pelo = "Zaino Colorado"
+      } else if(data.data.pelo == "A") {
+        data.data.pelo = "Alazan"
+      } else if(data.data.pelo == "AT") {
+        data.data.pelo = "Alazan Tostado" 
+      } else if(data.data.pelo == "O") {
+        data.data.pelo = "Oscuro"
+      } else if(data.data.pelo == "M") {    
+        data.data.pelo = "Moro"
+      } else if(data.data.pelo == "R") {
+        data.data.pelo = "Rosillo" 
+      } else if(data.data.pelo == "T") {
+        data.data.pelo = "Tordillo"
+      } else if(data.data.pelo == "Z") {   
+        data.data.pelo = "Zaino" 
+      } else if(data.data.pelo == "ZD") {    
+        data.data.pelo = "Zaino Doradillo" 
       } else {    
-        pelo = "Zaino Negro"  
+        data.data.pelo = "Zaino Negro"  
       }
 
-      if(mes_nac == 1){ 
-        mes_nac = "Enero" 
-      } else if(mes_nac == 2) {    
-        mes_nac = "Febrero"
-      } else if(mes_nac == 3) {    
-        mes_nac = "Marzo" 
-      } else if(mes_nac == 4) {    
-        mes_nac = "Abril" 
-      } else if(ejemplarX.mes_nac == 5) {    
-        mes_nac = "Mayo" 
-      } else if(ejemplarX.mes_nac == 6) {
-        mes_nac = "Junio"
-      } else if(ejemplarX.mes_nac == 7) {    
-        mes_nac = "Julio" 
-      } else if(mes_nac == 8) {   
-        mes_nac = "Agosto" 
-      } else if(ejemplarX.mes_nac == 9) {
-        mes_nac = "Septiembre"
-      } else if(mes_nac == 10) {    
-        mes_nac = "Octubre" 
-      } else if(mes_nac == 11) { 
-        mes_nac = "Noviembre"
+      if(data.data.mes_nac == 1){ 
+        data.data.mes_nac = "Enero" 
+      } else if(data.data.mes_nac == 2) {    
+        data.data.mes_nac = "Febrero"
+      } else if(data.data.mes_nac == 3) {    
+        data.data.mes_nac = "Marzo" 
+      } else if(data.data.mes_nac == 4) {    
+        data.data.mes_nac = "Abril" 
+      } else if(data.data.mes_nac == 5) {    
+        data.data.mes_nac = "Mayo" 
+      } else if(data.data.mes_nac == 6) {
+        data.data.mes_nac = "Junio"
+      } else if(data.data.mes_nac == 7) {    
+        data.data.mes_nac = "Julio" 
+      } else if(data.data.mes_nac == 8) {   
+        data.data.mes_nac = "Agosto" 
+      } else if(data.data.mes_nac == 9) {
+        data.data.mes_nac = "Septiembre"
+      } else if(data.data.mes_nac == 10) {    
+        data.data.mes_nac = "Octubre" 
+      } else if(data.data.mes_nac == 11) { 
+        data.data.mes_nac = "Noviembre"
       } else {    
-        mes_nac = "Diciembre"  
+        data.data.mes_nac = "Diciembre"  
       }
-*/
+
     
     nombre = data.data.nombre;
-    
+    sexo = data.data.sexo;
+    mes_nac = data.data.mes_nac;
+    pelo = data.data.pelo;
     dia_nac = data.data.dia_nac;
    
     anio_nac = data.data.anio_nac;
 
     nombreDelEjemplar.innerHTML = nombre
     inputNombreDelEjemplar.value = nombre
-    alert(pelo)
+    descriptDelEjemplar.innerHTML = sexo +', '+ pelo + ', nacido el '+dia_nac+ ' de ' + mes_nac + ' de ' + anio_nac
+    inputDescriptDelEjemplar.value =  sexo +', '+ pelo + ', nacido el '+dia_nac+ ' de ' + mes_nac + ' de ' + anio_nac
+    alert(mes_nac)
 })
+
+/*
+let anioCarreras = []
+      
+for(let i=0; i<arrayCarreras.length; i++){
+
+  db.carreras.findByPk(arrayCarreras[i])
+  .then(carrera => {
+      anioCarreras.push(carrera.fecha.slice(0,-6))
+      
+})
+.catch (err  =>{
+  
+  console.log(err)
+  })
+}
+
+let anios = anioCarreras.sort(function(a,b){return a-b})
+*/
+let importeArray = [];
+let arrayGanadas = []
+let arraySegundos = []
+let arrayTerceros = []
+let arrayCarreras = []
+
+fetch(urlUnEjemplarResultados)
+.then(function(r){
+  alert('ok')
+    return r.json();
+})
+.then(function(data){
+  //let datadata = JSON.stringify(data.data)
+  let datadata = data.data
+  let totalLargadas = datadata.length
+  let ultimaCarrera = datadata[datadata.length-1]
+  let cuidador_id = datadata.cuidador
+  let caballeriza_id = datadata.caballeriza
+  for(let i=0; i<datadata.length; i++){
+    importeArray.push(datadata[i].importe);  
+    arrayCarreras.push(datadata[i].carrera_id);
+    if(datadata[i].llego_numero == 1){
+      arrayGanadas.push(datadata[i].llego_numero)
+  }
+  if(datadata[i].llego_numero == 2){
+      arraySegundos.push(datadata[i].llego_numero)
+  }
+  if(datadata[i].llego_numero == 3){
+      arrayTerceros.push(datadata[i].llego_numero)
+  } 
+  }
+  const totalGanancias = importeArray.reduce((a,b)=> a+b);
+  const totalSegundos = arraySegundos.length
+  const totalGanadas = arrayGanadas.length
+  const totalTerceros = arrayTerceros.length
+  alert(totalTerceros)
+})
+
+
+
 .catch(function(err){
   console.log(err);
 });
-
-//nombreDelEjemplar.innerHTML = nombre
-
+/*
+for(let i=0; i<arrayCarreras.length; i++){
+  // fetch('http://localhost:3002/api_carreras'+ arrayCarreras[i])
+  alert(okidoki)
+ }
+*/
+if (arrayCarreras != 0){
+  alert('claro que si')
+}
 
 })
-//})
+
+
+/*
+
+El nombre de cuidador y caballeriza sale de tabla profesionales, saco id de api de resultados
+*/

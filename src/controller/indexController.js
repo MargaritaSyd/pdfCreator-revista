@@ -543,7 +543,7 @@ let indexController = {
        res.render("ok" , {id})
    },
    okForm: function(req,res){
-    let inputs = req.body;
+    let inputs = req.body.descriptEjemplar;
     console.log(inputs);
     //res.send('ok')
    },
@@ -720,6 +720,36 @@ apiUnaCarrera: function(req,res){
            llego_numero:[ 1,2,3]
        },
         attributes: ['id', 'carrera_id', 'eje_id' , 'llego_numero' , 'importe'],
+      
+        raw: true,
+        nest: true
+   })
+
+  .then( losResultados => {
+       res.status(200).json({
+           count: losResultados.length,
+           data: losResultados,
+           status: 200
+       });
+    
+   
+})   
+
+.catch(function(e){
+   console.log(e);
+});
+
+   
+},
+apiUnResultado: function(req,res){
+    console.log('ok');
+    let id = req.params.id;
+   //let arrayResult = [];
+   db.resultados.findAll({
+        where: {
+            eje_id: id
+        },
+        attributes: ['id', 'carrera_id', 'eje_id' , 'llego_numero' , 'importe', 'caballeriza' , 'cuidador'],
       
         raw: true,
         nest: true

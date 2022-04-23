@@ -3,7 +3,7 @@ const router = express.Router();
 const indexController = require('../controller/indexController');
 
 
-router.get("/:id" , indexController.ok);
+router.get("/ok/:id" , indexController.ok);
 router.post('/ok_form' , indexController.okForm)
 
 //router.get('/:id' , indexController.index);
@@ -18,6 +18,7 @@ router.post('/ok_form' , indexController.okForm)
 
 router.get('/error', indexController.error);
 router.get('/api_resultados' , indexController.apiResultados);
+router.get('/api_resultado/:id' , indexController.apiUnResultado);
 router.get('/api_ejemplares' , indexController.apiEjemplares);
 //router.get('/api_ejemplares' , indexController.apiEjempalares)
 router.get('/api_ejemplar/:id' , indexController.apiEjemplar);
