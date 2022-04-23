@@ -729,7 +729,12 @@ apiUnResultado: function(req,res){
    //let arrayResult = [];
    db.resultados.findAll({
         where: {
-            eje_id: id
+           eje_id: id,
+           carrera_id: {
+            [Op.gte]: 159662,
+            
+           } 
+            
         },
         attributes: ['id', 'carrera_id', 'eje_id' , 'llego_numero' , 'importe', 'caballeriza' , 'cuidador'],
       
@@ -788,7 +793,7 @@ apiUnCriador: function(req,res){
    //let arrayResult = [];
    db.criadores.findByPk(id,{
        
-        attributes: ['id', 'haras'],
+        attributes: ['id', 'haras' , 'propietario'],
       
         raw: true,
         nest: true

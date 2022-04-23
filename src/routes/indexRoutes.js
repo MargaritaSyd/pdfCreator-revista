@@ -19,11 +19,12 @@ router.post('/ok_form' , indexController.okForm)
 
 router.get('/error', indexController.error);
 router.get('/api_resultados' , indexController.apiResultados);
-router.get('/api_resultado/:id' , indexController.apiUnResultado);
+router.get('/api_resultado/:id' , indexController.apiUnResultado); //SOLO PARA EJEMPLARES NACIDOS DESPUES DEL 2015
 router.get('/api_ejemplares' , indexController.apiEjemplares);
 //router.get('/api_ejemplares' , indexController.apiEjempalares)
 router.get('/api_ejemplar/:id' , indexController.apiEjemplar);
 router.get('/api_carreras' , indexController.apiCarreras);
 router.get('/api_carrera/:id' , indexController.apiUnaCarrera);
-router.get('/api_profesional/:id' ,indexController.apiUnProfesional)
+router.get('/api_profesional/:id' ,indexController.apiUnProfesional);
+router.get('/api_criador/:id' , indexController.apiUnCriador)
 module.exports = router;
