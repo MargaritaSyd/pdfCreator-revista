@@ -18,7 +18,8 @@ window.addEventListener("load" , function(){
   let caballeriza = document.getElementById('caballeriza');
   let inputCaballeriza = document.getElementById('inputCaballeriza');
   let padreEjemplar =document.getElementById('padreEjemplar');
-  let idMadre = document.getElementById('idMadre')
+  let idMadre = document.getElementById('idMadre');
+  let idPadre = document.getElementById('idPadre');
   
   //capturo campos a completas con la info del resultado del ejemplar + inputs correspondientes
   let idTotalLargadas = document.getElementById('totalLargadas');
@@ -59,6 +60,7 @@ let criador_id
 let padre
 let madre
 let id_madre
+let id_padre
 fetch(urlUnEjemplar + id)
 .then(function(r){
     return r.json();
@@ -134,6 +136,7 @@ fetch(urlUnEjemplar + id)
     padre = data.data.padre
     madre = data.data.madre
     id_madre = data.data.madre_id
+    id_padre = data.data.padre_id
 
     nombreDelEjemplar.innerHTML = nombre
     inputNombreDelEjemplar.value = nombre
@@ -145,6 +148,8 @@ fetch(urlUnEjemplar + id)
     madreEnArbol.innerHTML = madre
     inputMadreEnArbol.value = madre
     idMadre.value = id_madre
+    idPadre.value = id_padre
+    
     
 })
 .catch(function(err){
