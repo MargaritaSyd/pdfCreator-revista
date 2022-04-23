@@ -22,13 +22,18 @@ window.addEventListener("load" , function(){
   let inputTotalTerceros = document.getElementById('inputTotalTerceros');
   let idTotalGanancias = document.getElementById('totalGanancias');
   let inputTotalGanancias = document.getElementById('inputTotalGanancias');
-
+  ///capturo campos a completas con la info de carreras + inputs correspondientes
+  let aniosCorrio = document.getElementById('aniosCorrio');
+  let inputAniosCorrio = document.getElementById('inputAniosCorrio');
+  let edadCorrio = document.getElementById('edadCorrio');
+  let inputEdadCorrio = document.getElementById('inputEdadCorrio')
 //alert(id)
 let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/'+ id;
 let urlResultados = 'http://localhost:3002/api_resultados';
 let urlUnEjemplarResultados = 'http://localhost:3002/api_resultado/'+ id;
+let urlCarreras =  'http://localhost:3002/api_carreras';
 
-let urlUnaCarrera = 'http://localhost:3002/api_carreras'
+let urlUnaCarrera = 'http://localhost:3002/api_carrera/'
 
 pdf1.addEventListener('click' , function(){
   form.action = '/ok_form'
@@ -133,14 +138,17 @@ for(let i=0; i<arrayCarreras.length; i++){
 let anios = anioCarreras.sort(function(a,b){return a-b})
 */
 let importeArray = [];
-let arrayGanadas = []
-let arraySegundos = []
-let arrayTerceros = []
-let arrayCarreras = []
-let totalGanancias 
-let totalSegundos
-let totalPrimeros
-let totalTerceros
+let arrayGanadas = [];
+let arraySegundos = [];
+let arrayTerceros = [];
+let arrayCarreras = [];
+let totalGanancias; 
+let totalSegundos;
+let totalPrimeros;
+let totalTerceros;
+let anioCarreras = [];
+let primerAnio;
+let ultimoAnio;
 
 fetch(urlUnEjemplarResultados)
 .then(function(r){
@@ -183,28 +191,80 @@ fetch(urlUnEjemplarResultados)
   inputTotalTerceros.value = totalTerceros
   idTotalGanancias.innerHTML = '$'+ totalGanancias
   inputTotalGanancias.value = totalGanancias
-
+  //alert(arrayCarreras)
 })
-
-
-
 .catch(function(err){
   console.log(err);
-});
-/*
-for(let i=0; i<arrayCarreras.length; i++){
-  // fetch('http://localhost:3002/api_carreras'+ arrayCarreras[i])
-  alert(okidoki)
- }
-*/
-if (arrayCarreras != 0){
-  alert('claro que si')
-}
-
+})
+.then(function(){
+  fetch(urlCarreras)
+  .then(function(r){
+   
+      return r.json();
+  })
+  .then(function(data){
+    //let datadata = JSON.stringify(data.data)
+    let datadata = data.data
+    let datas = JSON.stringify(datadata)
+    datadata.forEach(e => {
+      for(let j=0; j<arrayCarreras.length; j++){
+          if(arrayCarreras[j] == e.id){
+            anioCarreras.push(e.fecha.slice(0,-6))
+          }
+        }
+      
+    })
+    //Años que el ejemplar tomo, uso el primero y el utlimo.
+    let anios = anioCarreras.sort(function(a,b){return a-b})
+    primerAnio = anioCarreras[0].slice(2);
+    ultimoAnio = anioCarreras[anioCarreras.length-1].slice(2);
+    edad0 = anioCarreras[0] - anio_nac;
+    edadUltima = anioCarreras[anioCarreras.length-1] - anio_nac
+    aniosCorrio.innerHTML = primerAnio + '-' + ultimoAnio    
+    inputAniosCorrio.value = primerAnio + '-' + ultimoAnio    
+    edadCorrio.innerHTML = edad0 + '-' + edadUltima
+    inputEdadCorrio.value = edad0 + '-' + edadUltima
+    
+    alert(edadUltima)
+  })
+  .catch(function(err){
+    console.log(err);
+  })
 })
 
 
 /*
-
-El nombre de cuidador y caballeriza sale de tabla profesionales, saco id de api de resultados
+.then(function(){
+  let anioCarrerasss
+  for(let i=0; i<arrayCarreras.length; i++){
+  let idCarrera = arrayCarreras[i]
+    fetch(urlUnaCarrera + idCarrera)
+   
+    .then(function(r){
+     
+        return r.json();
+    })
+    .then(function(data){
+      let carrera = data.data
+      anioCarrerasss = 5
+     // anioCarreras.push(carrera.fecha.slice(0,-6))
+   
+    
+    })
+    .catch(function(err){
+      console.log(err);
+    })
+    }
+ //   return anioCarrerasss
+})
+    
+.then(function(){
+  alert(anioCarrerasss)
+})
 */
+
+
+
+//El nombre de cuidador y caballeriza sale de tabla profesionales, saco id de api de resultados
+
+})

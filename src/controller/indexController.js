@@ -300,6 +300,7 @@ let indexController = {
 
     let anios = anioCarreras.sort(function(a,b){return a-b})
     
+    //obtengo cuidadir y y caballeriza
     db.profesionales.findByPk(cuidador_id)
     .then(resultado => {
         let cuidador = resultado.descripcion
@@ -643,35 +644,13 @@ apiCarreras: function(req,res){
    
   // let arrayCarreras = [];
    db.carreras.findAll({
-        attributes: ['id' , 'hipodromo' , 'nombre' , 'grupo'],
+        attributes: ['id' , 'hipodromo' , 'nombre' , 'grupo' , 'fecha'],
         raw: true,
         nest: true
    })
 
   .then( lasCarreras => {
-/*
-   console.log('okiCarreras');
-      for(let e of lasCarreras){
-        let unaCarrera = {
-               id: e.id,
-               hipodromo: e.hipodromo,
-               nombre: e.nombre,
-               grupo: e.grupo,
-               
-           };
-         arrayCarreras.push(unaCarrera);
-        
-         
-      }
-      return;
-    
-  }) 
- .then(function() {
-     console.log(arrayCarreras);
-//  res.send('ok');
- 
-     //  console.log(arrayResult);
-   */
+
        res.status(200).json({
            count: lasCarreras.length,
            data: lasCarreras,
@@ -690,9 +669,10 @@ apiCarreras: function(req,res){
 apiUnaCarrera: function(req,res){
    let id = req.params.id;
    db.carreras.findByPk(id,
-    {attributes: ['id' , 'hipodromo' , 'nombre' , 'grupo']}
+    {attributes: ['id' , 'hipodromo' , 'nombre' , 'grupo', 'fecha']}
     )
        .then( carrera => {
+           /*
            console.log(carrera);
             let laCarrera = {
                id: carrera.id,
@@ -701,8 +681,10 @@ apiUnaCarrera: function(req,res){
                grupo: carrera.grupo,
                
            };
+           */
            return res.status(200).json({
-               data: laCarrera,
+              data: carrera,
+              // data: laCarrera,
                status: 200
            });
        });    
