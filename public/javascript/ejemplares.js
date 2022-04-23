@@ -11,6 +11,18 @@ window.addEventListener("load" , function(){
   let inputNombreDelEjemplar = document.getElementById('inputNombreDelEjemplar');
   let descriptDelEjemplar = document.getElementById('descriptDelEjemplar');
   let inputDescriptDelEjemplar = document.getElementById('inputDescriptDelEjemplar')
+  //capturo campos a completas con la info del resultado del ejemplar + inputs correspondientes
+  let idTotalLargadas = document.getElementById('totalLargadas');
+  let inputTotalLargadas = document.getElementById('inputTotalLargadas');
+  let idTotalGanadas = document.getElementById('totalGanadas');
+  let inputTotalGanadas = document.getElementById('inputTotalGanadas');
+  let idTotalSegundos = document.getElementById('totalSegundos');
+  let inputTotalSegundos = document.getElementById('inputTotalSegundos');
+  let idTotalTerceros = document.getElementById('totalTerceros')
+  let inputTotalTerceros = document.getElementById('inputTotalTerceros');
+  let idTotalGanancias = document.getElementById('totalGanancias');
+  let inputTotalGanancias = document.getElementById('inputTotalGanancias');
+
 //alert(id)
 let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/'+ id;
 let urlResultados = 'http://localhost:3002/api_resultados';
@@ -125,6 +137,10 @@ let arrayGanadas = []
 let arraySegundos = []
 let arrayTerceros = []
 let arrayCarreras = []
+let totalGanancias 
+let totalSegundos
+let totalPrimeros
+let totalTerceros
 
 fetch(urlUnEjemplarResultados)
 .then(function(r){
@@ -151,11 +167,23 @@ fetch(urlUnEjemplarResultados)
       arrayTerceros.push(datadata[i].llego_numero)
   } 
   }
-  const totalGanancias = importeArray.reduce((a,b)=> a+b);
-  const totalSegundos = arraySegundos.length
-  const totalGanadas = arrayGanadas.length
-  const totalTerceros = arrayTerceros.length
+  totalGanancias = importeArray.reduce((a,b)=> a+b);
+  totalSegundos = arraySegundos.length
+  totalPrimeros = arrayGanadas.length
+  totalTerceros = arrayTerceros.length
   alert(totalTerceros)
+
+  idTotalLargadas.innerHTML = totalLargadas
+  inputTotalLargadas.value = totalLargadas
+  idTotalGanadas.innerHTML = totalPrimeros
+  inputTotalGanadas.value = totalPrimeros
+  idTotalSegundos.innerHTML = totalSegundos 
+  inputTotalSegundos.value = totalSegundos
+  idTotalTerceros.innerHTML = totalTerceros
+  inputTotalTerceros.value = totalTerceros
+  idTotalGanancias.innerHTML = '$'+ totalGanancias
+  inputTotalGanancias.value = totalGanancias
+
 })
 
 
