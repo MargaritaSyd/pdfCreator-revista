@@ -17,7 +17,8 @@ window.addEventListener("load" , function(){
   let inputCuidador = document.getElementById('inputCuidador');
   let caballeriza = document.getElementById('caballeriza');
   let inputCaballeriza = document.getElementById('inputCaballeriza');
-  let padreEjemplar =document.getElementById('padreEjemplar')
+  let padreEjemplar =document.getElementById('padreEjemplar');
+  let idMadre = document.getElementById('idMadre')
   
   //capturo campos a completas con la info del resultado del ejemplar + inputs correspondientes
   let idTotalLargadas = document.getElementById('totalLargadas');
@@ -42,7 +43,7 @@ window.addEventListener("load" , function(){
   let inputMadreEnArbol = document.getElementById('inputMadreEnArbol');
 
   //alert(id)
-let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/'+ id;
+let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/';
 let urlResultados = 'http://localhost:3002/api_resultados';
 let urlUnEjemplarResultados = 'http://localhost:3002/api_resultado/'+ id;
 let urlCarreras =  'http://localhost:3002/api_carreras';
@@ -57,7 +58,8 @@ pdf1.addEventListener('click' , function(){
 let criador_id
 let padre
 let madre
-fetch(urlUnEjemplar)
+let id_madre
+fetch(urlUnEjemplar + id)
 .then(function(r){
     return r.json();
 })
@@ -131,6 +133,7 @@ fetch(urlUnEjemplar)
     criador_id = data.data.criador_id;
     padre = data.data.padre
     madre = data.data.madre
+    id_madre = data.data.madre_id
 
     nombreDelEjemplar.innerHTML = nombre
     inputNombreDelEjemplar.value = nombre
@@ -141,7 +144,8 @@ fetch(urlUnEjemplar)
     inputPadreEnArbol.value = padre
     madreEnArbol.innerHTML = madre
     inputMadreEnArbol.value = madre
-    // alert(criador_id + 'criaxor')
+    idMadre.value = id_madre
+    
 })
 .catch(function(err){
   console.log(err);
@@ -179,7 +183,7 @@ let cuidador_id;
 let caballeriza_id; 
 fetch(urlUnEjemplarResultados)
 .then(function(r){
-  alert('ok')
+ 
     return r.json();
 })
 .then(function(data){
@@ -220,7 +224,7 @@ fetch(urlUnEjemplarResultados)
   inputTotalGanancias.value = totalGanancias
 
   //let jsCarrera = JSON.stringify(ultimaCarrera)
-  alert(cuidador_id +'Y'+ caballeriza_id)
+  
 })
 //NOMBRE DEL CUIDADOR
 .then(function(){
@@ -248,7 +252,7 @@ fetch(urlUnEjemplarResultados)
     let laCaballeriza = data.data.descripcion
     caballeriza.innerHTML = 'Caballeriza: ' + laCaballeriza;
     inputCaballeriza.value = laCaballeriza
-    alert(laCaballeriza)
+   
   })
   .catch(function(err){
    alert(err)
@@ -289,9 +293,10 @@ fetch(urlUnEjemplarResultados)
             anioCarreras.push(e.fecha.slice(0,-6))
           }
         }
-        let anios = anioCarreras.sort(function(a,b){return a-b})
+       
     })
     //Años que el ejemplar corrió, uso el primero y el utlimo.
+    let anios = anioCarreras.sort(function(a,b){return a-b})
     
     primerAnio = anioCarreras[0].slice(2);
     ultimoAnio = anioCarreras[anioCarreras.length-1].slice(2);
@@ -309,38 +314,6 @@ fetch(urlUnEjemplarResultados)
   })
   
 })
-
-
-
-/*
-.then(function(){
-  let anioCarrerasss
-  for(let i=0; i<arrayCarreras.length; i++){
-  let idCarrera = arrayCarreras[i]
-    fetch(urlUnaCarrera + idCarrera)
-   
-    .then(function(r){
-     
-        return r.json();
-    })
-    .then(function(data){
-      let carrera = data.data
-      anioCarrerasss = 5
-     // anioCarreras.push(carrera.fecha.slice(0,-6))
-   
-    
-    })
-    .catch(function(err){
-      console.log(err);
-    })
-    }
- //   return anioCarrerasss
-})
-    
-.then(function(){
-  alert(anioCarrerasss)
-})
-*/
 
 
 

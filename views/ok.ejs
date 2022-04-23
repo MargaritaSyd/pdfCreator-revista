@@ -29,60 +29,58 @@
                     border-bottom: 2px solid black;
                     font-size: 10px;'></b> <input type="text" id="inputDescriptDelEjemplar" style="display:none" name="descriptEjemplar" >
                 </div>
-            </div>
-            <div class="borderContentCarreras" style="  border-radius: 25px; border: 2px solid black;">
-               
-                <div class="detalleCarrerasCorridas" style=' padding: 20px;
-                height: 10px;
-                display: flex;
-                flex-direction: row;
-                font-family: Arial;
-                font-size: x-small;
-                justify-content: space-between;
-                position: relative;
-                left: 10px;
-                top:-5px'>
-                    <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
-                        <b> Año </b>
-                        <b id="aniosCorrio"> </b>
-                        <input type="text" style="display: none;" name="aniosCorrio" id="inputAniosCorrio">
-                    </div>
-                    <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
-                        <b> Edad</b>
-                        <b id="edadCorrio"></b>
-                        <input type="text" style="display: none;" name="inputEdadCorrio" >
-                    </div>
-                    <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
-                        <b>Corrio</b>
-                        <b id="totalLargadas"></b><input id="inputTotalLargadas" type="text" style="display: none;" name="totalLargadas" >
-                    </div>
-                    <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
-                        <b>1º</b>
-                        <b id="totalGanadas"></b><input type="text" style="display: none;" name="totalGanadas" id='inputTotalGanadas'>
-                    </div>
-                    <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
-                        <b>2º</b>
-                        <b id="totalSegundos"></b><input type="text" style="display: none;" name="totalSegundos" id="inputTotalSegundos">
-                    </div>
-                    <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
-                        <b>3º</b>
-                        <b id="totalTerceros"></b><input type="text" style="display: none;" name="totalTerceros" id="inputTotalTerceros">
-                    </div>
-                    <div class="premioDetalleCarreras" style="display: flex; flex-direction: column; width: 25%;">
-                        <b>Premios</b>
-                        <b id="totalGanancias"></b><input type="text" style="display: none;" name="ganancias" id="inputTotalGanancias">
-                    </div>
+            
+                <div class="borderContentCarreras" style="  border-radius: 25px; border: 2px solid black; width: 60%;">
+                
+                    <div class="detalleCarrerasCorridas" style=' padding: 20px;
+                    height: 10px;
+                    display: flex;
+                    flex-direction: row;
+                    font-family: Arial;
+                    font-size: x-small;
+                    justify-content: space-between;
+                    position: relative;
+                    left: 10px;
+                    top:-5px'>
+                        <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
+                            <b> Año </b>
+                            <b id="aniosCorrio"> </b>
+                            <input type="text" style="display: none;" name="aniosCorrio" id="inputAniosCorrio">
+                        </div>
+                        <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
+                            <b> Edad</b>
+                            <b id="edadCorrio"></b>
+                            <input type="text" style="display: none;" name="inputEdadCorrio" >
+                        </div>
+                        <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
+                            <b>Corrio</b>
+                            <b id="totalLargadas"></b><input id="inputTotalLargadas" type="text" style="display: none;" name="totalLargadas" >
+                        </div>
+                        <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
+                            <b>1º</b>
+                            <b id="totalGanadas"></b><input type="text" style="display: none;" name="totalGanadas" id='inputTotalGanadas'>
+                        </div>
+                        <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
+                            <b>2º</b>
+                            <b id="totalSegundos"></b><input type="text" style="display: none;" name="totalSegundos" id="inputTotalSegundos">
+                        </div>
+                        <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
+                            <b>3º</b>
+                            <b id="totalTerceros"></b><input type="text" style="display: none;" name="totalTerceros" id="inputTotalTerceros">
+                        </div>
+                        <div class="premioDetalleCarreras" style="display: flex; flex-direction: column; width: 25%;">
+                            <b>Premios</b>
+                            <b id="totalGanancias"></b><input type="text" style="display: none;" name="ganancias" id="inputTotalGanancias">
+                        </div>
 
+                    </div>
+                
                 </div>
-               
             </div>
             <div class="contenedorCuidadorArbol" style=" display: flex; 
             flex-direction: row;
             justify-content: space-around;">
-                <div class="detllesCuidador" style='display: flex;
-                flex-direction: column;
-                margin-top: 10px;
-                width: 60mm;'>
+                <div class="detllesCuidador" style='font-size: 10; font-family: Arial; font-style: oblique;'>
                     <b id="caballeriza"> Caballeriza:  </b> <input type="text" style="display: none;" name="caballeriza" id="inputCaballeriza" >
                     <b id="criador"> Criador:  </b> <input type="text" style="display: none;" name='criador' id="inputCriador" >
                     <b id="cuidador"> Cuidador: </b> <input type="text" style="display: none;" name="cuidador" id="inputCuidador" >    
@@ -105,9 +103,15 @@
                     width: 95mm;
                     margin-left: 10px; '>
                         <div class="mapa">                        
-                            <div class="divArbolGAbu" style=""></div>
-                            <div class="divArbolGAbu"></div>
-                            <div class="divArbolGAbu"></div>
+                            <div class="divArbolGAbu" style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolGAbu" style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolGAbu" style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
                             <div class="divArbolG" style="height: 20px;
                             padding: 2px;
                             font-size: 10;
@@ -132,12 +136,13 @@
                             <div class="divArbolGAbu"style="height: 10px;
                             padding: 2px;
                             font-size: 12;"></div>
+                            <input type="text" style="display: none;" id="idMadre">
                             <div class="divArbolG" style='height: 20px;
                             padding: 2px;
                             font-size: 10;
                             display: flex;
                             justify-content: center;
-                            align-items: center;'> <b id="madreEnArbol"></b></div><input type="text" style="display: none;" name="madre" id="inputMadreEnArbol">
+                            align-items: center;'><b id="madreEnArbol"></b></div><input type="text" style="display: none;" name="madre" id="inputMadreEnArbol">
                             <div class="divArbolGAbu"style="height: 10px;
                             padding: 2px;
                             font-size: 12;"></div>
@@ -147,6 +152,130 @@
                             <div class="divArbolGAbu"style="height: 10px;
                             padding: 2px;
                             font-size: 12;"></div>
+                        </div>
+                        <div class="abue">
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolG"style="height: 20px;
+                            padding: 2px;
+                            font-size: 10;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">
+                                <input type="text" name="abueloP" id="inputAbueloP">
+                            </div>
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                             <div class="divArbolG"style="height: 20px;
+                             padding: 2px;
+                             font-size: 10;
+                             display: flex;
+                             justify-content: center;
+                             align-items: center;">
+                                <input type="text" name="abuelaP" id="inputAbuelaP">
+                            </div>
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolG"style="height: 20px;
+                            padding: 2px;
+                            font-size: 10;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">
+                                <input type="text" name="abueloM" id="inputAbueloM">
+                            </div>
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                            <div class="divArbolG"style="height: 20px;
+                            padding: 2px;
+                            font-size: 10;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">
+                                <input type="text" name="abuelaM" id="inputAbuelaM">
+                            </div>
+                            <div class="divArbolGAbu"style="height: 10px;
+                            padding: 2px;
+                            font-size: 12;"></div>
+                        </div>
+                        <div class="bisa">
+                            <div class="divArbolG" style="height: 20px;
+                            padding: 2px;
+                            font-size: 10;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">
+                                <input type="text" name="pAbueloP" id="inputPAbueloP">
+                            </div>
+                            <div class="divArbolG"style="height: 20px;
+                            padding: 2px;
+                            font-size: 10;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">
+                                <input type="text" name="mAbueloP" id="inputMAbueloP" >
+                            </div>
+                            <div class="divArbolG"style="height: 20px;
+                            padding: 2px;
+                            font-size: 10;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">
+                                <input type="text" name="pAbuelaP" id="inputPabuelaP">
+                            </div> 
+                            <div class="divArbolG"style="height: 20px;
+                            padding: 2px;
+                            font-size: 10;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">
+                                <input type="text" name="mAbuelaP" id="inputMAbuelaP">
+                            </div> 
+                            <div class="divArbolG"style="height: 20px;
+                            padding: 2px;
+                            font-size: 10;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">
+                                <input type="text" name="pAbueloM" id="inputPAbueloM">
+                            </div> 
+                            <div class="divArbolG"style="height: 20px;
+                            padding: 2px;
+                            font-size: 10;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">
+                                <input type="text" name="mAbueloM" id="inputMAbueloM">
+                            </div>
+                            <div class="divArbolG"style="height: 20px;
+                            padding: 2px;
+                            font-size: 10;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">
+                                <input type="text" name="pAbuelaM" id="inputPAbuelaM">
+                            </div>
+                            <div class="divArbolG"style="height: 20px;
+                            padding: 2px;
+                            font-size: 10;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">
+                                <input type="text" name="mAbuelaM" id="inputMAbuelaM">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -161,5 +290,6 @@
         </main>
     
         <script src="/javascript/ejemplares.js"></script>
+        <script src="/javascript/arbol.js"></script>
     </body>
 </html>
