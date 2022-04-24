@@ -1,5 +1,5 @@
 
-
+//FAMILIA PATERNA
  
 
 window.addEventListener("load" , function(){
@@ -186,34 +186,9 @@ window.addEventListener("load" , function(){
            
           })
           
-            
-            /*
-          //INFO PAPA ABUELO PATERNO
-          .then(function(){
-          })
-          .catch(function(err){
-          alert(err + 'abueloP')
-          })
-          */
+        
         }
-    /*
-        .then(function(){
-           if(idPadre != 0){
-            inputPadreEnArbol.value = nombrePadre
-           } 
-           if(idAbuelaP != 0){
-               inputAbuelaP.value = nombreAbuelaP
-           }
-           if(idMAbuelaP != 0){
-            inputMAbuelaP.value = nombreMAbuelaP
-            } else {inputMAbuelaP.value ='ASXDCFGHJKL' }
-            if(idPAbuelaP != 0){
-                inputPAbuelaP.value = nombrePAbuelaP
-                alert(nombrePAbuelaP)
-            } else {inputPAbuelaP.value ='ASXDCFGHJKL' }
-        })
-        */
-    
+   
     })
 })
 })
