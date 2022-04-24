@@ -143,10 +143,6 @@ fetch(urlUnEjemplar + id)
     descriptDelEjemplar.innerHTML = sexo +', '+ pelo + ', nacido el '+dia_nac+ ' de ' + mes_nac + ' de ' + anio_nac
     inputDescriptDelEjemplar.value =  sexo +', '+ pelo + ', nacido el '+dia_nac+ ' de ' + mes_nac + ' de ' + anio_nac
     padreEjemplar.innerHTML = padre
-   // padreEnArbol.innerHTML = padre
-   // inputPadreEnArbol.value = padre
-    //madreEnArbol.innerHTML = madre
-    //inputMadreEnArbol.value = madre
     idMadre.value = id_madre
     idPadre.value = id_padre
     

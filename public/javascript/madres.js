@@ -4,6 +4,7 @@ let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/';
 let urlHijos = 'http://localhost:3002/api_hijos/';
 
 let idMadre
+let arrayHijos = []
 //TRAIGO INFO DEL EJEMPLAR PARA TENER INFO DE SU 1 MADRE
 fetch(urlUnEjemplar + id)
 .then(function(r){
@@ -24,10 +25,17 @@ fetch(urlUnEjemplar + id)
         return r.json();
     })
     .then(function(data){
-        alert('ok la primera madre')
+        let datadata = data.data
+        for(i of datadata){
+            let idI = i.id
+            arrayHijos.push(idI)
+        }
     })
     .catch(function(err){
         alert(err + 'hijos primera madre')
+    })
+    .then(function(){
+        alert(arrayHijos)
     })
 
 })
