@@ -32,41 +32,55 @@ fetch(urlUnEjemplar + idMadre)
 .then(function(data){
     let ma = JSON.stringify(data.data)
     let infoMadre = data.data
+    nombreMadre = data.data.nombre
     idAbueloM = infoMadre.padre_id
     idAbuelaM = infoMadre.madre_id
-    
+    alert(nombreMadre)
 })
 .catch(function(err){
-    alert(err)
+    alert(err + 'madre')
 })
-//INFO PADRE + ID ABUELXS
-fetch(urlUnEjemplar + idPadre)
-.then(function(r){
-    return r.json();
+.then(function(){
+
+/*
+    //INFO PADRE + ID ABUELXS
+    fetch(urlUnEjemplar + idPadre)
+    .then(function(r){
+        alert('okadoka')
+        return r.json();
+       
+    })
+    .then(function(data){
+        let infoPadre = data.data
+        nombrePadre = data.data.nombre
+        idAbueloP = infoPadre.padre_id
+        idAbuelaP = infoPadre.madre_id
+        alert(nombrePadre)
+    })
+    .catch(function(err){
+        alert(err + 'padre')
+    })
 })
-.then(function(data){
-    let infoPadre = data.data
-    idAbueloP = infoPadre.padre_id
-    idAbuelaP = infoPadre.madre_id
-    alert(idAbuelaM)
-})
-.catch(function(err){
-    alert(err)
-})
-//INFO ABUELAMATERNA + ID BISABUELXS
-fetch(urlUnEjemplar + idAbuelaM)
-.then(function(r){
-    return r.json();
-})
-.then(function(data){
-    let infoAbulaM = data.data
-    //inputAbuelaM.value = infoAbulaM.nombre
-    idMAbuelaM = infoPadre.padre_id
-    idPAbuelaM = infoPadre.madre_id
-    
-})
-.catch(function(err){
-    alert(err)
+.then(function(){
+*/
+    //INFO ABUELAMATERNA + ID BISABUELXS
+    fetch(urlUnEjemplar + idAbuelaM)
+    .then(function(r){
+        alert('la abuela')
+        return r.json();
+    })
+
+    .then(function(data){
+        let infoAbulaM = data.data
+        //inputAbuelaM.value = infoAbulaM.nombre
+        idMAbuelaM = infoAbulaM.padre_id
+        idPAbuelaM = infoAbulaM.madre_id
+        alert(idMAbuelaM)
+        
+    })
+    .catch(function(err){
+        alert(err + 'abuelaM')
+    })
 })
 
 

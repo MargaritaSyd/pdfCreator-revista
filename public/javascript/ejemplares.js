@@ -143,10 +143,10 @@ fetch(urlUnEjemplar + id)
     descriptDelEjemplar.innerHTML = sexo +', '+ pelo + ', nacido el '+dia_nac+ ' de ' + mes_nac + ' de ' + anio_nac
     inputDescriptDelEjemplar.value =  sexo +', '+ pelo + ', nacido el '+dia_nac+ ' de ' + mes_nac + ' de ' + anio_nac
     padreEjemplar.innerHTML = padre
-    padreEnArbol.innerHTML = padre
-    inputPadreEnArbol.value = padre
-    madreEnArbol.innerHTML = madre
-    inputMadreEnArbol.value = madre
+   // padreEnArbol.innerHTML = padre
+   // inputPadreEnArbol.value = padre
+    //madreEnArbol.innerHTML = madre
+    //inputMadreEnArbol.value = madre
     idMadre.value = id_madre
     idPadre.value = id_padre
     
@@ -265,23 +265,6 @@ fetch(urlUnEjemplarResultados)
 })
 
 
-/*
-.then(function(){
-  fetch(urlUnProfesional+10)
-  .then(function(r){
-      return r.json();
-  })
-  .then(function(data){
-    let elCuidador = data.data.descripcion
-    //criador.innerHTML = 'Criador: ' + elCriador
-    //inpurCriador.value = elCriador
-    alert(elCuidador)
-  })
-  .catch(function(err){
-   alert(err)
-  })
-})
-*/
 .then(function(){
   fetch(urlCarreras)
   .then(function(r){
