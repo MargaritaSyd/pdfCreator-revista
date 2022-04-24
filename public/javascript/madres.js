@@ -2,6 +2,7 @@ window.addEventListener('load' , function(){
 let id = document.getElementById('id').value
 let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/';
 let urlHijos = 'http://localhost:3002/api_hijos/';
+let urlResultadosHijo = 'http://localhost:3002/api_resultados_hijos/'
 
 let idMadre
 let arrayHijos = []
@@ -28,7 +29,21 @@ fetch(urlUnEjemplar + id)
         let datadata = data.data
         for(i of datadata){
             let idI = i.id
-            arrayHijos.push(idI)
+            fetch(urlResultadosHijo + idI)
+            .then(function(r){
+                return r.json();
+            })
+            .then(function(data){
+                //alert('ok el resultado')
+              arrayHijos.push(data)
+            })  
+            .catch(function(err){
+                alert(err + 'resultadosHijos')
+            })
+            .then(function(){
+                let resultados = JSON.stringify(arrayHijos)
+                alert(resultados)
+            })
         }
     })
     .catch(function(err){
