@@ -1,10 +1,9 @@
 
 
-
+ 
 
 window.addEventListener("load" , function(){
     let id = document.getElementById('id').value
-    let idPadre = document.getElementById('idPadre').value
     let inputPadreEnArbol = document.getElementById('inputPadreEnArbol')
     let inputAbueloP = document.getElementById('inputAbueloP')
     let inputAbuelaP = document.getElementById('inputAbuelaP')
@@ -16,7 +15,7 @@ window.addEventListener("load" , function(){
     
     let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/';
     
-    
+    let idPadre
     let idAbueloP
     let idAbuelaP
     let idMAbuelaP
@@ -29,6 +28,21 @@ window.addEventListener("load" , function(){
     let nombrePAbuelaP
     let nombreMAbueloP
     let nombrePAbueloP 
+
+    //INFO EJEMPLAR
+    fetch(urlUnEjemplar + id)
+.then(function(r){
+    return r.json();
+})
+.then(function(data){
+    let infoEjemplar = data.data
+    idPadre = infoEjemplar.padre_id
+})
+.catch(function(err){
+    alert(err + 'ejemplar')
+})
+.then(function(){
+
 
     //INFO PADRE + ID ABUELXS
     fetch(urlUnEjemplar + idPadre)
@@ -43,7 +57,6 @@ window.addEventListener("load" , function(){
         idAbueloP = infoPadre.padre_id
         idAbuelaP = infoPadre.madre_id
         inputPadreEnArbol.value = nombrePadre
-        alert(idPadre+'el di del padre')
     })
     .catch(function(err){
         alert(err + 'padre')
@@ -115,7 +128,7 @@ window.addEventListener("load" , function(){
         })
 
         } //cierro condicional del fecth de AbuelaP
-          //INFO ABUELOPATERNO + ID BISABUELXS
+    //INFO ABUELOPATERNO + ID BISABUELXS
           if(idAbueloP != 0){
           fetch(urlUnEjemplar + idAbueloP)
           .then(function(r){
@@ -202,5 +215,5 @@ window.addEventListener("load" , function(){
         */
     
     })
-    
-    })
+})
+})
