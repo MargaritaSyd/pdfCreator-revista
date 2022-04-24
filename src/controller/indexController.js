@@ -606,7 +606,7 @@ let indexController = {
 apiEjemplar: function(req,res){
     let id = req.params.id;
     db.ejemplares.findByPk(id , {
-        attributes: ['id','nombre','anio_nac','mes_nac','dia_nac','sexo','pelo','raza','criador_id','padre_id','madre_id','padre','madre','mes_nac','dia_nac','sexo','pelo','raza', 'criador_id', 'padre_id','madre_id','padre','madre']      
+        attributes: ['id','nombre','anio_nac','mes_nac','dia_nac','sexo','pelo','raza','criador_id','padre_id','madre_id','padre','madre',]      
     })
         .then( ejemplar => {
             console.log(ejemplar);
@@ -812,6 +812,37 @@ apiUnCriador: function(req,res){
     .catch(function(e){
     console.log(e);
     });
+
+   
+},
+//API PARA ENCONTRAR HIJOS
+apiHijos: function(req,res){
+
+    let idMadre = req.params.id;
+   //let arrayResult = [];
+   db.ejemplares.findAll({
+        where: {
+           madre_id: idMadre, 
+        },
+        attributes: ['id','nombre','anio_nac','sexo','madre_id','padre'],    
+      
+        raw: true,
+        nest: true
+   })
+
+  .then( losResultados => {
+       res.status(200).json({
+           count: losResultados.length,
+           data: losResultados,
+           status: 200
+       });
+    
+   
+})   
+
+.catch(function(e){
+   console.log(e);
+});
 
    
 },
