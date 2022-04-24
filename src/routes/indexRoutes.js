@@ -26,5 +26,6 @@ router.get('/api_ejemplar/:id' , indexController.apiEjemplar);
 router.get('/api_carreras' , indexController.apiCarreras);
 router.get('/api_carrera/:id' , indexController.apiUnaCarrera);
 router.get('/api_profesional/:id' ,indexController.apiUnProfesional);
-router.get('/api_criador/:id' , indexController.apiUnCriador)
+router.get('/api_criador/:id' , indexController.apiUnCriador);
+router.get('/api_hijos/:id' , indexController.apiHijos);
 module.exports = router;
