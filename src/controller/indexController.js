@@ -553,42 +553,13 @@ let indexController = {
    apiEjemplares: function(req,res){
   //  let ejemplaresTodos = [];
     db.ejemplares.findAll({
-        attributes: ['id','nombre','anio_nac','mes_nac','dia_nac','sexo','pelo','raza','criador_id','padre_id','madre_id','padre','madre','mes_nac','dia_nac','sexo','pelo','raza', 'criador_id', 'padre_id','madre_id','padre','madre'],
+        attributes: ['id','nombre','anio_nac','mes_nac','dia_nac','sexo','pelo','raza','criador_id','padre_id','madre_id','padre','madre'],
         raw: true,
         nest: true
         
     })
 //     console.log('findall')
         .then( losEjemplares => {
-            /*
-          //  console.log(losEjemplares);
-
-            for(let i=0; i<losEjemplares.length; i++){
-             //   console.log('ok el for')
-                let unEJemplar = {
-                id: losEjemplares[i].id,
-                nombre: losEjemplares[i].nombre, 
-                anio_nac: losEjemplares[i].anio_nac,
-                mes_nac: losEjemplares[i].mes_nac,
-                dia_nac: losEjemplares[i].dia_nac,
-                sexo: losEjemplares[i].sexo, 
-                pelo: losEjemplares[i].pelo,
-                raza: losEjemplares[i].raza,
-                criador_id: losEjemplares[i].criador_id,
-                padre_id: losEjemplares[i].padre_id,
-                madre_id: losEjemplares[i].madre_id,
-                padre: losEjemplares[i].padre,
-                madre: losEjemplares[i].madre,
-                
-                
-            };
-                ejemplaresTodos.push(unEJemplar);
-            }
-          //  console.log(ejemplaresTodos.length);
-             console.log(ejemplaresTodos);
-        })
-        .then(function (){
-            */
             return res.status(200).json({
                 count: losEjemplares.length,
                 data: losEjemplares,
@@ -723,6 +694,42 @@ apiUnaCarrera: function(req,res){
 
    
 },
+// API RESULTADOS HIJOS :
+
+  
+apiResultadosHijos: function(req,res){
+ 
+   let idHijo = req.params.id
+   //let arrayResult = [];
+   db.resultados.findAll({
+       where: {
+           eje_id: idHijo,
+           llego_numero:[ 1,2,3]
+       },
+        attributes: ['id', 'carrera_id', 'eje_id' , 'llego_numero' , 'importe'],
+      
+        raw: true,
+        nest: true
+   })
+
+  .then( losResultados => {
+       res.status(200).json({
+           count: losResultados.length,
+           data: losResultados,
+           status: 200
+       });
+    
+   
+})   
+
+.catch(function(e){
+   console.log(e);
+});
+
+   
+},
+
+// API RESULTADO POR EJEMPLAR NACIDOS DESPUES DEL 2015
 apiUnResultado: function(req,res){
     console.log('ok');
     let id = req.params.id;

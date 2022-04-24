@@ -19,6 +19,7 @@ router.post('/ok_form' , indexController.okForm)
 
 router.get('/error', indexController.error);
 router.get('/api_resultados' , indexController.apiResultados);
+router.get('/api_resultados_hijos/:id' , indexController.apiResultadosHijos);
 router.get('/api_resultado/:id' , indexController.apiUnResultado); //SOLO PARA EJEMPLARES NACIDOS DESPUES DEL 2015
 router.get('/api_ejemplares' , indexController.apiEjemplares);
 //router.get('/api_ejemplares' , indexController.apiEjempalares)
