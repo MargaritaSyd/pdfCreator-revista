@@ -188,6 +188,8 @@ fetch(urlUnEjemplarResultados)
     return r.json();
 })
 .then(function(data){
+   
+
   //let datadata = JSON.stringify(data.data)
   let datadata = data.data
   let totalLargadas = datadata.length
@@ -237,7 +239,7 @@ fetch(urlUnEjemplarResultados)
     let elCuidador = data.data.descripcion
     cuidador.innerHTML = 'Cuidador: ' + elCuidador
     inputCuidador.value = elCuidador
-   // alert(elCuidador)
+    //alert(elCuidador)
   })
   .catch(function(err){
    alert(err)
@@ -291,7 +293,7 @@ fetch(urlUnEjemplarResultados)
     edadCorrio.innerHTML = edad0 + '-' + edadUltima
     inputEdadCorrio.value = edad0 + '-' + edadUltima
     
-    alert(edadUltima)
+    //alert(edadUltima)
   })
   .catch(function(err){
     console.log(err);

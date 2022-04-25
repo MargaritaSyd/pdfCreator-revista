@@ -822,7 +822,7 @@ apiUnCriador: function(req,res){
 
    
 },
-//API PARA ENCONTRAR HIJOS
+//API PARA ENCONTRAR HIJOS A PARTIR DEL ID DE LA MADRE
 apiHijos: function(req,res){
 
     let idMadre = req.params.id;

@@ -66,7 +66,7 @@ fetch(urlUnEjemplar + id)
 //INFO ABUELAMATERNA + ID BISABUELXS
         fetch(urlUnEjemplar + idAbuelaM)
         .then(function(r){
-            alert('la abuela M')
+        //    alert('la abuela M')
             return r.json();
         })
     

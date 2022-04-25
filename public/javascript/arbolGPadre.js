@@ -47,7 +47,7 @@ window.addEventListener("load" , function(){
     //INFO PADRE + ID ABUELXS
     fetch(urlUnEjemplar + idPadre)
     .then(function(r){
-        alert('okadoka')
+    //    alert('okadoka')
         return r.json();
         
     })
@@ -67,7 +67,7 @@ window.addEventListener("load" , function(){
         //INFO ABUELAPATERNA + ID BISABUELXS
         fetch(urlUnEjemplar + idAbuelaP)
         .then(function(r){
-            alert('la abuela P')
+       //     alert('la abuela P')
             return r.json();
         })
     
@@ -77,7 +77,7 @@ window.addEventListener("load" , function(){
             idPAbuelaP = infoAbulaP.padre_id
             idMAbuelaP = infoAbulaP.madre_id
             inputAbuelaP.value = nombreAbuelaP
-            alert(idMAbuelaP)
+       //     alert(idMAbuelaP)
             
         })
         .catch(function(err){
@@ -89,7 +89,7 @@ window.addEventListener("load" , function(){
         //INFO MAMA ABUELA PATERNA
             fetch(urlUnEjemplar + idMAbuelaP)
             .then(function(r){
-                alert('la M  abuela P tiene su id' + idMAbuelaP )
+            //    alert('la M  abuela P tiene su id' + idMAbuelaP )
                 return r.json();
             })
         
@@ -110,7 +110,7 @@ window.addEventListener("load" , function(){
             if(idPAbuelaP != 0){
                 fetch(urlUnEjemplar + idPAbuelaP)
                 .then(function(r){
-                    alert ('esgte es es id' + idPAbuelaP)
+                  //  alert ('esgte es es id' + idPAbuelaP)
                     return r.json();
                 })
             
@@ -142,7 +142,7 @@ window.addEventListener("load" , function(){
               idPAbueloP = infoAbuloP.padre_id
               idMAbueloP = infoAbuloP.madre_id
               inputAbueloP.value = nombreAbueloP
-              alert('este es el id del MABUELOP' + idMAbueloP)
+            //  alert('este es el id del MABUELOP' + idMAbueloP)
             
               
           })
