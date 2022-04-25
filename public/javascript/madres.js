@@ -6,7 +6,7 @@ window.addEventListener('load' , function(){
     let urlResultadosHijo = 'http://localhost:3002/api_resultados_hijos/';
     let urlCarrerasPorHijo = 'http://localhost:3002/api_carrera/';
 
-  
+  let arrayHijos1 = [];
 
 
 //TRAIGO INFO DEL EJEMPLAR PARA TENER INFO DE SU 1 MADRE
@@ -63,7 +63,7 @@ fetch(urlUnEjemplar + id)
 
                 let nombreDeCarrera = [];
                 let hipodromos = [];
-                if(cantVecesLlego1 != 0){
+                 if(cantVecesLlego1 != 0){
                   for(i of arrayLlego1){
                     fetch(urlCarrerasPorHijo + i)
                     .then(function(r){
@@ -73,47 +73,50 @@ fetch(urlUnEjemplar + id)
                         let d = JSON.stringify(data.data)
                         let dat = data.data
                         hipodromos.push(dat.hipodromo)
-
-                       
                         
+                        
+                        //  alert(result)
                         if(dat.grupo != ''){
-                          nombreDeCarrera.push(dat.nombre + ', ')
-                        } else {
-                          nombreDeCarrera.push('vamp, ')
+                            nombreDeCarrera.push(dat.nombre + ', ')
                         }
-                        
                       
-                    })
-                    .then(function(){
-                        
+                        let hijosMadres = [];
                         const resultadoHijo = new Object();
                         resultadoHijo.id = idI;
                         resultadoHijo.nombre = nombreHijo;
                         resultadoHijo.hipodromo = hipodromos;
-                     //   resultadoHijo.llego_numero =cantVecesLlego1;
-                     let res = JSON.stringify(resultadoHijo)
-                     alert('res')
-                       
-                    })
-                    /*
-                    .then(function(){
-                        let res = JSON.stringify(resultadoHijo)
-                        alert('res')
-                    })
-                    */
 
+                        hijosMadres.push(resultadoHijo)
+                        return hijosMadres
+                    })
+                      
+                     .then(function(hijosMadres){
+                //    alert(hijosMadres.hipodromo)
+                   //let hm = hijosMadres.hipodromo
+                    let res = JSON.stringify(hijosMadres)
+                    
+                    // let result = hijosMadres.hipodromo.filter((item,index)=>{
+                    //     return hijosMadres.hipodromo.indexOf(item) === index;
+                    //   })
+                      
+                    alert(res)
+                })
+            
+                
                   }
+                
                 }
+                return hijosMadres
             })
                 
               
-    
+            // .catch(function(err){
+            //     alert(err + 'resultados hijos')
+            // })
             
-            
-            .catch(function(err){
-                alert(err + 'resultados hijos')
-            })
            
+            
+          
             
 
         }
@@ -121,6 +124,7 @@ fetch(urlUnEjemplar + id)
     .catch(function(err){
         alert(err + 'url hijos')
     })
+   
     
 
 })
