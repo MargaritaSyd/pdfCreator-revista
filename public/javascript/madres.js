@@ -33,7 +33,7 @@ fetch(urlUnEjemplar + id)
     .then(function(data){
         let datadata = data.data
         for(i of datadata){
-            alert('hola')
+           
             
             let idI = i.id
             let nombreHijo = i.nombre
@@ -58,23 +58,57 @@ fetch(urlUnEjemplar + id)
                         arrayLlego3.push(i.carrera_id)
                     }
                 }
-                
-                for(i of arrayLlego1){
+                cantVecesLlego1 = arrayLlego1.length
+                alert(cantVecesLlego1)
+
+                let nombreDeCarrera = [];
+                let hipodromos = [];
+                if(cantVecesLlego1 != 0){
+                  for(i of arrayLlego1){
                     fetch(urlCarrerasPorHijo + i)
                     .then(function(r){
                         return r.json();
                     })
                     .then(function(data){
                         let d = JSON.stringify(data.data)
-                        alert(d)
-                    })
-                    
+                        let dat = data.data
+                        hipodromos.push(dat.hipodromo)
 
+                       
+                        
+                        if(dat.grupo != ''){
+                          nombreDeCarrera.push(dat.nombre + ', ')
+                        } else {
+                          nombreDeCarrera.push('vamp, ')
+                        }
+                        
+                      
+                    })
+                    .then(function(){
+                        
+                        const resultadoHijo = new Object();
+                        resultadoHijo.id = idI;
+                        resultadoHijo.nombre = nombreHijo;
+                        resultadoHijo.hipodromo = hipodromos;
+                     //   resultadoHijo.llego_numero =cantVecesLlego1;
+                     let res = JSON.stringify(resultadoHijo)
+                     alert('res')
+                       
+                    })
+                    /*
+                    .then(function(){
+                        let res = JSON.stringify(resultadoHijo)
+                        alert('res')
+                    })
+                    */
+
+                  }
                 }
+            })
                 
               
     
-            })
+            
             
             .catch(function(err){
                 alert(err + 'resultados hijos')
