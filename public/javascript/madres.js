@@ -7,6 +7,7 @@ window.addEventListener('load' , function(){
     let urlCarrerasPorHijo = 'http://localhost:3002/api_carrera/';
 
   let arrayHijos1 = [];
+  let hijosMadres = [];
 
 
 //TRAIGO INFO DEL EJEMPLAR PARA TENER INFO DE SU 1 MADRE
@@ -58,6 +59,7 @@ fetch(urlUnEjemplar + id)
                         arrayLlego3.push(i.carrera_id)
                     }
                 }
+                //CUANTAS VECES LLEGO 1
                 cantVecesLlego1 = arrayLlego1.length
                 alert(cantVecesLlego1)
 
@@ -77,48 +79,59 @@ fetch(urlUnEjemplar + id)
                         
                         //  alert(result)
                         if(dat.grupo != ''){
-                            nombreDeCarrera.push(dat.nombre + ', ')
+                            nombreDeCarrera.push(dat.grupo + dat.nombre + ', ')
                         }
+
+                       // let nombreDeste = hipodromos.filter
+                       /*
+                        let nombreDeHipodromo = hipodromos.filter((item,index)=>{
+                            return hipodromos.indexOf(item) === index;
+                          })
+                          */
+                         let nombreDeHipodromo = [1,2,3,4]
+                        let nombreDeCarreraCorrida = nombreDeCarrera
+                      //let nombreDeCarreraCorrida = [1,2,3,4,5]
                       
-                        let hijosMadres = [];
+                      /*
                         const resultadoHijo = new Object();
                         resultadoHijo.id = idI;
                         resultadoHijo.nombre = nombreHijo;
                         resultadoHijo.hipodromo = hipodromos;
+                        resultadoHijo.nombreCarrera = nombreDeCarrera
 
                         hijosMadres.push(resultadoHijo)
+                        
+                        let res = JSON.stringify(hijosMadres)
+           
+                        alert(res)
                         return hijosMadres
+
+                        */
+                       return [nombreDeHipodromo , nombreDeCarreraCorrida]
                     })
-                      
-                     .then(function(hijosMadres){
-                //    alert(hijosMadres.hipodromo)
-                   //let hm = hijosMadres.hipodromo
-                    let res = JSON.stringify(hijosMadres)
+                  //  Promise.all([nombreDeCarreraCorrida , nombreDeHipodromo])
+                    .then(function(nombreDeHipodromo){
+                        alert(nombreDeHipodromo +'es')
+                    })
+                    .then(function(nombreDeCarreraCorrida){
+                        alert(nombreDeCarreraCorrida +'dfghm')
+                    })
                     
-                    // let result = hijosMadres.hipodromo.filter((item,index)=>{
-                    //     return hijosMadres.hipodromo.indexOf(item) === index;
-                    //   })
-                      
-                    alert(res)
-                })
-            
                 
                   }
-                
+                 
                 }
-                return hijosMadres
+           //     return hijosMadres
+               
             })
-                
-              
-            // .catch(function(err){
-            //     alert(err + 'resultados hijos')
-            // })
-            
+            /*
+            .then(function(hijosMadres){
+                let res = JSON.stringify(hijosMadres)
            
-            
-          
-            
-
+                alert(res)
+               })
+           */
+                
         }
     })
     .catch(function(err){
