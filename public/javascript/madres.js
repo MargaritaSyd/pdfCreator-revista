@@ -121,7 +121,11 @@ fetch(urlUnEjemplar + id)
                  return primerLugar
                })
                .then(function(primerLugar){
-                   alert(JSON.stringify(primerLugar))
+
+                   arrayHijos1.push(primerLugar)
+               })
+               .then(function(){
+                   alert(JSON.stringify(arrayHijos1))
                })
 
                
