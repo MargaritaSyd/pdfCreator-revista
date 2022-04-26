@@ -47,9 +47,14 @@ fetch(urlUnEjemplar + id)
     */
    .then(function(data){
     
-    let resultadosDeCarreras = [];
+   
     for (i of data.data){
-        
+        let resultadosDeCarreras = [];   
+        let idI = i.id
+        let nombreI = i.nombre
+        let llego1 = [];
+        let llego2 = [];
+        let llego3 = [];
         alert(JSON.stringify(i))
         fetch(urlResultadosHijo + i.id)
         .then(function(r){
@@ -57,10 +62,64 @@ fetch(urlUnEjemplar + id)
         })
         .then(function(data){
             alert(JSON.stringify(data.data))
+            for(i of data.data){
+               
+                if(i.llego_numero == 1){
+                    llego1.push(i.carrera_id)
+                }
+                else if(i.llego_numero == 2){
+                    llego2.push(i.carrera_id)
+                } else {
+                    llego3.push(i.carrera_id)
+                }
+
+                
+            }
+            return [llego1, llego2, llego3]
+        })
+        .then(function(){
+            
+           let llego1Hipodromo = [];
+           let llego1Grupo= [];
+           let llego1Nombre=[];
+           for(i of llego1){
+               fetch(urlCarrerasPorHijo + i)
+               .then(function(r){
+                return r.json();
+                })
+               .then(function(data){
+                   alert(JSON.stringify(data.data))
+                   llego1Hipodromo.push(data.data.hipodromo)
+
+                   if(data.data.grupo != ''){
+                       llego1Grupo.push(data.data.grupo)
+                       llego1Nombre.push(data.data.nombre)
+                       
+                   }
+                   return [llego1Hipodromo,llego1Grupo,llego1Nombre]
+               })
+               .then(function(){
+                const getInfo =  {
+                    idEje: 1,
+                    nombreEje: nombreI,
+                   // padreEje: padreHijo,
+                   // cantGanadas: cantVecesLlego1,
+                    carrera: llego1Nombre,
+                    grupo: llego1Grupo,
+                    hipodrom: llego1Hipodromo,
+                    }
+                    
+                   
+                 return getInfo
+               })
+               .then(function(getInfo){
+                   alert(JSON.stringify(getInfo))
+               })
+
+               
+           }
 
         })
-        
-       
    
     }
    
