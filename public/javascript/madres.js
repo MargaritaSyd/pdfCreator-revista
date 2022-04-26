@@ -11,11 +11,13 @@ window.addEventListener('load' , function(){
 
   let arrayHijos1 = [];
   let hijosMadres = [];
-  let arrayHijos = [];
+ 
+  let nuevoArray = [];
 
 
 //TRAIGO INFO DEL EJEMPLAR PARA TENER INFO DE SU 1 MADRE
-
+let resultadosArray = [];
+   
 fetch(urlUnEjemplar + id)
 .then(function(r){
     return r.json();
@@ -23,7 +25,7 @@ fetch(urlUnEjemplar + id)
 .then(function(data){
     let infoEjemplar = data.data
     idMadre = infoEjemplar.madre_id
-    alert(idMadre + 'capa mundial')
+   // alert(idMadre + 'capa mundial')
 })
 .catch(function(err){
     alert(err + 'ejemplar')
@@ -31,24 +33,63 @@ fetch(urlUnEjemplar + id)
 
 //TRAIGO INFO DE HIJOS DE LA PRIMERA MADRE
 .then(function(){
+    let arrayHijos = [];
     fetch(urlHijos + idMadre)
     .then(function(r){
         return r.json();
     })
+    /*
     .then(function(data){
-        let datadata = data.data
-        for(i of datadata){
-           
-            
-            let idI = i.id
-            let nombreHijo = i.nombre
-            let padreHijo = i.padre
-//BUSCO RESULTADOS DE LAS CARRERAS DE CADA HIJO
-            fetch(urlResultadosHijo + idI)
-            .then(function(r){
-                return r.json();
-            })
-            
+        arrayHijos.push(data.data)
+       
+        return arrayHijos
+    })
+    */
+   .then(function(data){
+    
+    let resultadosDeCarreras = [];
+    for (i of data.data){
+        
+        alert(JSON.stringify(i))
+        fetch(urlResultadosHijo + i.id)
+        .then(function(r){
+            return r.json();
+        })
+        .then(function(data){
+            alert(JSON.stringify(data.data))
+
+        })
+        
+       
+   
+    }
+   
+   })
+ 
+   .catch(function(err){
+    alert(err + 'url hijos')
+})
+
+   
+   
+
+    
+  
+    .catch(function(err){
+        alert(err + 'url hijos')
+    })
+    
+    
+      
+    
+})
+
+
+
+
+})
+
+/*            
             .then(function(data){
                 let arrayLlego1 = [];
                 let arrayLlego2 = [];
@@ -97,6 +138,7 @@ fetch(urlUnEjemplar + id)
                           
                     
                       const getInfo =  {
+                          idEje: idI,
                           nombreEje: nombreHijo,
                           padreEje: padreHijo,
                           cantGanadas: cantVecesLlego1,
@@ -111,37 +153,64 @@ fetch(urlUnEjemplar + id)
                     })
                 
                     .then(function(getInfo){
-                       
-                        arrayHijos.push(getInfo)
-                        let hijos = JSON.stringify(arrayHijos)
-                        alert(hijos)
+                      
+                            arrayHijos.push(getInfo)
+                            alert(JSON.stringify(arrayHijos))
+                            return arrayHijos
+                          
+                     //   for(let i=0; i<arrayHijos.length; i++){
+                          //  if(arrayHijos[i].idEje != getInfo.idEje){
+                            //    alert('hola')
+                         // arrayHijos.push(getInfo)
+                          //  }
+                         //   return(arrayHijos)
+                     //   }
+                    // alert(JSON.stringify(arrayHijos))
+                      //  return arrayHijos
+                      
                     })
+/*
+                    .then(function(arrayHijos){
+                      for(let i=0; i<arrayHijos.length; i++){
+                          let object = arrayHijos[i]
+                          let comparo = arrayHijos[i+1]
+                          if(object.idEje != comparo.idEje){
+                             // nuevoArray.push(object)
+                             alert('distinto')
+                            
+                             
+                              
+                          }else {alert('not')}
+                      }
+                      alert(JSON.stringify(nuevoArray))
+                      
+                            const found = arrayHijos.find(element => element.idEje ==  idiii);
+
+                            nuevoArray.push(found)
+                            alert(JSON.stringify(nuevoArray))
+                     
+                    })
+                    .then(function(nuevoArray){
+                        alert(JSON.stringify(nuevoArray))
+                   //  alert('ok')
+
+                    })
+*/
+
+                   
                  
-                    
+    /*                
                 
                   } 
-               //   return dataHijos    
+                 
                 }
        
-        //    return getInfo
             })
             
-      
-                
-        }
-       
-    })
-
-    .catch(function(err){
-        alert(err + 'url hijos')
-    })
-    
-
-   
-    
-
-})
-
-
-})
-
+            .then(function(arrayHijos){
+                alert(JSON.stringify(arrayHijos))
+                //return arrayHijos
+            })
+            
+      */
+ 
