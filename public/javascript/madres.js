@@ -101,16 +101,18 @@ fetch(urlUnEjemplar + id)
                    return [llego1Hipodromo,llego1Grupo,llego1Nombre]
                })
                .then(function(){
+                   let cantGanadas = llego1Hipodromo.length
+                   let hipodromoFilter = llego1Hipodromo.filter((item,index)=>{
+                    return llego1Hipodromo.indexOf(item) === index;})
                 const getInfo =  {
                     idEje: idI,
                     nombreEje: nombreI,
                     padreEje: padre,
+                    vecesGano: cantGanadas,
                     nombreCarrera: llego1Nombre,
                     grupo: llego1Grupo,
-                   // hipodrom: llego1Hipodromo,
-                    nombreDeHipodromo: llego1Hipodromo.filter((item,index)=>{
-                        return llego1Hipodromo.indexOf(item) === index;
-                      })
+                    nombreDeHipodromo: hipodromoFilter	
+                      
                     }
                     
                    
