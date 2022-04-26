@@ -52,6 +52,7 @@ fetch(urlUnEjemplar + id)
         let resultadosDeCarreras = [];   
         let idI = i.id
         let nombreI = i.nombre
+        let padre = i.padre
         let llego1 = [];
         let llego2 = [];
         let llego3 = [];
@@ -79,6 +80,7 @@ fetch(urlUnEjemplar + id)
         })
         .then(function(){
             
+        
            let llego1Hipodromo = [];
            let llego1Grupo= [];
            let llego1Nombre=[];
@@ -88,9 +90,9 @@ fetch(urlUnEjemplar + id)
                 return r.json();
                 })
                .then(function(data){
-                   alert(JSON.stringify(data.data))
+                //   alert(JSON.stringify(data.data))
                    llego1Hipodromo.push(data.data.hipodromo)
-
+                  
                    if(data.data.grupo != ''){
                        llego1Grupo.push(data.data.grupo)
                        llego1Nombre.push(data.data.nombre)
@@ -100,13 +102,15 @@ fetch(urlUnEjemplar + id)
                })
                .then(function(){
                 const getInfo =  {
-                    idEje: 1,
+                    idEje: idI,
                     nombreEje: nombreI,
-                   // padreEje: padreHijo,
-                   // cantGanadas: cantVecesLlego1,
-                    carrera: llego1Nombre,
+                    padreEje: padre,
+                    nombreCarrera: llego1Nombre,
                     grupo: llego1Grupo,
-                    hipodrom: llego1Hipodromo,
+                   // hipodrom: llego1Hipodromo,
+                    nombreDeHipodromo: llego1Hipodromo.filter((item,index)=>{
+                        return llego1Hipodromo.indexOf(item) === index;
+                      })
                     }
                     
                    
