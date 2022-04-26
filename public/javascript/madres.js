@@ -78,12 +78,14 @@ fetch(urlUnEjemplar + id)
             }
             return [llego1, llego2, llego3]
         })
+           //BUSCO INFO DE LAS CARRERAS GANADAS
         .then(function(){
             
         
            let llego1Hipodromo = [];
            let llego1Grupo= [];
            let llego1Nombre=[];
+        
            for(i of llego1){
                fetch(urlCarrerasPorHijo + i)
                .then(function(r){
@@ -104,7 +106,7 @@ fetch(urlUnEjemplar + id)
                    let cantGanadas = llego1Hipodromo.length
                    let hipodromoFilter = llego1Hipodromo.filter((item,index)=>{
                     return llego1Hipodromo.indexOf(item) === index;})
-                const getInfo =  {
+                const primerLugar =  {
                     idEje: idI,
                     nombreEje: nombreI,
                     padreEje: padre,
@@ -116,16 +118,130 @@ fetch(urlUnEjemplar + id)
                     }
                     
                    
-                 return getInfo
+                 return primerLugar
                })
-               .then(function(getInfo){
-                   alert(JSON.stringify(getInfo))
+               .then(function(primerLugar){
+                   alert(JSON.stringify(primerLugar))
                })
 
                
            }
 
         })
+        .catch(function(err){
+            alert(err + 'url PRIMEROS')
+        })
+
+        //BUSCO INFO DE CARRERAS EN LAS QUE SALIÓ SEGUNDO
+        .then(function(){
+            
+        
+            let llego2Hipodromo = [];
+            let llego2Grupo= [];
+            let llego2Nombre=[];
+            //BUSCO INFO DE LAS CARRERAS GANADAS
+            for(i of llego2){
+                fetch(urlCarrerasPorHijo + i)
+                .then(function(r){
+                 return r.json();
+                 })
+                .then(function(data){
+                 //   alert(JSON.stringify(data.data))
+                    llego2Hipodromo.push(data.data.hipodromo)
+                   
+                    if(data.data.grupo != ''){
+                        llego2Grupo.push(data.data.grupo)
+                        llego2Nombre.push(data.data.nombre)
+                        
+                    }
+                    return [llego2Hipodromo,llego2Grupo,llego2Nombre]
+                })
+                .then(function(){
+                    let cantSegundos = llego2Hipodromo.length
+                    let hipodromoFilter = llego2Hipodromo.filter((item,index)=>{
+                     return llego2Hipodromo.indexOf(item) === index;})
+                 const segundoLugar =  {
+                     idEje: idI,
+                     nombreEje: nombreI,
+                     padreEje: padre,
+                     vecesSegundo: cantSegundos,
+                     nombreCarrera: llego2Nombre,
+                     grupo: llego2Grupo,
+                     nombreDeHipodromo: hipodromoFilter	
+                       
+                     }
+                     
+                    
+                  return segundoLugar
+                })
+                .then(function(segundoLugar){
+                    alert(JSON.stringify(segundoLugar))
+                })
+ 
+                
+            }
+ 
+         })
+         .catch(function(err){
+             alert(err + 'url segundos')
+         })
+
+              //BUSCO INFO DE CARRERAS EN LAS QUE SALIÓ TERCERO
+              .then(function(){
+            
+        
+                let llego3Hipodromo = [];
+                let llego3Grupo= [];
+                let llego3Nombre=[];
+                //BUSCO INFO DE LAS CARRERAS GANADAS
+                for(i of llego3){
+                    fetch(urlCarrerasPorHijo + i)
+                    .then(function(r){
+                     return r.json();
+                     })
+                    .then(function(data){
+                     //   alert(JSON.stringify(data.data))
+                        llego3Hipodromo.push(data.data.hipodromo)
+                       
+                        if(data.data.grupo != ''){
+                            llego3Grupo.push(data.data.grupo)
+                            llego3Nombre.push(data.data.nombre)
+                            
+                        }
+                        return [llego3Hipodromo,llego3Grupo,llego3Nombre]
+                    })
+                    .then(function(){
+                        let cantTerceros = llego3Hipodromo.length
+                        let hipodromoFilter = llego3Hipodromo.filter((item,index)=>{
+                         return llego3Hipodromo.indexOf(item) === index;})
+                     const tercerLugar =  {
+                         idEje: idI,
+                         nombreEje: nombreI,
+                         padreEje: padre,
+                         vecesTercero: cantTerceros,
+                         nombreCarrera: llego3Nombre,
+                         grupo: llego3Grupo,
+                         nombreDeHipodromo: hipodromoFilter	
+                           
+                         }
+                         
+                        
+                      return tercerLugar
+                    })
+                    .then(function(segundoLugar){
+                        alert(JSON.stringify(tercerLugar))
+                    })
+     
+                    
+                }
+     
+             })
+             .catch(function(err){
+                 alert(err + 'url segundos')
+             })
+            
+       
+        
    
     }
    
@@ -133,7 +249,7 @@ fetch(urlUnEjemplar + id)
  
    .catch(function(err){
     alert(err + 'url hijos')
-})
+    })
 
    
    
