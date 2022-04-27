@@ -814,6 +814,12 @@ console.log(ejemplar.madre_id, "spoy eñ ejemplar coso")
     left join palermo.resultados as res on res.eje_id = ejemplares.id left join palermo.carreras as carreras
     on carreras.id = res.carrera_id where ejemplares.madre_id = ${ejemplar.madre_id} `, { type: QueryTypes.SELECT });
     console.log(hermanos , 'estos son los hermanos')
+
+    res.status(200).json({
+        data: hermanos,
+        // data: laCarrera,
+         status: 200
+     });
 },
 
 apiUnCriador: function(req,res){
