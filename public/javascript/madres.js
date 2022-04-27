@@ -106,6 +106,7 @@ fetch(urlUnEjemplar + id)
                    let cantGanadas = llego1Hipodromo.length
                    let hipodromoFilter = llego1Hipodromo.filter((item,index)=>{
                     return llego1Hipodromo.indexOf(item) === index;})
+                    
                 const primerLugar =  {
                     idEje: idI,
                     nombreEje: nombreI,
@@ -125,7 +126,7 @@ fetch(urlUnEjemplar + id)
                    arrayHijos1.push(primerLugar)
                })
                .then(function(){
-                   alert(JSON.stringify(arrayHijos1))
+                hijos1madre.innerHTML += JSON.stringify(arrayHijos)
                })
 
                

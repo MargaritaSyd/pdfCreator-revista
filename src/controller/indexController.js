@@ -105,14 +105,14 @@ let indexController = {
         let pAbueloPId = abueloP.padre_id;
 
         let mAbuelaM = funcionEjemplar(mAbuelaMId,ejemplares); // DATOS BISABUELXS
+        let pAbueloP = funcionEjemplar(pAbueloPId,ejemplares);
+        
         let pAbuelaM = funcionEjemplar(pAbuelaMId,ejemplares);
         let mAbueloM = funcionEjemplar(mAbueloMId,ejemplares);
         let pAbueloM = funcionEjemplar(pAbueloMId,ejemplares);
         let mAbuelaP = funcionEjemplar(mAbuelaPId,ejemplares);
         let pAbuelaP = funcionEjemplar(pAbuelaPId,ejemplares);
         let mAbueloP = funcionEjemplar(mAbueloPId,ejemplares);
-        let pAbueloP = funcionEjemplar(pAbueloPId,ejemplares);
-        
         let madre4Id = mAbuelaM.madre_id
         let madre4 = funcionEjemplar(madre4Id,ejemplares); // DATOS BISABUELXS
         let madre5Id = madre4.madre_id
@@ -794,6 +794,27 @@ apiUnProfesional: function(req,res){
 
    
 },
+
+
+apiInfoHijos: async function(req,res){
+  
+    let id = req.params.id;
+
+    db.raw(`select ejemplares.id, madre_id, carrera_id, llego_numero, carreras.nombre, carreras.hipodromo,
+    carreras.grupo
+    from palermo.ejemplares as ejemplares
+    join palermo.resultados as res on res.eje_id = ejemplares.id join palermo.carreras as carreras
+    on carreras.id = res.carrera_id`)
+/*
+    let coso = await Op.query(`select ejemplares.id, madre_id, carrera_id, llego_numero, carreras.nombre, carreras.hipodromo,
+    carreras.grupo
+    from palermo.ejemplares as ejemplares
+    join palermo.resultados as res on res.eje_id = ejemplares.id join palermo.carreras as carreras
+    on carreras.id = res.carrera_id where ejemplares.madre_id = ${id} `) 
+    console.log(coso)
+   */
+},
+
 apiUnCriador: function(req,res){
     console.log('ok');
     let id = req.params.id;

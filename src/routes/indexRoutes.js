@@ -28,4 +28,5 @@ router.get('/api_carrera/:id' , indexController.apiUnaCarrera);
 router.get('/api_profesional/:id' ,indexController.apiUnProfesional);
 router.get('/api_criador/:id' , indexController.apiUnCriador);
 router.get('/api_hijos/:id' , indexController.apiHijos); //BUSCA EJEMPLARES A PARTIR DEL ID DE LA MADRE
+router.get('/info_hijos/:id' , indexController.apiInfoHijos)
 module.exports = router;
