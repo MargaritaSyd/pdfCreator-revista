@@ -1,11 +1,13 @@
 let db = require("../database/models");
 let Op = db.Sequelize.Op;
+const { QueryTypes } = require('sequelize');
 const fs = require('fs')
 const path = require('path')
 const utils = require('util')
 const puppeteer = require('puppeteer')
 const hb = require('handlebars');
 const readFile = utils.promisify(fs.readFile)
+var Sequelize = require('sequelize');
 
 /*
 
@@ -798,21 +800,20 @@ apiUnProfesional: function(req,res){
 
 apiInfoHijos: async function(req,res){
   
-    let id = req.params.id;
+    let {id} = req.params;
 
-    db.raw(`select ejemplares.id, madre_id, carrera_id, llego_numero, carreras.nombre, carreras.hipodromo,
+
+   
+   const {dataValues: ejemplar} = await db.ejemplares.findByPk(id)
+    
+console.log(ejemplar.madre_id, "spoy eñ ejemplar coso")
+  
+    const hermanos = await db.sequelize.query(`select ejemplares.id, madre_id, carrera_id, llego_numero, carreras.nombre, carreras.hipodromo,
     carreras.grupo
     from palermo.ejemplares as ejemplares
-    join palermo.resultados as res on res.eje_id = ejemplares.id join palermo.carreras as carreras
-    on carreras.id = res.carrera_id`)
-/*
-    let coso = await Op.query(`select ejemplares.id, madre_id, carrera_id, llego_numero, carreras.nombre, carreras.hipodromo,
-    carreras.grupo
-    from palermo.ejemplares as ejemplares
-    join palermo.resultados as res on res.eje_id = ejemplares.id join palermo.carreras as carreras
-    on carreras.id = res.carrera_id where ejemplares.madre_id = ${id} `) 
-    console.log(coso)
-   */
+    left join palermo.resultados as res on res.eje_id = ejemplares.id left join palermo.carreras as carreras
+    on carreras.id = res.carrera_id where ejemplares.madre_id = ${ejemplar.madre_id} `, { type: QueryTypes.SELECT });
+    console.log(hermanos , 'estos son los hermanos')
 },
 
 apiUnCriador: function(req,res){
