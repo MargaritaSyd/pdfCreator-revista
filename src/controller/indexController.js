@@ -801,44 +801,51 @@ apiUnProfesional: function(req,res){
 apiInfoHijos: async function(req,res){
   
     let {id} = req.params;
-
-
    
    const {dataValues: ejemplar} = await db.ejemplares.findByPk(id)
-    
-console.log(ejemplar.madre_id, "spoy eñ ejemplar coso")
-  
+
     const hermanos = await db.sequelize.query(`select ejemplares.id, madre_id, carrera_id, llego_numero, carreras.nombre, carreras.hipodromo,
     carreras.grupo
     from palermo.ejemplares as ejemplares
     left join palermo.resultados as res on res.eje_id = ejemplares.id left join palermo.carreras as carreras
     on carreras.id = res.carrera_id where ejemplares.madre_id = ${ejemplar.madre_id}  `, { type: QueryTypes.SELECT });/* group by ejemplares.id*/
-    //console.log(hermanos , 'estos son los hermanos')
-    
-    let hermanosInfo = [];
-    for(i of hermanos){
-        getHermanos = {
-            idEje: i.id,
-            madre_id: i.id,
-            carrera: {
-                llego_numero: i.llego_numero,
-                nombre: i.nombre,
-                hipodromo: i.hipodromo,
-                grupo: i.grupo
-            }
 
-        }
-    hermanosInfo.push(getHermanos)
-    }
-    
-    for( i of hermanosInfo){
-       
-    }
+    let hermanosInfo = hermanos.reduce((prev, current) => {
+            const {
+              carrera_id,
+              llego_numero,
+              nombre,
+              hipodromo,
+              grupo
+            } = current
 
+            const carrera = {
+                    id: carrera_id,
+                    llego_numero,
+                    nombre,
+                    hipodromo,
+                    grupo
+                }
+
+            const elementExistis = prev.find(valor => valor.id === current.id)
+
+                if (elementExistis){
+                    elementExistis.carreras = [...elementExistis.carreras, carrera ] 
+                    return prev
+                }
+
+                const elemento = {
+                    id: current.id,
+                    madre_id: current.madre_id,
+                    carreras: [ carrera ]
+                }
+                return [...prev, elemento]
+
+
+ }, [] )
 
      res.status(200).json({
         data: hermanosInfo,
-        // data: laCarrera,
          status: 200
      });
 },
@@ -846,7 +853,6 @@ console.log(ejemplar.madre_id, "spoy eñ ejemplar coso")
 apiUnCriador: function(req,res){
     console.log('ok');
     let id = req.params.id;
-   //let arrayResult = [];
    db.criadores.findByPk(id,{
        
         attributes: ['id', 'haras' , 'propietario'],
