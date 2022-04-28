@@ -38,7 +38,7 @@ fetch(urlUnEjemplar + id)
     idMadre = infoEjemplar.madre_id
 })
 .catch(function(err){
-    alert(err + 'ejemplar')
+    alert(err + 'ejemplar en arbol g')
 })
 .then(function(){
 
@@ -157,7 +157,7 @@ fetch(urlUnEjemplar + id)
                     inputMAbueloM.value = nombreMAbueloM
                  })
                  .catch(function(err){
-                     alert(err + 'abueloM')
+                     alert(err + 'MabueloM')
                  })
 
             }
@@ -173,7 +173,7 @@ fetch(urlUnEjemplar + id)
                     inputPAbueloM.value = nombrePAbueloM
                  })
                  .catch(function(err){
-                     alert(err + 'abueloP')
+                     alert(err + 'PabueloM')
                  })
 
             }

@@ -1,5 +1,32 @@
 window.addEventListener('load' , function(){
- 
+    let id = document.getElementById('id').value
+    
+
+    let urlHijos =  'http://localhost:3002/info_hijos/'
+
+       
+   fetch(urlHijos + id)
+   .then(function(r){
+    return r.json();
+     })
+    .then(function(data){   
+       // alert(JSON.stringify(data.data))
+       let d = data.data
+      //  let result = d.groupBy( ({ id }) => id );
+    
+      
+        alert(JSON.stringify(d))
+      
+      //  alert(JSON.stringify(i))
+    
+        
+       }
+       
+        
+    })
+})
+    /*
+ nodemon
     let id = document.getElementById('id').value
     let hijos1madre = document.getElementById('hijos1madre')
 
@@ -45,6 +72,7 @@ fetch(urlUnEjemplar + id)
         return arrayHijos
     })
     */
+   /*
    .then(function(data){
     
    
@@ -274,6 +302,7 @@ fetch(urlUnEjemplar + id)
 
 
 })
+*/
 
 /*            
             .then(function(data){

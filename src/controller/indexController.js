@@ -812,11 +812,32 @@ console.log(ejemplar.madre_id, "spoy eñ ejemplar coso")
     carreras.grupo
     from palermo.ejemplares as ejemplares
     left join palermo.resultados as res on res.eje_id = ejemplares.id left join palermo.carreras as carreras
-    on carreras.id = res.carrera_id where ejemplares.madre_id = ${ejemplar.madre_id} `, { type: QueryTypes.SELECT });
-    console.log(hermanos , 'estos son los hermanos')
+    on carreras.id = res.carrera_id where ejemplares.madre_id = ${ejemplar.madre_id}  `, { type: QueryTypes.SELECT });/* group by ejemplares.id*/
+    //console.log(hermanos , 'estos son los hermanos')
+    
+    let hermanosInfo = [];
+    for(i of hermanos){
+        getHermanos = {
+            idEje: i.id,
+            madre_id: i.id,
+            carrera: {
+                llego_numero: i.llego_numero,
+                nombre: i.nombre,
+                hipodromo: i.hipodromo,
+                grupo: i.grupo
+            }
 
-    res.status(200).json({
-        data: hermanos,
+        }
+    hermanosInfo.push(getHermanos)
+    }
+    
+    for( i of hermanosInfo){
+       
+    }
+
+
+     res.status(200).json({
+        data: hermanosInfo,
         // data: laCarrera,
          status: 200
      });

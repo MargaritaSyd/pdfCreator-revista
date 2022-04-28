@@ -39,7 +39,7 @@ window.addEventListener("load" , function(){
     idPadre = infoEjemplar.padre_id
 })
 .catch(function(err){
-    alert(err + 'ejemplar')
+    alert(err + 'ejemplar en padre')
 })
 .then(function(){
 
