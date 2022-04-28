@@ -804,7 +804,7 @@ apiInfoHijos: async function(req,res){
    
    const {dataValues: ejemplar} = await db.ejemplares.findByPk(id)
 
-    const hermanos = await db.sequelize.query(`select ejemplares.id, madre_id, carrera_id, llego_numero, carreras.nombre, carreras.hipodromo,
+    const hermanos = await db.sequelize.query(`select ejemplares.id, ejemplares.nombre as nombreEjemplar, madre_id, carrera_id, llego_numero, carreras.nombre as nombreCarrera, carreras.hipodromo,
     carreras.grupo
     from palermo.ejemplares as ejemplares
     left join palermo.resultados as res on res.eje_id = ejemplares.id left join palermo.carreras as carreras
@@ -814,7 +814,7 @@ apiInfoHijos: async function(req,res){
             const {
               carrera_id,
               llego_numero,
-              nombre,
+              nombreCarrera,
               hipodromo,
               grupo
             } = current
@@ -822,7 +822,7 @@ apiInfoHijos: async function(req,res){
             const carrera = {
                     id: carrera_id,
                     llego_numero,
-                    nombre,
+                    nombreCarrera,
                     hipodromo,
                     grupo
                 }
@@ -836,6 +836,7 @@ apiInfoHijos: async function(req,res){
 
                 const elemento = {
                     id: current.id,
+                    nombreEjemplar: current.nombreEjemplar,
                     madre_id: current.madre_id,
                     carreras: [ carrera ]
                 }

@@ -10,17 +10,15 @@ window.addEventListener('load' , function(){
     return r.json();
      })
     .then(function(data){   
-       // alert(JSON.stringify(data.data))
+        alert(JSON.stringify(data.data))
        let d = data.data
       //  let result = d.groupBy( ({ id }) => id );
-    
+   
+
       
-        alert(JSON.stringify(d))
-      
-      //  alert(JSON.stringify(i))
     
         
-       }
+       
        
         
     })
