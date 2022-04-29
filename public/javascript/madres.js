@@ -16,15 +16,97 @@ window.addEventListener('load' , function(){
       
      
  
+      //FUNCION EJEMPLAR GANADOR DE 1 2 3 PUESTOS
       
-      function addEjemplarName(nombre , padre , sexo , cant1 , puesto1 , grupo1, nombreCsEspeciales1, cant2 ,puesto2, nombreCsEspeciales2, cant3 ,puesto3, nombreCsEspeciales3 ){
+      function addEjemplarGanador123(nombre , padre , sexo , cant1 , puesto1 , grupo1, nombreCsEspeciales1, cant2 ,puesto2, nombreCsEspeciales2, cant3 ,puesto3, nombreCsEspeciales3 ){
         let p = document.createElement('p');
-        p.className = "nombreEjemplarHijo"
-        p.textContent = nombre + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + grupo1 + ' '+ nombreCsEspeciales1 +'. Segundo puesto en ' + cant2 + ' cs especiales ' + puesto2 + ' ' + nombreCsEspeciales2+'. Tercer puesto en ' + cant3 + ' cs especiales ' + puesto3 + ' ' + nombreCsEspeciales3 ;
+        p.className = "nombreEjemplarHijo123"
+        p.textContent = nombre + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + grupo1 + ' '+ nombreCsEspeciales1 +'. Segundo puesto en ' + cant2 + ' cs especiales ' + puesto2 + ' ' + nombreCsEspeciales2+'. Tercer puesto en ' + cant3 + ' cs especiales ' + puesto3 + ' ' + nombreCsEspeciales3+'.' ;
      
  
          return p;
       }
+
+      //FUNCTION EJEMPLAR GANADOR 1 Y 2 PUESTO
+
+       
+      function addEjemplarGanador12(nombre , padre , sexo , cant1 , puesto1 , grupo1, nombreCsEspeciales1, cant2 ,puesto2, nombreCsEspeciales2 ){
+        let p = document.createElement('p');
+        p.className = "nombreEjemplarHijo12"
+        p.textContent = nombre + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + grupo1 + ' '+ nombreCsEspeciales1 +'. Segundo puesto en ' + cant2 + ' cs especiales ' + puesto2 + ' ' + nombreCsEspeciales2+'.' ;
+     
+ 
+         return p;
+      }
+
+      //FUNCION GANADOR DE PRIMER PUESTO
+      function addEjemplarGanador1(nombre , padre , sexo , cant1 , puesto1 , grupo1, nombreCsEspeciales1){
+        let p = document.createElement('p');
+        p.className = "nombreEjemplarHijo12"
+        p.textContent = nombre + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + grupo1 + ' '+ nombreCsEspeciales1 +'.' ;
+     
+ 
+         return p;
+      }
+      
+      //FUNCION GANADOR 1 Y 3
+       
+      function addEjemplarGanador13(nombre , padre , sexo , cant1 , puesto1 , grupo1, nombreCsEspeciales1, cant3 ,puesto3, nombreCsEspeciales3 ){
+        let p = document.createElement('p');
+        p.className = "nombreEjemplarHijo123"
+        p.textContent = nombre + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + grupo1 + ' '+ nombreCsEspeciales1 +'. Tercer puesto en ' + cant3 + ' cs especiales ' + puesto3 + ' ' + nombreCsEspeciales3+'.' ;
+     
+ 
+         return p;
+      }
+
+      //FUNCION GANADOR 2 Y 3
+      function addEjemplarGanador23(nombre , padre , sexo , cant2 ,puesto2, nombreCsEspeciales2, cant3 ,puesto3, nombreCsEspeciales3 ){
+        let p = document.createElement('p');
+        p.className = "nombreEjemplarHijo123"
+        p.textContent = nombre + '(' + sexo + ' ' + padre + ').' + ' Segundo puesto en ' + cant2 + ' cs especiales ' + puesto2 + ' ' + nombreCsEspeciales2+'. Tercer puesto en ' + cant3 + ' cs especiales ' + puesto3 + ' ' + nombreCsEspeciales3+'.' ;
+     
+ 
+         return p;
+      }
+      // FUNCTION GANADOR 2 PUESTO
+   
+ 
+      function addEjemplarGanador2(nombre , padre , sexo , cant2 ,puesto2, nombreCsEspeciales2, cant3 ,puesto3, nombreCsEspeciales3 ){
+        let p = document.createElement('p');
+        p.className = "nombreEjemplarHijo123"
+        p.textContent = nombre + '(' + sexo + ' ' + padre + ').' +' Segundo puesto en ' + cant2 + ' cs especiales ' + puesto2 + ' ' + nombreCsEspeciales2+'.' ;
+     
+ 
+         return p;
+      }
+      // FUNCTION GANADOR 3 PUESTO
+   
+ 
+      function addEjemplarGanador3(nombre , padre , sexo, cant3 ,puesto3, nombreCsEspeciales3 ){
+        let p = document.createElement('p');
+        p.className = "nombreEjemplarHijo123"
+        p.textContent = nombre + '(' + sexo + ' ' + padre + ').'+' Tercer puesto en ' + cant3 + ' cs especiales ' + puesto3 + ' ' + nombreCsEspeciales3+'.' ;
+     
+ 
+         return p;
+      }
+       // FUNCTION GANADOR 0 PUESTO
+   
+ 
+       function addEjemplarGanador0(nombre , padre , sexo ){
+        let p = document.createElement('p');
+        p.className = "nombreEjemplarHijo123"
+        p.textContent = nombre + '(' + sexo + ' ' + padre + ').';
+     
+ 
+         return p;
+      }
+
+
+
+
+
 
     
          for(i of d){
@@ -81,8 +163,35 @@ window.addEventListener('load' , function(){
     let grupos3 = puesto3G.filter((item,index)=>{
         return puesto3G.indexOf(item) === index;})
         
-     hijos1madre.appendChild(addEjemplarName(nombreEjemplar, padre, sexo, cantPuesto1 , hipodromos1, grupo1, nombreCsEsp1, cantPuesto2, grupos2, nombreCsEsp2,  cantPuesto3, grupos3, nombreCsEsp3 ));
-            
+        if(cantPuesto1 != 0 && cantPuesto2 != 0 && cantPuesto3 != 0 ){
+            hijos1madre.appendChild(addEjemplarGanador123(nombreEjemplar, padre, sexo, cantPuesto1 , hipodromos1, grupo1, nombreCsEsp1, cantPuesto2, grupos2, nombreCsEsp2,  cantPuesto3, grupos3, nombreCsEsp3 ));
+      
+      } else if( cantPuesto1 != 0 && cantPuesto2 != 0 && cantPuesto3 == 0){
+       
+        hijos1madre.appendChild(addEjemplarGanador12(nombreEjemplar, padre, sexo, cantPuesto1 , hipodromos1, grupo1, nombreCsEsp1, cantPuesto2, grupos2, nombreCsEsp2 ));
+      
+        }else if( cantPuesto1 != 0 && cantPuesto2 == 0 && cantPuesto3 == 0){
+            hijos1madre.appendChild(addEjemplarGanador1(nombreEjemplar, padre, sexo, cantPuesto1 , hipodromos1, grupo1, nombreCsEsp1));
+      
+          }else if( cantPuesto1 != 0 && cantPuesto2 == 0 && cantPuesto3 != 0){
+            hijos1madre.appendChild(addEjemplarGanador13(nombreEjemplar, padre, sexo, cantPuesto1 , hipodromos1, grupo1, nombreCsEsp1,  cantPuesto3, grupos3, nombreCsEsp3 ));
+      
+        
+        } else if( cantPuesto1 == 0 && cantPuesto2 != 0 && cantPuesto3 != 0){
+            hijos1madre.appendChild(addEjemplarGanador23(nombreEjemplar, padre, sexo, cantPuesto2, grupos2, nombreCsEsp2,  cantPuesto3, grupos3, nombreCsEsp3 ));
+      
+        
+        } else if( cantPuesto1 == 0 && cantPuesto2 != 0 && cantPuesto3 == 0){
+            hijos1madre.appendChild(addEjemplarGanador2(nombreEjemplar, padre, sexo, cantPuesto2, grupos2, nombreCsEsp2 ));
+      
+      
+        } else if( cantPuesto1 == 0 && cantPuesto2 == 0 && cantPuesto3 != 0){
+            hijos1madre.appendChild(addEjemplarGanador3(nombreEjemplar, padre, sexo, cantPuesto3, grupos3, nombreCsEsp3 ));
+      
+        } else if( cantPuesto1 == 0 && cantPuesto2 == 0 && cantPuesto3 == 0){
+            hijos1madre.appendChild(addEjemplarGanador0(nombreEjemplar, padre, sexo));
+      
+        }
     }  
        
         
