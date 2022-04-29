@@ -1,6 +1,6 @@
 window.addEventListener('load' , function(){
     let id = document.getElementById('id').value
-    
+    let hijos1madre = document.getElementById('hijos1madre')
 
     let urlHijos =  'http://localhost:3002/info_hijos/'
 
@@ -13,15 +13,81 @@ window.addEventListener('load' , function(){
         alert(JSON.stringify(data.data))
        let d = data.data
       //  let result = d.groupBy( ({ id }) => id );
-   
-
       
+     
+ 
+      
+      function addEjemplarName(nombre , padre , sexo , cant1 , puesto1 , grupo1, nombreCsEspeciales1, cant2 ,puesto2, nombreCsEspeciales2, cant3 ,puesto3, nombreCsEspeciales3 ){
+        let p = document.createElement('p');
+        p.className = "nombreEjemplarHijo"
+        p.textContent = nombre + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + grupo1 + ' '+ nombreCsEspeciales1 +'. Segundo puesto en ' + cant2 + ' cs especiales ' + puesto2 + ' ' + nombreCsEspeciales2+'. Tercer puesto en ' + cant3 + ' cs especiales ' + puesto3 + ' ' + nombreCsEspeciales3 ;
+     
+ 
+         return p;
+      }
+
     
-        
+         for(i of d){
+     // alert(JSON.stringify(i))
+     let carrerasDelEjemplar = i.carreras
+    
+     let nombreEjemplar = i.nombreEjemplar
+     let sexo = i.sexo;
+     let padre = i.padre;
+    
+     let puesto1 = [];
+     let puesto1G = [];
+     let puesto2G = [];
+     let puesto3G = [];
+     let nombreCsEsp1 = [];
+     let nombreCsEsp2 = [];
+     let nombreCsEsp3 = [];
+     
+     for(i of carrerasDelEjemplar){
        
+        if(i.llego_numero == 1){     
+            puesto1.push(i.hipodromo)
+         
+        }
+        if(i.llego_numero == 1 && i.grupo != ''){
+            puesto1G.push(i.grupo)
+            nombreCsEsp1.push(i.nombreCarrera)
+
+        }
+        if(i.llego_numero == 2 && i.grupo != ''){     
+            puesto2G.push(i.grupo)
+            nombreCsEsp2.push(i.nombreCarrera)
+        }
+        if(i.llego_numero == 3 && i.grupo != ''){     
+            puesto3G.push(i.grupo)
+            nombreCsEsp3.push(i.nombreCarrera)
+        }
+     
+
+     }
+     alert(JSON.stringify(puesto1) + nombreEjemplar)
+     let cantPuesto1 = puesto1.length
+     let cantPuesto2 = puesto2G.length
+     let cantPuesto3 = puesto3G.length
+     //FILTRO HIPODROMOS EN EL QUE SALE PRIMIERO
+     let hipodromos1 = puesto1.filter((item,index)=>{
+        return puesto1.indexOf(item) === index;})
+
+    //FILTRO GRUPOS EN EL QUE SALIO 2, 1 y 3
+    let grupos2 = puesto2G.filter((item,index)=>{
+        return puesto2G.indexOf(item) === index;})
+    let grupo1 = puesto1G.filter((item,index)=>{
+        return puesto1G.indexOf(item) === index;})
+    let grupos3 = puesto3G.filter((item,index)=>{
+        return puesto3G.indexOf(item) === index;})
+        
+     hijos1madre.appendChild(addEjemplarName(nombreEjemplar, padre, sexo, cantPuesto1 , hipodromos1, grupo1, nombreCsEsp1, cantPuesto2, grupos2, nombreCsEsp2,  cantPuesto3, grupos3, nombreCsEsp3 ));
+            
+    }  
        
         
-    })
+    
+})
 })
     /*
  nodemon

@@ -543,7 +543,7 @@ let indexController = {
    
    ok: function(req,res) {
        let id = req.params.id
-       res.render("ok" , {id})
+       res.render("template" , {id})
    },
    okForm: function(req,res){
     let inputs = req.body.descriptEjemplar;
@@ -804,7 +804,7 @@ apiInfoHijos: async function(req,res){
    
    const {dataValues: ejemplar} = await db.ejemplares.findByPk(id)
 
-    const hermanos = await db.sequelize.query(`select ejemplares.id, ejemplares.nombre as nombreEjemplar, madre_id, carrera_id, llego_numero, carreras.nombre as nombreCarrera, carreras.hipodromo,
+    const hermanos = await db.sequelize.query(`select ejemplares.id, ejemplares.nombre as nombreEjemplar, ejemplares.padre, ejemplares.sexo ,madre_id, carrera_id, llego_numero, carreras.nombre as nombreCarrera, carreras.hipodromo,
     carreras.grupo
     from palermo.ejemplares as ejemplares
     left join palermo.resultados as res on res.eje_id = ejemplares.id left join palermo.carreras as carreras
@@ -837,6 +837,8 @@ apiInfoHijos: async function(req,res){
                 const elemento = {
                     id: current.id,
                     nombreEjemplar: current.nombreEjemplar,
+                    padre: current.padre,
+                    sexo: current.sexo,
                     madre_id: current.madre_id,
                     carreras: [ carrera ]
                 }

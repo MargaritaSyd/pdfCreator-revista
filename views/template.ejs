@@ -6,18 +6,17 @@
         <link rel="stylesheet" href="css/stylesheet.css">
         <title>Pedigree PDF</title>
     </head>
-    <body>
+    <body style=" width: 190mm;
+    height: 270mm;">
         <header>
     
         </header>
         <input type="text" value='<%=id%>' id="id" style="display: none;" >
 
-        <main class="mainPdf" style="    padding: 15;
-        
+        <main class="mainPdf" style=" padding: 15;
         height: 255mm;
         border: 2px solid black;
-        margin: 20px;
-       ">
+        margin: 20px; width: 190mm;">
         <div style="display: flex; flex-direction: column; position: relative; left: 620; z-index: -1; width: 40px; top: -20;"><img src="/img/pedigree.png" alt=""></div>
        <!-- <div style="display: flex; flex-direction: column; position: relative; left: 640;"><b>P</b><b>E</b><b>D</b><b>I</b><b>G</b><b>R</b><b>E</b><b>E</b></div>  -->
         <div style="display:flex; position: relative; top: -320; border: 2px solid black; margin: 5px; padding: 15px; height: 250mm; left: -15px;">
@@ -26,8 +25,7 @@
                 <div class="contentDescriptStud" style="display: flex; flex-wrap: nowrap; flex-direction: column; width: 40%;">
                     <b class="ejemplarNombre" id="nombreDelEjemplar" style='font-family: Arial; font-size: 24; margin-bottom: 10px;'>  </b><input id="inputNombreDelEjemplar"  type="text" style="display: none;" name="ejemplarNombre">
                     <b class="descriptEjemplar" id="descriptDelEjemplar" style='  padding-bottom: 10px;
-                    border-bottom: 2px solid black;
-                    font-size: 10px;'></b> <input type="text" id="inputDescriptDelEjemplar" style="display:none" name="descriptEjemplar" >
+                    border-bottom: 2px solid black; font-size: 10px;'></b> <input type="text" id="inputDescriptDelEjemplar" style="display:none" name="descriptEjemplar" >
                 </div>
             
                 <div class="borderContentCarreras" style="  border-radius: 25px; border: 2px solid black; width: 60%;">
