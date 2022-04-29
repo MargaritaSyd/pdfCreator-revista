@@ -1,20 +1,24 @@
 window.addEventListener('load' , function(){
     let id = document.getElementById('id').value
-    let hijos3madre = document.getElementById('hijos3madre')
+    let hijos6madre = document.getElementById('hijos6madre')
 
     let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/';
     let urlHijos =  'http://localhost:3002/info_hijos/'
 
     let idMadreM2
     let idAbuelaM3 
+    let idMAbuelaM4
+    let idMMAbuelaM5
+    let idMMAbuelaM6
     fetch(urlUnEjemplar + id)
     .then(function(r){
         return r.json();
          })
+//SACO ID DE LA MADRE
         .then(function(data){   
             let d= data.data
             idMadreM2 = d.madre_id
-
+//SACO EL ID DE LA ABUELA
             fetch(urlUnEjemplar + idMadreM2)
             .then(function(r){
                 return r.json();
@@ -22,15 +26,41 @@ window.addEventListener('load' , function(){
                 .then(function(data){   
                     let d= data.data
                     idAbuelaM3 = d.madre_id
+//SACO EL ID DE LA MAMA DE LA ABUELA
+                    fetch(urlUnEjemplar + idAbuelaM3)
+                    .then(function(r){
+                        return r.json();
+                         })
+                        .then(function(data){   
+                            let d= data.data
+                            idMAbuelaM4 = d.madre_id
+//SACO EL ID DE LA MAMA DE LA MAMA DE LA ABUELA
+                            fetch(urlUnEjemplar + idMAbuelaM4)
+                            .then(function(r){
+                                return r.json();
+                                 })
+                                .then(function(data){   
+                                    let d= data.data
+                                    idMMAbuelaM5 = d.madre_id
+            
+ //SACO EL ID DE LA M de M DE LA MAMA DE LA ABUELA
+                            fetch(urlUnEjemplar + idMMAbuelaM5)
+                            .then(function(r){
+                                return r.json();
+                                 })
+                            .then(function(data){   
+                                let d= data.data
+                                idMMAbuelaM6 = d.madre_id
+            
         
 ///UNA VEZ QUE SACO EL ID DE LA ABUELA PUEDO SACAR INFO DE LOS HIJOS DE 3MADRE (HERMANOS DE LA ABUELA)
     
-   fetch(urlHijos + idAbuelaM3)
+   fetch(urlHijos + idMMAbuelaM6)
    .then(function(r){
     return r.json();
      })
     .then(function(data){   
-     //   alert(JSON.stringify(data.data))
+   //     alert(JSON.stringify(data.data))
        let d = data.data
       //  let result = d.groupBy( ({ id }) => id );
       
@@ -161,7 +191,7 @@ window.addEventListener('load' , function(){
      
 
      }
-   //  alert(JSON.stringify(puesto1) + nombreEjemplar)
+    // alert(JSON.stringify(puesto1) + nombreEjemplar)
      let cantPuesto1 = puesto1.length
      let cantPuesto2 = puesto2G.length
      let cantPuesto3 = puesto3G.length
@@ -179,32 +209,32 @@ window.addEventListener('load' , function(){
     
         
         if(cantPuesto1 != 0 && cantPuesto2 != 0 && cantPuesto3 != 0 ){
-            hijos3madre.appendChild(addEjemplarGanador123(nombreEjemplar, padre, sexo, cantPuesto1 , hipodromos1, grupo1, nombreCsEsp1, cantPuesto2, grupos2, nombreCsEsp2,  cantPuesto3, grupos3, nombreCsEsp3 ));
+            hijos6madre.appendChild(addEjemplarGanador123(nombreEjemplar, padre, sexo, cantPuesto1 , hipodromos1, grupo1, nombreCsEsp1, cantPuesto2, grupos2, nombreCsEsp2,  cantPuesto3, grupos3, nombreCsEsp3 ));
       
       } else if( cantPuesto1 != 0 && cantPuesto2 != 0 && cantPuesto3 == 0){
        
-        hijos3madre.appendChild(addEjemplarGanador12(nombreEjemplar, padre, sexo, cantPuesto1 , hipodromos1, grupo1, nombreCsEsp1, cantPuesto2, grupos2, nombreCsEsp2 ));
+        hijos6madre.appendChild(addEjemplarGanador12(nombreEjemplar, padre, sexo, cantPuesto1 , hipodromos1, grupo1, nombreCsEsp1, cantPuesto2, grupos2, nombreCsEsp2 ));
       
         }else if( cantPuesto1 != 0 && cantPuesto2 == 0 && cantPuesto3 == 0){
-            hijos3madre.appendChild(addEjemplarGanador1(nombreEjemplar, padre, sexo, cantPuesto1 , hipodromos1, grupo1, nombreCsEsp1));
+            hijos6madre.appendChild(addEjemplarGanador1(nombreEjemplar, padre, sexo, cantPuesto1 , hipodromos1, grupo1, nombreCsEsp1));
       
           }else if( cantPuesto1 != 0 && cantPuesto2 == 0 && cantPuesto3 != 0){
-            hijos3madre.appendChild(addEjemplarGanador13(nombreEjemplar, padre, sexo, cantPuesto1 , hipodromos1, grupo1, nombreCsEsp1,  cantPuesto3, grupos3, nombreCsEsp3 ));
+            hijos6madre.appendChild(addEjemplarGanador13(nombreEjemplar, padre, sexo, cantPuesto1 , hipodromos1, grupo1, nombreCsEsp1,  cantPuesto3, grupos3, nombreCsEsp3 ));
       
         
         } else if( cantPuesto1 == 0 && cantPuesto2 != 0 && cantPuesto3 != 0){
-            hijos3madre.appendChild(addEjemplarGanador23(nombreEjemplar, padre, sexo, cantPuesto2, grupos2, nombreCsEsp2,  cantPuesto3, grupos3, nombreCsEsp3 ));
+            hijos6madre.appendChild(addEjemplarGanador23(nombreEjemplar, padre, sexo, cantPuesto2, grupos2, nombreCsEsp2,  cantPuesto3, grupos3, nombreCsEsp3 ));
       
         
         } else if( cantPuesto1 == 0 && cantPuesto2 != 0 && cantPuesto3 == 0){
-            hijos3madre.appendChild(addEjemplarGanador2(nombreEjemplar, padre, sexo, cantPuesto2, grupos2, nombreCsEsp2 ));
+            hijos6madre.appendChild(addEjemplarGanador2(nombreEjemplar, padre, sexo, cantPuesto2, grupos2, nombreCsEsp2 ));
       
       
         } else if( cantPuesto1 == 0 && cantPuesto2 == 0 && cantPuesto3 != 0){
-            hijos3madre.appendChild(addEjemplarGanador3(nombreEjemplar, padre, sexo, cantPuesto3, grupos3, nombreCsEsp3 ));
+            hijos6madre.appendChild(addEjemplarGanador3(nombreEjemplar, padre, sexo, cantPuesto3, grupos3, nombreCsEsp3 ));
       
         } else if( cantPuesto1 == 0 && cantPuesto2 == 0 && cantPuesto3 == 0){
-            hijos3madre.appendChild(addEjemplarGanador0(nombreEjemplar, padre, sexo));
+            hijos6madre.appendChild(addEjemplarGanador0(nombreEjemplar, padre, sexo));
       
         }
     }  
@@ -213,6 +243,9 @@ window.addEventListener('load' , function(){
     
 })
 
+})
+})
+})
 })
 })
 })

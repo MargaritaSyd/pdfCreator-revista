@@ -22,7 +22,7 @@ window.addEventListener('load' , function(){
     return r.json();
      })
     .then(function(data){   
-        alert(JSON.stringify(data.data))
+     //   alert(JSON.stringify(data.data))
        let d = data.data
       //  let result = d.groupBy( ({ id }) => id );
       
@@ -153,7 +153,7 @@ window.addEventListener('load' , function(){
      
 
      }
-     alert(JSON.stringify(puesto1) + nombreEjemplar)
+  //   alert(JSON.stringify(puesto1) + nombreEjemplar)
      let cantPuesto1 = puesto1.length
      let cantPuesto2 = puesto2G.length
      let cantPuesto3 = puesto3G.length
