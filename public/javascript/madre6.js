@@ -1,6 +1,7 @@
 window.addEventListener('load' , function(){
     let id = document.getElementById('id').value
     let hijos6madre = document.getElementById('hijos6madre')
+    let primeraMadre = document.getElementById('primeraMadre')
 
     let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/';
     let urlHijos =  'http://localhost:3002/info_hijos/'
@@ -10,6 +11,11 @@ window.addEventListener('load' , function(){
     let idMAbuelaM4
     let idMMAbuelaM5
     let idMMAbuelaM6
+    
+    //INFO M1
+    let nombreMadreM1
+    let nombrePadreMadreM1
+    let nacMadre
     fetch(urlUnEjemplar + id)
     .then(function(r){
         return r.json();
@@ -26,6 +32,13 @@ window.addEventListener('load' , function(){
                 .then(function(data){   
                     let d= data.data
                     idAbuelaM3 = d.madre_id
+                    //INFO M1
+                    nombreMadreM1 = d.nombre
+                    nombrePadreMadreM1 = d.padre
+                    nacMadre = d.anio_nac
+                    primeraMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">1a. madre:</b></p>' + nombreMadreM1 + '(' + nacMadre + ')' + '(' + nombrePadreMadreM1 + ')'
+                    
+                    
 //SACO EL ID DE LA MAMA DE LA ABUELA
                     fetch(urlUnEjemplar + idAbuelaM3)
                     .then(function(r){
