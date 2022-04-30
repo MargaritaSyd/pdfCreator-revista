@@ -5,16 +5,18 @@ window.addEventListener('load' , function(){
     let segundaMadre = document.getElementById('segundaMadre')
     let terceraMadre = document.getElementById('terceraMadre')
     let cuartaMadre = document.getElementById('cuartaMadre')
-    let quintaMadre = document.getElementById('quintaMadre')
+    let quintaMadre = document.getElementById('quintaMadre');
+    let sextaMadre = document.getElementById('sextaMadre')
 
     let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/';
     let urlHijos =  'http://localhost:3002/info_hijos/'
 
-    let idMadreM2
-    let idAbuelaM3 
-    let idMAbuelaM4
-    let idMMAbuelaM5
-    let idMMAbuelaM6
+    let idM1
+    let idM2 
+    let idM3
+    let idM4
+    let idM5
+    let idM6
   
 
     fetch(urlUnEjemplar + id)
@@ -24,77 +26,97 @@ window.addEventListener('load' , function(){
 //SACO ID DE LA MADRE
         .then(function(data){   
             let d= data.data
-            idMadreM2 = d.madre_id
-              //INFO M1
-              let nombreMadreM1 = d.nombre
-              let nombrePadreMadreM1 = d.padre
-              let nacMadre = d.anio_nac
-              primeraMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">1a. madre:</b></p>' + nombreMadreM1 + '(' + nacMadre + ')' + '(' + nombrePadreMadreM1 + ')'
-              
-//SACO EL ID DE LA ABUELA
-            fetch(urlUnEjemplar + idMadreM2)
+            idM1 = d.madre_id
+            
+//TRAIGO INFO DE LA MADRE E ID DE LA ABUELA
+            fetch(urlUnEjemplar + idM1)
             .then(function(r){
                 return r.json();
                  })
                 .then(function(data){   
                     let d= data.data
-                    idAbuelaM3 = d.madre_id
-                    //INFO M2
-                    let nombreMadreM2 = d.nombre
-                    let nombrePadreMadreM2 = d.padre
-                    let nacMadreM2 = d.anio_nac
-                    segundaMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">2a. madre:</b></p>' + nombreMadreM2 + '(' + nacMadreM2 + ')' + '(' + nombrePadreMadreM2 + ')'
+                    idM2 = d.madre_id
+                    //INFO M1
+                    let nombreMadreM1 = d.nombre
+                    let nombrePadreMadreM1 = d.padre
+                    let nacMadreM1 = d.anio_nac
+                    primeraMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">1a. madre:</b></p>' + nombreMadreM1 + '(' + nacMadreM1 + ')' + '(' + nombrePadreMadreM1 + ')'
                     
                     
-//SACO EL ID DE LA MAMA DE LA ABUELA
-                    fetch(urlUnEjemplar + idAbuelaM3)
+//TRAIGO INFO DE LA ABUELA E ID DE SU MAMA
+                    fetch(urlUnEjemplar + idM2)
                     .then(function(r){
                         return r.json();
                          })
                         .then(function(data){   
                             let d= data.data
-                            idMAbuelaM4 = d.madre_id
-                            //INFO M3
-                           let nombreMadreM3 = d.nombre
-                           let nombrePadreMadreM3 = d.padre
-                           let nacMadreM3 = d.anio_nac
-                            terceraMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">3a. madre:</b></p>' + nombreMadreM3 + '(' + nacMadreM3 + ')' + '(' + nombrePadreMadreM3 + ')'
+                            idM3 = d.madre_id
+                            //INFO M2
+                           let nombreMadreM2 = d.nombre
+                           let nombrePadreMadreM2 = d.padre
+                           let nacMadreM2 = d.anio_nac
+                            segundaMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">2a. madre:</b></p>' + nombreMadreM2 + '(' + nacMadreM2 + ')' + '(' + nombrePadreMadreM2 + ')'
                     
 
-//SACO EL ID DE LA MAMA DE LA MAMA DE LA ABUELA
-                            fetch(urlUnEjemplar + idMAbuelaM4)
+//TRAIGO INFO DE LA BISABUELA E ID DE SU MAMA
+                            fetch(urlUnEjemplar + idM3)
                             .then(function(r){
                                 return r.json();
                                  })
                                 .then(function(data){   
                                     let d= data.data
-                                    idMMAbuelaM5 = d.madre_id
-                                     //INFO M4
-                                     let nombreMadreM4 = d.nombre
-                                     let nombrePadreMadreM4 = d.padre
-                                     let nacMadreM4 = d.anio_nac
-                                    cuartaMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">4a. madre:</b></p>' + nombreMadreM4 + '(' + nacMadreM4 + ')' + '(' + nombrePadreMadreM4 + ')'
+                                    idM4 = d.madre_id
+                                     //INFO M3
+                                     let nombreMadreM3 = d.nombre
+                                     let nombrePadreMadreM3 = d.padre
+                                     let nacMadreM3 = d.anio_nac
+                                    terceraMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">3a. madre:</b></p>' + nombreMadreM3 + '(' + nacMadreM3 + ')' + '(' + nombrePadreMadreM3 + ')'
                     
-            
- //SACO EL ID DE LA M de M DE LA MAMA DE LA ABUELA
-                            fetch(urlUnEjemplar + idMMAbuelaM5)
+                                    
+ //TRAIGO INFO DE LA TATARAABUELA E ID DE SU MAMA
+                            fetch(urlUnEjemplar + idM4)
                             .then(function(r){
                                 return r.json();
                                  })
                             .then(function(data){   
                                 let d= data.data
-                                idMMAbuelaM6 = d.madre_id
-                                //INFO M5
-                                  let nombreMadreM5 = d.nombre
-                                  let nombrePadreMadreM5 = d.padre
-                                  let nacMadreM5 = d.anio_nac
-                                 quintaMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">5a. madre:</b></p>' + nombreMadreM5 + '(' + nacMadreM5 + ')' + '(' + nombrePadreMadreM5 + ')'
+                                idM5 = d.madre_id
+                                //INFO M4
+                                  let nombreMadreM4 = d.nombre
+                                  let nombrePadreMadreM4 = d.padre
+                                  let nacMadreM4 = d.anio_nac
+                                 cuartaMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">4a. madre:</b></p>' + nombreMadreM4 + '(' + nacMadreM4 + ')' + '(' + nombrePadreMadreM4 + ')'
                  
-            
-        
-///UNA VEZ QUE SACO EL ID DE LA ABUELA PUEDO SACAR INFO DE LOS HIJOS DE 3MADRE (HERMANOS DE LA ABUELA)
+        //TRAIGO INFO DE LA TATARAABUELA E ID DE SU MAMA
+                                    fetch(urlUnEjemplar + idM5)
+                                   .then(function(r){
+                                    return r.json();
+                                       })
+                                    .then(function(data){   
+                                       let d= data.data
+                                        idM6 = d.madre_id
+                                        //INFO M5
+                                      let nombreMadreM5 = d.nombre
+                                      let nombrePadreMadreM5 = d.padre
+                                     let nacMadreM5 = d.anio_nac
+                                       quintaMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">5a. madre:</b></p>' + nombreMadreM5 + '(' + nacMadreM5 + ')' + '(' + nombrePadreMadreM5 + ')'
+//TRAIGO INFO DE LA M6 
+                                        fetch(urlUnEjemplar + idM6)
+                                        .then(function(r){
+                                        return r.json();
+                                           })
+                                        .then(function(data){   
+                                           let d= data.data
+                                           let nombreMadreM6 = d.nombre
+                                           let nombrePadreMadreM6 = d.padre
+                                           let nacMadreM6 = d.anio_nac
+                                           sextaMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">6a. madre:</b></p>' + nombreMadreM6 + '(' + nacMadreM6 + ')' + '(' + nombrePadreMadreM6 + ')'
+
+                                          })
+                                    })
+///UNA VEZ QUE SACO EL ID DE LA M5 BUSCO INFO DE SUS HERMANOS)
     
-   fetch(urlHijos + idMMAbuelaM6)
+   fetch(urlHijos + idM5)
    .then(function(r){
     return r.json();
      })
