@@ -53,7 +53,7 @@ let urlUnCriador = 'http://localhost:3002/api_criador/';
 let urlUnProfesional = '/api_profesional/'
 
 pdf1.addEventListener('click' , function(){
-  form.action = '/ok_form'
+  form.action = '/frente/pdf/' + id
 })
 
 let criador_id

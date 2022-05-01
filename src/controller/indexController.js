@@ -363,7 +363,7 @@ let indexController = {
 })
         
     },
-    
+    */
 
 
     pdfCreator: function (req, res) {
@@ -419,7 +419,7 @@ let indexController = {
         }
         generatePdf();
         res.send("index");
-        console.log(inputName)
+        console.log(inputs)
                             // });
                     // });
 
@@ -428,7 +428,7 @@ let indexController = {
             //     res.redirect("/");
             // });
     },
-
+/*
     pdfCreator2: function (req, res) {
 
         let inputs = req.body;

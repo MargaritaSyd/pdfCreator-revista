@@ -9,7 +9,7 @@ router.post('/ok_form' , indexController.okForm)
 
 //router.get('/:id' , indexController.index);
 
-//router.post('/frente/pdf/:id' , indexController.pdfCreator)
+router.post('/frente/pdf/:id' , indexController.pdfCreator)
 
 
 
