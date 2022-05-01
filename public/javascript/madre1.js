@@ -1,7 +1,7 @@
 window.addEventListener('load' , function(){
     let id = document.getElementById('id').value
     let hijos1madre = document.getElementById('hijos1madre')
-    let hijos2madre = document.getElementById('hijos2madre')
+    let inputhijos1madre = document.getElementById('inputhijos1madre')
 
 
     let urlHijos =  'http://localhost:3002/info_hijos/'
@@ -29,7 +29,7 @@ window.addEventListener('load' , function(){
  
          return p;
       }
-
+      
       //FUNCTION EJEMPLAR GANADOR 1 Y 2 PUESTO
 
        
@@ -62,6 +62,8 @@ window.addEventListener('load' , function(){
  
          return p;
       }
+
+     // function addInputEjemplarGanador13
 
       //FUNCION GANADOR 2 Y 3
       function addEjemplarGanador23(nombre , padre , sexo , cant2 ,puesto2, nombreCsEspeciales2, cant3 ,puesto3, nombreCsEspeciales3 ){
