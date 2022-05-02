@@ -1,6 +1,8 @@
 window.addEventListener('load' , function(){
     let id = document.getElementById('id').value
     let hijos2madre = document.getElementById('hijos2madre')
+    let inputhijos2madre = document.getElementById('inputhijos2madre')
+   
 
     let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/';
     let urlHijos =  'http://localhost:3002/info_hijos/'
@@ -202,7 +204,8 @@ window.addEventListener('load' , function(){
     }  
        
         
-    
+    inputhijos2madre.value = hijos2madre.textContent
+   
 })
 
 })

@@ -1,6 +1,7 @@
 window.addEventListener('load' , function(){
     let id = document.getElementById('id').value
     let hijos6madre = document.getElementById('hijos6madre')
+    let inputhijos6madre = document.getElementById('inputhijos6madre')
     let primeraMadre = document.getElementById('primeraMadre');
     let segundaMadre = document.getElementById('segundaMadre')
     let terceraMadre = document.getElementById('terceraMadre')
@@ -300,7 +301,8 @@ window.addEventListener('load' , function(){
         }
     }  
        
-        
+    inputhijos6madre.value = hijos6madre.textContent
+    
     
 })
 
