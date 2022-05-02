@@ -577,6 +577,7 @@ let indexController = {
 
 
 apiEjemplar: function(req,res){
+    
     let id = req.params.id;
     db.ejemplares.findByPk(id , {
         attributes: ['id','nombre','anio_nac','mes_nac','dia_nac','sexo','pelo','raza','criador_id','padre_id','madre_id','padre','madre',]      
@@ -610,7 +611,7 @@ apiEjemplar: function(req,res){
             });
         });    
 
-   
+    
 },
 apiCarreras: function(req,res){
     console.log('ok');

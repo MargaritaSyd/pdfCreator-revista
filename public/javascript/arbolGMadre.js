@@ -29,7 +29,9 @@ window.addEventListener("load" , function(){
     let nombrePAbueloM 
 
 //INFO EJEMPLAR
+if(id){
 fetch(urlUnEjemplar + id)
+
 .then(function(r){
     return r.json();
 })
@@ -185,4 +187,5 @@ fetch(urlUnEjemplar + id)
    
     })
 })
+}
 })

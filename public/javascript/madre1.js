@@ -2,7 +2,7 @@ window.addEventListener('load' , function(){
     let id = document.getElementById('id').value
     let hijos1madre = document.getElementById('hijos1madre')
     let inputhijos1madre = document.getElementById('inputhijos1madre')
-
+  
 
     let urlHijos =  'http://localhost:3002/info_hijos/'
 
@@ -63,7 +63,7 @@ window.addEventListener('load' , function(){
       function addEjemplarGanador12Especial(nombre , padre , sexo , cant1 , puesto1 , grupo1, nombreCsEspeciales1, cant2 ,puesto2, nombreCsEspeciales2 ){
         let p = document.createElement('p');
         p.className = "nombreEjemplarHijo12"
-        p.innerHTML = '<b>' + nombre + '</b>' + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' +  '<b>' + grupo1 + '</b>' + ' '+ nombreCsEspeciales1 +'. Segundo puesto en ' + cant2 + ' cs especiales ' + '<b>'+ puesto2 + '</b>' + ' ' + nombreCsEspeciales2+'.' ;
+        p.innerHTML = '<b>' + nombre + '</b>' + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '  + puesto1 + '. ' +  '<b>' + grupo1 + '</b>' + ' '+ nombreCsEspeciales1 +'. Segundo puesto en ' + cant2 + ' cs especiales ' + '<b>'+ puesto2 + '</b>' + ' ' + nombreCsEspeciales2+'.' ;
 
      
  

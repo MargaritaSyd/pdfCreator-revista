@@ -8,6 +8,16 @@ window.addEventListener('load' , function(){
     let cuartaMadre = document.getElementById('cuartaMadre')
     let quintaMadre = document.getElementById('quintaMadre');
     let sextaMadre = document.getElementById('sextaMadre')
+    let input1madre = document.getElementById('input1madre')
+    let input2madre = document.getElementById('input2madre')
+    let input3madre = document.getElementById('input3madre')
+    let input4madre = document.getElementById('input4madre')
+    let input5madre = document.getElementById('input5madre')
+    let input6madre = document.getElementById('input6madre')
+
+
+
+
 
     let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/';
     let urlHijos =  'http://localhost:3002/info_hijos/'
@@ -42,8 +52,8 @@ window.addEventListener('load' , function(){
                     let nombrePadreMadreM1 = d.padre
                     let nacMadreM1 = d.anio_nac
                     primeraMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">1a. madre:</b></p>' + nombreMadreM1 + '(' + nacMadreM1 + ')' + '(' + nombrePadreMadreM1 + ')'
-                    
-                    
+                    input1madre.value = nombreMadreM1 + '(' + nacMadreM1 + ')' + '(' + nombrePadreMadreM1 + ')'
+                    //input1madre.value = 'asdfghjhgdsasdfghgdsdfghgfd'
 //TRAIGO INFO DE LA ABUELA E ID DE SU MAMA
                     fetch(urlUnEjemplar + idM2)
                     .then(function(r){
@@ -57,7 +67,8 @@ window.addEventListener('load' , function(){
                            let nombrePadreMadreM2 = d.padre
                            let nacMadreM2 = d.anio_nac
                             segundaMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">2a. madre:</b></p>' + nombreMadreM2 + '(' + nacMadreM2 + ')' + '(' + nombrePadreMadreM2 + ')'
-                    
+                            input2madre.value = nombreMadreM2 + '(' + nacMadreM2 + ')' + '(' + nombrePadreMadreM2 + ')'
+                   
 
 //TRAIGO INFO DE LA BISABUELA E ID DE SU MAMA
                             fetch(urlUnEjemplar + idM3)
@@ -72,7 +83,8 @@ window.addEventListener('load' , function(){
                                      let nombrePadreMadreM3 = d.padre
                                      let nacMadreM3 = d.anio_nac
                                     terceraMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">3a. madre:</b></p>' + nombreMadreM3 + '(' + nacMadreM3 + ')' + '(' + nombrePadreMadreM3 + ')'
-                    
+                                    input3madre.value = nombreMadreM3 + '(' + nacMadreM3 + ')' + '(' + nombrePadreMadreM3 + ')'
+                   
                                     
  //TRAIGO INFO DE LA TATARAABUELA E ID DE SU MAMA
                             fetch(urlUnEjemplar + idM4)
@@ -87,7 +99,8 @@ window.addEventListener('load' , function(){
                                   let nombrePadreMadreM4 = d.padre
                                   let nacMadreM4 = d.anio_nac
                                  cuartaMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">4a. madre:</b></p>' + nombreMadreM4 + '(' + nacMadreM4 + ')' + '(' + nombrePadreMadreM4 + ')'
-                 
+                                 input4madre.value = nombreMadreM4 + '(' + nacMadreM4 + ')' + '(' + nombrePadreMadreM4 + ')'
+                   
         //TRAIGO INFO DE LA TATARAABUELA E ID DE SU MAMA
                                     fetch(urlUnEjemplar + idM5)
                                    .then(function(r){
@@ -101,7 +114,9 @@ window.addEventListener('load' , function(){
                                       let nombrePadreMadreM5 = d.padre
                                      let nacMadreM5 = d.anio_nac
                                        quintaMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">5a. madre:</b></p>' + nombreMadreM5 + '(' + nacMadreM5 + ')' + '(' + nombrePadreMadreM5 + ')'
-//TRAIGO INFO DE LA M6 
+                                       input5madre.value = nombreMadreM5 + '(' + nacMadreM5 + ')' + '(' + nombrePadreMadreM5 + ')'
+                   
+                                       //TRAIGO INFO DE LA M6 
                                         fetch(urlUnEjemplar + idM6)
                                         .then(function(r){
                                         return r.json();
@@ -112,7 +127,8 @@ window.addEventListener('load' , function(){
                                            let nombrePadreMadreM6 = d.padre
                                            let nacMadreM6 = d.anio_nac
                                            sextaMadre.innerHTML = '<b style="border-bottom: 1px solid black ;">6a. madre:</b></p>' + nombreMadreM6 + '(' + nacMadreM6 + ')' + '(' + nombrePadreMadreM6 + ')'
-
+                                           input6madre.value = nombreMadreM6 + '(' + nacMadreM6 + ')' + '(' + nombrePadreMadreM6 + ')'
+                   
                                           })
                                     })
 ///UNA VEZ QUE SACO EL ID DE LA M5 BUSCO INFO DE SUS HERMANOS)
