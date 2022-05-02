@@ -40,6 +40,7 @@ window.addEventListener('load' , function(){
             idM1 = d.madre_id
             
 //TRAIGO INFO DE LA MADRE E ID DE LA ABUELA
+if(idM1){
             fetch(urlUnEjemplar + idM1)
             .then(function(r){
                 return r.json();
@@ -55,6 +56,7 @@ window.addEventListener('load' , function(){
                     input1madre.value = nombreMadreM1 + '(' + nacMadreM1 + ')' + '(' + nombrePadreMadreM1 + ')'
                     //input1madre.value = 'asdfghjhgdsasdfghgdsdfghgfd'
 //TRAIGO INFO DE LA ABUELA E ID DE SU MAMA
+if(idM2){
                     fetch(urlUnEjemplar + idM2)
                     .then(function(r){
                         return r.json();
@@ -71,6 +73,7 @@ window.addEventListener('load' , function(){
                    
 
 //TRAIGO INFO DE LA BISABUELA E ID DE SU MAMA
+if(idM3){
                             fetch(urlUnEjemplar + idM3)
                             .then(function(r){
                                 return r.json();
@@ -87,6 +90,7 @@ window.addEventListener('load' , function(){
                    
                                     
  //TRAIGO INFO DE LA TATARAABUELA E ID DE SU MAMA
+ if(idM4){
                             fetch(urlUnEjemplar + idM4)
                             .then(function(r){
                                 return r.json();
@@ -102,6 +106,7 @@ window.addEventListener('load' , function(){
                                  input4madre.value = nombreMadreM4 + '(' + nacMadreM4 + ')' + '(' + nombrePadreMadreM4 + ')'
                    
         //TRAIGO INFO DE LA TATARAABUELA E ID DE SU MAMA
+ if(idM5){
                                     fetch(urlUnEjemplar + idM5)
                                    .then(function(r){
                                     return r.json();
@@ -117,6 +122,7 @@ window.addEventListener('load' , function(){
                                        input5madre.value = nombreMadreM5 + '(' + nacMadreM5 + ')' + '(' + nombrePadreMadreM5 + ')'
                    
                                        //TRAIGO INFO DE LA M6 
+if(idM6){
                                         fetch(urlUnEjemplar + idM6)
                                         .then(function(r){
                                         return r.json();
@@ -130,6 +136,7 @@ window.addEventListener('load' , function(){
                                            input6madre.value = nombreMadreM6 + '(' + nacMadreM6 + ')' + '(' + nombrePadreMadreM6 + ')'
                    
                                           })
+                                        }
                                     })
 ///UNA VEZ QUE SACO EL ID DE LA M5 BUSCO INFO DE SUS HERMANOS)
     
@@ -396,10 +403,14 @@ window.addEventListener('load' , function(){
     
     
 })
-
+}
 })
+ }
 })
+}
 })
+}
 })
+}
 })
 })

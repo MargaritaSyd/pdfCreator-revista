@@ -18,7 +18,7 @@ window.addEventListener('load' , function(){
             idMadreM2 = d.madre_id
         
 ///UNA VEZ QUE SACO EL ID DE LA MADRE PUEDO SACAR INFO DE LOS HIJOS DE 2MADRE (HERMANOS DE LA MADRE)
-    
+if(idMadreM2){
    fetch(urlHijos + idMadreM2)
    .then(function(r){
     return r.json();
@@ -284,6 +284,6 @@ window.addEventListener('load' , function(){
     inputhijos2madre.value = hijos2madre.textContent
    
 })
-
+}
 })
 })

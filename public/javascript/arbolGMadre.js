@@ -46,6 +46,7 @@ fetch(urlUnEjemplar + id)
 
 
     //INFO MADRE + ID ABUELXS
+    if(idMadre){
     fetch(urlUnEjemplar + idMadre)
     .then(function(r){
        // alert('okadoka')
@@ -186,6 +187,8 @@ fetch(urlUnEjemplar + id)
         }
    
     })
+}
 })
 }
+
 })

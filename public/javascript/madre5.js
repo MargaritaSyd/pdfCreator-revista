@@ -19,6 +19,7 @@ window.addEventListener('load' , function(){
             let d= data.data
             idMadreM2 = d.madre_id
 //SACO EL ID DE LA ABUELA
+if(idMadreM2){
             fetch(urlUnEjemplar + idMadreM2)
             .then(function(r){
                 return r.json();
@@ -27,6 +28,7 @@ window.addEventListener('load' , function(){
                     let d= data.data
                     idAbuelaM3 = d.madre_id
 //SACO EL ID DE LA MAMA DE LA ABUELA
+if(idAbuelaM3){
                     fetch(urlUnEjemplar + idAbuelaM3)
                     .then(function(r){
                         return r.json();
@@ -35,6 +37,7 @@ window.addEventListener('load' , function(){
                             let d= data.data
                             idMAbuelaM4 = d.madre_id
 //SACO EL ID DE LA MAMA DE LA MAMA DE LA ABUELA
+if(idMAbuelaM4){
                             fetch(urlUnEjemplar + idMAbuelaM4)
                             .then(function(r){
                                 return r.json();
@@ -45,7 +48,7 @@ window.addEventListener('load' , function(){
             
         
 ///UNA VEZ QUE SACO EL ID DE LA ABUELA PUEDO SACAR INFO DE LOS HIJOS DE 3MADRE (HERMANOS DE LA ABUELA)
-    
+if(idMMAbuelaM5){
    fetch(urlHijos + idMMAbuelaM5)
    .then(function(r){
     return r.json();
@@ -310,9 +313,12 @@ window.addEventListener('load' , function(){
     
     
 })
-
+}
 })
+}
 })
+}
 })
+}
 })
 })
