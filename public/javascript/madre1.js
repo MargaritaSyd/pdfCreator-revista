@@ -27,7 +27,7 @@ window.addEventListener('load' , function(){
       function addEjemplarGanador123(nombre , padre , sexo , cant1 , puesto1 , grupo1, nombreCsEspeciales1, cant2 ,puesto2, nombreCsEspeciales2, cant3 ,puesto3, nombreCsEspeciales3 ){
         let p = document.createElement('p');
         p.className = "nombreEjemplarHijo123"
-        p.innerHTML = nombre + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + grupo1 + ' '+ nombreCsEspeciales1 +'. Segundo puesto en ' + cant2 + ' cs especiales ' + puesto2 + ' ' + nombreCsEspeciales2+'. Tercer puesto en ' + cant3 + ' cs especiales ' + puesto3 + ' ' + nombreCsEspeciales3+'.' ;
+        p.innerHTML = nombre + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + grupo1 + ' '+ nombreCsEspeciales1 +'. Segundo puesto en ' + cant2 + ' cs especiales ' + '<b>'+ puesto2 + '</b>' + ' ' + nombreCsEspeciales2+'. Tercer puesto en ' + cant3 + ' cs especiales ' + '<b>' + puesto3 + '</b>' + ' ' + nombreCsEspeciales3+'.' ;
      
  
          return p;
@@ -39,7 +39,7 @@ window.addEventListener('load' , function(){
       function addEjemplarGanador123Especial(nombre , padre , sexo , cant1 , puesto1 , grupo1, nombreCsEspeciales1, cant2 ,puesto2, nombreCsEspeciales2, cant3 ,puesto3, nombreCsEspeciales3 ){
         let p = document.createElement('p');
         p.className = "nombreEjemplarHijo123"
-        p.innerHTML = '<b>' + nombre + '</b>'  + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + '<b>'  + grupo1 +  '</b>' + ' '+ nombreCsEspeciales1 +'. Segundo puesto en ' + cant2 + ' cs especiales ' + puesto2 + ' ' + nombreCsEspeciales2+'. Tercer puesto en ' + cant3 + ' cs especiales ' + puesto3 + ' ' + nombreCsEspeciales3+'.' ;
+        p.innerHTML = '<b>' + nombre + '</b>'  + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + '<b>'  + grupo1 +  '</b>' + ' '+ nombreCsEspeciales1 +'. Segundo puesto en ' + cant2 + ' cs especiales ' + '<b>'+ puesto2 +  '</b>'+ ' ' + nombreCsEspeciales2+'. Tercer puesto en ' + cant3 + ' cs especiales ' + '<b>' + puesto3 + '</b>' + ' ' + nombreCsEspeciales3+'.' ;
      
  
          return p;
@@ -51,7 +51,7 @@ window.addEventListener('load' , function(){
       function addEjemplarGanador12(nombre , padre , sexo , cant1 , puesto1 , grupo1, nombreCsEspeciales1, cant2 ,puesto2, nombreCsEspeciales2 ){
         let p = document.createElement('p');
         p.className = "nombreEjemplarHijo12"
-        p.innerHTML = nombre + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + grupo1 + ' '+ nombreCsEspeciales1 +'. Segundo puesto en ' + cant2 + ' cs especiales ' + puesto2 + ' ' + nombreCsEspeciales2+'.' ;
+        p.innerHTML = nombre + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + grupo1 + ' '+ nombreCsEspeciales1 +'. Segundo puesto en ' + cant2 + ' cs especiales ' + '<b>' +puesto2 + '</b>' + ' ' + nombreCsEspeciales2+'.' ;
 
      
  
@@ -63,7 +63,7 @@ window.addEventListener('load' , function(){
       function addEjemplarGanador12Especial(nombre , padre , sexo , cant1 , puesto1 , grupo1, nombreCsEspeciales1, cant2 ,puesto2, nombreCsEspeciales2 ){
         let p = document.createElement('p');
         p.className = "nombreEjemplarHijo12"
-        p.innerHTML = '<b>' + nombre + '</b>' + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' +  '<b>' + grupo1 + '</b>' + ' '+ nombreCsEspeciales1 +'. Segundo puesto en ' + cant2 + ' cs especiales ' + puesto2 + ' ' + nombreCsEspeciales2+'.' ;
+        p.innerHTML = '<b>' + nombre + '</b>' + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' +  '<b>' + grupo1 + '</b>' + ' '+ nombreCsEspeciales1 +'. Segundo puesto en ' + cant2 + ' cs especiales ' + '<b>'+ puesto2 + '</b>' + ' ' + nombreCsEspeciales2+'.' ;
 
      
  
@@ -101,7 +101,7 @@ window.addEventListener('load' , function(){
       function addEjemplarGanador13(nombre , padre , sexo , cant1 , puesto1 , grupo1, nombreCsEspeciales1, cant3 ,puesto3, nombreCsEspeciales3 ){
         let p = document.createElement('p');
         p.className = "nombreEjemplarHijo123"
-        p.innerHTML = nombre + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + grupo1 + ' '+ nombreCsEspeciales1 +'. Tercer puesto en ' + cant3 + ' cs especiales ' + puesto3 + ' ' + nombreCsEspeciales3+'.' ;
+        p.innerHTML = nombre + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + grupo1 + ' '+ nombreCsEspeciales1 +'. Tercer puesto en ' + cant3 + ' cs especiales ' +'<b>' + puesto3 + '</b>'+ ' ' + nombreCsEspeciales3+'.' ;
      
  
          return p;
@@ -113,7 +113,7 @@ window.addEventListener('load' , function(){
       function addEjemplarGanador13Especial(nombre , padre , sexo , cant1 , puesto1 , grupo1, nombreCsEspeciales1, cant3 ,puesto3, nombreCsEspeciales3 ){
         let p = document.createElement('p');
         p.className = "nombreEjemplarHijo123"
-        p.innerHTML ='<b>' + nombre + '</b>' + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + '<b>' + grupo1 + '</b>' + ' '+ nombreCsEspeciales1 +'. Tercer puesto en ' + cant3 + ' cs especiales ' + puesto3 + ' ' + nombreCsEspeciales3+'.' ;
+        p.innerHTML ='<b>' + nombre + '</b>' + '(' + sexo + ' ' + padre + ').' + ' Gdr de '+ cant1 + ' cs en '+ puesto1 + '. ' + '<b>' + grupo1 + '</b>' + ' '+ nombreCsEspeciales1 +'. Tercer puesto en ' + cant3 + ' cs especiales ' + '<b>' + puesto3 + '</b>' + ' ' + nombreCsEspeciales3+'.' ;
      
  
          return p;
@@ -124,7 +124,7 @@ window.addEventListener('load' , function(){
       function addEjemplarGanador23(nombre , padre , sexo , cant2 ,puesto2, nombreCsEspeciales2, cant3 ,puesto3, nombreCsEspeciales3 ){
         let p = document.createElement('p');
         p.className = "nombreEjemplarHijo123"
-        p.textContent = '<b>' + nombre + '</b>' + '(' + sexo + ' ' + padre + ').' + ' Segundo puesto en ' + cant2 + ' cs especiales ' + puesto2 + ' ' + nombreCsEspeciales2+'. Tercer puesto en ' + cant3 + ' cs especiales ' + puesto3 + ' ' + nombreCsEspeciales3+'.' ;
+        p.textContent = '<b>' + nombre + '</b>' + '(' + sexo + ' ' + padre + ').' + ' Segundo puesto en ' + cant2 + ' cs especiales ' + '<b>' + puesto2 + '</b>'+ ' ' + nombreCsEspeciales2+'. Tercer puesto en ' + cant3 + ' cs especiales ' + '<b>'+ puesto3 +'</b>' + ' ' + nombreCsEspeciales3+'.' ;
      
  
          return p;
@@ -135,7 +135,7 @@ window.addEventListener('load' , function(){
       function addEjemplarGanador2(nombre , padre , sexo , cant2 ,puesto2, nombreCsEspeciales2, cant3 ,puesto3, nombreCsEspeciales3 ){
         let p = document.createElement('p');
         p.className = "nombreEjemplarHijo123"
-        p.textContent = nombre + '(' + sexo + ' ' + padre + ').' +' Segundo puesto en ' + cant2 + ' cs especiales ' + puesto2 + ' ' + nombreCsEspeciales2+'.' ;
+        p.textContent = nombre + '(' + sexo + ' ' + padre + ').' +' Segundo puesto en ' + cant2 + ' cs especiales ' + '<b>'+ puesto2 +'</b>' + ' ' + nombreCsEspeciales2+'.' ;
      
  
          return p;
@@ -147,7 +147,7 @@ window.addEventListener('load' , function(){
         let p = document.createElement('p');
     
         p.className = "nombreEjemplarHijo123"
-        p.textContent = nombre + '(' + sexo + ' ' + padre + ').'+' Tercer puesto en ' + cant3 + ' cs especiales ' + puesto3 + ' ' + nombreCsEspeciales3+'.' ;
+        p.textContent = nombre + '(' + sexo + ' ' + padre + ').'+' Tercer puesto en ' + cant3 + ' cs especiales ' + '<b>'+puesto3+'</b>' + ' ' + nombreCsEspeciales3+'.' ;
      
  
          return p;
