@@ -61,15 +61,13 @@ let padre
 let madre
 let id_madre
 let id_padre
+
+//INFO DEL EJEMPLAR
 fetch(urlUnEjemplar + id)
 .then(function(r){
     return r.json();
 })
 .then(function(data){
-  
-    //Recupero del ejemplar buscado su info con api_ejemplar/:id 
-
-    
    
     if(data.data.sexo == "H"){ 
       data.data.sexo = "Hembra"
@@ -151,6 +149,8 @@ fetch(urlUnEjemplar + id)
 .catch(function(err){
   console.log(err);
 })
+
+
 //SACO EL NOMBRE DEL CRIADOR:
 .then(function(){
   fetch(urlUnCriador+criador_id)
@@ -167,6 +167,7 @@ fetch(urlUnEjemplar + id)
   })
 })
 
+
 //SACO INFO DE CARRERAS CORRIDAS POR EL EJ
 let importeArray = [];
 let arrayGanadas = [];
@@ -182,6 +183,8 @@ let primerAnio;
 let ultimoAnio;
 let cuidador_id; 
 let caballeriza_id; 
+/*
+//--------------
 fetch(urlUnEjemplarResultados)
 .then(function(r){
  
@@ -229,6 +232,7 @@ fetch(urlUnEjemplarResultados)
   //let jsCarrera = JSON.stringify(ultimaCarrera)
   
 })
+*/
 //NOMBRE DEL CUIDADOR
 .then(function(){
   fetch(urlUnProfesional+cuidador_id)
@@ -260,9 +264,9 @@ fetch(urlUnEjemplarResultados)
   .catch(function(err){
    alert(err)
   })
-})
-
-
+  })
+//------------
+/*
 .then(function(){
   fetch(urlCarreras)
   .then(function(r){
@@ -300,7 +304,7 @@ fetch(urlUnEjemplarResultados)
   })
   
 })
-
+*/
 
 
 //El nombre de cuidador y caballeriza sale de tabla profesionales, saco id de api de resultados

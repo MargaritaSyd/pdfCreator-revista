@@ -912,6 +912,22 @@ apiHijos: function(req,res){
 
    
 },
+
+apiInfoCarreras: async function(req,res){
+  
+    let {id} = req.params;
+   
+ // const {dataValues: ejemplar} = await db.ejemplares.findByPk(id)
+
+    const carreras = await db.sequelize.query(`select carrera_id, carreras.fecha, res.cuidador, res.llego_numero, res.importe, res.eje_id as idEje
+    from palermo.carreras as carreras
+    left join palermo.resultados as res
+    on carreras.id = res.carrera_id where res.eje_id = ${id}  `, { type: QueryTypes.SELECT });/* group by ejemplares.id*/
+    res.status(200).json({
+        data: carreras,
+         status: 200
+     });
+},
 }
 
 module.exports = indexController;
