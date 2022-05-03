@@ -13,30 +13,12 @@ window.addEventListener("load" , function(){
   let inputDescriptDelEjemplar = document.getElementById('inputDescriptDelEjemplar');
   let criador = document.getElementById('criador');
   let inputCriador = document.getElementById('inputCriador');
-  let cuidador = document.getElementById('cuidador');
-  let inputCuidador = document.getElementById('inputCuidador');
-  let caballeriza = document.getElementById('caballeriza');
-  let inputCaballeriza = document.getElementById('inputCaballeriza');
+ 
   let padreEjemplar =document.getElementById('padreEjemplar');
   let idMadre = document.getElementById('idMadre');
   let idPadre = document.getElementById('idPadre');
   
-  //capturo campos a completas con la info del resultado del ejemplar + inputs correspondientes
-  let idTotalLargadas = document.getElementById('totalLargadas');
-  let inputTotalLargadas = document.getElementById('inputTotalLargadas');
-  let idTotalGanadas = document.getElementById('totalGanadas');
-  let inputTotalGanadas = document.getElementById('inputTotalGanadas');
-  let idTotalSegundos = document.getElementById('totalSegundos');
-  let inputTotalSegundos = document.getElementById('inputTotalSegundos');
-  let idTotalTerceros = document.getElementById('totalTerceros')
-  let inputTotalTerceros = document.getElementById('inputTotalTerceros');
-  let idTotalGanancias = document.getElementById('totalGanancias');
-  let inputTotalGanancias = document.getElementById('inputTotalGanancias');
-  ///capturo campos a completas con la info de carreras + inputs correspondientes
-  let aniosCorrio = document.getElementById('aniosCorrio');
-  let inputAniosCorrio = document.getElementById('inputAniosCorrio');
-  let edadCorrio = document.getElementById('edadCorrio');
-  let inputEdadCorrio = document.getElementById('inputEdadCorrio')
+ 
   //CAPTURO CAMPOS DEL ARBOL GENEALÓGICO
   let padreEnArbol = document.getElementById('padreEnArbol');
   let inputPadreEnArbol = document.getElementById('inputPadreEnArbol');
@@ -233,6 +215,8 @@ fetch(urlUnEjemplarResultados)
   
 })
 */
+/*
+//---------------
 //NOMBRE DEL CUIDADOR
 .then(function(){
   fetch(urlUnProfesional+cuidador_id)
@@ -266,6 +250,7 @@ fetch(urlUnEjemplarResultados)
   })
   })
 //------------
+*/
 /*
 .then(function(){
   fetch(urlCarreras)
