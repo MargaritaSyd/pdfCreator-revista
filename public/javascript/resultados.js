@@ -23,6 +23,7 @@ window.addEventListener('load' , function(){
     let urlInfoCarrera = 'http://localhost:3002/info_carreras/';
     let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/';
     let urlUnProfesional = '/api_profesional/'
+    let urlUltimaCarrera = '/ultima_carrera/' + id
 
     let anioNac 
 
@@ -86,19 +87,20 @@ window.addEventListener('load' , function(){
 
 
         let anios = fechaCarreras.sort(function(a,b){return a.fecha-b.fecha})
-        alert(primeros.length)
+       
         let primerAnio = anios[0].fecha
         let primerEdad = primerAnio - anioNac //EDAD CORRIO PRIMERA CARRERA
+        let ultimaCarrera = anios[anios.length-1]
         let ultimoAnio = anios[anios.length-1].fecha
         let ultimaEdad = ultimoAnio - anioNac //EDAD CORRIO ULTIMA CARRERA
         let primerAnioSlice = primerAnio.slice(2)   //DOS DIGITOS PRIMER AÑO QUE CORRIO
         let ultimoAniolice = ultimoAnio.slice(2)  //DOS DIGITOS ULTIMO AÑO QUE CORRIO
+       
+       
         aniosCorrio.innerHTML = primerAnioSlice + '-' + ultimoAniolice
         inputAniosCorrio.value = primerAnioSlice + '-' + ultimoAniolice
         edadCorrio.innerHTML = primerEdad + '-' + ultimaEdad
         inputEdadCorrio.value =  primerEdad + '-' + ultimaEdad
-        let cuidador_id =  anios[anios.length-1].cuidador  //id cuidador
-        let caballeriza_id = anios[anios.length-1].caballeriza  //id caballeriza
     
       
     
@@ -106,44 +108,44 @@ window.addEventListener('load' , function(){
        
 
 
-        //NOMBRE DEL CUIDADOR
-    
-    fetch(urlUnProfesional+cuidador_id)
-    .then(function(r){
-        return r.json();
-    })
-    .then(function(data){
-      let elCuidador = data.data.descripcion
-      cuidador.innerHTML =  elCuidador
-      inputCuidador.value = elCuidador
-      alert(elCuidador)
-    })
-    .catch(function(err){
-     alert(err)
-    })
-  
-  //NOMBRE DE LA CABALLERIZA
- 
-    fetch(urlUnProfesional+caballeriza_id)
-    .then(function(r){
-        return r.json();
-    })
-    .then(function(data){
-      let laCaballeriza = data.data.descripcion
-      caballeriza.innerHTML = laCaballeriza;
-      inputCaballeriza.value = laCaballeriza
-     
-     
-    })
-    .catch(function(err){
-     alert(err)
-    })
-
-
-
 
 
         
+           })
     })
-})
+    fetch(urlUltimaCarrera)
+    .then(function(r){
+        return r.json();
+     })
+     .then(function(data){
+         let d = data.data
+        let cuidador_id
+        let caballeriza_id
+        for(let i of d){
+            cuidador_id = i.cuidador
+            caballeriza_id = i.caballeriza
+        }
+        fetch(urlUnProfesional + cuidador_id)
+    .then(function(r){
+        return r.json();
+     })
+     .then(function(data){
+         let datas = data.data
+         cuidador.innerHTML = datas.descripcion
+         inputCuidador.value = datas.descripcion
+     })
+     fetch(urlUnProfesional + caballeriza_id)
+     .then(function(r){
+         return r.json();
+      })
+      .then(function(data){
+          let datas = data.data
+          caballeriza.innerHTML = datas.descripcion
+          inputCaballeriza.value = datas.descripcion
+      })
+
+      
+     })
+
+
 })

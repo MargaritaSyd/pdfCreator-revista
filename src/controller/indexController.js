@@ -928,6 +928,23 @@ apiInfoCarreras: async function(req,res){
          status: 200
      });
 },
+
+
+apiInfoUltimaCarrera: async function(req,res){
+  
+    let {id} = req.params;
+   
+ // const {dataValues: ejemplar} = await db.ejemplares.findByPk(id)
+
+    const ultima_carrera = await db.sequelize.query(`select carrera_id, res.cuidador, res.caballeriza, res.eje_id as idEje
+    from palermo.carreras as carreras
+    left join palermo.resultados as res
+    on carreras.id = res.carrera_id where res.eje_id = ${id} ORDER BY carrera_id DESC LIMIT 1 `, { type: QueryTypes.SELECT });/* group by ejemplares.id*/
+    res.status(200).json({
+        data: ultima_carrera,
+         status: 200
+     });
+},
 }
 
 module.exports = indexController;

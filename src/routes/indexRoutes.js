@@ -30,4 +30,5 @@ router.get('/api_criador/:id' , indexController.apiUnCriador);
 router.get('/api_hijos/:id' , indexController.apiHijos); //BUSCA EJEMPLARES A PARTIR DEL ID DE LA MADRE
 router.get('/info_hijos/:id' , indexController.apiInfoHijos);
 router.get('/info_carreras/:id' , indexController.apiInfoCarreras)
+router.get('/ultima_carrera/:id' , indexController.apiInfoUltimaCarrera)
 module.exports = router;
