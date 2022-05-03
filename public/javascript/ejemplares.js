@@ -19,25 +19,17 @@ window.addEventListener("load" , function(){
   let idPadre = document.getElementById('idPadre');
   
  
-  //CAPTURO CAMPOS DEL ARBOL GENEALÓGICO
-  let padreEnArbol = document.getElementById('padreEnArbol');
-  let inputPadreEnArbol = document.getElementById('inputPadreEnArbol');
-  let madreEnArbol = document.getElementById('madreEnArbol');
-  let inputMadreEnArbol = document.getElementById('inputMadreEnArbol');
 
   //alert(id)
 let urlUnEjemplar = 'http://localhost:3002/api_ejemplar/';
-let urlResultados = 'http://localhost:3002/api_resultados';
-let urlUnEjemplarResultados = 'http://localhost:3002/api_resultado/'+ id;
-let urlCarreras =  'http://localhost:3002/api_carreras';
-let urlUnaCarrera = 'http://localhost:3002/api_carrera/';
 let urlUnCriador = 'http://localhost:3002/api_criador/';
-let urlUnProfesional = '/api_profesional/'
 
 pdf1.addEventListener('click' , function(){
   form.action = '/frente/pdf/' + id
 })
-
+pdf2.addEventListener('click' , function(){
+  form.action = '/reverso/pdf/' + id
+})
 let criador_id
 let padre
 let madre
@@ -141,7 +133,7 @@ fetch(urlUnEjemplar + id)
   })
   .then(function(data){
     let elCriador = data.data.propietario
-    criador.innerHTML = 'Criador: ' + elCriador
+    criador.innerHTML =  elCriador
     inputCriador.value = elCriador
   })
   .catch(function(err){
@@ -149,149 +141,5 @@ fetch(urlUnEjemplar + id)
   })
 })
 
-
-//SACO INFO DE CARRERAS CORRIDAS POR EL EJ
-let importeArray = [];
-let arrayGanadas = [];
-let arraySegundos = [];
-let arrayTerceros = [];
-let arrayCarreras = [];
-let totalGanancias; 
-let totalSegundos;
-let totalPrimeros;
-let totalTerceros;
-let anioCarreras = [];
-let primerAnio;
-let ultimoAnio;
-let cuidador_id; 
-let caballeriza_id; 
-/*
-//--------------
-fetch(urlUnEjemplarResultados)
-.then(function(r){
- 
-    return r.json();
-})
-.then(function(data){
-   
-
-  //let datadata = JSON.stringify(data.data)
-  let datadata = data.data
-  let totalLargadas = datadata.length
-  let ultimaCarrera = datadata[datadata.length-1]
-  cuidador_id = ultimaCarrera.cuidador
-  caballeriza_id = ultimaCarrera.caballeriza
-  for(let i=0; i<datadata.length; i++){
-    importeArray.push(datadata[i].importe);  
-    arrayCarreras.push(datadata[i].carrera_id);
-    if(datadata[i].llego_numero == 1){
-      arrayGanadas.push(datadata[i].llego_numero)
-  }
-  if(datadata[i].llego_numero == 2){
-      arraySegundos.push(datadata[i].llego_numero)
-  }
-  if(datadata[i].llego_numero == 3){
-      arrayTerceros.push(datadata[i].llego_numero)
-  } 
-  }
-  totalGanancias = importeArray.reduce((a,b)=> a+b);
-  totalSegundos = arraySegundos.length
-  totalPrimeros = arrayGanadas.length
-  totalTerceros = arrayTerceros.length
-  
-
-  idTotalLargadas.innerHTML = totalLargadas
-  inputTotalLargadas.value = totalLargadas
-  idTotalGanadas.innerHTML = totalPrimeros
-  inputTotalGanadas.value = totalPrimeros
-  idTotalSegundos.innerHTML = totalSegundos 
-  inputTotalSegundos.value = totalSegundos
-  idTotalTerceros.innerHTML = totalTerceros
-  inputTotalTerceros.value = totalTerceros
-  idTotalGanancias.innerHTML = '$'+ totalGanancias
-  inputTotalGanancias.value = totalGanancias
-
-  //let jsCarrera = JSON.stringify(ultimaCarrera)
-  
-})
-*/
-/*
-//---------------
-//NOMBRE DEL CUIDADOR
-.then(function(){
-  fetch(urlUnProfesional+cuidador_id)
-  .then(function(r){
-      return r.json();
-  })
-  .then(function(data){
-    let elCuidador = data.data.descripcion
-    cuidador.innerHTML = 'Cuidador: ' + elCuidador
-    inputCuidador.value = elCuidador
-    //alert(elCuidador)
-  })
-  .catch(function(err){
-   alert(err)
-  })
-})
-//NOMBRE DE LA CABALLERIZA
-.then(function(){
-  fetch(urlUnProfesional+caballeriza_id)
-  .then(function(r){
-      return r.json();
-  })
-  .then(function(data){
-    let laCaballeriza = data.data.descripcion
-    caballeriza.innerHTML = 'Caballeriza: ' + laCaballeriza;
-    inputCaballeriza.value = laCaballeriza
-   
-  })
-  .catch(function(err){
-   alert(err)
-  })
-  })
-//------------
-*/
-/*
-.then(function(){
-  fetch(urlCarreras)
-  .then(function(r){
-   
-      return r.json();
-  })
-  .then(function(data){
-    //let datadata = JSON.stringify(data.data)
-    let datadata = data.data
-    let datas = JSON.stringify(datadata)
-    datadata.forEach(e => {
-      for(let j=0; j<arrayCarreras.length; j++){
-          if(arrayCarreras[j] == e.id){
-            anioCarreras.push(e.fecha.slice(0,-6))
-          }
-        }
-       
-    })
-    //Años que el ejemplar corrió, uso el primero y el utlimo.
-    let anios = anioCarreras.sort(function(a,b){return a-b})
-    
-    primerAnio = anioCarreras[0].slice(2);
-    ultimoAnio = anioCarreras[anioCarreras.length-1].slice(2);
-    edad0 = anioCarreras[0] - anio_nac;
-    edadUltima = anioCarreras[anioCarreras.length-1] - anio_nac
-    aniosCorrio.innerHTML = primerAnio + '-' + ultimoAnio    
-    inputAniosCorrio.value = primerAnio + '-' + ultimoAnio    
-    edadCorrio.innerHTML = edad0 + '-' + edadUltima
-    inputEdadCorrio.value = edad0 + '-' + edadUltima
-    
-    //alert(edadUltima)
-  })
-  .catch(function(err){
-    console.log(err);
-  })
-  
-})
-*/
-
-
-//El nombre de cuidador y caballeriza sale de tabla profesionales, saco id de api de resultados
 
 })

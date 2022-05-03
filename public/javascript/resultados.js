@@ -62,14 +62,31 @@ window.addEventListener('load' , function(){
 
             if(llegada == 1){
                 primeros.push(i)
+             //   alert(JSON.stringify(i))
             } else if (llegada == 2){
                 segundos.push(i)
             } else if (llegada == 3){
                 terceros.push(i)
             }
         }
-        alert(JSON.stringify(fechaCarreras))
+       
+        idTotalGanadas.innerHTML = primeros.length
+        inputTotalGanadas.value = primeros.length // SALIO 1 TANTAS CARRERAS
+        idTotalSegundos.innerHTML = segundos.length;
+        inputTotalSegundos.value = segundos.length;// SALIO 2 TANTAS CARRERAS
+        idTotalTerceros.innerHTML = terceros.length;
+        inputTotalTerceros.value = terceros.length;// SALIO 3 TANTAS CARRERAS
+        
+        const initialValue = 0;
+        const importe = importeTotal.reduce(
+        (previousValue, currentValue) => previousValue + currentValue, initialValue);  //IMPORTE TOTAL RECAUDADO
+
+        idTotalGanancias.innerHTML = importe;
+        inputTotalGanancias.value = importe;
+
+
         let anios = fechaCarreras.sort(function(a,b){return a.fecha-b.fecha})
+        alert(primeros.length)
         let primerAnio = anios[0].fecha
         let primerEdad = primerAnio - anioNac //EDAD CORRIO PRIMERA CARRERA
         let ultimoAnio = anios[anios.length-1].fecha
@@ -83,24 +100,9 @@ window.addEventListener('load' , function(){
         let cuidador_id =  anios[anios.length-1].cuidador  //id cuidador
         let caballeriza_id = anios[anios.length-1].caballeriza  //id caballeriza
     
-        let cantPrimeros = primeros.length //CANTIDAD DE VECES QUE LLEGO PRIMERO
-        idTotalGanadas.innerHTML = cantPrimeros
-        inputTotalGanadas.value = cantPrimeros
-        let cantSegundos = segundos.length //CANT DE VECES QUE LLEGO SEGUNDO
-        idTotalSegundos.innerHTML = cantSegundos;
-        inputTotalSegundos.value = cantSegundos;
-        let cantTercero = terceros.length //CANTIDAD DE VECES QUE LLEGO TERCERO
-        idTotalTerceros.innerHTML = cantTercero;
-        inputTotalTerceros.value = cantTercero
-
-        
-        alert(cuidador)
-        alert(ultimoAniolice)
-        const initialValue = 0;
-        const importe = importeTotal.reduce(
-        (previousValue, currentValue) => previousValue + currentValue, initialValue);  //IMPORTE TOTAL RECAUDADO
-        idTotalGanancias.innerHTML = importe;
-        inputTotalGanancias.value = importe;
+      
+    
+    
        
 
 
@@ -112,7 +114,7 @@ window.addEventListener('load' , function(){
     })
     .then(function(data){
       let elCuidador = data.data.descripcion
-      cuidador.innerHTML = 'Cuidador: ' + elCuidador
+      cuidador.innerHTML =  elCuidador
       inputCuidador.value = elCuidador
       alert(elCuidador)
     })
@@ -128,7 +130,7 @@ window.addEventListener('load' , function(){
     })
     .then(function(data){
       let laCaballeriza = data.data.descripcion
-      caballeriza.innerHTML = 'Caballeriza: ' + laCaballeriza;
+      caballeriza.innerHTML = laCaballeriza;
       inputCaballeriza.value = laCaballeriza
      
      
@@ -141,8 +143,6 @@ window.addEventListener('load' , function(){
 
 
 
-
-//alert(sumWithInitial);
         
     })
 })

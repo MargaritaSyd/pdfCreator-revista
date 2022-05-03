@@ -428,7 +428,7 @@ let indexController = {
             //     res.redirect("/");
             // });
     },
-/*
+
     pdfCreator2: function (req, res) {
 
         let inputs = req.body;

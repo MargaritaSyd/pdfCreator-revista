@@ -14,7 +14,7 @@ router.post('/frente/pdf/:id' , indexController.pdfCreator)
 
 
 
-//router.post('/reverso/pdf/:id' , indexController.pdfCreator2)
+router.post('/reverso/pdf/:id' , indexController.pdfCreator2)
 
 
 router.get('/error', indexController.error);

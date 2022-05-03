@@ -14,329 +14,346 @@
         <div style="display: flex; flex-direction: column; position: relative; left: -335;top: 25; font-family: Verdana; font-size: 25; align-items: center;"><b>P</b><b>E</b><b>D</b><b>I</b><b>G</b><b>R</b><b>E</b><b>E</b></div>
         <div style="display:flex; position: relative; top: -260; left: 8; border: 2px solid black; margin: 15px; padding: 4px; height: 250mm;">
         
-        <div>
-            <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
-                <div id="contentDescriptStud" style="display: grid; flex-wrap: nowrap; flex-direction: column; width: 40%;">
-                    <b class="ejemplarNombre"style="font-family: Arial; font-size: 12; margin-bottom: 10px; justify-self: center" > {{inputs.ejemplarNombre}} </b>
-                    
-                    <b class="descriptEjemplar" 
-                    style="padding-bottom: 10px;
-                    border-bottom: 2px solid black;
-                    font-size: 10px; font-family: Arial"> {{inputs.ejemplarSexo}}, {{inputs.ejemplarPelo}}, nacido el {{inputs.ejemplarDia_nac}} de {{inputs.ejemplarMes_nac}} de {{inputs.ejemplarAnio_nac}} {{inputs.ejemplarFamilia}}</b>
-                   
+            <div>
+                <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
+                    <div id="contentDescriptStud" style="display: grid; flex-wrap: nowrap; flex-direction: column; width: 40%;">
+                        <b class="ejemplarNombre"style="font-family: Arial; font-size: 12; margin-bottom: 10px; justify-self: center" > {{inputs.ejemplarNombre}} </b>
+                        
+                        <b class="descriptEjemplar" 
+                        style="padding-bottom: 10px;
+                        border-bottom: 2px solid black;
+                        font-size: 10px; font-family: Arial"> {{inputs.descriptEjemplar}}</b>
+                       
+                    </div>
+                    <div class="borderContentCarreras" style=
+                    "border-radius: 25px;
+                    border: 2px solid black;
+                    width: 60%;;">
+                        <div class="detalleCarrerasCorridas" style=
+                        "padding: 20px;
+                        height: 10px;
+                        display: flex;
+                        flex-direction: row;
+                        font-family: Arial;
+                        font-size: 8;
+                        justify-content: space-between;
+                        position: relative;
+                        left: 10px;
+                        top:-5px">
+                            <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
+                                <b> Año </b>
+                                <b>  {{inputs.aniosCorrio}}</b>
+                            </div>
+                            <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
+                                <b> Edad</b>
+                                <b>{{inputs.inputEdadCorrio}}</b>
+                            </div>
+                            <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 15%;">
+                                <b>Corrio</b>
+                                <b> {{inputs.totalLargadas}} </b>
+                            </div>
+                            <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
+                                <b>1º</b>
+                                <b>{{inputs.totalGanadas}}</b>
+                            </div>
+                            <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
+                                <b>2º</b>
+                                <b>{{inputs.totalSegundos}}</b>
+                            </div>
+                            <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
+                                <b>3º</b>
+                                <b>{{inputs.totalTerceros}}</b>
+                            </div>
+                            <div class="premioDetalleCarreras" style="display: flex; flex-direction: column; width: 22%;">
+                                <b>Premios</b>
+                                <b>$ {{inputs.ganancias}}</b>
+                            </div>
+    
+                        </div>
+                    </div>
                 </div>
-                <div class="borderContentCarreras" style=
-                "border-radius: 25px;
-                border: 2px solid black;
-                width: 60%;;">
-                    <div class="detalleCarrerasCorridas" style=
-                    "padding: 20px;
-                    height: 10px;
-                    display: flex;
-                    flex-direction: row;
-                    font-family: Arial;
-                    font-size: 8;
-                    justify-content: space-between;
+                <div class="contenedorCuidadorArbol" style="display: flex; flex-direction: row;justify-content: space-around;">
+                    <div class="detllesCuidador" 
+                    style="display: flex;
+                    flex-direction: column;
+                    margin-top: 10px;
+                    width: 60mm; font-size: 10; font-family: Arial; font-style: oblique;">
+                        <b> Caballeriza: {{inputs.caballeriza}} </b>
+                        <b> Criador: {{inputs.criador}}  </b>
+                        <b> Cuidador: {{inputs.cuidador}} </b>
+                        <div style="font-size: x-small;">
+                        <p>{{inputs.infoPadrillo1}}<b>{{inputs.infoPadrilloNegrita1}}</b>{{inputs.infoPadrillo2}}<b>{{inputs.infoPadrilloNegrita2}}</b> {{inputs.infoPadrillo3}} <b>{{inputs.infoPadrilloNegrita3}}</b>{{inputs.infoPadrillo4}} <b>{{inputs.infoPadrilloNegrita4}}</b>{{inputs.infoPadrillo5}} <b>{{inputs.infoPadrilloNegrita5}}</b></p>
+                        </div>
+                    
+                    </div>
+                    
+                    <div class="arbolGContent" 
+                    style="display: flex;
                     position: relative;
-                    left: 10px;
-                    top:-5px">
-                        <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
-                            <b> Año </b>
-                            <b>  {{inputs.aniosCorrio}}</b>
+                    border-radius: 25px;
+                    border: 2px solid black;
+                    margin-top: 10px;
+                    width: 60%;
+                    height: 200px; font-size: 10; font-family: Arial">
+                        <div class="arbolG" 
+                        style="display: flex; 
+                        flex-direction: row; 
+                        height: 200px;
+                        justify-content: space-between;
+                        width: 95mm;
+                        margin-left: 10px;">
+                            <div class="mapa">                        
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolG" 
+                                style="height: 20px;
+                                padding: 2px;
+                                font-size: 10;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;"> <b>{{inputs.padre}}</b></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolG"
+                                style="height: 20px;
+                                padding: 2px;
+                                font-size: 10;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;"> <b>{{inputs.madre}}</b></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+    
+                            </div>
+                            <div class="abue">
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolG"
+                                style="height: 20px;
+                                padding: 2px;
+                                font-size: 10;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;"> <b>{{inputs.abueloP}}</b></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolG"
+                                style="height: 20px;
+                                padding: 2px;
+                                font-size: 10;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;"> <b>{{inputs.abuelaP}}</b></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolG"
+                                style="height: 20px;
+                                padding: 2px;
+                                font-size: 10;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;"> <b>{{inputs.abueloM}}</b></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                                <div class="divArbolG"
+                                style="height: 20px;
+                                padding: 2px;
+                                font-size: 10;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;"> <b>{{inputs.abuelaM}}</b></div>
+                                <div class="divArbolGAbu"
+                                style="height: 10px;
+                                padding: 2px;
+                                font-size: 12;"></div>
+                            </div>
+                            <div class="bisa">
+                                <div class="divArbolG"
+                                style="height: 20px;
+                                padding: 2px;
+                                font-size: 10;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;"><b>{{inputs.pAbueloP}}</b></div>
+                                <div class="divArbolG"
+                                style="height: 20px;
+                                padding: 2px;
+                                font-size: 10;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;"><b>{{inputs.mAbueloP}}</b></div>
+                                <div class="divArbolG"
+                                style="height: 20px;
+                                padding: 2px;
+                                font-size: 10;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;"><b>{{inputs.pAbuelaP}}</b></div>
+                                <div class="divArbolG"
+                                style="height: 20px;
+                                padding: 2px;
+                                font-size: 10;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;"><b>{{inputs.mAbuelaP}}</b></div>
+                                <div class="divArbolG"
+                                style="height: 20px;
+                                padding: 2px;
+                                font-size: 10;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;"> <b>{{inputs.pAbueloM}}</b></div>
+                                <div class="divArbolG"
+                                style="height: 20px;
+                                padding: 2px;
+                                font-size: 10;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;"><b>{{inputs.mAbueloM}}</b></div>
+                                <div class="divArbolG"
+                                style="height: 20px;
+                                padding: 2px;
+                                font-size: 10;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;"><b>{{inputs.pAbuelaM}}</b></div>
+                                <div class="divArbolG"
+                                style="height: 20px;
+                                padding: 2px;
+                                font-size: 10;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;"><b>{{inputs.mAbuelaM}}</b></div>
+                            </div>
                         </div>
-                        <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
-                            <b> Edad</b>
-                            <b>{{inputs.edadCorrio}}</b>
-                        </div>
-                        <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 15%;">
-                            <b>Corrio</b>
-                            <b> {{inputs.totalLargadas}} </b>
-                        </div>
-                        <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
-                            <b>1º</b>
-                            <b>{{inputs.totalGanadas}}</b>
-                        </div>
-                        <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
-                            <b>2º</b>
-                            <b>{{inputs.totalSegundos}}</b>
-                        </div>
-                        <div class="cadaDetalleCarreras" style="display: flex; flex-direction: column; width: 12%;">
-                            <b>3º</b>
-                            <b>{{inputs.totalTerceros}}</b>
-                        </div>
-                        <div class="premioDetalleCarreras" style="display: flex; flex-direction: column; width: 22%;">
-                            <b>Premios</b>
-                            <b>$ {{inputs.ganancias}}</b>
-                        </div>
-
                     </div>
                 </div>
+    
+                <div style="font-size: 8; font-family: Arial; column-count: 2; margin-top: 5px;">
+                    <div style="display: flex; flex-wrap: nowrap; width: 40%; flex-direction: column;">
+                        <div> 
+                            <p><b style="border-bottom: 1px solid black ;">1a. madre: </b>{{inputs.1madre}}</p>
+                            <p> Madre de </p>
+                            <div>
+                               <p><b>{{inputs.1hijos1madreNegrita1}}</b>{{inputs.1hijos1madre1}}<b>{{inputs.1hijos1madreNegrita2}}</b>{{inputs.1hijos1madre2}}</p>
+                               <p><b>{{inputs.2hijos1madreNegrita1}}</b>{{inputs.2hijos1madre1}}<b>{{inputs.2hijos1madreNegrita2}}</b>{{inputs.2hijos1madre2}}</p>
+                               <p><b>{{inputs.3hijos1madreNegrita1}}</b>{{inputs.3hijos1madre1}}<b>{{inputs.3hijos1madreNegrita2}}</b>{{inputs.3hijos1madre2}}</p>
+                               <p><b>{{inputs.4hijos1madreNegrita1}}</b>{{inputs.4hijos1madre1}}<b>{{inputs.4hijos1madreNegrita2}}</b>{{inputs.4hijos1madre2}}</p>
+                               <p><b>{{inputs.5hijos1madreNegrita1}}</b>{{inputs.5hijos1madre1}}<b>{{inputs.5hijos1madreNegrita2}}</b>{{inputs.5hijos1madre2}}</p>
+                            </div>
+                            </div>
+                        <!--   "1hijos1madreNegrita1" "1hijos1madre1""1hijos1madreNegrita2"1hijos1madre2"
+                      <input type="text" name="2hijos1madreNegrita1" placeholder="negrita"><input type="text" name="2hijos1madre1"><input type="text" name="2hijos1madreNegrita2" placeholder="negrita"><input type="text" name="2hijos1madre2">
+                      <input type="text" name="3hijos1madreNegrita1" placeholder="negrita"><input type="text" name="3hijos1madre1"><input type="text" name="3hijos1madreNegrita2" placeholder="negrita"><input type="text" name="3hijos1madre2">
+                      <input type="text" name="4hijos1madreNegrita1" placeholder="negrita"><input type="text" name="4hijos1madre1"><input type="text" name="4hijos1madreNegrita2" placeholder="negrita"><input type="text" name="4hijos1madre2"
+                         -->
+                            
+                            
+                        <!-- </div>
+                        <div> -->
+                          <p><b style="border-bottom: 1px solid black ;">2a. madre: </b>{{inputs.2madre}}</p>
+                            <p> Madre de </p>
+                            <p>{{inputs.hijos2madre}}</p>
+                           
+                            
+                        <!-- </div>
+    
+                    </div> -->
+                    <!-- <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;">
+                        <div> -->
+                            <p><b style="border-bottom: 1px solid black ;">3a. madre: </b>{{inputs.3madre}}</p>
+                            <p> Madre de </p>
+                            <p>{{inputs.hijos3madre}}</p>
+                        
+                        
+                        <!-- </div>
+                        <div> -->
+                            <p><b style="border-bottom: 1px solid black ;">4a. madre: </b>{{inputs.4madre}}</p>
+                            <p> Madre de </p>
+                            <p>{{inputs.hijos4madre}}</p>
+                        
+                        
+                        <!-- </div>
+                        <div> -->
+                            <p><b style="border-bottom: 1px solid black ;">5a. madre: </b>{{inputs.5madre}}</p>
+                            <p> Madre de </p>
+                            <p>{{inputs.hijos5madre}}</p>
+                            
+                        <!-- </div>
+                        <div> -->
+                            <p><b style="border-bottom: 1px solid black ;">6a. madre: </b>{{inputs.6madre}}</p>
+                            <p> Madre de </p>
+                            <p>{{inputs.hijos6madre}}</p>
+                        
+                            
+                        <!-- </div>
+                    </div> -->
+    
+                </div>    
             </div>
-            <div class="contenedorCuidadorArbol" style="display: flex; flex-direction: row;justify-content: space-around;">
-                <div class="detllesCuidador" 
-                style="display: flex;
-                flex-direction: column;
-                margin-top: 10px;
-                width: 60mm; font-size: 10; font-family: Arial; font-style: oblique;">
-                    <b> Caballeriza: {{inputs.caballeriza}} </b>
-                    <b> Criador: {{inputs.criador}}  </b>
-                    <b> Cuidador: {{inputs.cuidador}} </b>
-                    <div style="font-size: x-small;">
-                    <p>{{inputs.infoPadrillo1}}<b>{{inputs.infoPadrilloNegrita1}}</b>{{inputs.infoPadrillo2}}<b>{{inputs.infoPadrilloNegrita2}}</b> {{inputs.infoPadrillo3}} <b>{{inputs.infoPadrilloNegrita3}}</b>{{inputs.infoPadrillo4}} <b>{{inputs.infoPadrilloNegrita4}}</b>{{inputs.infoPadrillo5}} <b>{{inputs.infoPadrilloNegrita5}}</b></p>
-                    </div>
-                
-                </div>
-                
-                <div class="arbolGContent" 
-                style="display: flex;
-                position: relative;
-                border-radius: 25px;
-                border: 2px solid black;
-                margin-top: 10px;
-                width: 60%;
-                height: 200px; font-size: 10; font-family: Arial">
-                    <div class="arbolG" 
-                    style="display: flex; 
-                    flex-direction: row; 
-                    height: 200px;
-                    justify-content: space-between;
-                    width: 95mm;
-                    margin-left: 10px;">
-                        <div class="mapa">                        
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolG" 
-                            style="height: 20px;
-                            padding: 2px;
-                            font-size: 10;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;"> <b>{{inputs.padre}}</b></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolG"
-                            style="height: 20px;
-                            padding: 2px;
-                            font-size: 10;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;"> <b>{{inputs.madre}}</b></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-
-                        </div>
-                        <div class="abue">
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolG"
-                            style="height: 20px;
-                            padding: 2px;
-                            font-size: 10;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;"> <b>{{inputs.abueloP}}</b></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolG"
-                            style="height: 20px;
-                            padding: 2px;
-                            font-size: 10;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;"> <b>{{inputs.abuelaP}}</b></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolG"
-                            style="height: 20px;
-                            padding: 2px;
-                            font-size: 10;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;"> <b>{{inputs.abueloM}}</b></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                            <div class="divArbolG"
-                            style="height: 20px;
-                            padding: 2px;
-                            font-size: 10;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;"> <b>{{inputs.abuelaM}}</b></div>
-                            <div class="divArbolGAbu"
-                            style="height: 10px;
-                            padding: 2px;
-                            font-size: 12;"></div>
-                        </div>
-                        <div class="bisa">
-                            <div class="divArbolG"
-                            style="height: 20px;
-                            padding: 2px;
-                            font-size: 10;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;"><b>{{inputs.pAbueloP}}</b></div>
-                            <div class="divArbolG"
-                            style="height: 20px;
-                            padding: 2px;
-                            font-size: 10;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;"><b>{{inputs.mAbueloP}}</b></div>
-                            <div class="divArbolG"
-                            style="height: 20px;
-                            padding: 2px;
-                            font-size: 10;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;"><b>{{inputs.pAbuelaP}}</b></div>
-                            <div class="divArbolG"
-                            style="height: 20px;
-                            padding: 2px;
-                            font-size: 10;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;"><b>{{inputs.mAbuelaP}}</b></div>
-                            <div class="divArbolG"
-                            style="height: 20px;
-                            padding: 2px;
-                            font-size: 10;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;"> <b>{{inputs.pAbueloM}}</b></div>
-                            <div class="divArbolG"
-                            style="height: 20px;
-                            padding: 2px;
-                            font-size: 10;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;"><b>{{inputs.mAbueloM}}</b></div>
-                            <div class="divArbolG"
-                            style="height: 20px;
-                            padding: 2px;
-                            font-size: 10;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;"><b>{{inputs.pAbuelaM}}</b></div>
-                            <div class="divArbolG"
-                            style="height: 20px;
-                            padding: 2px;
-                            font-size: 10;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;"><b>{{inputs.mAbuelaM}}</b></div>
-                        </div>
-                    </div>
-                </div>
             </div>
-
-            <div style="font-size: 8; font-family: Arial; column-count: 2; margin-top: 5px;">
-                <div style="display: flex; flex-wrap: nowrap; width: 40%; flex-direction: column;">
-                    <div> 
-                        <p><b style="border-bottom: 1px solid black ;">1a. madre: </b>{{inputs.madreNombre}} ({{inputs.madreNac}}) ({{inputs.madrePadre}}) </p>
-                        <p> Madre de </p>
-                        {{inputs.1madre}}       
-                        
-                    <!-- </div>
-                    <div> -->
-                      <p><b style="border-bottom: 1px solid black ;">2a. madre: </b>{{inputs.abuelaMNombre}} ({{inputs.abuelaMNac}}) ({{inputs.abuelaMPadre}}) </p>
-                        <p> Madre de </p>
-                        {{inputs.2madre}}      
-                        
-                    <!-- </div>
-
-                </div> -->
-                <!-- <div style="display: flex; flex-wrap: nowrap;font-size: x-small; width: 40%; flex-direction: column;">
-                    <div> -->
-                        <p><b style="border-bottom: 1px solid black ;">3a. madre: </b>{{inputs.mAbuelaMNombre}} ({{inputs.mAbuelaMNac}}) ({{inputs.mAbuelaMPadre}}) </p>
-                        <p> Madre de </p>
-                        {{inputs.3madre}}
-                    
-                    <!-- </div>
-                    <div> -->
-                        <p><b style="border-bottom: 1px solid black ;">4a. madre: </b>{{inputs.madre4Nombre}} ({{inputs.madre4Nac}}) ({{inputs.madre4Padre}}) </p>
-                        <p> Madre de </p>
-                        {{inputs.4madre}}      
-                    
-                    <!-- </div>
-                    <div> -->
-                        <p><b style="border-bottom: 1px solid black ;">5a. madre: </b>{{inputs.madre5Nombre}} ({{inputs.madre5Nac}}) ({{inputs.madre5Padre}}) </p>
-                        <p> Madre de </p>
-                        {{inputs.5madre}}      
-                        
-                    <!-- </div>
-                    <div> -->
-                        <p><b style="border-bottom: 1px solid black ;">6a. madre:</b>{{inputs.madre6Nombre}} ({{inputs.madre6Nac}}) ({{inputs.madre6Padre}})</p>
-                        <p> Madre de </p>
-                        {{inputs.6madre}}
-                        
-                    <!-- </div>
-                </div> -->
-
-            </div>    
-        </div>
-        </div>
     </main>
 <script src="/javascript/ejemplares.js"></script>
 </body>
