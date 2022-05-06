@@ -9,363 +9,11 @@ const hb = require('handlebars');
 const readFile = utils.promisify(fs.readFile)
 var Sequelize = require('sequelize');
 
-/*
 
-let funcionHijosGanadores = function(array){
-    let arrayNuevo = []
-    for(let i=0; i<array.length; i++){
-        arrayNuevo.push(array[i].id)
-    } 
-    return arrayNuevo
-}
-
-
-let funcionEjemplareshijos = function(id , bd){
-    let hijos = [];
-    for(let i=0; i<bd.length; i++){
-        if(bd[i].madre_id == id){
-            hijos.push(bd[i].dataValues)
-        }
-    }
-return hijos
-}
-
-let funcionEjemplar = function(unId, bd){
-    let result 
-    if(unId == 0){
-        result = {
-            id: 0,
-            nombre: "", 
-           anio_nac: 0,
-           mes_nac: 0,
-           dia_nac: 0,
-           sexo: 0, 
-           pelo: 0,
-           raza: 0,
-           criador_id: 0,
-           padre_id: 0,
-           madre_id: 0,
-           padre: 0,
-           madre: 0,
-           foto: 0,
-           muestra: 0,
-           muestra_ejemplar: 0,
-           muestra_padres: 0,
-           familia: 0,
-           debutante: 0,
-
-        }
-    } else {
-    for(let i=0; i<bd.length; i++){
-        if(bd[i].id == unId){
-
-            result = bd[i].dataValues
-        }
-    }
-}
-    return result
-}
-*/
 
 let indexController = {
-  /*  
-    index: function(req,res){
-        db.ejemplares.findAll()
-        .then(function(ejemplares){
-            let id = req.params.id
-            console.log(id)
-            //let unEjemplar
-        let ejemplarX = funcionEjemplar(id,ejemplares); //DATOS DEL EJEMPLAR
-        let madreId = ejemplarX.madre_id;
-        let padreId = ejemplarX.padre_id;
-        let madre = funcionEjemplar(madreId, ejemplares); //DATOS DE LA MADRE DEL EJEMPLAR
-        
-        let hijos1Madre = funcionEjemplareshijos(madreId , ejemplares)
-
-        
-        let abuelaMId = madre.madre_id;
-        let abueloMId = madre.padre_id;
-        let padre = funcionEjemplar(padreId, ejemplares); //DATOS DEL PADRE DEL EJEMPLAR
-        let abuelaPId = padre.madre_id;
-        let abueloPId = padre.padre_id;
-        let abuelaM = funcionEjemplar(abuelaMId,ejemplares); //DATOS ABUELA MATERNA
-        let abueloM = funcionEjemplar(abueloMId,ejemplares); //DATOS ABUELO MATERNO
-        let abuelaP = funcionEjemplar(abuelaPId,ejemplares); //DATOS ABUELA PATERNA
-        let abueloP = funcionEjemplar(abueloPId,ejemplares); //DATOS ABUELO PATERNO
-        
-        let hijos2Madre = funcionEjemplareshijos(abuelaMId , ejemplares)
-
-
-
-        let mAbuelaMId = abuelaM.madre_id;
-        let pAbuelaMId = abuelaM.padre_id;
-        let mAbueloMId = abueloM.madre_id;
-        let pAbueloMId = abueloM.padre_id;
-        let mAbuelaPId = abuelaP.madre_id;
-        let pAbuelaPId = abuelaP.padre_id;
-        let mAbueloPId = abueloP.madre_id;
-        let pAbueloPId = abueloP.padre_id;
-
-        let mAbuelaM = funcionEjemplar(mAbuelaMId,ejemplares); // DATOS BISABUELXS
-        let pAbueloP = funcionEjemplar(pAbueloPId,ejemplares);
-        
-        let pAbuelaM = funcionEjemplar(pAbuelaMId,ejemplares);
-        let mAbueloM = funcionEjemplar(mAbueloMId,ejemplares);
-        let pAbueloM = funcionEjemplar(pAbueloMId,ejemplares);
-        let mAbuelaP = funcionEjemplar(mAbuelaPId,ejemplares);
-        let pAbuelaP = funcionEjemplar(pAbuelaPId,ejemplares);
-        let mAbueloP = funcionEjemplar(mAbueloPId,ejemplares);
-        let madre4Id = mAbuelaM.madre_id
-        let madre4 = funcionEjemplar(madre4Id,ejemplares); // DATOS BISABUELXS
-        let madre5Id = madre4.madre_id
-        let madre5 = funcionEjemplar(madre5Id, ejemplares);
-        let madre6Id = madre5.madre_id
-        let madre6 = funcionEjemplar(madre6Id , ejemplares);
-        
-        let hijos3Madre = funcionEjemplareshijos(mAbuelaMId , ejemplares);
-        let hijos4Madre = funcionEjemplareshijos(madre4Id, ejemplares);
-        let hijos5Madre = funcionEjemplareshijos(madre5Id , ejemplares);
-        let hijos6Madre = funcionEjemplareshijos(madre6Id, ejemplares);
-
-        // Encuentra flias importantes:
-
-    
-        let id_hijos1M = funcionHijosGanadores(hijos1Madre)      
-        let id_hijos2M = funcionHijosGanadores(hijos2Madre)
-        let id_hijos3M = funcionHijosGanadores(hijos3Madre)
-        let id_hijos4M = funcionHijosGanadores(hijos4Madre)
-        let id_hijos5M = funcionHijosGanadores(hijos5Madre)
-        let id_hijos6M = funcionHijosGanadores(hijos6Madre)
-        
-        
-        
-        db.carreras.findAll()
-            .then(c=> {
-                let carreras = c      
-         
-            db.resultados.findAll({
-                where:{
-
-                    llego_numero: 1
-                    // llego_numero: {
-                    //     [Op.lte]: 3
-                    // }
-                       
-                }
-                
-            })
-            .then(resultado => {
-
-                console.log('ok')
-               
-                // let madre y padre carreras ganadas
-
-                let resultadoMadresGanadorasFunction = function(id){
-                    let carrerasMadres = []
-                    for(let j=0; j<resultado.length; j++){
-                        if(resultado[j].eje_id == id){
-                            let unResultado = resultado[j]
-                           let unaCarrera = funcionEjemplar(unResultado.carrera_id, carreras)
-                           if(unaCarrera.grupo == 'I'){
-                            unaCarrera.grupo = 'G.I'
-                         } else if(unaCarrera.grupo == 'II'){
-                            unaCarrera.grupo = 'G.II'
-                         } else if(unaCarrera.grupo == 'III'){
-                            unaCarrera.grupo = 'G.III'
-                         } else {
-                            unaCarrera.grupo = unaCarrera.grupo
-                         }
-                         const madreGanador = new Object()
-                         
-                         madreGanador.fechaCarrera = unaCarrera.fecha
-                         madreGanador.nombreCarrera = unaCarrera.nombre
-                         madreGanador.grupoCarrera = unaCarrera.grupo
-                         madreGanador.hipodromo = unaCarrera.hipodromo
-
-                         carrerasMadres.push(madreGanador)
-
-                        }
-                    }
-                    return carrerasMadres
-                }
-
-
-                 //  hijos de la madre que ganaron carreras:
-                 let resultadoHijosGanadoresFunction = function(array){
-
-                let resultadosCarreras = []
-                   array.forEach(e => {
-                     for(let j=0; j<resultado.length; j++){
-                         if(resultado[j].eje_id == e){
-                             let unHijo = funcionEjemplar(e,ejemplares)
-                             let unResultado = resultado[j]
-                             let unaCarrera = funcionEjemplar(unResultado.carrera_id, carreras)
-                             if(unaCarrera.grupo == 'I'){
-                                unaCarrera.grupo = 'G.I'
-                             } else if(unaCarrera.grupo == 'II'){
-                                unaCarrera.grupo = 'G.II'
-                             } else if(unaCarrera.grupo == 'III'){
-                                unaCarrera.grupo = 'G.III'
-                             } else {
-                                unaCarrera.grupo = unaCarrera.grupo
-                             }
-                            const hijoGanador = new Object()
-                            hijoGanador.nombre = unHijo.nombre
-                            hijoGanador.nac = unHijo.anio_nac
-                            hijoGanador.padre = unHijo.padre
-                            hijoGanador.sexo = unHijo.sexo
-                            hijoGanador.fechaCarrera = unaCarrera.fecha
-                            hijoGanador.nombreCarrera = unaCarrera.nombre
-                            hijoGanador.grupoCarrera = unaCarrera.grupo
-                            hijoGanador.hipodromo = unaCarrera.hipodromo
-                            //   resultadosCarrerasHijos1M.push(hijoGanador)
-                           resultadosCarreras.push(hijoGanador)
-                       
-                         }
-                     }
-                   })
-                   return resultadosCarreras
-                }
-
-                 let resultadosCarrerasHijos1M = resultadoHijosGanadoresFunction(id_hijos1M)
-                let resultadosCarrerasHijos2M = resultadoHijosGanadoresFunction(id_hijos2M)
-                let resultadosCarrerasHijos3M = resultadoHijosGanadoresFunction(id_hijos3M )
-                let resultadosCarrerasHijos4M = resultadoHijosGanadoresFunction(id_hijos4M )
-                let resultadosCarrerasHijos5M = resultadoHijosGanadoresFunction(id_hijos5M )
-                let resultadosCarrerasHijos6M = resultadoHijosGanadoresFunction(id_hijos6M )
-                let resultadoCarrerasMadre = resultadoMadresGanadorasFunction(madreId)
-                let resultadoCarrerasPadre = resultadoMadresGanadorasFunction(padreId)
-              
-
-        
-        
-        //Encuentra ganancias totales, carreras corridas del ejemplar 
-
-        let resultadoCarreras
-        db.resultados.findAll({
-            where:{
-                eje_id: ejemplarX.id
-            }
-        })
-        .then(resultado => {
-            resultadoCarreras = resultado
-            let arrayGanancias = []
-            let arrayGanadas = []
-            let arraySegundos = []
-            let arrayTerceros = []
-            let totalLargadas = resultadoCarreras.length
-            let arrayCarreras = []
-            let ultimaCarrera = resultadoCarreras[resultadoCarreras.length-1]
-            let cuidador_id = ultimaCarrera.cuidador
-            let caballeriza_id = ultimaCarrera.caballeriza
-
-
-
-
-           // let arrayLargadas = []
-            for(let i=0; i<resultadoCarreras.length; i++){
-            arrayGanancias.push(resultadoCarreras[i].importe)
-            arrayCarreras.push(resultadoCarreras[i].carrera_id)
-            if(resultadoCarreras[i].llego_numero == 1){
-                arrayGanadas.push(resultadoCarreras[i].llego_numero)
-            }
-            if(resultadoCarreras[i].llego_numero == 2){
-                arraySegundos.push(resultadoCarreras[i].llego_numero)
-            }
-            if(resultadoCarreras[i].llego_numero == 3){
-                arrayTerceros.push(resultadoCarreras[i].llego_numero)
-            } 
-            
-           // arrayGanancias.push()
-        }
-        const totalGanancias = arrayGanancias.reduce((a,b)=> a+b);
-        const totalSegundos = arraySegundos.length
-        const totalGanadas = arrayGanadas.length
-        const totalTerceros = arrayTerceros.length
-
-        //})
-        //Creando array de carreras jugadas por el ejemplar
-      let anioCarreras = []
-      
-        for(let i=0; i<arrayCarreras.length; i++){
-
-            db.carreras.findByPk(arrayCarreras[i])
-            .then(carrera => {
-                anioCarreras.push(carrera.fecha.slice(0,-6))
-                
-        })
-        .catch (err  =>{
-            
-            console.log(err)
-            })
-    }
-
-    let anios = anioCarreras.sort(function(a,b){return a-b})
-    
-    //obtengo cuidadir y y caballeriza
-    db.profesionales.findByPk(cuidador_id)
-    .then(resultado => {
-        let cuidador = resultado.descripcion
-      
-        db.profesionales.findByPk(caballeriza_id)
-        .then(resultado => {
-            let caballeriza = resultado.descripcion
-        
-        
-        
-            
-        
-        //Encuentra carreras:
-        let estadoCaballo
-        db.estad_caballo.findAll({
-            where: {
-                ideje: ejemplarX.id
-            }
-        })
-        
-        .then(resultado => {
-             estadoCaballo = resultado
-
-             
-   
-            
-        //Encuentra el criador:
-        db.criadores.findByPk(ejemplarX.criador_id)
-        .then(function(criador){
-            let criadorX
-            if(!criador){
-                criadorX = {
-                    id: 0,
-                    propietario: "N/N",
-                    haras: "N/N",
-                    banner: "N/N"
-                }
-            } else {
-                criadorX = criador.dataValues
-            }
-            console.log(JSON.stringify(estadoCaballo))
-                   
-            res.render("htmlToPdf" , {resultadoCarrerasMadre, resultadoCarrerasPadre, resultadosCarrerasHijos1M, resultadosCarrerasHijos2M, resultadosCarrerasHijos3M, resultadosCarrerasHijos4M, resultadosCarrerasHijos5M, resultadosCarrerasHijos6M, anios, caballeriza ,cuidador, criadorX , ejemplarX , anioCarreras, madre , padre, abuelaM, abueloM, abuelaP, abueloP, mAbuelaM, pAbuelaM, mAbueloM, pAbueloM, mAbuelaP, pAbuelaP, mAbueloP, pAbueloP, estadoCaballo, totalGanadas, totalLargadas, totalGanancias, totalSegundos, totalTerceros, hijos1Madre, hijos2Madre, hijos3Madre, hijos4Madre, hijos5Madre, hijos6Madre, madre4, madre5, madre6  })
-        
-
-           
-//console.log(resultadoPadrillo)
-        })
-    })
-})
-})
-})  
-})
-})
-})
-.catch(function(err){
-    console.log(err)
-})
-        
-    },
-    */
-
-
+ 
+//CREADOR DE PDF PARA PEDIGREE HOJA DE FRENTE
     pdfCreator: function (req, res) {
 
         let inputs = req.body;
@@ -429,6 +77,8 @@ let indexController = {
             // });
     },
 
+    //CREADOR DE PDF DE PEDIGREE HOJA REVERSO
+
     pdfCreator2: function (req, res) {
 
         let inputs = req.body;
@@ -483,74 +133,22 @@ let indexController = {
         generatePdf();
         res.send("index");
         console.log(inputName)
-                            // });
-                    // });
-
-            // // })
-            // .then(function () {
-            //     res.redirect("/");
-            // });
     },
-   /*
-   
-   apiEjempalares: function(req,res){
-       db.ejemplares.findAll()
-       .then(ejemplar => {
-           let ejemplarArray = [];
-           for(let i=0; i<ejemplar.length; i++){
-            let unEjemplar = {
-               id: ejemplar[i].id,
-               nombre: ejemplar[i].nombre, 
-              anio_nac: ejemplar[i].anio_nac,
-              mes_nac: ejemplar[i].mes_nac,
-              dia_nac: ejemplar[i].dia_nac,
-              sexo: ejemplar[i].sexo, 
-              pelo: ejemplar[i].pelo,
-              raza: ejemplar[i].raza,
-              criador_id: ejemplar[i].criador_id,
-              padre_id: ejemplar[i].padre_id,
-              madre_id: ejemplar[i].madre_id,
-              padre: ejemplar[i].padre,
-              madre: ejemplar[i].madre,
-              foto: ejemplar[i].foto,
-              muestra: ejemplar[i].muestra,
-              muestra_ejemplar: ejemplar[i].muestra_ejemplar,
-              muestra_padres: ejemplar[i].muestra_padres,
-              familia: ejemplar[i].familia,
-              debutante: ejemplar[i].debutante,
-   
-           } 
-           ejemplarArray.push(unEjemplar);
-        }
-        return res.status(200).json({
-            count: ejemplarArray.length,
-            ejemplares: ejemplarArray,
-            status: 200
-        })
-       
-
-       })
-       .catch(function(err){
-           console.log(err)
-       })
-       
-   },
-   */
+  
 
    error: function(req,res) {
        res.send('error');
    },
    
+
+   //PLANTILLA PARA CREACION DE PDF PEDIGREE
+   
    ok: function(req,res) {
        let id = req.params.id
        res.render("template" , {id})
    },
-   okForm: function(req,res){
-    let inputs = req.body.descriptEjemplar;
-    console.log(inputs);
-    //res.send('ok')
-   },
-
+  
+//JSON CON INFO DE TODOS LOS EJEMPLARES
       
    apiEjemplares: function(req,res){
   //  let ejemplaresTodos = [];
@@ -560,7 +158,6 @@ let indexController = {
         nest: true
         
     })
-//     console.log('findall')
         .then( losEjemplares => {
             return res.status(200).json({
                 count: losEjemplares.length,
@@ -572,9 +169,10 @@ let indexController = {
         .catch(function(err){
              console.log(err);
         });
-       // res.send('ok');
+      
 },
 
+//JSON CON INFO DE UN EJEMPLAR POR ID
 
 apiEjemplar: function(req,res){
     
@@ -613,10 +211,12 @@ apiEjemplar: function(req,res){
 
     
 },
+
+//JSON CON INFO DE TODAS LAS CARRERAS
 apiCarreras: function(req,res){
     console.log('ok');
    
-  // let arrayCarreras = [];
+ 
    db.carreras.findAll({
         attributes: ['id' , 'hipodromo' , 'nombre' , 'grupo' , 'fecha'],
         raw: true,
@@ -640,6 +240,8 @@ apiCarreras: function(req,res){
 
    
 },
+
+//JSON CON INFO DE UNA CARRERA POR ID DE LA CARRERA 
 apiUnaCarrera: function(req,res){
    let id = req.params.id;
    db.carreras.findByPk(id,
@@ -666,6 +268,7 @@ apiUnaCarrera: function(req,res){
   
 },
 
+//JSON CON INFO DE TODOS LOS RESULTADOS DE PUESTO 1, 2, 3
    
    apiResultados: function(req,res){
     console.log('ok');
@@ -697,7 +300,7 @@ apiUnaCarrera: function(req,res){
 
    
 },
-// API RESULTADOS HIJOS :
+// API RESULTADOS POR ID DE UN EJEMPLAR:
 
   
 apiResultadosHijos: function(req,res){
@@ -733,6 +336,7 @@ apiResultadosHijos: function(req,res){
 },
 
 // API RESULTADO POR EJEMPLAR NACIDOS DESPUES DEL 2015
+
 apiUnResultado: function(req,res){
     console.log('ok');
     let id = req.params.id;
@@ -769,6 +373,7 @@ apiUnResultado: function(req,res){
    
 },
 //APi PARA ENCONTRAR CUIDADORES Y CRIADORES POR ID
+
 apiUnProfesional: function(req,res){
     console.log('ok');
     let id = req.params.id;
@@ -798,6 +403,7 @@ apiUnProfesional: function(req,res){
    
 },
 
+//JSON CON INFO DE EJEMPLARES HIJOS DE UNA MISMA MADRE CON ID DE LA MADRE
 
 apiInfoHijos: async function(req,res){
   
@@ -853,6 +459,8 @@ apiInfoHijos: async function(req,res){
          status: 200
      });
 },
+
+//JSON CON NOMBRE DEL CRIADOR POR ID DEL CRIADOR
 
 apiUnCriador: function(req,res){
     console.log('ok');
@@ -913,6 +521,8 @@ apiHijos: function(req,res){
    
 },
 
+//JSON CON INFO DE CARRERAS UN EJEMPLAR POR ID DEL EJEMPALR
+
 apiInfoCarreras: async function(req,res){
   
     let {id} = req.params;
@@ -929,6 +539,7 @@ apiInfoCarreras: async function(req,res){
      });
 },
 
+//JSON CON INFO DE LA ULTIMA CARRERA DE UN EJEMPALR POR ID DEL EJEMPLAR PARA OBTENER INFO DE CUIDADOR Y CABALLERIZA
 
 apiInfoUltimaCarrera: async function(req,res){
   

@@ -5,7 +5,6 @@ const indexController = require('../controller/indexController');
 
 
 router.get("/ok/:id" , indexController.ok);
-router.post('/ok_form' , indexController.okForm)
 
 //router.get('/:id' , indexController.index);
 
